@@ -69,10 +69,34 @@
             color: var(--accent-green);
         }
 
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-left: 24px;
+        }
+
+        .linkedin-icon-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .linkedin-icon-link:hover {
+            color: #0a66c2;
+        }
+
+        .linkedin-icon-link svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+        }
+
         .lang-switch {
             display: inline-flex;
             gap: 8px;
-            margin-left: 24px;
         }
 
         .lang-btn {
@@ -222,6 +246,18 @@
 
         .btn-primary:hover {
             background-color: var(--accent-green-hover);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--bg-secondary);
+            border-color: var(--text-muted);
             transform: translateY(-2px);
         }
 
@@ -628,6 +664,23 @@
             font-size: 0.9rem;
         }
 
+        .footer-social-wrapper {
+            margin-top: 24px;
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+        }
+
+        .footer-link {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-link:hover {
+            color: var(--accent-green);
+        }
+
         .cta-footer {
             margin-top: 56px;
             text-align: center;
@@ -677,9 +730,14 @@
                 <a href="#governance">Governança</a>
                 <a href="#methodology">Metodologia</a>
                 <a href="#contract">Contato</a>
-                <div class="lang-switch">
-                    <a href="index.html" class="lang-btn active" style="text-decoration: none;">PT</a>
-                    <a href="en.html" class="lang-btn" style="text-decoration: none;">EN</a>
+                <div class="header-actions">
+                    <a href="https://www.linkedin.com/in/sergioelias-powercraftstudio" target="_blank" class="linkedin-icon-link" title="LinkedIn Profissional">
+                        <svg viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
+                    </a>
+                    <div class="lang-switch">
+                        <a href="index.html" class="lang-btn active" style="text-decoration: none;">PT</a>
+                        <a href="en.html" class="lang-btn" style="text-decoration: none;">EN</a>
+                    </div>
                 </div>
             </nav>
         </div>
@@ -705,6 +763,7 @@
 
             <div class="btn-group">
                 <a href="https://wa.me/5511965066546" target="_blank" class="btn btn-primary">Falar no WhatsApp</a>
+                <a href="mailto:sergioelias@powercraftstudio.com.br" class="btn btn-secondary">Enviar E-mail</a>
             </div>
         </div>
     </section>
@@ -763,7 +822,7 @@
                     <div class="hero-tag" style="background-color: rgba(245, 158, 11, 0.1); color: #f59e0b; margin-bottom: 16px;">PASSO 3</div>
                     <div class="card-title">Minimizar Custos de Dev</div>
                     <div class="card-text">
-                        Evite os custos abusivos de desenvolvimento de software tradicional. Nossa abordagem <strong>SharePoint First</strong> exige zero investimento inicial em licenças Premium, entregando economia financeira massiva.
+                        Evite os custos abusivos de desenvolvimento de software tradicional. Nossa abordagem <strong>SharePoint First</strong> exige zero investimento inicial em licenças Premium, entregando economia financeira massiva.[cite: 1]
                     </div>
                 </div>
             </div>
@@ -883,7 +942,7 @@
             <div class="coe-pyramid-container">
                 <div class="pyramid-tier tier-1">
                     <div class="tier-title">Estratégia e Inovação</div>
-                    <div class="tier-subtitle">Mapeamento de ROI, arquitetura SharePoint-to-Dataverse e metas de negócio.</div>
+                    <div class="tier-subtitle">Mapeamento de ROI, arquitetura SharePoint-to-Dataverse e metas de negócio.[cite: 1]</div>
                 </div>
                 <div class="pyramid-tier tier-2">
                     <div class="tier-title">Capacitação Contínua</div>
@@ -938,7 +997,7 @@
                 <div class="method-step">
                     <div class="step-number">2</div>
                     <div class="step-title">Design Arquitetural e DLP</div>
-                    <div class="step-desc">Modelagem lógica estruturada no SharePoint (com rota clara para o Dataverse se necessário), mapeamento de fluxos e parametrização de segurança DLP.</div>
+                    <div class="step-desc">Modelagem lógica estruturada no SharePoint (com rota clara para o Dataverse se necessário), mapeamento de fluxos e parametrização de segurança DLP.[cite: 1]</div>
                 </div>
                 <div class="method-step">
                     <div class="step-number">3</div>
@@ -989,7 +1048,10 @@
             <div class="cta-footer">
                 <h3>Pronto para transformar sua eficiência operacional?</h3>
                 <p>Agende uma sessão técnica de alinhamento com nossos arquitetos principais e monte o roadmap ideal para sua escala.</p>
-                <a href="https://wa.me/5511965066546" target="_blank" class="btn btn-primary">Iniciar Diagnóstico Gratuito via WhatsApp</a>
+                <div class="btn-group" style="justify-content: center;">
+                    <a href="https://wa.me/5511965066546" target="_blank" class="btn btn-primary">Iniciar Diagnóstico Gratuito via WhatsApp</a>
+                    <a href="mailto:sergioelias@powercraftstudio.com.br" class="btn btn-secondary">Contato por E-mail</a>
+                </div>
             </div>
         </div>
     </section>
@@ -997,7 +1059,11 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            &copy; 2026 Power Craft Studio. Todos os direitos reservados. Projetado para Performance e Governança Crítica.
+            <div>&copy; 2026 Power Craft Studio. Todos os direitos reservados. Projetado para Performance e Governança Crítica.</div>
+            <div class="footer-social-wrapper">
+                <a href="https://www.linkedin.com/in/sergioelias-powercraftstudio" target="_blank" class="footer-link">LinkedIn</a>
+                <a href="mailto:sergioelias@powercraftstudio.com.br" class="footer-link">sergioelias@powercraftstudio.com.br</a>
+            </div>
         </div>
     </footer>
 
