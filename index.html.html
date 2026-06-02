@@ -1,0 +1,1305 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Power Craft Studio | Arquitetura e Governança Power Platform</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0b0f19;
+            --bg-secondary: #111827;
+            --bg-tertiary: #1f2937;
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+            --accent-green: #10b981;
+            --accent-green-hover: #059669;
+            --accent-blue: #3b82f6;
+            --border-color: #374151;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        header {
+            background-color: rgba(11, 15, 25, 0.8);
+            backdrop-filter: blur(12px);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .logo span {
+            color: var(--accent-green);
+        }
+
+        .lang-switch {
+            display: inline-flex;
+            gap: 8px;
+            margin-left: 24px;
+        }
+
+        .lang-btn {
+            background: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--text-muted);
+            padding: 4px 8px;
+            font-size: 0.75rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .lang-btn.active {
+            border-color: var(--accent-green);
+            color: var(--text-main);
+            background-color: rgba(16, 185, 129, 0.1);
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-left: 24px;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--text-main);
+        }
+
+        section {
+            padding: 100px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            letter-spacing: -0.5px;
+        }
+
+        .section-title span {
+            color: var(--accent-green);
+        }
+
+        .section-subtitle {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin-bottom: 56px;
+        }
+
+        /* 1. Hero Section */
+        #hero {
+            padding-top: 180px;
+            padding-bottom: 120px;
+            background: radial-gradient(circle at top right, rgba(59, 130, 246, 0.08), transparent 45%);
+        }
+
+        .hero-tag {
+            display: inline-block;
+            background-color: rgba(16, 185, 129, 0.1);
+            color: var(--accent-green);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 24px;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.15;
+            letter-spacing: -1.5px;
+            margin-bottom: 24px;
+            max-width: 900px;
+        }
+
+        .hero-hook {
+            font-size: 1.25rem;
+            color: var(--text-main);
+            border-left: 4px solid var(--accent-green);
+            padding-left: 24px;
+            margin: 32px 0;
+            max-width: 800px;
+            font-style: italic;
+        }
+
+        .hero-subtitle-text {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            max-width: 750px;
+            margin-bottom: 40px;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 28px;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-green);
+            color: #000;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent-green-hover);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: var(--bg-tertiary);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(255, 255, 255, 0.05);
+            transform: translateY(-2px);
+        }
+
+        /* 2. Executive Overview (BM_1.jpg) */
+        #executive-overview {
+            background-color: var(--bg-secondary);
+            padding: 80px 0;
+        }
+
+        .overview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 24px;
+        }
+
+        .overview-box {
+            background-color: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            padding: 32px;
+            border-radius: 8px;
+            transition: border-color 0.3s ease;
+        }
+
+        .overview-box:hover {
+            border-color: var(--accent-blue);
+        }
+
+        .overview-box-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: var(--text-main);
+        }
+
+        .overview-box-desc {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* 3. Transformation Journey (Based on Transform Operations Slide) */
+        #transformation-journey {
+            background-color: var(--bg-primary);
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 32px;
+        }
+
+        .card {
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            padding: 40px;
+            border-radius: 8px;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(16, 185, 129, 0.4);
+        }
+
+        .card-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .card-text {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* 4. Use Cases & Architecture Section (BM_2, BM_3, BM_4) */
+        #architecture-cases {
+            background-color: var(--bg-secondary);
+        }
+
+        .architecture-layout {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        @media (max-width: 900px) {
+            .architecture-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .arch-tabs {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .arch-tab-btn {
+            background-color: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            color: var(--text-muted);
+            padding: 18px 24px;
+            border-radius: 6px;
+            text-align: left;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .arch-tab-btn:hover, .arch-tab-btn.active {
+            border-color: var(--accent-green);
+            color: var(--text-main);
+            background-color: var(--bg-tertiary);
+        }
+
+        .arch-content {
+            background-color: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            padding: 40px;
+            border-radius: 8px;
+            display: none;
+        }
+
+        .arch-content.active {
+            display: block;
+        }
+
+        .arch-header {
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 20px;
+            margin-bottom: 24px;
+        }
+
+        .arch-meta {
+            font-size: 0.85rem;
+            color: var(--accent-blue);
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .arch-main-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .arch-subtitle {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .arch-body-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+        }
+
+        @media (max-width: 768px) {
+            .arch-body-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .arch-layers {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .layer-item {
+            border-left: 3px solid var(--accent-green);
+            padding-left: 16px;
+        }
+
+        .layer-title {
+            font-weight: 600;
+            font-size: 1.05rem;
+            margin-bottom: 4px;
+        }
+
+        .layer-desc {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Mockup Containers built to display images easily */
+        .mockup-container {
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .mockup-header {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 10px;
+        }
+
+        .mockup-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #ef4444;
+        }
+        .mockup-dot:nth-child(2) { background-color: #f59e0b; }
+        .mockup-dot:nth-child(3) { background-color: #10b981; }
+
+        .mockup-screen-placeholder {
+            background-color: var(--bg-primary);
+            border: 1px dashed var(--border-color);
+            border-radius: 6px;
+            position: relative;
+            min-height: 250px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .mockup-screen-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0.4;
+            transition: opacity 0.3s ease;
+        }
+
+        .mockup-screen-placeholder:hover img {
+            opacity: 0.8;
+        }
+
+        .mockup-label {
+            position: relative;
+            z-index: 2;
+            background: rgba(11, 15, 25, 0.85);
+            padding: 12px 16px;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+            text-align: center;
+            font-size: 0.85rem;
+            max-width: 80%;
+        }
+
+        /* 5. CoE Governance Pyramid Component */
+        .coe-pyramid-container {
+            margin: 56px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            width: 100%;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .pyramid-tier {
+            width: 100%;
+            text-align: center;
+            padding: 18px;
+            font-weight: 600;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s ease;
+        }
+        .pyramid-tier:hover { transform: scale(1.02); }
+
+        .tier-1 { width: 40%; background-color: rgba(59, 130, 246, 0.2); border-color: var(--accent-blue); }
+        .tier-2 { width: 60%; background-color: rgba(16, 185, 129, 0.2); border-color: var(--accent-green); }
+        .tier-3 { width: 80%; background-color: rgba(245, 158, 11, 0.15); border-color: #f59e0b; }
+        .tier-4 { width: 100%; background-color: rgba(239, 68, 68, 0.15); border-color: #ef4444; }
+
+        .tier-title { font-size: 1.1rem; margin-bottom: 2px; color: var(--text-main); }
+        .tier-subtitle { font-size: 0.8rem; color: var(--text-muted); font-weight: 400; }
+
+        /* 6. ALM Pipeline Component */
+        .alm-pipeline {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+            margin: 56px 0;
+            background-color: var(--bg-secondary);
+            padding: 32px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            flex-wrap: wrap;
+        }
+
+        .pipeline-stage {
+            flex: 1;
+            background-color: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            padding: 20px;
+            border-radius: 6px;
+            min-width: 200px;
+            position: relative;
+        }
+
+        .stage-badge {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--accent-green);
+            text-transform: uppercase;
+            margin-bottom: 6px;
+        }
+
+        .stage-name { font-weight: 600; font-size: 1.1rem; margin-bottom: 4px; }
+        .stage-detail { color: var(--text-muted); font-size: 0.8rem; }
+
+        .pipeline-arrow {
+            color: var(--accent-green);
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .alm-pipeline { flex-direction: column; text-align: center; }
+            .pipeline-arrow { transform: rotate(90deg); margin: 8px 0; }
+        }
+
+        /* 7. Methodology Section */
+        .method-list {
+            position: relative;
+            max-width: 800px;
+        }
+
+        .method-step {
+            position: relative;
+            padding-left: 48px;
+            margin-bottom: 40px;
+        }
+
+        .method-step::before {
+            content: '';
+            position: absolute;
+            left: 16px;
+            top: 24px;
+            bottom: -48px;
+            width: 1px;
+            background-color: var(--border-color);
+        }
+
+        .method-step:last-child::before {
+            display: none;
+        }
+
+        .step-number {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 32px;
+            height: 32px;
+            background-color: var(--bg-tertiary);
+            border: 1px solid var(--accent-green);
+            color: var(--accent-green);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            font-weight: 700;
+        }
+
+        .step-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .step-desc {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* 8. Contract & Payment */
+        .contract-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 48px;
+            align-items: start;
+        }
+
+        .engagement-box, .terms-box {
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            padding: 40px;
+            border-radius: 8px;
+        }
+
+        .sub-box-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 24px;
+            color: var(--text-main);
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 12px;
+        }
+
+        .model-item {
+            margin-bottom: 24px;
+        }
+
+        .model-name {
+            font-weight: 600;
+            color: var(--accent-green);
+            margin-bottom: 4px;
+        }
+
+        .cta-footer {
+            margin-top: 56px;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.05), transparent);
+            padding: 48px;
+            border-radius: 8px;
+            border: 1px solid rgba(16, 185, 129, 0.1);
+        }
+
+        .cta-footer h3 {
+            font-size: 1.5rem;
+            margin-bottom: 16px;
+        }
+
+        .cta-footer p {
+            color: var(--text-muted);
+            margin-bottom: 32px;
+        }
+
+        footer {
+            padding: 40px 0;
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border-color);
+        }
+
+        @media (max-width: 768px) {
+            .hero-title { font-size: 2.5rem; }
+            section { padding: 60px 0; }
+            nav { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header>
+        <div class="container nav-wrapper">
+            <div class="logo">PowerCraft<span>Studio</span></div>
+            <nav>
+                <a href="#hero" class="active" id="nav-overview">Overview</a>
+                <a href="#transformation-journey" id="nav-solutions">Soluções</a>
+                <a href="#architecture-cases" id="nav-cases">Casos de Uso</a>
+                <a href="#methodology" id="nav-method">Metodologia</a>
+                <a href="#contract" id="nav-contract">Contato</a>
+                <div class="lang-switch">
+                    <button class="lang-btn active" onclick="switchLanguage('pt')">PT</button>
+                    <button class="lang-btn" onclick="switchLanguage('en')">EN</button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 1. Hero Section -->
+    <section id="hero">
+        <div class="container">
+            <span class="hero-tag" id="hero-tag">Arquitetura de Plataforma & Governança</span>
+            <h1 class="hero-title" id="hero-title">Aplicações Corporativas de Ponta a Ponta prontas para Escala.</h1>
+            
+            <div class="hero-hook" id="hero-hook">
+                "Pare de pagar por potencial de software não utilizado. Transformamos planilhas espalhadas, dados legados fragmentados e fricção operacional em ecossistemas corporativos seguros, governados e altamente automatizados. Transforme a sua licença do Microsoft 365 num ativo operacional de alto rendimento."
+            </div>
+
+            <p class="hero-subtitle-text" id="hero-subtitle">
+                Power Apps avançados, Power Automate e integrações completas com SharePoint customizados para performance de missão crítica, governança blindada e conectividade legada contínua.
+            </p>
+
+            <div class="btn-group">
+                <a href="#contract" class="btn btn-primary" id="btn-diag">Agendar Diagnóstico Gratuito</a>
+                <a href="https://wa.me/5511965066546" target="_blank" class="btn btn-secondary" id="btn-wa">Falar no WhatsApp</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. Executive Overview (BM_1.jpg) -->
+    <section id="executive-overview">
+        <div class="container">
+            <h2 class="section-title" id="exec-title">Modernizando Operações Corporativas via <span>Microsoft Power Platform</span></h2>
+            <p class="section-subtitle" id="exec-subtitle">Arquitetura Escalável, Fluxos de Trabalho Automatizados e Conectividade de Nível Enterprise.</p>
+            
+            <div class="overview-grid">
+                <div class="overview-box">
+                    <div class="overview-box-title" id="box1-title">Desbloqueie a Infraestrutura Existente</div>
+                    <div class="overview-box-desc" id="box1-desc">Maximize os ambientes Microsoft 365 / Dataverse existentes sem desperdício de licenciamento ou custos extras.</div>
+                </div>
+                <div class="overview-box">
+                    <div class="overview-box-title" id="box2-title">Otimização Drástica de Custos</div>
+                    <div class="overview-box-desc" id="box2-desc">Desenvolvimento de aplicações corporativas seguras e customizadas desenhadas a até 10% do custo do software tradicional.</div>
+                </div>
+                <div class="overview-box">
+                    <div class="overview-box-title" id="box3-title">Elimine Silos Operacionais</div>
+                    <div class="overview-box-desc" id="box3-desc">Integração robusta de sistemas legados combinada com fluxos manuais profundamente otimizados e automatizados.</div>
+                </div>
+                <div class="overview-box">
+                    <div class="overview-box-title" id="box4-title">Governança Ponta a Ponta</div>
+                    <div class="overview-box-desc" id="box4-desc">Arquitetura 100% remota com aplicação estrita de integridade de dados e acompanhamento ágil de ROI.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Transformation Journey Section (Based on Transform Operations Slide) -->
+    <section id="transformation-journey">
+        <div class="container">
+            <h2 class="section-title" id="trans-title">A Jornada de Transformação com <span>Power Platform</span></h2>
+            <p class="section-subtitle" id="trans-subtitle">Como orquestramos dados dispersos, otimizamos processos e reduzimos custos operacionais de forma agressiva.</p>
+
+            <div class="grid-3">
+                <!-- Passo 1 -->
+                <div class="card" style="border-top: 4px solid var(--accent-blue);">
+                    <div class="hero-tag" style="background-color: rgba(59, 130, 246, 0.1); color: var(--accent-blue); margin-bottom: 16px;" id="step1-tag">PASSO 1</div>
+                    <div class="card-title" id="step1-title">Conectar Sistemas Dispares</div>
+                    <div class="card-text" id="step1-desc">
+                        Elimine os silos de dados de uma vez por todas. Orquestramos infraestruturas espalhadas em <strong>Endpoints de Dados Unificados</strong>, integrando Salesforce, SAP, SharePoint, SQL e APIs sob medida de forma segura.
+                    </div>
+                </div>
+
+                <!-- Passo 2 -->
+                <div class="card" style="border-top: 4px solid var(--accent-green);">
+                    <div class="hero-tag" style="margin-bottom: 16px;" id="step2-tag">PASSO 2</div>
+                    <div class="card-title" id="step2-title">Otimizar Fluxos Manuais</div>
+                    <div class="card-text" id="step2-desc">
+                        Substitua a fricção operacional por velocidade contínua. Desconstruímos processos manuais demorados e os reengenheiramos em <strong>Fluxos Automatizados</strong> que mitigam erros humanos e retrabalho.
+                    </div>
+                </div>
+
+                <!-- Passo 3 -->
+                <div class="card" style="border-top: 4px solid #f59e0b;">
+                    <div class="hero-tag" style="background-color: rgba(245, 158, 11, 0.1); color: #f59e0b; margin-bottom: 16px;" id="step3-tag">PASSO 3</div>
+                    <div class="card-title" id="step3-title">Minimizar Custos de Dev</div>
+                    <div class="card-text" id="step3-desc">
+                        Evite os custos abusivos de desenvolvimento de software tradicional. Nossa arquitetura Low-Code exige muito menos horas de engenharia, oferecendo uma <strong>economia financeira massiva</strong> e go-to-market rápido.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Interactive Use Cases & Architectures (BM_2, BM_3, BM_4) -->
+    <section id="architecture-cases">
+        <div class="container">
+            <h2 class="section-title" id="cases-title">Arquiteturas Corporativas & <span>Casos Comprovados</span></h2>
+            <p class="section-subtitle" id="cases-subtitle">Explore plantas arquitetônicas reais desenvolvidas para mitigar desafios de negócios complexos de várias camadas.</p>
+
+            <div class="architecture-layout">
+                <!-- Abas Laterais -->
+                <div class="arch-tabs">
+                    <button class="arch-tab-btn active" id="tab1-btn" onclick="openArch(event, 'crm-erp')">Integração CRM & ERP</button>
+                    <button class="arch-tab-btn" id="tab2-btn" onclick="openArch(event, 'supply-chain')">Cadeia de Suprimentos Digital</button>
+                    <button class="arch-tab-btn" id="tab3-btn" onclick="openArch(event, 'finance-audit')">Motor de Auditoria de Bônus</button>
+                </div>
+
+                <!-- Conteúdo Aba 1 (BM_2) -->
+                <div id="crm-erp" class="arch-content active">
+                    <div class="arch-header">
+                        <div class="arch-meta" id="c1-meta">Conectividade Salesforce & SAP</div>
+                        <h3 class="arch-main-title" id="c1-title">Interligando Ecossistemas de CRM e ERP</h3>
+                        <p class="arch-subtitle" id="c1-subtitle">Orquestração automatizada de dados e matriz de governança interdepartamental.</p>
+                    </div>
+                    <div class="arch-body-grid">
+                        <div class="arch-layers">
+                            <div class="layer-item">
+                                <div class="layer-title" id="c1-l1-t">Camada de Ingestão de Dados</div>
+                                <div class="layer-desc" id="c1-l1-d">Rastreamento contínuo do Salesforce CRM conectado nativamente através de endpoints de nuvem autenticados e seguros.</div>
+                            </div>
+                            <div class="layer-item">
+                                <div class="layer-title" id="c1-l2-t">Interface de Usuário Interativa</div>
+                                <div class="layer-desc" id="c1-l2-d">Microsoft Power Apps entregando uma UI unificada, moderna e responsiva para a operação de vendas e faturamento.</div>
+                            </div>
+                        </div>
+                        
+                        <!-- Real UI Screen Placeholder with integrated background reference -->
+                        <div class="mockup-container">
+                            <div class="mockup-header">
+                                <div class="mockup-dot"></div><div class="mockup-dot"></div><div class="mockup-dot"></div>
+                            </div>
+                            <div class="mockup-screen-placeholder">
+                                <img src="images/BM_2.png" alt="Arquitetura Salesforce SAP">
+                                <div class="mockup-label" id="c1-mockup-label">
+                                    <strong>[Visualização: Arquitetura BM_2.png]</strong><br>
+                                    Camada Inteligente Power Platform conectando Salesforce diretamente ao SAP Core ERP.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Conteúdo Aba 2 (BM_3) -->
+                <div id="supply-chain" class="arch-content">
+                    <div class="arch-header">
+                        <div class="arch-meta" id="c2-meta">Aplicativo de Gerenciamento de Supply Chain</div>
+                        <h3 class="arch-main-title" id="c2-title">Cadeia de Suprimentos Digital: Do Campo ao Fornecedor</h3>
+                        <p class="arch-subtitle" id="c2-subtitle">Agilizando requisições de materiais, aprovações de suprimentos e RFQs automatizadas.</p>
+                    </div>
+                    <div class="arch-body-grid">
+                        <div class="arch-layers">
+                            <div class="layer-item">
+                                <div class="layer-title" id="c2-l1-t">Camada de Mobilidade em Campo</div>
+                                <div class="layer-desc" id="c2-l1-d">Power Apps otimizados para dispositivos móveis, permitindo que equipes externas enviem requisições de materiais em tempo real.</div>
+                            </div>
+                            <div class="layer-item">
+                                <div class="layer-title" id="c2-l2-t">Motor de Automação de Compras</div>
+                                <div class="layer-desc" id="c2-l2-d">Power Automate executando a orquestração completa do fluxo, notificações imediatas e disparo automático de cotações para fornecedores externos.</div>
+                            </div>
+                        </div>
+                        
+                        <!-- Real UI Screen Placeholder with integrated background reference -->
+                        <div class="mockup-container">
+                            <div class="mockup-header">
+                                <div class="mockup-dot"></div><div class="mockup-dot"></div><div class="mockup-dot"></div>
+                            </div>
+                            <div class="mockup-screen-placeholder">
+                                <img src="images/BM_3.jpg" alt="Aplicativo Supply Chain">
+                                <div class="mockup-label" id="c2-mockup-label">
+                                    <strong>[Visualização: Fluxo BM_3.jpg]</strong><br>
+                                    Interface unificada de Compras conectando requisições de campo a portais externos de fornecedores.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Conteúdo Aba 3 (BM_4) -->
+                <div id="finance-audit" class="arch-content">
+                    <div class="arch-header">
+                        <div class="arch-meta" id="c3-meta">Plataforma de Auditoria & Cálculo de Bônus</div>
+                        <h3 class="arch-main-title" id="c3-title">Motor Automatizado de Auditoria de Remuneração</h3>
+                        <p class="arch-subtitle" id="c3-subtitle">Consolidando registros de RH legados e fragmentados em um fluxo de trabalho financeiro seguro e auditável.</p>
+                    </div>
+                    <div class="arch-body-grid">
+                        <div class="arch-layers">
+                            <div class="layer-item">
+                                <div class="layer-title" id="c3-l1-t">Camada de Agregação de Dados</div>
+                                <div class="layer-desc" id="c3-l1-d">Extração automatizada de logs de relógios de ponto legados, faltas e afastamentos em repositórios SharePoint Online altamente seguros.</div>
+                            </div>
+                            <div class="layer-item">
+                                <div class="layer-title" id="c3-l2-t">Exportação Segura de Folha de Pagamento</div>
+                                <div class="layer-desc" id="c3-l2-d">Pipelines validados empurrando os registros de bônus calculados e auditados diretamente para os sistemas de Folha Legados via API corporativa.</div>
+                            </div>
+                        </div>
+                        
+                        <!-- Real UI Screen Placeholder with integrated background reference -->
+                        <div class="mockup-container">
+                            <div class="mockup-header">
+                                <div class="mockup-dot"></div><div class="mockup-dot"></div><div class="mockup-dot"></div>
+                            </div>
+                            <div class="mockup-screen-placeholder">
+                                <img src="images/BM_4.jpg" alt="Engine de Auditoria Financeira">
+                                <div class="mockup-label" id="c3-mockup-label">
+                                    <strong>[Visualização: Painel BM_4.jpg]</strong><br>
+                                    Painel executivo de compliance, regras de negócios complexas de bônus e exportação de dados para folha.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Methodology Section with Integrated ALM Pipeline -->
+    <section id="methodology">
+        <div class="container">
+            <h2 class="section-title" id="method-title">A Metodologia <span>Orientada por IA & ALM</span></h2>
+            <p class="section-subtitle" id="method-subtitle">Processos rígidos de engenharia de software acelerados por vetores de inteligência artificial de última geração.</p>
+            
+            <div class="method-list">
+                <div class="method-step">
+                    <div class="step-number">1</div>
+                    <div class="step-title" id="m1-title">Diagnóstico Assistido por IA & Mineração de Processos</div>
+                    <div class="step-desc" id="m1-desc">Mapeamos os gargalos operacionais e desenhamos o processo atual (As-Is) utilizando inteligência artificial para identificar os melhores vetores de automação e ganho de eficiência.</div>
+                </div>
+                <div class="method-step">
+                    <div class="step-number">2</div>
+                    <div class="step-title" id="m2-title">Desenho da Arquitetura Alvo (To-Be)</div>
+                    <div class="step-desc" id="m2-desc">Estruturamos o modelo de dados ideal no Dataverse/SharePoint, topologias de segurança de acessos, matrizes de conformidade regulatória e infraestrutura de conectores personalizados.</div>
+                </div>
+                
+                <!-- Integrated ALM Pipeline Graphic Layout -->
+                <div class="alm-pipeline">
+                    <div class="pipeline-stage">
+                        <div class="stage-badge" id="p1-badge">Ambiente 01</div>
+                        <div class="stage-name" id="p1-name">Desenvolvimento (Dev)</div>
+                        <div class="stage-detail" id="p1-desc">Prototipagem ágil apoiada por IA, estruturação lógica em sandbox e testes isolados de componentes.</div>
+                    </div>
+                    <div class="pipeline-arrow">➔</div>
+                    <div class="pipeline-stage">
+                        <div class="stage-badge" id="p2-badge">Ambiente 02</div>
+                        <div class="stage-name" id="p2-name">Homologação (Staging/UAT)</div>
+                        <div class="stage-detail" id="p2-desc">Auditoria de aceitação pelo usuário final, checagem fina de segurança corporativa e validação de integridade.</div>
+                    </div>
+                    <div class="pipeline-arrow">➔</div>
+                    <div class="pipeline-stage" style="border-color: var(--accent-green);">
+                        <div class="stage-badge" style="color: var(--accent-green);" id="p3-badge">Ambiente 03</div>
+                        <div class="stage-name" id="p3-name">Produção (Prod)</div>
+                        <div class="stage-detail" id="p3-desc">Implantação contínua ao vivo via soluções estruturadas, disponibilização enterprise e impacto imediato sem quedas.</div>
+                    </div>
+                </div>
+
+                <div class="method-step">
+                    <div class="step-number">3</div>
+                    <div class="step-title" id="m3-title">Governança Rigorosa & ALM Automatizado</div>
+                    <div class="step-desc" id="m3-desc">Implementamos pipelines de deploy automatizados para garantir transições suaves entre os ambientes de desenvolvimento, homologação e produção sem qualquer indisponibilidade operacional.</div>
+                </div>
+                <div class="method-step">
+                    <div class="step-number">4</div>
+                    <div class="step-title" id="m4-title">Configuração de CoE & Hypercare</div>
+                    <div class="step-desc" id="m4-desc">Fornecemos documentação técnica abrangente, mentoria administrativa e treinamentos sob medida para garantir que o departamento interno de TI mantenha total propriedade e controle da esteira.</div>
+                </div>
+            </div>
+
+            <!-- CoE Governance Pyramid Layer View -->
+            <div style="margin-top: 80px; text-align: center;">
+                <h3 style="font-size: 1.5rem; margin-bottom: 12px;" id="pyramid-main-title">Arquitetura de Governança do Centro de Excelência (CoE)</h3>
+                <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 32px;" id="pyramid-main-desc">Nossa estrutura conceitual projetada para mitigar Shadow IT, defender dados confidenciais e empoderar o crescimento exponencial do seu tenant.</p>
+                
+                <div class="coe-pyramid-container">
+                    <div class="pyramid-tier tier-1">
+                        <div class="tier-title" id="t1-title">01. Nutrição & Capacitação Exponencial</div>
+                        <div class="tier-subtitle" id="t1-sub">Escalonamento de criadores internos, controle estrito de documentações e mentoria contínua da comunidade corporativa</div>
+                    </div>
+                    <div class="pyramid-tier tier-2">
+                        <div class="tier-title" id="t2-title">02. Operações & Monitoramento em Tempo Real</div>
+                        <div class="tier-subtitle" id="t2-sub">Análise detalhada de adoção de apps, alertas automatizados de fluxos órfãos e telemetria ativa via dashboards customizados</div>
+                    </div>
+                    <div class="pyramid-tier tier-3">
+                        <div class="tier-title" id="t3-title">03. Governança Tática & Políticas de DLP</div>
+                        <div class="tier-subtitle" id="t3-sub">Roteamento inteligente de novos ambientes, isolamento rígido de conectores críticos e blindagem contra vazamento de dados</div>
+                    </div>
+                    <div class="pyramid-tier tier-4">
+                        <div class="tier-title" id="t4-title">04. Núcleo de Segurança Inabalável (Base)</div>
+                        <div class="tier-subtitle" id="t4-sub">Mapeamento via Microsoft Entra ID, acessos condicionais rigorosos por grupos e design estrutural de segurança de escopos</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 6. Contract, Engagement & Payment Section -->
+    <section id="contract">
+        <div class="container">
+            <h2 class="section-title" id="contract-title">Modelos de Engajamento & <span>Termos Comerciais</span></h2>
+            <p class="section-subtitle" id="contract-subtitle">Estruturas de faturamento totalmente transparentes desenhadas para o compliance de compras corporativas.</p>
+            
+            <div class="contract-grid">
+                <div class="engagement-box">
+                    <div class="sub-box-title" id="eng-box-title">Modelos de Trabalho</div>
+                    <div class="model-item">
+                        <div class="model-name" id="m-item1-title">Projeto Escopo Fechado (Turnkey)</div>
+                        <div class="overview-box-desc" id="m-item1-desc">Entrega ponta a ponta com escopo pré-definido e faturamento atrelado a entregáveis técnicos claros (Milestones). Perfeito para solucionar dores de negócios imediatas.</div>
+                    </div>
+                    <div class="model-item">
+                        <div class="model-name" id="m-item2-title">Consultoria Estratégica & Advisory CoE</div>
+                        <div class="overview-box-desc" id="m-item2-desc">Retainer mensal para auditoria continuada de arquiteturas complexas, desenho de governança enterprise e mentoria sênior para times internos de tecnologia.</div>
+                    </div>
+                </div>
+
+                <div class="terms-box">
+                    <div class="sub-box-title" id="terms-box-title">Termos de Contrato e Faturamento</div>
+                    <div class="model-item">
+                        <div class="model-name" id="t-item1-title">Faturamento Corporativo Flexível</div>
+                        <div class="overview-box-desc" id="t-item1-desc">Emissão de faturamento tanto para entidades locais no Brasil (CNPJ) quanto via canais internacionais de transferências bancárias globais.</div>
+                    </div>
+                    <div class="model-item">
+                        <div class="model-name" id="t-item2-title">Pagamentos Vinculados a Entregas</div>
+                        <div class="overview-box-desc" id="t-item2-desc">Para projetos fechados, o faturamento é rigidamente estruturado com base nas aprovações de homologação (ex: Kickoff / UAT / Go-Live).</div>
+                    </div>
+                    <div class="model-item">
+                        <div class="model-name" id="t-item3-title">NDA Corporativo Rigoroso</div>
+                        <div class="overview-box-desc" id="t-item3-desc">Acordos de Confidencialidade (Non-Disclosure Agreements) assinados compulsoriamente antes de qualquer compartilhamento ou descoberta técnica.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cta-footer">
+                <h3 id="cta-title">Pronto para Arquitetar Suas Soluções de Escala?</h3>
+                <p id="cta-desc">Vamos analisar minuciosamente os seus fluxos manuais atuais e identificar o ROI oculto do seu licenciamento Microsoft em uma sessão inicial de alinhamento gratuito.</p>
+                <a href="mailto:sergioelias@powercraftstudio.com.br" class="btn btn-primary" id="cta-btn">Agendar Reunião de Diagnóstico Gratuita</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p id="footer-text">&copy; 2026 Power Craft Studio. Todos os direitos reservados. | Arquitetura Low-Code Avançada de Nível Enterprise.</p>
+        </div>
+    </footer>
+
+    <!-- Interactive Logic and Multilingual Resource Dictionary -->
+    <script>
+        function openArch(evt, archName) {
+            var i, archcontent, archtablinks;
+            archcontent = document.getElementsByClassName("arch-content");
+            for (i = 0; i < archcontent.length; i++) {
+                archcontent[i].style.display = "none";
+            }
+            archtablinks = document.getElementsByClassName("arch-tab-btn");
+            for (i = 0; i < archtablinks.length; i++) {
+                archtablinks[i].className = archtablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(archName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+
+        const translations = {
+            pt: {
+                navOverview: "Overview", navSolutions: "Soluções", navCases: "Casos de Uso", navMethod: "Metodologia", navContract: "Contato",
+                heroTag: "Arquitetura de Plataforma & Governança",
+                heroTitle: "Aplicações Corporativas de Ponta a Ponta prontas para Escala.",
+                heroHook: '"Pare de pagar por potencial de software não utilizado. Transformamos planilhas espalhadas, dados legados fragmentados e fricção operacional em ecossistemas corporativos seguros, governados e altamente automatizados. Transforme a sua licença do Microsoft 365 num ativo operacional de alto rendimento."',
+                heroSubtitle: "Power Apps avançados, Power Automate e integrações completas com SharePoint customizados para performance de missão crítica, governança blindada e conectividade legada contínua.",
+                btnDiag: "Agendar Diagnóstico Gratuito", btnWa: "Falar no WhatsApp",
+                execTitle: "Modernizando Operações Corporativas via <span>Microsoft Power Platform</span>",
+                execSubtitle: "Arquitetura Escalável, Fluxos de Trabalho Automatizados e Conectividade de Nível Enterprise.",
+                box1Title: "Desbloqueie a Infraestrutura Existente", box1Desc: "Maximize os ambientes Microsoft 365 / Dataverse existentes sem desperdício de licenciamento ou custos extras.",
+                box2Title: "Otimização Drástica de Custos", box2Desc: "Desenvolvimento de aplicações corporativas seguras e customizadas desenhadas a até 10% do custo do software tradicional.",
+                box3Title: "Elimine Silos Operacionais", box3Desc: "Integração robusta de sistemas legados combinada com fluxos manuais profundamente otimizados e automatizados.",
+                box4Title: "Governança Ponta a Ponta", box4Desc: "Arquitetura 100% remota com aplicação estrita de integridade de dados e acompanhamento ágil de ROI.",
+                transTitle: "A Jornada de Transformação com <span>Power Platform</span>",
+                transSubtitle: "Como orquestramos dados dispersos, otimizamos processos e reduzimos custos operacionais de forma agressiva.",
+                step1Tag: "PASSO 1", step1Title: "Conectar Sistemas Dispares", step1Desc: "Elimine os silos de dados de uma vez por todas. Orquestramos infraestruturas espalhadas em <strong>Endpoints de Dados Unificados</strong>, integrando Salesforce, SAP, SharePoint, SQL e APIs sob medida de forma segura.",
+                step2Tag: "PASSO 2", step2Title: "Otimizar Fluxos Manuais", step2Desc: "Substitua a fricção operacional por velocidade contínua. Desconstruímos processos manuais demorados e os reengenheiramos em <strong>Fluxos Automatizados</strong> que mitigam erros humanos e retrabalho.",
+                step3Tag: "PASSO 3", step3Title: "Minimizar Custos de Dev", step3Desc: "Evite os custos abusivos de desenvolvimento de software tradicional. Nossa arquitetura Low-Code exige muito menos horas de engenharia, oferecendo uma <strong>economia financeira massiva</strong> e go-to-market rápido.",
+                casesTitle: "Arquiteturas Corporativas & <span>Casos Comprovados</span>",
+                casesSubtitle: "Explore plantas arquitetônicas reais desenvolvidas para mitigar desafios de negócios complexos de várias camadas.",
+                tab1Btn: "Integração CRM & ERP", tab2Btn: "Cadeia de Suprimentos Digital", tab3Btn: "Motor de Auditoria de Bônus",
+                c1Meta: "Conectividade Salesforce & SAP", c1Title: "Interligando Ecossistemas de CRM e ERP", c1Subtitle: "Orquestração automatizada de dados e matriz de governança interdepartamental.",
+                c1L1T: "Camada de Ingestão de Dados", c1L1D: "Rastreamento contínuo do Salesforce CRM conectado nativamente através de endpoints de nuvem autenticados e seguros.",
+                c1L2T: "Interface de Usuário Interativa", c1L2D: "Microsoft Power Apps entregando uma UI unificada, moderna e responsiva para a operação de vendas e faturamento.",
+                c1MockupLabel: "<strong>[Visualização: Arquitetura BM_2.png]</strong><br>Camada Inteligente Power Platform conectando Salesforce diretamente ao SAP Core ERP.",
+                c2Meta: "Aplicativo de Gerenciamento de Supply Chain", c2Title: "Cadeia de Suprimentos Digital: Do Campo ao Fornecedor", c2Subtitle: "Agilizando requisições de materiais, aprovações de suprimentos e RFQs automatizadas.",
+                c2L1T: "Camada de Mobilidade em Campo", c2L1D: "Power Apps otimizados para dispositivos móveis, permitindo que equipes externas enviem requisições de materiais em tempo real.",
+                c2L2T: "Motor de Automação de Compras", c2L2D: "Power Automate executando a orquestração completa do fluxo, notificações imediatas e disparo automático de cotações para fornecedores externos.",
+                c2MockupLabel: "<strong>[Visualização: Fluxo BM_3.jpg]</strong><br>Interface unificada de Compras conectando requisições de campo a portais externos de fornecedores.",
+                c3Meta: "Plataforma de Auditoria & Cálculo de Bônus", c3Title: "Motor Automatizado de Auditoria de Remuneração", c3Subtitle: "Consolidando registros de RH legados e fragmentados em um fluxo de trabalho financeiro seguro e auditável.",
+                c3L1T: "Camada de Ingestão de Dados", c3L1D: "Extração automatizada de logs de relógios de ponto legados, faltas e afastamentos em repositórios SharePoint Online altamente seguros.",
+                c3L2T: "Exportação Segura de Folha de Pagamento", c3L2D: "Pipelines validados empurrando os registros de bônus calculados e auditados diretamente para os sistemas de Folha Legados via API corporativa.",
+                c3MockupLabel: "<strong>[Visualização: Painel BM_4.jpg]</strong><br>Painel executivo de compliance, regras de negócios complexas de bônus e exportação de dados para folha.",
+                methodTitle: "A Metodologia <span>Orientada por IA & ALM</span>",
+                methodSubtitle: "Processos rígidos de engenharia de software acelerados por vetores de inteligência artificial de última geração.",
+                m1Title: "Diagnóstico Assistido por IA & Mineração de Processos", m1Desc: "Mapeamos os gargalos operacionais e desenhamos o processo atual (As-Is) utilizando inteligência artificial para identificar os melhores vetores de automação e ganho de eficiência.",
+                m2Title: "Desenho da Arquitetura Alvo (To-Be)", m2Desc: "Estruturamos o modelo de dados ideal no Dataverse/SharePoint, topologias de segurança de acessos, matrizes de conformidade regulatória e infraestrutura de conectores personalizados.",
+                p1Badge: "Ambiente 01", p1Name: "Desenvolvimento (Dev)", p1Desc: "Prototipagem ágil apoiada por IA, estruturação lógica em sandbox e testes isolados de componentes.",
+                p2Badge: "Ambiente 02", p2Name: "Homologação (Staging/UAT)", p2Desc: "Auditoria de aceitação pelo usuário final, checagem fina de segurança corporativa e validação de integridade.",
+                p3Badge: "Ambiente 03", p3Name: "Produção (Prod)", p3Desc: "Implantação contínua ao vivo via soluções estruturadas, disponibilização enterprise e impacto imediato sem quedas.",
+                m3Title: "Governança Rigorosa & ALM Automatizado", m3Desc: "Implementamos pipelines de deploy automatizados para garantir transições suaves entre os ambientes de desenvolvimento, homologação e produção sem qualquer indisponibilidade operacional.",
+                m4Title: "Configuração de CoE & Hypercare", m4Desc: "Fornecemos documentação técnica abrangente, mentoria administrativa e treinamentos sob medida para garantir que o departamento interno de TI mantenha total propriedade e controle da esteira.",
+                pyramidMainTitle: "Arquitetura de Governança do Centro de Excelência (CoE)",
+                pyramidMainDesc: "Nossa estrutura conceitual projetada para mitigar Shadow IT, defender dados confidenciais e empoderar o crescimento exponencial do seu tenant.",
+                t1Title: "01. Nutrição & Capacitação Exponencial", t1Sub: "Escalonamento de criadores internos, controle estrito de documentações e mentoria contínua da comunidade corporativa",
+                t2Title: "02. Operações & Monitoramento em Tempo Real", t2Sub: "Análise detalhada de adoção de apps, alertas automatizados de fluxos órfãos e telemetria ativa via dashboards customizados",
+                t3Title: "03. Governança Tática & Políticas de DLP", t3Sub: "Roteamento inteligente de novos ambientes, isolamento rígido de conectores críticos e blindagem contra vazamento de dados",
+                t4Title: "04. Núcleo de Segurança Inabalável (Base)", t4Sub: "Mapeamento via Microsoft Entra ID, acessos condicionais rigorosos por grupos e design estrutural de segurança de escopos",
+                contractTitle: "Modelos de Engajamento & <span>Termos Comerciais</span>",
+                contractSubtitle: "Estruturas de faturamento totalmente transparentes desenhadas para o compliance de compras corporativas.",
+                engBoxTitle: "Modelos de Trabalho",
+                mItem1Title: "Projeto Escopo Fechado (Turnkey)", mItem1Desc: "Entrega ponta a ponta com escopo pré-definido e faturamento atrelado a entregáveis técnicos claros (Milestones). Perfeito para solucionar dores de negócios imediatas.",
+                mItem2Title: "Consultoria Estratégica & Advisory CoE", mItem2Desc: "Retainer mensal para auditoria continuada de arquiteturas complexas, desenho de governança enterprise e mentoria sênior para times internos de tecnologia.",
+                termsBoxTitle: "Termos de Contrato e Faturamento",
+                tItem1Title: "Faturamento Corporativo Flexível", tItem1Desc: "Emissão de faturamento tanto para entidades locais no Brasil (CNPJ) quanto via canais internacionais de transferências bancárias globais.",
+                tItem2Title: "Pagamentos Vinculados a Entregas", tItem2Desc: "Para projetos fechados, o faturamento é rigidamente estruturado com base nas aprovações de homologação (ex: Kickoff / UAT / Go-Live).",
+                tItem3Title: "NDA Corporativo Rigoroso", tItem3Desc: "Acordos de Confidencialidade (Non-Disclosure Agreements) assinados compulsoriamente antes de qualquer compartilhamento ou descoberta técnica.",
+                ctaTitle: "Pronto para Arquitetar Suas Soluções de Escala?",
+                ctaDesc: "Vamos analisar minuciosamente os seus fluxos manuais atuais e identificar o ROI oculto do seu licenciamento Microsoft em uma sessão inicial de alinhamento gratuito.",
+                ctaBtn: "Agendar Reunião de Diagnóstico Gratuita",
+                footerText: "&copy; 2026 Power Craft Studio. Todos os direitos reservados. | Arquitetura Low-Code Avançada de Nível Enterprise."
+            },
+            en: {
+                navOverview: "Overview", navSolutions: "Solutions", navCases: "Use Cases", navMethod: "Methodology", navContract: "Contact",
+                heroTag: "Platform Architecture & Governance",
+                heroTitle: "End-to-End Enterprise Apps built for scale.",
+                heroHook: '"Stop paying for unused software potential. We transform scattered spreadsheets, fragmented legacy data, and operational friction into secure, governed, and highly automated corporate ecosystems. Turn your Microsoft 365 overhead into a high-yield operational asset."',
+                heroSubtitle: "Advanced Power Apps, Power Automate, and SharePoint integrations custom-engineered for mission-critical performance, ironclad governance, and seamless legacy connectivity.",
+                btnDiag: "Schedule a Free Diagnostic", btnWa: "Talk on WhatsApp",
+                execTitle: "Modernizing Enterprise Operations via <span>Microsoft Power Platform</span>",
+                execSubtitle: "Scalable Architecture, Automated Workflows, and Enterprise-Grade System Connectivity.",
+                box1Title: "Unlock Existing Infrastructure", box1Desc: "Maximize Microsoft 365 / Dataverse environments with zero additional platform overhead or licensing wasted.",
+                box2Title: "Drastic Cost Optimization", box2Desc: "Secure, custom corporate application development engineered at up to 10% of traditional software costs.",
+                box3Title: "Eliminate Operational Silos", box3Desc: "Robust legacy system bridging combined with deeply optimized, automated manual workflows.",
+                box4Title: "End-to-End Governance", box4Desc: "100% remote-ready architecture, full data integrity enforcement, and rapid ROI tracking.",
+                transTitle: "Transforming Operations With <span>Power Platform</span>",
+                transSubtitle: "How we orchestrate scattered variables, optimize flows, and reduce development friction radically.",
+                step1Tag: "STEP 1", step1Title: "Connect Disparate Systems", step1Desc: "Eliminate data silos. We orchestrate scattered infrastructures into <strong>Unified Data Endpoints</strong>, securely bridging Salesforce, SAP, SharePoint, SQL, and custom APIs into a single source of truth.",
+                step2Tag: "STEP 2", step2Title: "Optimize Manual Workflows", step2Desc: "Replace friction with velocity. We break down broken, time-consuming manual processes and re-engineer them into streamlined, <strong>Automated Flows</strong> that sharply reduce operational effort.",
+                step3Tag: "STEP 3", step3Title: "Minimize Development Costs", step3Desc: "Bypass traditional software development overhead. Our Low-Code architecture requires fewer engineering hours, delivering <strong>significant cost savings</strong> and accelerated market delivery.",
+                casesTitle: "Enterprise <span>Architectures & Proven Cases</span>",
+                casesSubtitle: "Explore real architectural blueprints engineered to solve multi-tier corporate challenges.",
+                tab1Btn: "CRM & ERP Integration", tab2Btn: "Digital Supply Chain", tab3Btn: "Compensation Audit Engine",
+                c1Meta: "Salesforce & SAP Connectivity", c1Title: "Bridging CRM and ERP Ecosystems", c1Subtitle: "Automated Data Orchestration and Interdepartmental Governance matrix.",
+                c1L1T: "Data Ingestion Layer", c1L1D: "Salesforce CRM tracking connected natively through secure, authenticated cloud endpoints.",
+                c1L2T: "Interactive User Interface", c1L2D: "Microsoft Power Apps delivering a unified, seamless responsive UI for core business execution.",
+                c1MockupLabel: "<strong>[Blueprint View: BM_2.png]</strong><br>Intelligent Power Platform layer binding Salesforce tracking fields with SAP ERP systems.",
+                c2Meta: "Supply Chain Management Application", c2Title: "Digital Supply Chain: Field to Vendor", c2Subtitle: "Streamlining Material Requisitions, Procurement Approvals, and Automated RFQs.",
+                c2L1T: "Field Mobility Layer", c2L1D: "Mobile-optimized Power Apps allowing offsite teams to submit real-time material requisitions from tablets.",
+                c2L2T: "Procurement Automation Engine", c2L2D: "Power Automate orchestrating global signals, immediate approvals tracking and vendor automated RFQ loops.",
+                c2MockupLabel: "<strong>[Blueprint View: BM_3.jpg]</strong><br>Central procurement workspace mapping site requisitions into active vendor portals.",
+                c3Meta: "Audit & Bonus Calculation Platform", c3Title: "Automated Compensation Audit Engine", c3Subtitle: "Consolidating Fragmented HR Legacy Records into a Secure, Compliant Financial Workflow.",
+                c3L1T: "Data Aggregation Layer", c3L1D: "Automated extraction of punch logs from legacy physical hardware into tightly partitioned SharePoint repositories.",
+                c3L2T: "Secure Payroll Export", c3L2D: "Validated deployment pipelines pushing clean audited financial records directly to legacy payroll APIs.",
+                c3MockupLabel: "<strong>[Blueprint View: BM_4.jpg]</strong><br>Compliance engine running algorithmic configurations across multi-source legacy attendance records.",
+                methodTitle: "The Power Craft <span>AI-Driven & ALM Methodology</span>",
+                methodSubtitle: "Rigid software engineering accelerated by next-generation artificial intelligence vectors.",
+                m1Title: "AI-Assisted Diagnosis & Process Mining", m1Desc: "We map operational bottlenecks and design the current process (As-Is) utilizing artificial intelligence insights to identify optimal automation vectors.",
+                m2Title: "Target Architecture Design (To-Be)", m2Desc: "Engineering the ideal data model inside Dataverse, security topologies, compliance matrices, and standard connector guidelines.",
+                p1Badge: "Environment 01", p1Name: "Development (Dev)", p1Desc: "AI prototyping, sandbox logic crafting and component testing within clean isolation zones.",
+                p2Badge: "Environment 02", p2Name: "Staging (UAT)", p2Desc: "User acceptance auditing, safety verification, security parameters checks and compliance auditing.",
+                p3Badge: "Environment 03", p3Name: "Production (Prod)", p3Desc: "Seamless live rollout, enterprise-wide safe deployment pipelines with zero runtime operational downtime.",
+                m3Title: "Rigorous Governance & ALM", m3Desc: "Implementing automated deployment pipelines, ensuring flawless environment transition across pipelines without disruption.",
+                m4Title: "CoE Setup & Hypercare Support", m4Desc: "Complete technical blueprints documentation, architecture mentoring, and training to ensure internal IT handles ownership cleanly.",
+                pyramidMainTitle: "Center of Excellence (CoE) Governance Architecture",
+                pyramidMainDesc: "Our structural framework built to defend, monitor, and empower your tenant's scalability while locking down Shadow IT.",
+                t1Title: "01. Nurture & Training Matrix", t1Sub: "Internal makers scaling, unified documentation control guides & continuous corporate community mentorship loops",
+                t2Title: "02. Operations & Telemetry Monitoring", t2Sub: "Usage deep-dives, custom active alert triggers for orphan architectures & live health monitoring dashboards",
+                t3Title: "03. Tactical Governance & DLPs", t3Sub: "Automated environment routing, strict connector data isolation rules & cloud leakage tracking mitigation trees",
+                t4Title: "04. Ironclad Core Security (Foundation)", t4Sub: "Microsoft Entra ID identities mapping, conditional tenant group access parameters & structured scope design",
+                contractTitle: "Engagement Models & <span>Commercial Terms</span>",
+                contractSubtitle: "Transparent billing structures engineered for frictionless enterprise procurement and corporate compliance.",
+                engBoxTitle: "Working Frameworks",
+                mItem1Title: "Turnkey Project-Based Scope", mItem1Desc: "Fixed-scope, end-to-end milestone-driven delivery for specific custom systems. Highly predictable and focused on quick solution building.",
+                mItem2Title: "Strategic Consulting Retainer", mItem2Desc: "Monthly advisory support for ongoing governance audits, architecture topology design, and senior advisory for internal developer teams.",
+                termsBoxTitle: "Contracting & Payment Terms",
+                tItem1Title: "Flexible Global Invoicing", tItem1Desc: "Complete legal compliance billing issued via local corporate channels in Brazil (CNPJ) or global cross-border wiring rails.",
+                tItem2Title: "Milestone-Tied Payments", tItem2Desc: "For architecture builds, invoicing stages map cleanly onto formal signs-offs (e.g. Kickoff / UAT completion / Production Live).",
+                tItem3Title: "Strict Corporate NDA", tItem3Desc: "Mutual Non-Disclosure Agreements executed prior to technical exploration calls to guarantee absolute information protection.",
+                ctaTitle: "Ready to Architect Your Solutions?",
+                ctaDesc: "Let's review your manual business steps together and trace out the exact hidden ROI inside your Microsoft 365 tenant in an initial strategy call.",
+                ctaBtn: "Schedule a Free Diagnostic Meeting",
+                footerText: "&copy; 2026 Power Craft Studio. All rights reserved. | Enterprise Low-Code Architecture."
+            }
+        };
+
+        function switchLanguage(lang) {
+            // Update Lang Buttons
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            const dictionary = translations[lang];
+
+            // Map UI Elements
+            document.getElementById('nav-overview').innerText = dictionary.navOverview;
+            document.getElementById('nav-solutions').innerText = dictionary.navSolutions;
+            document.getElementById('nav-cases').innerText = dictionary.navCases;
+            document.getElementById('nav-method').innerText = dictionary.navMethod;
+            document.getElementById('nav-contract').innerText = dictionary.navContract;
+
+            document.getElementById('hero-tag').innerText = dictionary.heroTag;
+            document.getElementById('hero-title').innerText = dictionary.heroTitle;
+            document.getElementById('hero-hook').innerText = dictionary.heroHook;
+            document.getElementById('hero-subtitle').innerText = dictionary.heroSubtitle;
+            document.getElementById('btn-diag').innerText = dictionary.btnDiag;
+            document.getElementById('btn-wa').innerText = dictionary.btnWa;
+
+            document.getElementById('exec-title').innerHTML = dictionary.execTitle;
+            document.getElementById('exec-subtitle').innerText = dictionary.execSubtitle;
+            document.getElementById('box1-title').innerText = dictionary.box1Title;
+            document.getElementById('box1-desc').innerText = dictionary.box1Desc;
+            document.getElementById('box2-title').innerText = dictionary.box2Title;
+            document.getElementById('box2-desc').innerText = dictionary.box2Desc;
+            document.getElementById('box3-title').innerText = dictionary.box3Title;
+            document.getElementById('box3-desc').innerText = dictionary.box3Desc;
+            document.getElementById('box4-title').innerText = dictionary.box4Title;
+            document.getElementById('box4-desc').innerText = dictionary.box4Desc;
+
+            document.getElementById('trans-title').innerHTML = dictionary.transTitle;
+            document.getElementById('trans-subtitle').innerText = dictionary.transSubtitle;
+            document.getElementById('step1-tag').innerText = dictionary.step1Tag;
+            document.getElementById('step1-title').innerText = dictionary.step1Title;
+            document.getElementById('step1-desc').innerHTML = dictionary.step1Desc;
+            document.getElementById('step2-tag').innerText = dictionary.step2Tag;
+            document.getElementById('step2-title').innerText = dictionary.step2Title;
+            document.getElementById('step2-desc').innerHTML = dictionary.step2Desc;
+            document.getElementById('step3-tag').innerText = dictionary.step3Tag;
+            document.getElementById('step3-title').innerText = dictionary.step3Title;
+            document.getElementById('step3-desc').innerHTML = dictionary.step3Desc;
+
+            document.getElementById('cases-title').innerHTML = dictionary.casesTitle;
+            document.getElementById('cases-subtitle').innerText = dictionary.casesSubtitle;
+            document.getElementById('tab1-btn').innerText = dictionary.tab1Btn;
+            document.getElementById('tab2-btn').innerText = dictionary.tab2Btn;
+            document.getElementById('tab3-btn').innerText = dictionary.tab3Btn;
+
+            document.getElementById('c1-meta').innerText = dictionary.c1Meta;
+            document.getElementById('c1-title').innerText = dictionary.c1Title;
+            document.getElementById('c1-subtitle').innerText = dictionary.c1Subtitle;
+            document.getElementById('c1-l1-t').innerText = dictionary.c1L1T;
+            document.getElementById('c1-l1-d').innerText = dictionary.c1L1D;
+            document.getElementById('c1-l2-t').innerText = dictionary.c1L2T;
+            document.getElementById('c1-l2-d').innerText = dictionary.c1L2D;
+            document.getElementById('c1-mockup-label').innerHTML = dictionary.c1MockupLabel;
+
+            document.getElementById('c2-meta').innerText = dictionary.c2Meta;
+            document.getElementById('c2-title').innerText = dictionary.c2Title;
+            document.getElementById('c2-subtitle').innerText = dictionary.c2Subtitle;
+            document.getElementById('c2-l1-t').innerText = dictionary.c2L1T;
+            document.getElementById('c2-l1-d').innerText = dictionary.c2L1D;
+            document.getElementById('c2-l2-t').innerText = dictionary.c2L2T;
+            document.getElementById('c2-l2-d').innerText = dictionary.c2L2D;
+            document.getElementById('c2-mockup-label').innerHTML = dictionary.c2MockupLabel;
+
+            document.getElementById('c3-meta').innerText = dictionary.c3Meta;
+            document.getElementById('c3-title').innerText = dictionary.c3Title;
+            document.getElementById('c3-subtitle').innerText = dictionary.c3Subtitle;
+            document.getElementById('c3-l1-t').innerText = dictionary.c3L1T;
+            document.getElementById('c3-l1-d').innerText = dictionary.c3L1D;
+            document.getElementById('c3-l2-t').innerText = dictionary.c3L2T;
+            document.getElementById('c3-l2-d').innerText = dictionary.c3L2D;
+            document.getElementById('c3-mockup-label').innerHTML = dictionary.c3MockupLabel;
+
+            document.getElementById('method-title').innerHTML = dictionary.methodTitle;
+            document.getElementById('method-subtitle').innerText = dictionary.methodSubtitle;
+            document.getElementById('m1-title').innerText = dictionary.m1Title;
+            document.getElementById('m1-desc').innerText = dictionary.m1Desc;
+            document.getElementById('m2-title').innerText = dictionary.m2Title;
+            document.getElementById('m2-desc').innerText = dictionary.m2Desc;
+
+            document.getElementById('p1-badge').innerText = dictionary.p1Badge;
+            document.getElementById('p1-name').innerText = dictionary.p1Name;
+            document.getElementById('p1-desc').innerText = dictionary.p1Desc;
+            document.getElementById('p2-badge').innerText = dictionary.p2Badge;
+            document.getElementById('p2-name').innerText = dictionary.p2Name;
+            document.getElementById('p2-desc').innerText = dictionary.p2Desc;
+            document.getElementById('p3-badge').innerText = dictionary.p3Badge;
+            document.getElementById('p3-name').innerText = dictionary.p3Name;
+            document.getElementById('p3-desc').innerText = dictionary.p3Desc;
+
+            document.getElementById('m3-title').innerText = dictionary.m3Title;
+            document.getElementById('m3-desc').innerText = dictionary.m3Desc;
+            document.getElementById('m4-title').innerText = dictionary.m4Title;
+            document.getElementById('m4-desc').innerText = dictionary.m4Desc;
+
+            document.getElementById('pyramid-main-title').innerText = dictionary.pyramidMainTitle;
+            document.getElementById('pyramid-main-desc').innerText = dictionary.pyramidMainDesc;
+            document.getElementById('t1-title').innerText = dictionary.t1Title;
+            document.getElementById('t1-sub').innerText = dictionary.t1Sub;
+            document.getElementById('t2-title').innerText = dictionary.t2Title;
+            document.getElementById('t2-sub').innerText = dictionary.t2Sub;
+            document.getElementById('t3-title').innerText = dictionary.t3Title;
+            document.getElementById('t3-sub').innerText = dictionary.t3Sub;
+            document.getElementById('t4-title').innerText = dictionary.t4Title;
+            document.getElementById('t4-sub').innerText = dictionary.t4Sub;
+
+            document.getElementById('contract-title').innerHTML = dictionary.contractTitle;
+            document.getElementById('contract-subtitle').innerText = dictionary.contractSubtitle;
+            document.getElementById('eng-box-title').innerText = dictionary.engBoxTitle;
+            document.getElementById('m-item1-title').innerText = dictionary.mItem1Title;
+            document.getElementById('m-item1-desc').innerText = dictionary.mItem1Desc;
+            document.getElementById('m-item2-title').innerText = dictionary.mItem2Title;
+            document.getElementById('m-item2-desc').innerText = dictionary.mItem2Desc;
+
+            document.getElementById('terms-box-title').innerText = dictionary.termsBoxTitle;
+            document.getElementById('t-item1-title').innerText = dictionary.tItem1Title;
+            document.getElementById('t-item1-desc').innerText = dictionary.tItem1Desc;
+            document.getElementById('t-item2-title').innerText = dictionary.tItem2Title;
+            document.getElementById('t-item2-desc').innerText = dictionary.tItem2Desc;
+            document.getElementById('t-item3-title').innerText = dictionary.tItem3Title;
+            document.getElementById('t-item3-desc').innerText = dictionary.tItem3Desc;
+
+            document.getElementById('cta-title').innerText = dictionary.ctaTitle;
+            document.getElementById('cta-desc').innerText = dictionary.ctaDesc;
+            document.getElementById('cta-btn').innerText = dictionary.ctaBtn;
+            document.getElementById('footer-text').innerHTML = dictionary.footerText;
+        }
+    </script>
+</body>
+</html>
