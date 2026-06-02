@@ -178,10 +178,30 @@
             margin-bottom: 40px;
         }
 
+        /* Estilos para a nova imagem em tamanho grande */
+        .hero-main-image-container {
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto 48px auto;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 12px;
+            background-color: var(--bg-secondary);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-main-image-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 6px;
+        }
+
         .btn-group {
             display: flex;
             gap: 16px;
             flex-wrap: wrap;
+            justify-content: flex-start;
         }
 
         .btn {
@@ -204,17 +224,6 @@
 
         .btn-primary:hover {
             background-color: var(--accent-green-hover);
-            transform: translateY(-2px);
-        }
-
-        .btn-secondary {
-            background-color: var(--bg-tertiary);
-            color: var(--text-main);
-            border: 1px solid var(--border-color);
-        }
-
-        .btn-secondary:hover {
-            background-color: rgba(255, 255, 255, 0.05);
             transform: translateY(-2px);
         }
 
@@ -499,6 +508,10 @@
             <p class="hero-subtitle-text">
                 Power Apps avançados, Power Automate e integrações completas com SharePoint customizados para performance de missão crítica, governança blindada e conectividade legada contínua.
             </p>
+
+            <div class="hero-main-image-container">
+                <img src="Transform Operations With Power Platform.png" alt="Transform Operations With Power Platform">
+            </div>
 
             <div class="btn-group">
                 <a href="https://wa.me/5511965066546" target="_blank" class="btn btn-primary">Falar no WhatsApp</a>
