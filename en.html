@@ -1,3 +1,10 @@
+Aqui está o código completo do en.html (Versão em Inglês).
+
+Eu já apliquei as mesmas correções estéticas de proporção que fizemos no arquivo em português (2fr 3fr na grade de arquitetura, altura máxima ampliada para 500px nos mockups e os links do menu de idiomas corrigidos apontando para index.html e en.html).
+
+Substitua todo o conteúdo do seu arquivo en.html por este:
+
+HTML
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -375,13 +382,15 @@
             font-size: 0.95rem;
         }
 
+        /* UPDATED PROPORTION: 40% Text (2fr) and 60% Image (3fr) */
         .arch-body-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 2fr 3fr;
             gap: 32px;
+            align-items: start;
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 992px) {
             .arch-body-grid {
                 grid-template-columns: 1fr;
             }
@@ -418,6 +427,7 @@
             display: flex;
             flex-direction: column;
             gap: 16px;
+            width: 100%;
         }
 
         .mockup-header {
@@ -437,22 +447,23 @@
         .mockup-dot:nth-child(2) { background-color: #f59e0b; }
         .mockup-dot:nth-child(3) { background-color: #10b981; }
 
+        /* VISUAL ADJUSTMENT: Increased max limits to let diagrams expand nicely */
         .mockup-screen-placeholder {
             background-color: var(--bg-primary);
             border: 1px dashed var(--border-color);
             border-radius: 6px;
-            min-height: 250px;
+            min-height: 320px;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 10px;
+            padding: 12px;
             position: relative;
         }
 
         .mockup-screen-placeholder img {
             width: 100%;
             height: auto;
-            max-height: 350px;
+            max-height: 500px;
             object-fit: contain;
             display: block;
             border-radius: 4px;
@@ -619,7 +630,6 @@
             font-weight: 600;
             color: var(--accent-green);
             margin-bottom: 4px;
-            text-transform: none;
         }
 
         .model-desc {
@@ -672,6 +682,7 @@
                 <a href="#hero" class="active">Overview</a>
                 <a href="#transformation-journey">Solutions</a>
                 <a href="#architecture-cases">Use Cases</a>
+                <a href="#governance">Governance</a>
                 <a href="#methodology">Methodology</a>
                 <a href="#contract">Contact</a>
                 <div class="lang-switch">
@@ -685,14 +696,14 @@
     <section id="hero">
         <div class="container">
             <span class="hero-tag">Platform Architecture & Governance</span>
-            <h1 class="hero-title">End-to-End Enterprise Applications Built for Scale.</h1>
+            <h1 class="hero-title">End-to-End Enterprise Applications Built to Scale.</h1>
             
             <div class="hero-hook">
-                "Stop paying for unused software potential. We transform scattered spreadsheets, fragmented legacy data, and operational friction into secure, governed, and highly automated enterprise ecosystems. Turn your Microsoft 365 licensing into a high-yielding operational asset."
+                "Stop paying for unutilized software potential. We turn scattered spreadsheets, fragmented legacy data, and operational friction into secure, governed, and highly automated corporate ecosystems. Turn your Microsoft 365 license into a high-yielding operational asset."
             </div>
 
             <p class="hero-subtitle-text">
-                Advanced Power Apps, Power Automate, and seamless SharePoint integrations tailored for mission-critical performance, ironclad governance, and continuous legacy connectivity.
+                Advanced Power Apps, Power Automate, and comprehensive SharePoint integrations customized for mission-critical performance, ironclad governance, and seamless legacy connectivity.
             </p>
 
             <div class="hero-main-image-container">
@@ -708,24 +719,24 @@
     <section id="executive-overview">
         <div class="container">
             <h2 class="section-title">Modernizing Corporate Operations via <span>Microsoft Power Platform</span></h2>
-            <p class="section-subtitle">Scalable Architecture, Automated Workflows, and Enterprise-Level Connectivity.</p>
+            <p class="section-subtitle">Scalable Architecture, Automated Workflows, and Enterprise-Grade Connectivity.</p>
             
             <div class="overview-grid">
                 <div class="overview-box">
                     <div class="overview-box-title">Unlock Existing Infrastructure</div>
-                    <div class="overview-box-desc">Maximize existing Microsoft 365 / Dataverse environments without licensing waste or extra overhead.</div>
+                    <div class="overview-box-desc">Maximize current Microsoft 365 / Dataverse environments without licensing waste or hidden overhead costs.</div>
                 </div>
                 <div class="overview-box">
                     <div class="overview-box-title">Drastic Cost Optimization</div>
-                    <div class="overview-box-desc">Secure, custom corporate application development engineered at up to 10% of traditional software costs.</div>
+                    <div class="overview-box-desc">Secure, customized corporate application engineering designed at up to 10% of the cost of traditional software.</div>
                 </div>
                 <div class="overview-box">
                     <div class="overview-box-title">Eliminate Operational Silos</div>
-                    <div class="overview-box-desc">Robust legacy system integration combined with deeply optimized and automated manual workflows.</div>
+                    <div class="overview-box-desc">Robust integration of legacy systems combined with deeply streamlined and automated manual flows.</div>
                 </div>
                 <div class="overview-box">
                     <div class="overview-box-title">End-to-End Governance</div>
-                    <div class="overview-box-desc">100% remote delivery model with strict data integrity enforcement and agile ROI tracking.</div>
+                    <div class="overview-box-desc">100% remote delivery model enforcing data integrity rules and rapid, visible ROI tracking.</div>
                 </div>
             </div>
         </div>
@@ -734,30 +745,30 @@
     <section id="transformation-journey">
         <div class="container">
             <h2 class="section-title">The Transformation Journey with <span>Power Platform</span></h2>
-            <p class="section-subtitle">How we orchestrate scattered data, optimize operations, and aggressively minimize expenses.</p>
+            <p class="section-subtitle">How we orchestrate scattered data, optimize workflows, and aggressively slash operational overhead.</p>
 
             <div class="grid-3">
                 <div class="card" style="border-top: 4px solid var(--accent-blue);">
                     <div class="hero-tag" style="background-color: rgba(59, 130, 246, 0.1); color: var(--accent-blue); margin-bottom: 16px;">STEP 1</div>
                     <div class="card-title">Connect Disparate Systems</div>
                     <div class="card-text">
-                        Eliminate data silos once and for all. We orchestrate scattered infrastructures into <strong>Unified Data Endpoints</strong>, securely integrating Salesforce, SAP, SharePoint, SQL, and custom APIs.
+                        Break down data silos once and for all. We orchestrate scattered infrastructures into <strong>Unified Data Endpoints</strong>, securely integrating Salesforce, SAP, SharePoint, SQL, and custom APIs.
                     </div>
                 </div>
 
                 <div class="card" style="border-top: 4px solid var(--accent-green);">
                     <div class="hero-tag" style="margin-bottom: 16px;">STEP 2</div>
-                    <div class="card-title">Optimize Manual Friction</div>
+                    <div class="card-title">Optimize Manual Workflows</div>
                     <div class="card-text">
-                        Replace operational friction with continuous velocity. We break down time-consuming manual processes and re-engineer them into <strong>Automated Workflows</strong> that mitigate human error and rework.
+                        Replace operational friction with seamless speed. We break down slow manual steps and re-engineer them into <strong>Automated Workflows</strong> that mitigate human error and rework.
                     </div>
                 </div>
 
                 <div class="card" style="border-top: 4px solid #f59e0b;">
                     <div class="hero-tag" style="background-color: rgba(245, 158, 11, 0.1); color: #f59e0b; margin-bottom: 16px;">STEP 3</div>
-                    <div class="card-title">Minimize Dev Costs</div>
+                    <div class="card-title">Minimize Dev Overhead</div>
                     <div class="card-text">
-                        Bypass the abusive pricing models of traditional software development. Our Low-Code architecture demands far fewer engineering hours, delivering <strong>massive financial savings</strong> and rapid go-to-market.
+                        Avoid abusive traditional software development pricing. Our Low-Code architecture demands far fewer engineering hours, delivering <strong>massive financial savings</strong> and rapid market readiness.
                     </div>
                 </div>
             </div>
@@ -767,7 +778,7 @@
     <section id="architecture-cases">
         <div class="container">
             <h2 class="section-title">Enterprise Architectures & <span>Proven Cases</span></h2>
-            <p class="section-subtitle">Explore real architectural blueprints engineered to solve multi-layered, complex business challenges.</p>
+            <p class="section-subtitle">Explore real architectural blueprints developed to mitigate multi-layered, complex business challenges.</p>
 
             <div class="architecture-layout">
                 <div class="arch-tabs">
@@ -780,17 +791,17 @@
                     <div class="arch-header">
                         <div class="arch-meta">Salesforce & SAP Connectivity</div>
                         <h3 class="arch-main-title">Interlinking CRM and ERP Ecosystems</h3>
-                        <p class="arch-subtitle">Automated data orchestration and cross-departmental governance matrix.</p>
+                        <p class="arch-subtitle">Automated data orchestration and interdepartmental governance matrix.</p>
                     </div>
                     <div class="arch-body-grid">
                         <div class="arch-layers">
                             <div class="layer-item">
                                 <div class="layer-title">Data Ingestion Layer</div>
-                                <div class="layer-desc">Continuous tracing of Salesforce CRM connected natively through highly secure, authenticated cloud endpoints.</div>
+                                <div class="layer-desc">Continuous Salesforce CRM tracking natively connected through highly secure and authenticated cloud endpoints.</div>
                             </div>
                             <div class="layer-item">
-                                <div class="layer-title">Interactive UI Layer</div>
-                                <div class="layer-desc">Microsoft Power Apps delivering a unified, modern, and fully responsive user interface for sales and billing operations.</div>
+                                <div class="layer-title">Interactive User Interface</div>
+                                <div class="layer-desc">Microsoft Power Apps delivering a unified, modern, and fully responsive UI tailored for sales and billing operations.</div>
                             </div>
                         </div>
                         
@@ -807,19 +818,19 @@
 
                 <div id="supply-chain" class="arch-content">
                     <div class="arch-header">
-                        <div class="arch-meta">Supply Chain Management Application</div>
+                        <div class="arch-meta">Supply Chain Management App</div>
                         <h3 class="arch-main-title">Digital Supply Chain: From Field to Vendor</h3>
-                        <p class="arch-subtitle">Streamlining material requisitions, supply chain approvals, and automated RFQs.</p>
+                        <p class="arch-subtitle">Streamlining material requests, supply chain approvals, and automated RFQs.</p>
                     </div>
                     <div class="arch-body-grid">
                         <div class="arch-layers">
                             <div class="layer-item">
                                 <div class="layer-title">Field Mobility Layer</div>
-                                <div class="layer-desc">Mobile-optimized Power Apps allowing field personnel to submit material requests in real time.</div>
+                                <div class="layer-desc">Mobile-optimized Power Apps allowing field technicians to submit real-time material requests straight from the site.</div>
                             </div>
                             <div class="layer-item">
                                 <div class="layer-title">Procurement Automation Engine</div>
-                                <div class="layer-desc">Power Automate driving the complete workflow orchestration, triggering instant alerts and automatic quote requests to external vendors.</div>
+                                <div class="layer-desc">Power Automate running full end-to-end routing, instant push alerts, and automatic RFQ dispatches to external suppliers.</div>
                             </div>
                         </div>
                         
@@ -828,7 +839,7 @@
                                 <div class="mockup-dot"></div><div class="mockup-dot"></div><div class="mockup-dot"></div>
                             </div>
                             <div class="mockup-screen-placeholder">
-                                <img src="BM_3.png" alt="Supply Chain Application">
+                                <img src="BM_3.png" alt="Supply Chain App">
                             </div>
                         </div>
                     </div>
@@ -836,15 +847,15 @@
 
                 <div id="finance-audit" class="arch-content">
                     <div class="arch-header">
-                        <div class="arch-meta">Audit & Bonus Calculation Platform</div>
-                        <h3 class="arch-main-title">Automated Remuneration Audit Engine</h3>
-                        <p class="arch-subtitle">Consolidating fragmented, legacy HR logs into a secure, fully auditable financial workflow.</p>
+                        <div class="arch-meta">Compensation Audit & Calculation Platform</div>
+                        <h3 class="arch-main-title">Automated Compensation Audit Engine</h3>
+                        <p class="arch-subtitle">Consolidating fragmented and legacy HR records into a secure, auditable financial workflow.</p>
                     </div>
                     <div class="arch-body-grid">
                         <div class="arch-layers">
                             <div class="layer-item">
                                 <div class="layer-title">Data Aggregation Layer</div>
-                                <div class="layer-desc">Automated log extraction from legacy time clocks, absences, and leaves into highly secure SharePoint Online repositories.</div>
+                                <div class="layer-desc">Automated extraction of legacy timecard logs, absences, and leave allowances into encrypted SharePoint Online repositories.</div>
                             </div>
                         </div>
                         
@@ -866,46 +877,46 @@
     <section id="governance">
         <div class="container">
             <h2 class="section-title">Enterprise Governance & <span>CoE Framework</span></h2>
-            <p class="section-subtitle">Enforcing institutional cyber security, strict compliance, and absolute cloud mitigation risks.</p>
+            <p class="section-subtitle">Ensuring cyber security, ironclad compliance, and absolute mitigation of cloud computing risks.</p>
 
             <div class="coe-pyramid-container">
                 <div class="pyramid-tier tier-1">
                     <div class="tier-title">Strategy & Innovation</div>
-                    <div class="tier-subtitle">ROI mapping, enterprise backlogs, and business goals alignment.</div>
+                    <div class="tier-subtitle">ROI mapping, enterprise backlog curation, and business goal alignment.</div>
                 </div>
                 <div class="pyramid-tier tier-2">
-                    <div class="tier-title">Nurture & Enablement</div>
-                    <div class="tier-subtitle">Modular training paths, living documentation, and best practices.</div>
+                    <div class="tier-title">Nurture & Training</div>
+                    <div class="tier-subtitle">Modular training paths, live documentation, and development frameworks.</div>
                 </div>
                 <div class="pyramid-tier tier-3">
                     <div class="tier-title">Support & Operations</div>
-                    <div class="tier-subtitle">Capacity monitoring, automated triage, and technical helpdesk.</div>
+                    <div class="tier-subtitle">Capacity monitoring, automated tiering pipelines, and technical helpdesk.</div>
                 </div>
                 <div class="pyramid-tier tier-4">
                     <div class="tier-title">Administration & Security</div>
-                    <div class="tier-subtitle">Strict DLP policies, environment isolation, and aggregated auditing logs.</div>
+                    <div class="tier-subtitle">Strict DLP policies, environment isolation matrix, and aggregated auditing logs.</div>
                 </div>
             </div>
 
-            <p class="section-subtitle" style="margin-top: 60px; margin-bottom: 24px; text-align: center;"><strong>Continuous Delivery Framework (Automated ALM)</strong></p>
+            <p class="section-subtitle" style="margin-top: 60px; margin-bottom: 24px; text-align: center;"><strong>Continuous Delivery Pipeline (Automated ALM)</strong></p>
             
             <div class="alm-pipeline">
                 <div class="pipeline-stage">
                     <div class="stage-badge">Environment 01</div>
                     <div class="stage-name">Development</div>
-                    <div class="stage-detail">Isolated builds and rapid sandbox unit testing.</div>
+                    <div class="stage-detail">Isolated app builds and agile unit testing practices.</div>
                 </div>
                 <div class="pipeline-arrow">&rarr;</div>
                 <div class="pipeline-stage">
                     <div class="stage-badge">Environment 02</div>
-                    <div class="stage-name">Validation (UAT)</div>
-                    <div class="stage-detail">Business sign-off, corporate compliance, and data staging.</div>
+                    <div class="stage-name">Staging (UAT)</div>
+                    <div class="stage-detail">Business validation, compliance checks, and data load testing.</div>
                 </div>
                 <div class="pipeline-arrow">&rarr;</div>
                 <div class="pipeline-stage">
                     <div class="stage-badge">Environment 03</div>
                     <div class="stage-name">Production</div>
-                    <div class="stage-detail">Stable enterprise deployment running under strict CoE governance.</div>
+                    <div class="stage-detail">Stable enterprise deployment secured under CoE governance guards.</div>
                 </div>
             </div>
         </div>
@@ -914,28 +925,28 @@
     <section id="methodology">
         <div class="container">
             <h2 class="section-title">The <span>Power Craft</span> Engineering Methodology</h2>
-            <p class="section-subtitle">Our rigorous process guarantees on-time delivery, total cost predictability, and zero friction.</p>
+            <p class="section-subtitle">Our rigorous process guarantees timely deliveries, absolute cost predictability, and zero friction.</p>
 
             <div class="method-list">
                 <div class="method-step">
                     <div class="step-number">1</div>
-                    <div class="step-title">Scoping & Discovery</div>
-                    <div class="step-desc">Surgical breakdown of current operational friction, reverse engineering of legacy structures/spreadsheets, and agile data model conceptualization.</div>
+                    <div class="step-title">Scoping & Architectural Discovery</div>
+                    <div class="step-desc">Surgical review of operational pain points, reverse engineering of spreadsheet silos/legacy systems, and schema definition.</div>
                 </div>
                 <div class="method-step">
                     <div class="step-number">2</div>
-                    <div class="step-title">Architectural Design & DLP</div>
-                    <div class="step-desc">Logical modeling in Dataverse/SharePoint, relational workflow structuring, and strict configuration of data loss prevention policies.</div>
+                    <div class="step-title">Architectural Design & DLP Blueprint</div>
+                    <div class="step-desc">Logical database modeling in Dataverse/SharePoint, transactional logic layout, and setup of strict Data Loss Prevention filters.</div>
                 </div>
                 <div class="method-step">
                     <div class="step-number">3</div>
-                    <div class="step-title">Sprint-Driven Development</div>
-                    <div class="step-desc">Iterative development cycles focused on clean, high-performance UI/UX, background cloud automations, and stress testing execution.</div>
+                    <div class="step-title">Sprint-Based Development</div>
+                    <div class="step-desc">Iterative development loops focused on clean UI/UX, high-performance execution, background logic triggers, and regression testing.</div>
                 </div>
                 <div class="method-step">
                     <div class="step-number">4</div>
-                    <div class="step-title">Automated Deploy & Handover</div>
-                    <div class="step-desc">Managed solution deployment through the ALM pipeline combined with technical training sessions and living system documentation.</div>
+                    <div class="step-title">Automated Deployment & Handover</div>
+                    <div class="step-desc">Managed solution exports through the ALM pipeline, combined with dedicated user training and comprehensive documentation.</div>
                 </div>
             </div>
         </div>
@@ -943,43 +954,39 @@
 
     <section id="contract">
         <div class="container">
-            <h2 class="section-title">Engagement Models & <span>Commercial Security</span></h2>
-            <p class="section-subtitle">Legal transparency, deliverable-mapped milestones, and corporate structural compliance.</p>
+            <h2 class="section-title">Engagement Models & <span>Commercial Safety</span></h2>
+            <p class="section-subtitle">Legal transparency, deliverable-linked payment milestones, and corporate compliance assurances.</p>
 
             <div class="contract-grid">
                 <div class="engagement-box">
-                    <div class="sub-box-title">Contractual Architecture</div>
-                    
+                    <div class="sub-box-title">Hiring Framework</div>
                     <div class="model-item">
                         <div class="model-name">Fixed-Price Scope</div>
-                        <div class="model-desc">Ideal for projects with consolidated guidelines. Perfectly mapped roadmap with rigid milestones and completely predictable pricing from start to finish.</div>
+                        <div class="model-desc">Ideal for projects with well-defined requirements. Perfectly detailed deliverables with a rigid schedule and predictable pricing from day one.</div>
                     </div>
-                    
                     <div class="model-item">
                         <div class="model-name">Monthly Retainer (Dedicated Squad)</div>
-                        <div class="model-desc">Suited for enterprises undergoing rapid, continuous digital acceleration. Flexible allocation pool targeting improvements, new apps, and CoE support.</div>
+                        <div class="model-desc">Perfect for enterprises accelerating continuous digital transformation. Flexible hours allocated for enhancements, new features, and ongoing CoE support.</div>
                     </div>
                 </div>
 
                 <div class="terms-box">
                     <div class="sub-box-title">Guarantees & Standard Clauses</div>
-                    
                     <div class="model-item">
                         <div class="model-name">Intellectual Property (IP)</div>
-                        <div class="model-desc">100% of source code, flows, canvas structures, custom connectors, and data schemas belong fully to the client upon final milestone clearing.</div>
+                        <div class="model-desc">100% of source code, automated routines, custom connectors, and data designs belong exclusively to the client upon milestone clearance.</div>
                     </div>
-                    
                     <div class="model-item">
                         <div class="model-name">Non-Disclosure Agreement (NDA)</div>
-                        <div class="model-desc">Legal protection ensuring absolute secrecy over operational logic, internal data, and security architectures, active from day zero.</div>
+                        <div class="model-desc">Legal protection guaranteeing absolute confidentiality regarding workflows, records, and infrastructure, active before engineering begins.</div>
                     </div>
                 </div>
             </div>
 
             <div class="cta-footer">
-                <h3>Ready to transform your operational efficiency?</h3>
-                <p>Schedule a technical alignment session with our core architects and design the ideal pipeline for your scaling goals.</p>
-                <a href="https://wa.me/5511965066546" target="_blank" class="btn btn-primary">Start Free WhatsApp Assessment</a>
+                <h3>Ready to redefine your operational efficiency?</h3>
+                <p>Schedule a deep-dive technical session with our lead architects and assemble your ideal digital roadmap.</p>
+                <a href="https://wa.me/5511965066546" target="_blank" class="btn btn-primary">Start Free Diagnostic via WhatsApp</a>
             </div>
         </div>
     </section>
