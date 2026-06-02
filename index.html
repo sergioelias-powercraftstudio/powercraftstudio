@@ -134,7 +134,7 @@
             margin-bottom: 56px;
         }
 
-        /* 1. Hero Section */
+        /* Hero Section */
         #hero {
             padding-top: 180px;
             padding-bottom: 120px;
@@ -218,7 +218,7 @@
             transform: translateY(-2px);
         }
 
-        /* 2. Executive Overview (BM_1.jpg) */
+        /* Executive Overview */
         #executive-overview {
             background-color: var(--bg-secondary);
             padding: 80px 0;
@@ -254,7 +254,7 @@
             font-size: 0.9rem;
         }
 
-        /* 3. Transformation Journey */
+        /* Transformation Journey */
         #transformation-journey {
             background-color: var(--bg-primary);
         }
@@ -289,7 +289,7 @@
             font-size: 0.95rem;
         }
 
-        /* 4. Use Cases & Architecture Section (BM_2, BM_3, BM_4) */
+        /* Use Cases & Architecture Section */
         #architecture-cases {
             background-color: var(--bg-secondary);
         }
@@ -402,7 +402,7 @@
             font-size: 0.9rem;
         }
 
-        /* Mockup Containers built to display images beautifully */
+        /* Mockup Containers */
         .mockup-container {
             background-color: var(--bg-secondary);
             border: 1px solid var(--border-color);
@@ -442,7 +442,6 @@
             position: relative;
         }
 
-        /* CORREÇÃO DO CSS DAS IMAGENS: Agora elas aparecem nítidas e inteiras */
         .mockup-screen-placeholder img {
             width: 100%;
             height: auto;
@@ -452,194 +451,8 @@
             border-radius: 4px;
         }
 
-        /* Ocultado o label antigo em texto para dar foco total ao diagrama real */
         .mockup-label {
             display: none !important;
-        }
-
-        /* 5. CoE Governance Pyramid Component */
-        .coe-pyramid-container {
-            margin: 56px 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 12px;
-            width: 100%;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .pyramid-tier {
-            width: 100%;
-            text-align: center;
-            padding: 18px;
-            font-weight: 600;
-            border-radius: 6px;
-            border: 1px solid var(--border-color);
-            transition: transform 0.3s ease;
-        }
-        .pyramid-tier:hover { transform: scale(1.02); }
-
-        .tier-1 { width: 40%; background-color: rgba(59, 130, 246, 0.2); border-color: var(--accent-blue); }
-        .tier-2 { width: 60%; background-color: rgba(16, 185, 129, 0.2); border-color: var(--accent-green); }
-        .tier-3 { width: 80%; background-color: rgba(245, 158, 11, 0.15); border-color: #f59e0b; }
-        .tier-4 { width: 100%; background-color: rgba(239, 68, 68, 0.15); border-color: #ef4444; }
-
-        .tier-title { font-size: 1.1rem; margin-bottom: 2px; color: var(--text-main); }
-        .tier-subtitle { font-size: 0.8rem; color: var(--text-muted); font-weight: 400; }
-
-        /* 6. ALM Pipeline Component */
-        .alm-pipeline {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 16px;
-            margin: 56px 0;
-            background-color: var(--bg-secondary);
-            padding: 32px;
-            border-radius: 8px;
-            border: 1px solid var(--border-color);
-            flex-wrap: wrap;
-        }
-
-        .pipeline-stage {
-            flex: 1;
-            background-color: var(--bg-primary);
-            border: 1px solid var(--border-color);
-            padding: 20px;
-            border-radius: 6px;
-            min-width: 200px;
-            position: relative;
-        }
-
-        .stage-badge {
-            font-size: 0.75rem;
-            font-weight: 700;
-            color: var(--accent-green);
-            text-transform: uppercase;
-            margin-bottom: 6px;
-        }
-
-        .stage-name { font-weight: 600; font-size: 1.1rem; margin-bottom: 4px; }
-        .stage-detail { color: var(--text-muted); font-size: 0.8rem; }
-
-        .pipeline-arrow {
-            color: var(--accent-green);
-            font-weight: bold;
-            font-size: 1.5rem;
-        }
-
-        @media (max-width: 768px) {
-            .alm-pipeline { flex-direction: column; text-align: center; }
-            .pipeline-arrow { transform: rotate(90deg); margin: 8px 0; }
-        }
-
-        /* 7. Methodology Section */
-        .method-list {
-            position: relative;
-            max-width: 800px;
-        }
-
-        .method-step {
-            position: relative;
-            padding-left: 48px;
-            margin-bottom: 40px;
-        }
-
-        .method-step::before {
-            content: '';
-            position: absolute;
-            left: 16px;
-            top: 24px;
-            bottom: -48px;
-            width: 1px;
-            background-color: var(--border-color);
-        }
-
-        .method-step:last-child::before {
-            display: none;
-        }
-
-        .step-number {
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 32px;
-            height: 32px;
-            background-color: var(--bg-tertiary);
-            border: 1px solid var(--accent-green);
-            color: var(--accent-green);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.85rem;
-            font-weight: 700;
-        }
-
-        .step-title {
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin-bottom: 8px;
-        }
-
-        .step-desc {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-        }
-
-        /* 8. Contract & Payment */
-        .contract-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
-            gap: 48px;
-            align-items: start;
-        }
-
-        .engagement-box, .terms-box {
-            background-color: var(--bg-secondary);
-            border: 1px solid var(--border-color);
-            padding: 40px;
-            border-radius: 8px;
-        }
-
-        .sub-box-title {
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 24px;
-            color: var(--text-main);
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 12px;
-        }
-
-        .model-item {
-            margin-bottom: 24px;
-        }
-
-        .model-name {
-            font-weight: 600;
-            color: var(--accent-green);
-            margin-bottom: 4px;
-        }
-
-        .cta-footer {
-            margin-top: 56px;
-            text-align: center;
-            background: linear-gradient(135deg, rgba(16, 185, 129, 0.05), transparent);
-            padding: 48px;
-            border-radius: 8px;
-            border: 1px solid rgba(16, 185, 129, 0.1);
-        }
-
-        .cta-footer h3 {
-            font-size: 1.5rem;
-            margin-bottom: 16px;
-        }
-
-        .cta-footer p {
-            color: var(--text-muted);
-            margin-bottom: 32px;
         }
 
         footer {
@@ -663,14 +476,12 @@
         <div class="container nav-wrapper">
             <div class="logo">PowerCraft<span>Studio</span></div>
             <nav>
-                <a href="#hero" class="active" id="nav-overview">Overview</a>
-                <a href="#transformation-journey" id="nav-solutions">Soluções</a>
-                <a href="#architecture-cases" id="nav-cases">Casos de Uso</a>
-                <a href="#methodology" id="nav-method">Metodologia</a>
-                <a href="#contract" id="nav-contract">Contato</a>
+                <a href="#hero" class="active">Overview</a>
+                <a href="#transformation-journey">Soluções</a>
+                <a href="#architecture-cases">Casos de Uso</a>
                 <div class="lang-switch">
-                    <button class="lang-btn active" onclick="switchLanguage('pt')">PT</button>
-                    <button class="lang-btn" onclick="switchLanguage('en')">EN</button>
+                    <button class="lang-btn active">PT</button>
+                    <button class="lang-btn">EN</button>
                 </div>
             </nav>
         </div>
@@ -678,45 +489,44 @@
 
     <section id="hero">
         <div class="container">
-            <span class="hero-tag" id="hero-tag">Arquitetura de Plataforma & Governança</span>
-            <h1 class="hero-title" id="hero-title">Aplicações Corporativas de Ponta a Ponta prontas para Escala.</h1>
+            <span class="hero-tag">Arquitetura de Plataforma & Governança</span>
+            <h1 class="hero-title">Aplicações Corporativas de Ponta a Ponta prontas para Escala.</h1>
             
-            <div class="hero-hook" id="hero-hook">
+            <div class="hero-hook">
                 "Pare de pagar por potencial de software não utilizado. Transformamos planilhas espalhadas, dados legados fragmentados e fricção operacional em ecossistemas corporativos seguros, governados e altamente automatizados. Transforme a sua licença do Microsoft 365 num ativo operacional de alto rendimento."
             </div>
 
-            <p class="hero-subtitle-text" id="hero-subtitle">
+            <p class="hero-subtitle-text">
                 Power Apps avançados, Power Automate e integrações completas com SharePoint customizados para performance de missão crítica, governança blindada e conectividade legada contínua.
             </p>
 
             <div class="btn-group">
-                <a href="#contract" class="btn btn-primary" id="btn-diag">Agendar Diagnóstico Gratuito</a>
-                <a href="https://wa.me/5511965066546" target="_blank" class="btn btn-secondary" id="btn-wa">Falar no WhatsApp</a>
+                <a href="https://wa.me/5511965066546" target="_blank" class="btn btn-primary">Falar no WhatsApp</a>
             </div>
         </div>
     </section>
 
     <section id="executive-overview">
         <div class="container">
-            <h2 class="section-title" id="exec-title">Modernizando Operações Corporativas via <span>Microsoft Power Platform</span></h2>
-            <p class="section-subtitle" id="exec-subtitle">Arquitetura Escalável, Fluxos de Trabalho Automatizados e Conectividade de Nível Enterprise.</p>
+            <h2 class="section-title">Modernizando Operações Corporativas via <span>Microsoft Power Platform</span></h2>
+            <p class="section-subtitle">Arquitetura Escalável, Fluxos de Trabalho Automatizados e Conectividade de Nível Enterprise.</p>
             
             <div class="overview-grid">
                 <div class="overview-box">
-                    <div class="overview-box-title" id="box1-title">Desbloqueie a Infraestrutura Existente</div>
-                    <div class="overview-box-desc" id="box1-desc">Maximize os ambientes Microsoft 365 / Dataverse existentes sem desperdício de licenciamento ou custos extras.</div>
+                    <div class="overview-box-title">Desbloqueie a Infraestrutura Existente</div>
+                    <div class="overview-box-desc">Maximize os ambientes Microsoft 365 / Dataverse existentes sem desperdício de licenciamento ou custos extras.</div>
                 </div>
                 <div class="overview-box">
-                    <div class="overview-box-title" id="box2-title">Otimização Drástica de Custos</div>
-                    <div class="overview-box-desc" id="box2-desc">Desenvolvimento de aplicações corporativas seguras e customizadas desenhadas a até 10% do custo do software tradicional.</div>
+                    <div class="overview-box-title">Otimização Drástica de Custos</div>
+                    <div class="overview-box-desc">Desenvolvimento de aplicações corporativas seguras e customizadas desenhadas a até 10% do custo do software tradicional.</div>
                 </div>
                 <div class="overview-box">
-                    <div class="overview-box-title" id="box3-title">Elimine Silos Operacionais</div>
-                    <div class="overview-box-desc" id="box3-desc">Integração robusta de sistemas legados combinada com fluxos manuais profundamente otimizados e automatizados.</div>
+                    <div class="overview-box-title">Elimine Silos Operacionais</div>
+                    <div class="overview-box-desc">Integração robusta de sistemas legados combinada com fluxos manuais profundamente otimizados e automatizados.</div>
                 </div>
                 <div class="overview-box">
-                    <div class="overview-box-title" id="box4-title">Governança Ponta a Ponta</div>
-                    <div class="overview-box-desc" id="box4-desc">Arquitetura 100% remota com aplicação estrita de integridade de dados e acompanhamento ágil de ROI.</div>
+                    <div class="overview-box-title">Governança Ponta a Ponta</div>
+                    <div class="overview-box-desc">Arquitetura 100% remota com aplicação estrita de integridade de dados e acompanhamento ágil de ROI.</div>
                 </div>
             </div>
         </div>
@@ -724,30 +534,30 @@
 
     <section id="transformation-journey">
         <div class="container">
-            <h2 class="section-title" id="trans-title">A Jornada de Transformação com <span>Power Platform</span></h2>
-            <p class="section-subtitle" id="trans-subtitle">Como orquestramos dados dispersos, otimizamos processos e reduzimos custos operacionais de forma agressiva.</p>
+            <h2 class="section-title">A Jornada de Transformação com <span>Power Platform</span></h2>
+            <p class="section-subtitle">Como orquestramos dados dispersos, otimizamos processos e reduzimos custos operacionais de forma agressiva.</p>
 
             <div class="grid-3">
                 <div class="card" style="border-top: 4px solid var(--accent-blue);">
-                    <div class="hero-tag" style="background-color: rgba(59, 130, 246, 0.1); color: var(--accent-blue); margin-bottom: 16px;" id="step1-tag">PASSO 1</div>
-                    <div class="card-title" id="step1-title">Conectar Sistemas Dispares</div>
-                    <div class="card-text" id="step1-desc">
+                    <div class="hero-tag" style="background-color: rgba(59, 130, 246, 0.1); color: var(--accent-blue); margin-bottom: 16px;">PASSO 1</div>
+                    <div class="card-title">Conectar Sistemas Dispares</div>
+                    <div class="card-text">
                         Elimine os silos de dados de uma vez por todas. Orquestramos infraestruturas espalhadas em <strong>Endpoints de Dados Unificados</strong>, integrando Salesforce, SAP, SharePoint, SQL e APIs sob medida de forma segura.
                     </div>
                 </div>
 
                 <div class="card" style="border-top: 4px solid var(--accent-green);">
-                    <div class="hero-tag" style="margin-bottom: 16px;" id="step2-tag">PASSO 2</div>
-                    <div class="card-title" id="step2-title">Otimizar Fluxos Manuais</div>
-                    <div class="card-text" id="step2-desc">
+                    <div class="hero-tag" style="margin-bottom: 16px;">PASSO 2</div>
+                    <div class="card-title">Otimizar Fluxos Manuais</div>
+                    <div class="card-text">
                         Substitua a fricção operacional por velocidade contínua. Desconstruímos processos manuais demorados e os reengenheiramos em <strong>Fluxos Automatizados</strong> que mitigam erros humanos e retrabalho.
                     </div>
                 </div>
 
                 <div class="card" style="border-top: 4px solid #f59e0b;">
-                    <div class="hero-tag" style="background-color: rgba(245, 158, 11, 0.1); color: #f59e0b; margin-bottom: 16px;" id="step3-tag">PASSO 3</div>
-                    <div class="card-title" id="step3-title">Minimizar Custos de Dev</div>
-                    <div class="card-text" id="step3-desc">
+                    <div class="hero-tag" style="background-color: rgba(245, 158, 11, 0.1); color: #f59e0b; margin-bottom: 16px;">PASSO 3</div>
+                    <div class="card-title">Minimizar Custos de Dev</div>
+                    <div class="card-text">
                         Evite os custos abusivos de desenvolvimento de software tradicional. Nossa arquitetura Low-Code exige muito menos horas de engenharia, oferecendo uma <strong>economia financeira massiva</strong> e go-to-market rápido.
                     </div>
                 </div>
@@ -757,31 +567,31 @@
 
     <section id="architecture-cases">
         <div class="container">
-            <h2 class="section-title" id="cases-title">Arquiteturas Corporativas & <span>Casos Comprovados</span></h2>
-            <p class="section-subtitle" id="cases-subtitle">Explore plantas arquitetônicas reais desenvolvidas para mitigar desafios de negócios complexos de várias camadas.</p>
+            <h2 class="section-title">Arquiteturas Corporativas & <span>Casos Comprovados</span></h2>
+            <p class="section-subtitle">Explore plantas arquitetônicas reais desenvolvidas para mitigar desafios de negócios complexos de várias camadas.</p>
 
             <div class="architecture-layout">
                 <div class="arch-tabs">
-                    <button class="arch-tab-btn active" id="tab1-btn" onclick="openArch(event, 'crm-erp')">Integração CRM & ERP</button>
-                    <button class="arch-tab-btn" id="tab2-btn" onclick="openArch(event, 'supply-chain')">Cadeia de Suprimentos Digital</button>
-                    <button class="arch-tab-btn" id="tab3-btn" onclick="openArch(event, 'finance-audit')">Motor de Auditoria de Bônus</button>
+                    <button class="arch-tab-btn active" onclick="openArch(event, 'crm-erp')">Integração CRM & ERP</button>
+                    <button class="arch-tab-btn" onclick="openArch(event, 'supply-chain')">Cadeia de Suprimentos Digital</button>
+                    <button class="arch-tab-btn" onclick="openArch(event, 'finance-audit')">Motor de Auditoria de Bônus</button>
                 </div>
 
                 <div id="crm-erp" class="arch-content active">
                     <div class="arch-header">
-                        <div class="arch-meta" id="c1-meta">Conectividade Salesforce & SAP</div>
-                        <h3 class="arch-main-title" id="c1-title">Interligando Ecossistemas de CRM e ERP</h3>
-                        <p class="arch-subtitle" id="c1-subtitle">Orquestração automatizada de dados e matriz de governança interdepartamental.</p>
+                        <div class="arch-meta">Conectividade Salesforce & SAP</div>
+                        <h3 class="arch-main-title">Interligando Ecossistemas de CRM e ERP</h3>
+                        <p class="arch-subtitle">Orquestração automatizada de dados e matriz de governança interdepartamental.</p>
                     </div>
                     <div class="arch-body-grid">
                         <div class="arch-layers">
                             <div class="layer-item">
-                                <div class="layer-title" id="c1-l1-t">Camada de Ingestão de Dados</div>
-                                <div class="layer-desc" id="c1-l1-d">Rastreamento contínuo do Salesforce CRM conectado nativamente através de endpoints de nuvem autenticados e seguros.</div>
+                                <div class="layer-title">Camada de Ingestão de Dados</div>
+                                <div class="layer-desc">Rastreamento contínuo do Salesforce CRM conectado nativamente através de endpoints de nuvem autenticados e seguros.</div>
                             </div>
                             <div class="layer-item">
-                                <div class="layer-title" id="c1-l2-t">Interface de Usuário Interativa</div>
-                                <div class="layer-desc" id="c1-l2-d">Microsoft Power Apps entregando uma UI unificada, moderna e responsiva para a operação de vendas e faturamento.</div>
+                                <div class="layer-title">Interface de Usuário Interativa</div>
+                                <div class="layer-desc">Microsoft Power Apps entregando uma UI unificada, moderna e responsiva para a operação de vendas e faturamento.</div>
                             </div>
                         </div>
                         
@@ -798,19 +608,19 @@
 
                 <div id="supply-chain" class="arch-content">
                     <div class="arch-header">
-                        <div class="arch-meta" id="c2-meta">Aplicativo de Gerenciamento de Supply Chain</div>
-                        <h3 class="arch-main-title" id="c2-title">Cadeia de Suprimentos Digital: Do Campo ao Fornecedor</h3>
-                        <p class="arch-subtitle" id="c2-subtitle">Agilizando requisições de materiais, aprovações de suprimentos e RFQs automatizadas.</p>
+                        <div class="arch-meta">Aplicativo de Gerenciamento de Supply Chain</div>
+                        <h3 class="arch-main-title">Cadeia de Suprimentos Digital: Do Campo ao Fornecedor</h3>
+                        <p class="arch-subtitle">Agilizando requisições de materiais, aprovações de suprimentos e RFQs automatizadas.</p>
                     </div>
                     <div class="arch-body-grid">
                         <div class="arch-layers">
                             <div class="layer-item">
-                                <div class="layer-title" id="c2-l1-t">Camada de Mobilidade em Campo</div>
-                                <div class="layer-desc" id="c2-l1-d">Power Apps otimizados para dispositivos móveis, permitindo que equipes externas enviem requisições de materiais em tempo real.</div>
+                                <div class="layer-title">Camada de Mobilidade em Campo</div>
+                                <div class="layer-desc">Power Apps otimizados para dispositivos móveis, permitindo que equipes externas enviem requisições de materiais em tempo real.</div>
                             </div>
                             <div class="layer-item">
-                                <div class="layer-title" id="c2-l2-t">Motor de Automação de Compras</div>
-                                <div class="layer-desc" id="c2-l2-d">Power Automate executando a orquestração completa do fluxo, notificações imediatas e disparo automático de cotações para fornecedores externos.</div>
+                                <div class="layer-title">Motor de Automação de Compras</div>
+                                <div class="layer-desc">Power Automate executando a orquestração completa do fluxo, notificações imediatas e disparo automático de cotações para fornecedores externos.</div>
                             </div>
                         </div>
                         
@@ -819,7 +629,7 @@
                                 <div class="mockup-dot"></div><div class="mockup-dot"></div><div class="mockup-dot"></div>
                             </div>
                             <div class="mockup-screen-placeholder">
-                                <img src="images/BM_3.jpg" alt="Aplicativo Supply Chain">
+                                <img src="images/BM_3.png" alt="Aplicativo Supply Chain">
                             </div>
                         </div>
                     </div>
@@ -827,15 +637,15 @@
 
                 <div id="finance-audit" class="arch-content">
                     <div class="arch-header">
-                        <div class="arch-meta" id="c3-meta">Plataforma de Auditoria & Cálculo de Bônus</div>
-                        <h3 class="arch-main-title" id="c3-title">Motor Automatizado de Auditoria de Remuneração</h3>
-                        <p class="arch-subtitle" id="c3-subtitle">Consolidando registros de RH legados e fragmentados em um fluxo de trabalho financeiro seguro e auditável.</p>
+                        <div class="arch-meta">Plataforma de Auditoria & Cálculo de Bônus</div>
+                        <h3 class="arch-main-title">Motor Automatizado de Auditoria de Remuneração</h3>
+                        <p class="arch-subtitle">Consolidando registros de RH legados e fragmentados em um fluxo de trabalho financeiro seguro e auditável.</p>
                     </div>
                     <div class="arch-body-grid">
                         <div class="arch-layers">
                             <div class="layer-item">
-                                <div class="layer-title" id="c3-l1-t">Camada de Agregação de Dados</div>
-                                <div class="layer-desc" id="c3-l1-d">Extração automatizada de logs de relógios de ponto legados, faltas e afastamentos em repositórios SharePoint Online altamente seguros.</div>
+                                <div class="layer-title">Camada de Agregação de Dados</div>
+                                <div class="layer-desc">Extração automatizada de logs de relógios de ponto legados, faltas e afastamentos em repositórios SharePoint Online altamente seguros.</div>
                             </div>
                         </div>
                         
@@ -844,7 +654,7 @@
                                 <div class="mockup-dot"></div><div class="mockup-dot"></div><div class="mockup-dot"></div>
                             </div>
                             <div class="mockup-screen-placeholder">
-                                <img src="images/BM_4.jpg" alt="Motor de Auditoria Financeira">
+                                <img src="images/BM_4.png" alt="Motor de Auditoria Financeira">
                             </div>
                         </div>
                     </div>
