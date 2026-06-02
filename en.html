@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Power Craft Studio | Power Platform Architecture & Governance</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0b0f19;
+            --bg-secondary: #111827;
+            --bg-tertiary: #1f2937;
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+            --accent-green: #10b981;
+            --accent-green-hover: #059669;
+            --accent-blue: #3b82f6;
+            --border-color: #374151;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        header {
+            background-color: rgba(11, 15, 25, 0.8);
+            backdrop-filter: blur(12px);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .logo span {
+            color: var(--accent-green);
+        }
+
+        .lang-switch {
+            display: inline-flex;
+            gap: 8px;
+            margin-left: 24px;
+        }
+
+        .lang-btn {
+            background: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--text-muted);
+            padding: 4px 8px;
+            font-size: 0.75rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .lang-btn.active {
+            border-color: var(--accent-green);
+            color: var(--text-main);
+            background-color: rgba(16, 185, 129, 0.1);
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-left: 24px;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--text-main);
+        }
+
+        section {
+            padding: 100px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            letter-spacing: -0.5px;
+        }
+
+        .section-title span {
+            color: var(--accent-green);
+        }
+
+        .section-subtitle {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin-bottom: 56px;
+        }
+
+        /* 1. Hero Section */
+        #hero {
+            padding-top: 180px;
+            padding-bottom: 120px;
+            background: radial-gradient(circle at top right, rgba(59, 130, 246, 0.08), transparent 45%);
+        }
+
+        .hero-tag {
+            display: inline-block;
+            background-color: rgba(16, 185, 129, 0.1);
+            color: var(--accent-green);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 24px;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.15;
+            letter-spacing: -1.5px;
+            margin-bottom: 24px;
+            max-width: 900px;
+        }
+
+        .hero-hook {
+            font-size: 1.25rem;
+            color: var(--text-main);
+            border-left: 4px solid var(--accent-green);
+            padding-left: 24px;
+            margin: 32px 0;
+            max-width: 800px;
+            font-style: italic;
+        }
+
+        .hero-subtitle-text {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            max-width: 750px;
+            margin-bottom: 40px;
+        }
+
+        .hero-main-image-container {
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto 48px auto;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 12px;
+            background-color: var(--bg-secondary);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-main-image-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 6px;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 28px;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-green);
+            color: #000;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent-green-hover);
+            transform: translateY(-2px);
+        }
+
+        /* 2. Executive Overview */
+        #executive-overview {
+            background-color: var(--bg-secondary);
+            padding: 80px 0;
+        }
+
+        .overview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 24px;
+        }
+
+        .overview-box {
+            background-color: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            padding: 32px;
+            border-radius: 8px;
+            transition: border-color 0.3s ease;
+        }
+
+        .overview-box:hover {
+            border-color: var(--accent-blue);
+        }
+
+        .overview-box-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: var(--text-main);
+        }
+
+        .overview-box-desc {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* 3. Transformation Journey */
+        #transformation-journey {
+            background-color: var(--bg-primary);
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 32px;
+        }
+
+        .card {
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            padding: 40px;
+            border-radius: 8px;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(16, 185, 129, 0.4);
+        }
+
+        .card-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .card-text {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* 4. Use Cases & Architecture Section */
+        #architecture-cases {
+            background-color: var(--bg-secondary);
+        }
+
+        .architecture-layout {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        @media (max-width: 900px) {
+            .architecture-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .arch-tabs {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .arch-tab-btn {
+            background-color: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            color: var(--text-muted);
+            padding: 18px 24px;
+            border-radius: 6px;
+            text-align: left;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .arch-tab-btn:hover, .arch-tab-btn.active {
+            border-color: var(--accent-green);
+            color: var(--text-main);
+            background-color: var(--bg-tertiary);
+        }
+
+        .arch-content {
+            background-color: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            padding: 40px;
+            border-radius: 8px;
+            display: none;
+        }
+
+        .arch-content.active {
+            display: block;
+        }
+
+        .arch-header {
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 20px;
+            margin-bottom: 24px;
+        }
+
+        .arch-meta {
+            font-size: 0.85rem;
+            color: var(--accent-blue);
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .arch-main-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .arch-subtitle {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .arch-body-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+        }
+
+        @media (max-width: 768px) {
+            .arch-body-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .arch-layers {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .layer-item {
+            border-left: 3px solid var(--accent-green);
+            padding-left: 16px;
+        }
+
+        .layer-title {
+            font-weight: 600;
+            font-size: 1.05rem;
+            margin-bottom: 4px;
+        }
+
+        .layer-desc {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Mockup Containers */
+        .mockup-container {
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .mockup-header {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 10px;
+        }
+
+        .mockup-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #ef4444;
+        }
+        .mockup-dot:nth-child(2) { background-color: #f59e0b; }
+        .mockup-dot:nth-child(3) { background-color: #10b981; }
+
+        .mockup-screen-placeholder {
+            background-color: var(--bg-primary);
+            border: 1px dashed var(--border-color);
+            border-radius: 6px;
+            min-height: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+            position: relative;
+        }
+
+        .mockup-screen-placeholder img {
+            width: 100%;
+            height: auto;
+            max-height: 350px;
+            object-fit: contain;
+            display: block;
+            border-radius: 4px;
+        }
+
+        /* 5. CoE Governance Pyramid Component */
+        .coe-pyramid-container {
+            margin: 56px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            width: 100%;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .pyramid-tier {
+            width: 100%;
+            text-align: center;
+            padding: 18px;
+            font-weight: 600;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s ease;
+        }
+        .pyramid-tier:hover { transform: scale(1.02); }
+
+        .tier-1 { width: 40%; background-color: rgba(59, 130, 246, 0.2); border-color: var(--accent-blue); }
+        .tier-2 { width: 60%; background-color: rgba(16, 185, 129, 0.2); border-color: var(--accent-green); }
+        .tier-3 { width: 80%; background-color: rgba(245, 158, 11, 0.15); border-color: #f59e0b; }
+        .tier-4 { width: 100%; background-color: rgba(239, 68, 68, 0.15); border-color: #ef4444; }
+
+        .tier-title { font-size: 1.1rem; margin-bottom: 2px; color: var(--text-main); }
+        .tier-subtitle { font-size: 0.8rem; color: var(--text-muted); font-weight: 400; }
+
+        /* 6. ALM Pipeline Component */
+        .alm-pipeline {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+            margin: 56px 0;
+            background-color: var(--bg-secondary);
+            padding: 32px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            flex-wrap: wrap;
+        }
+
+        .pipeline-stage {
+            flex: 1;
+            background-color: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            padding: 20px;
+            border-radius: 6px;
+            min-width: 200px;
+            position: relative;
+        }
+
+        .stage-badge {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--accent-green);
+            text-transform: uppercase;
+            margin-bottom: 6px;
+        }
+
+        .stage-name { font-weight: 600; font-size: 1.1rem; margin-bottom: 4px; }
+        .stage-detail { color: var(--text-muted); font-size: 0.8rem; }
+
+        .pipeline-arrow {
+            color: var(--accent-green);
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+
+        /* 7. Methodology Section */
+        .method-list {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .method-step {
+            position: relative;
+            padding-left: 48px;
+            margin-bottom: 40px;
+        }
+
+        .method-step::before {
+            content: '';
+            position: absolute;
+            left: 16px;
+            top: 24px;
+            bottom: -48px;
+            width: 1px;
+            background-color: var(--border-color);
+        }
+
+        .method-step:last-child::before {
+            display: none;
+        }
+
+        .step-number {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 32px;
+            height: 32px;
+            background-color: var(--bg-tertiary);
+            border: 1px solid var(--accent-green);
+            color: var(--accent-green);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            font-weight: 700;
+        }
+
+        .step-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .step-desc {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* 8. Contract & Payment */
+        .contract-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 48px;
+            align-items: start;
+            margin-top: 40px;
+        }
+
+        .engagement-box, .terms-box {
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            padding: 40px;
+            border-radius: 8px;
+        }
+
+        .sub-box-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 24px;
+            color: var(--text-main);
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 12px;
+        }
+
+        .model-item {
+            margin-bottom: 24px;
+        }
+
+        .model-name {
+            font-weight: 600;
+            color: var(--accent-green);
+            margin-bottom: 4px;
+            text-transform: none;
+        }
+
+        .model-desc {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .cta-footer {
+            margin-top: 56px;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.05), transparent);
+            padding: 48px;
+            border-radius: 8px;
+            border: 1px solid rgba(16, 185, 129, 0.1);
+        }
+
+        .cta-footer h3 {
+            font-size: 1.5rem;
+            margin-bottom: 16px;
+        }
+
+        .cta-footer p {
+            color: var(--text-muted);
+            margin-bottom: 32px;
+        }
+
+        footer {
+            padding: 40px 0;
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border-color);
+        }
+
+        @media (max-width: 768px) {
+            .hero-title { font-size: 2.5rem; }
+            section { padding: 60px 0; }
+            nav { display: none; }
+            .alm-pipeline { flex-direction: column; text-align: center; }
+            .pipeline-arrow { transform: rotate(90deg); margin: 8px 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-wrapper">
+            <div class="logo">PowerCraft<span>Studio</span></div>
+            <nav>
+                <a href="#hero" class="active">Overview</a>
+                <a href="#transformation-journey">Solutions</a>
+                <a href="#architecture-cases">Use Cases</a>
+                <a href="#methodology">Methodology</a>
+                <a href="#contract">Contact</a>
+                <div class="lang-switch">
+                    <a href="index.html" class="lang-btn" style="text-decoration: none;">PT</a>
+                    <a href="en.html" class="lang-btn active" style="text-decoration: none;">EN</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section id="hero">
+        <div class="container">
+            <span class="hero-tag">Platform Architecture & Governance</span>
+            <h1 class="hero-title">End-to-End Enterprise Applications Built for Scale.</h1>
+            
+            <div class="hero-hook">
+                "Stop paying for unused software potential. We transform scattered spreadsheets, fragmented legacy data, and operational friction into secure, governed, and highly automated enterprise ecosystems. Turn your Microsoft 365 licensing into a high-yielding operational asset."
+            </div>
+
+            <p class="hero-subtitle-text">
+                Advanced Power Apps, Power Automate, and seamless SharePoint integrations tailored for mission-critical performance, ironclad governance, and continuous legacy connectivity.
+            </p>
+
+            <div class="hero-main-image-container">
+                <img src="PowerCraftStudio.png" alt="Power Craft Studio Enterprise Architecture">
+            </div>
+
+            <div class="btn-group">
+                <a href="https://wa.me/5511965066546" target="_blank" class="btn btn-primary">Talk on WhatsApp</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="executive-overview">
+        <div class="container">
+            <h2 class="section-title">Modernizing Corporate Operations via <span>Microsoft Power Platform</span></h2>
+            <p class="section-subtitle">Scalable Architecture, Automated Workflows, and Enterprise-Level Connectivity.</p>
+            
+            <div class="overview-grid">
+                <div class="overview-box">
+                    <div class="overview-box-title">Unlock Existing Infrastructure</div>
+                    <div class="overview-box-desc">Maximize existing Microsoft 365 / Dataverse environments without licensing waste or extra overhead.</div>
+                </div>
+                <div class="overview-box">
+                    <div class="overview-box-title">Drastic Cost Optimization</div>
+                    <div class="overview-box-desc">Secure, custom corporate application development engineered at up to 10% of traditional software costs.</div>
+                </div>
+                <div class="overview-box">
+                    <div class="overview-box-title">Eliminate Operational Silos</div>
+                    <div class="overview-box-desc">Robust legacy system integration combined with deeply optimized and automated manual workflows.</div>
+                </div>
+                <div class="overview-box">
+                    <div class="overview-box-title">End-to-End Governance</div>
+                    <div class="overview-box-desc">100% remote delivery model with strict data integrity enforcement and agile ROI tracking.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="transformation-journey">
+        <div class="container">
+            <h2 class="section-title">The Transformation Journey with <span>Power Platform</span></h2>
+            <p class="section-subtitle">How we orchestrate scattered data, optimize operations, and aggressively minimize expenses.</p>
+
+            <div class="grid-3">
+                <div class="card" style="border-top: 4px solid var(--accent-blue);">
+                    <div class="hero-tag" style="background-color: rgba(59, 130, 246, 0.1); color: var(--accent-blue); margin-bottom: 16px;">STEP 1</div>
+                    <div class="card-title">Connect Disparate Systems</div>
+                    <div class="card-text">
+                        Eliminate data silos once and for all. We orchestrate scattered infrastructures into <strong>Unified Data Endpoints</strong>, securely integrating Salesforce, SAP, SharePoint, SQL, and custom APIs.
+                    </div>
+                </div>
+
+                <div class="card" style="border-top: 4px solid var(--accent-green);">
+                    <div class="hero-tag" style="margin-bottom: 16px;">STEP 2</div>
+                    <div class="card-title">Optimize Manual Friction</div>
+                    <div class="card-text">
+                        Replace operational friction with continuous velocity. We break down time-consuming manual processes and re-engineer them into <strong>Automated Workflows</strong> that mitigate human error and rework.
+                    </div>
+                </div>
+
+                <div class="card" style="border-top: 4px solid #f59e0b;">
+                    <div class="hero-tag" style="background-color: rgba(245, 158, 11, 0.1); color: #f59e0b; margin-bottom: 16px;">STEP 3</div>
+                    <div class="card-title">Minimize Dev Costs</div>
+                    <div class="card-text">
+                        Bypass the abusive pricing models of traditional software development. Our Low-Code architecture demands far fewer engineering hours, delivering <strong>massive financial savings</strong> and rapid go-to-market.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="architecture-cases">
+        <div class="container">
+            <h2 class="section-title">Enterprise Architectures & <span>Proven Cases</span></h2>
+            <p class="section-subtitle">Explore real architectural blueprints engineered to solve multi-layered, complex business challenges.</p>
+
+            <div class="architecture-layout">
+                <div class="arch-tabs">
+                    <button class="arch-tab-btn active" onclick="openArch(event, 'crm-erp')">CRM & ERP Integration</button>
+                    <button class="arch-tab-btn" onclick="openArch(event, 'supply-chain')">Digital Supply Chain</button>
+                    <button class="arch-tab-btn" onclick="openArch(event, 'finance-audit')">Bonus Audit Engine</button>
+                </div>
+
+                <div id="crm-erp" class="arch-content active">
+                    <div class="arch-header">
+                        <div class="arch-meta">Salesforce & SAP Connectivity</div>
+                        <h3 class="arch-main-title">Interlinking CRM and ERP Ecosystems</h3>
+                        <p class="arch-subtitle">Automated data orchestration and cross-departmental governance matrix.</p>
+                    </div>
+                    <div class="arch-body-grid">
+                        <div class="arch-layers">
+                            <div class="layer-item">
+                                <div class="layer-title">Data Ingestion Layer</div>
+                                <div class="layer-desc">Continuous tracing of Salesforce CRM connected natively through highly secure, authenticated cloud endpoints.</div>
+                            </div>
+                            <div class="layer-item">
+                                <div class="layer-title">Interactive UI Layer</div>
+                                <div class="layer-desc">Microsoft Power Apps delivering a unified, modern, and fully responsive user interface for sales and billing operations.</div>
+                            </div>
+                        </div>
+                        
+                        <div class="mockup-container">
+                            <div class="mockup-header">
+                                <div class="mockup-dot"></div><div class="mockup-dot"></div><div class="mockup-dot"></div>
+                            </div>
+                            <div class="mockup-screen-placeholder">
+                                <img src="BM_2.png" alt="Salesforce SAP Architecture">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="supply-chain" class="arch-content">
+                    <div class="arch-header">
+                        <div class="arch-meta">Supply Chain Management Application</div>
+                        <h3 class="arch-main-title">Digital Supply Chain: From Field to Vendor</h3>
+                        <p class="arch-subtitle">Streamlining material requisitions, supply chain approvals, and automated RFQs.</p>
+                    </div>
+                    <div class="arch-body-grid">
+                        <div class="arch-layers">
+                            <div class="layer-item">
+                                <div class="layer-title">Field Mobility Layer</div>
+                                <div class="layer-desc">Mobile-optimized Power Apps allowing field personnel to submit material requests in real time.</div>
+                            </div>
+                            <div class="layer-item">
+                                <div class="layer-title">Procurement Automation Engine</div>
+                                <div class="layer-desc">Power Automate driving the complete workflow orchestration, triggering instant alerts and automatic quote requests to external vendors.</div>
+                            </div>
+                        </div>
+                        
+                        <div class="mockup-container">
+                            <div class="mockup-header">
+                                <div class="mockup-dot"></div><div class="mockup-dot"></div><div class="mockup-dot"></div>
+                            </div>
+                            <div class="mockup-screen-placeholder">
+                                <img src="BM_3.png" alt="Supply Chain Application">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="finance-audit" class="arch-content">
+                    <div class="arch-header">
+                        <div class="arch-meta">Audit & Bonus Calculation Platform</div>
+                        <h3 class="arch-main-title">Automated Remuneration Audit Engine</h3>
+                        <p class="arch-subtitle">Consolidating fragmented, legacy HR logs into a secure, fully auditable financial workflow.</p>
+                    </div>
+                    <div class="arch-body-grid">
+                        <div class="arch-layers">
+                            <div class="layer-item">
+                                <div class="layer-title">Data Aggregation Layer</div>
+                                <div class="layer-desc">Automated log extraction from legacy time clocks, absences, and leaves into highly secure SharePoint Online repositories.</div>
+                            </div>
+                        </div>
+                        
+                        <div class="mockup-container">
+                            <div class="mockup-header">
+                                <div class="mockup-dot"></div><div class="mockup-dot"></div><div class="mockup-dot"></div>
+                            </div>
+                            <div class="mockup-screen-placeholder">
+                                <img src="BM_4.png" alt="Financial Audit Engine">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="governance">
+        <div class="container">
+            <h2 class="section-title">Enterprise Governance & <span>CoE Framework</span></h2>
+            <p class="section-subtitle">Enforcing institutional cyber security, strict compliance, and absolute cloud mitigation risks.</p>
+
+            <div class="coe-pyramid-container">
+                <div class="pyramid-tier tier-1">
+                    <div class="tier-title">Strategy & Innovation</div>
+                    <div class="tier-subtitle">ROI mapping, enterprise backlogs, and business goals alignment.</div>
+                </div>
+                <div class="pyramid-tier tier-2">
+                    <div class="tier-title">Nurture & Enablement</div>
+                    <div class="tier-subtitle">Modular training paths, living documentation, and best practices.</div>
+                </div>
+                <div class="pyramid-tier tier-3">
+                    <div class="tier-title">Support & Operations</div>
+                    <div class="tier-subtitle">Capacity monitoring, automated triage, and technical helpdesk.</div>
+                </div>
+                <div class="pyramid-tier tier-4">
+                    <div class="tier-title">Administration & Security</div>
+                    <div class="tier-subtitle">Strict DLP policies, environment isolation, and aggregated auditing logs.</div>
+                </div>
+            </div>
+
+            <p class="section-subtitle" style="margin-top: 60px; margin-bottom: 24px; text-align: center;"><strong>Continuous Delivery Framework (Automated ALM)</strong></p>
+            
+            <div class="alm-pipeline">
+                <div class="pipeline-stage">
+                    <div class="stage-badge">Environment 01</div>
+                    <div class="stage-name">Development</div>
+                    <div class="stage-detail">Isolated builds and rapid sandbox unit testing.</div>
+                </div>
+                <div class="pipeline-arrow">&rarr;</div>
+                <div class="pipeline-stage">
+                    <div class="stage-badge">Environment 02</div>
+                    <div class="stage-name">Validation (UAT)</div>
+                    <div class="stage-detail">Business sign-off, corporate compliance, and data staging.</div>
+                </div>
+                <div class="pipeline-arrow">&rarr;</div>
+                <div class="pipeline-stage">
+                    <div class="stage-badge">Environment 03</div>
+                    <div class="stage-name">Production</div>
+                    <div class="stage-detail">Stable enterprise deployment running under strict CoE governance.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="methodology">
+        <div class="container">
+            <h2 class="section-title">The <span>Power Craft</span> Engineering Methodology</h2>
+            <p class="section-subtitle">Our rigorous process guarantees on-time delivery, total cost predictability, and zero friction.</p>
+
+            <div class="method-list">
+                <div class="method-step">
+                    <div class="step-number">1</div>
+                    <div class="step-title">Scoping & Discovery</div>
+                    <div class="step-desc">Surgical breakdown of current operational friction, reverse engineering of legacy structures/spreadsheets, and agile data model conceptualization.</div>
+                </div>
+                <div class="method-step">
+                    <div class="step-number">2</div>
+                    <div class="step-title">Architectural Design & DLP</div>
+                    <div class="step-desc">Logical modeling in Dataverse/SharePoint, relational workflow structuring, and strict configuration of data loss prevention policies.</div>
+                </div>
+                <div class="method-step">
+                    <div class="step-number">3</div>
+                    <div class="step-title">Sprint-Driven Development</div>
+                    <div class="step-desc">Iterative development cycles focused on clean, high-performance UI/UX, background cloud automations, and stress testing execution.</div>
+                </div>
+                <div class="method-step">
+                    <div class="step-number">4</div>
+                    <div class="step-title">Automated Deploy & Handover</div>
+                    <div class="step-desc">Managed solution deployment through the ALM pipeline combined with technical training sessions and living system documentation.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contract">
+        <div class="container">
+            <h2 class="section-title">Engagement Models & <span>Commercial Security</span></h2>
+            <p class="section-subtitle">Legal transparency, deliverable-mapped milestones, and corporate structural compliance.</p>
+
+            <div class="contract-grid">
+                <div class="engagement-box">
+                    <div class="sub-box-title">Contractual Architecture</div>
+                    
+                    <div class="model-item">
+                        <div class="model-name">Fixed-Price Scope</div>
+                        <div class="model-desc">Ideal for projects with consolidated guidelines. Perfectly mapped roadmap with rigid milestones and completely predictable pricing from start to finish.</div>
+                    </div>
+                    
+                    <div class="model-item">
+                        <div class="model-name">Monthly Retainer (Dedicated Squad)</div>
+                        <div class="model-desc">Suited for enterprises undergoing rapid, continuous digital acceleration. Flexible allocation pool targeting improvements, new apps, and CoE support.</div>
+                    </div>
+                </div>
+
+                <div class="terms-box">
+                    <div class="sub-box-title">Guarantees & Standard Clauses</div>
+                    
+                    <div class="model-item">
+                        <div class="model-name">Intellectual Property (IP)</div>
+                        <div class="model-desc">100% of source code, flows, canvas structures, custom connectors, and data schemas belong fully to the client upon final milestone clearing.</div>
+                    </div>
+                    
+                    <div class="model-item">
+                        <div class="model-name">Non-Disclosure Agreement (NDA)</div>
+                        <div class="model-desc">Legal protection ensuring absolute secrecy over operational logic, internal data, and security architectures, active from day zero.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cta-footer">
+                <h3>Ready to transform your operational efficiency?</h3>
+                <p>Schedule a technical alignment session with our core architects and design the ideal pipeline for your scaling goals.</p>
+                <a href="https://wa.me/5511965066546" target="_blank" class="btn btn-primary">Start Free WhatsApp Assessment</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            &copy; 2026 Power Craft Studio. All rights reserved. Engineered for Performance and Critical Governance.
+        </div>
+    </footer>
+
+    <script>
+        function openArch(evt, archName) {
+            var i, archcontent, archtablinks;
+            archcontent = document.getElementsByClassName("arch-content");
+            for (i = 0; i < archcontent.length; i++) {
+                archcontent[i].style.display = "none";
+                archcontent[i].classList.remove("active");
+            }
+            archtablinks = document.getElementsByClassName("arch-tab-btn");
+            for (i = 0; i < archtablinks.length; i++) {
+                archtablinks[i].classList.remove("active");
+            }
+            document.getElementById(archName).style.display = "block";
+            document.getElementById(archName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+    </script>
+
+</body>
+</html>

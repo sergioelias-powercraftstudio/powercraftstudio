@@ -1,3 +1,10 @@
+Sem problemas! Para facilitar e garantir que tudo funcione de primeira, aqui está o código completo do index.html (Versão em Português).
+
+Eu já fiz a alteração nos botões de idioma para você (linhas de código por volta de ~360). Agora os botões estão configurados como links reais que apontam para o index.html e para o en.html.
+
+Substitua todo o conteúdo do seu arquivo atual por este:
+
+HTML
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -134,7 +141,7 @@
             margin-bottom: 56px;
         }
 
-        /* Hero Section */
+        /* 1. Hero Section */
         #hero {
             padding-top: 180px;
             padding-bottom: 120px;
@@ -178,7 +185,6 @@
             margin-bottom: 40px;
         }
 
-        /* Estilos para a nova imagem em tamanho grande */
         .hero-main-image-container {
             width: 100%;
             max-width: 1000px;
@@ -201,7 +207,6 @@
             display: flex;
             gap: 16px;
             flex-wrap: wrap;
-            justify-content: flex-start;
         }
 
         .btn {
@@ -227,7 +232,7 @@
             transform: translateY(-2px);
         }
 
-        /* Executive Overview */
+        /* 2. Executive Overview */
         #executive-overview {
             background-color: var(--bg-secondary);
             padding: 80px 0;
@@ -263,7 +268,7 @@
             font-size: 0.9rem;
         }
 
-        /* Transformation Journey */
+        /* 3. Transformation Journey */
         #transformation-journey {
             background-color: var(--bg-primary);
         }
@@ -298,7 +303,7 @@
             font-size: 0.95rem;
         }
 
-        /* Use Cases & Architecture Section */
+        /* 4. Use Cases & Architecture Section */
         #architecture-cases {
             background-color: var(--bg-secondary);
         }
@@ -460,8 +465,191 @@
             border-radius: 4px;
         }
 
-        .mockup-label {
-            display: none !important;
+        /* 5. CoE Governance Pyramid Component */
+        .coe-pyramid-container {
+            margin: 56px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            width: 100%;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .pyramid-tier {
+            width: 100%;
+            text-align: center;
+            padding: 18px;
+            font-weight: 600;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s ease;
+        }
+        .pyramid-tier:hover { transform: scale(1.02); }
+
+        .tier-1 { width: 40%; background-color: rgba(59, 130, 246, 0.2); border-color: var(--accent-blue); }
+        .tier-2 { width: 60%; background-color: rgba(16, 185, 129, 0.2); border-color: var(--accent-green); }
+        .tier-3 { width: 80%; background-color: rgba(245, 158, 11, 0.15); border-color: #f59e0b; }
+        .tier-4 { width: 100%; background-color: rgba(239, 68, 68, 0.15); border-color: #ef4444; }
+
+        .tier-title { font-size: 1.1rem; margin-bottom: 2px; color: var(--text-main); }
+        .tier-subtitle { font-size: 0.8rem; color: var(--text-muted); font-weight: 400; }
+
+        /* 6. ALM Pipeline Component */
+        .alm-pipeline {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+            margin: 56px 0;
+            background-color: var(--bg-secondary);
+            padding: 32px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            flex-wrap: wrap;
+        }
+
+        .pipeline-stage {
+            flex: 1;
+            background-color: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            padding: 20px;
+            border-radius: 6px;
+            min-width: 200px;
+            position: relative;
+        }
+
+        .stage-badge {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--accent-green);
+            text-transform: uppercase;
+            margin-bottom: 6px;
+        }
+
+        .stage-name { font-weight: 600; font-size: 1.1rem; margin-bottom: 4px; }
+        .stage-detail { color: var(--text-muted); font-size: 0.8rem; }
+
+        .pipeline-arrow {
+            color: var(--accent-green);
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+
+        /* 7. Methodology Section */
+        .method-list {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .method-step {
+            position: relative;
+            padding-left: 48px;
+            margin-bottom: 40px;
+        }
+
+        .method-step::before {
+            content: '';
+            position: absolute;
+            left: 16px;
+            top: 24px;
+            bottom: -48px;
+            width: 1px;
+            background-color: var(--border-color);
+        }
+
+        .method-step:last-child::before {
+            display: none;
+        }
+
+        .step-number {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 32px;
+            height: 32px;
+            background-color: var(--bg-tertiary);
+            border: 1px solid var(--accent-green);
+            color: var(--accent-green);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            font-weight: 700;
+        }
+
+        .step-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .step-desc {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* 8. Contract & Payment */
+        .contract-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 48px;
+            align-items: start;
+            margin-top: 40px;
+        }
+
+        .engagement-box, .terms-box {
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            padding: 40px;
+            border-radius: 8px;
+        }
+
+        .sub-box-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 24px;
+            color: var(--text-main);
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 12px;
+        }
+
+        .model-item {
+            margin-bottom: 24px;
+        }
+
+        .model-name {
+            font-weight: 600;
+            color: var(--accent-green);
+            margin-bottom: 4px;
+        }
+
+        .model-desc {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .cta-footer {
+            margin-top: 56px;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.05), transparent);
+            padding: 48px;
+            border-radius: 8px;
+            border: 1px solid rgba(16, 185, 129, 0.1);
+        }
+
+        .cta-footer h3 {
+            font-size: 1.5rem;
+            margin-bottom: 16px;
+        }
+
+        .cta-footer p {
+            color: var(--text-muted);
+            margin-bottom: 32px;
         }
 
         footer {
@@ -476,6 +664,8 @@
             .hero-title { font-size: 2.5rem; }
             section { padding: 60px 0; }
             nav { display: none; }
+            .alm-pipeline { flex-direction: column; text-align: center; }
+            .pipeline-arrow { transform: rotate(90deg); margin: 8px 0; }
         }
     </style>
 </head>
@@ -488,9 +678,12 @@
                 <a href="#hero" class="active">Overview</a>
                 <a href="#transformation-journey">Soluções</a>
                 <a href="#architecture-cases">Casos de Uso</a>
+                <a href="#governance">Governança</a>
+                <a href="#methodology">Metodologia</a>
+                <a href="#contract">Contato</a>
                 <div class="lang-switch">
-                    <button class="lang-btn active">PT</button>
-                    <button class="lang-btn">EN</button>
+                    <a href="index.html" class="lang-btn active" style="text-decoration: none;">PT</a>
+                    <a href="en.html" class="lang-btn" style="text-decoration: none;">EN</a>
                 </div>
             </nav>
         </div>
@@ -510,7 +703,7 @@
             </p>
 
             <div class="hero-main-image-container">
-                <img src="PowerCraftStudio.png" alt="Transform Operations With Power Platform">
+                <img src="PowerCraftStudio.png" alt="Power Craft Studio Enterprise Architecture">
             </div>
 
             <div class="btn-group">
@@ -676,6 +869,133 @@
             </div>
         </div>
     </section>
+
+    <section id="governance">
+        <div class="container">
+            <h2 class="section-title">Governança Enterprise & <span>Modelo CoE</span></h2>
+            <p class="section-subtitle">Garantindo segurança cibernética, conformidade estrita e mitigação absoluta de riscos na nuvem.</p>
+
+            <div class="coe-pyramid-container">
+                <div class="pyramid-tier tier-1">
+                    <div class="tier-title">Estratégia e Inovação</div>
+                    <div class="tier-subtitle">Mapeamento de ROI, backlog corporativo e metas de negócio.</div>
+                </div>
+                <div class="pyramid-tier tier-2">
+                    <div class="tier-title">Nutrição e Capacitação</div>
+                    <div class="tier-subtitle">Treinamentos modulares, documentação viva e melhores práticas.</div>
+                </div>
+                <div class="pyramid-tier tier-3">
+                    <div class="tier-title">Suporte e Operações</div>
+                    <div class="tier-subtitle">Monitoramento de capacity, triagem automatizada e helpdesk técnico.</div>
+                </div>
+                <div class="pyramid-tier tier-4">
+                    <div class="tier-title">Administração e Segurança</div>
+                    <div class="tier-subtitle">Políticas estritas de DLP, isolamento de ambientes e auditorias agregadas.</div>
+                </div>
+            </div>
+
+            <p class="section-subtitle" style="margin-top: 60px; margin-bottom: 24px; text-align: center;"><strong>Esteira de Entrega Contínua (ALM Automatizado)</strong></p>
+            
+            <div class="alm-pipeline">
+                <div class="pipeline-stage">
+                    <div class="stage-badge">Ambiente 01</div>
+                    <div class="stage-name">Desenvolvimento</div>
+                    <div class="stage-detail">Construção isolada e testes unitários ágeis.</div>
+                </div>
+                <div class="pipeline-arrow">&rarr;</div>
+                <div class="pipeline-stage">
+                    <div class="stage-badge">Ambiente 02</div>
+                    <div class="stage-name">Homologação (UAT)</div>
+                    <div class="stage-detail">Validação do negócio, compliance e carga de dados.</div>
+                </div>
+                <div class="pipeline-arrow">&rarr;</div>
+                <div class="pipeline-stage">
+                    <div class="stage-badge">Ambiente 03</div>
+                    <div class="stage-name">Produção</div>
+                    <div class="stage-detail">Disponibilização enterprise estável sob governança CoE.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="methodology">
+        <div class="container">
+            <h2 class="section-title">A Metodologia de Engenharia <span>Power Craft</span></h2>
+            <p class="section-subtitle">Nosso processo rigoroso garante entregas pontuais, previsibilidade total de custos e zero fricção.</p>
+
+            <div class="method-list">
+                <div class="method-step">
+                    <div class="step-number">1</div>
+                    <div class="step-title">Mapeamento e Discovery</div>
+                    <div class="step-desc">Análise cirúrgica da fricção operacional atual, engenharia reversa de planilhas/sistemas legados e especificação ágil do modelo conceitual de dados.</div>
+                </div>
+                <div class="method-step">
+                    <div class="step-number">2</div>
+                    <div class="step-title">Design Arquitetural e DLP</div>
+                    <div class="step-desc">Modelagem lógica no Dataverse/SharePoint, estruturação de fluxos transacionais e parametrização rigorosa de políticas de prevenção contra perda de dados.</div>
+                </div>
+                <div class="method-step">
+                    <div class="step-number">3</div>
+                    <div class="step-title">Desenvolvimento em Sprints</div>
+                    <div class="step-desc">Ciclos iterativos focados em UX/UI limpa e de alta performance, automações de fluxos de background e testes contínuos de estresse.</div>
+                </div>
+                <div class="method-step">
+                    <div class="step-number">4</div>
+                    <div class="step-title">Deploy Automatizado e Handover</div>
+                    <div class="step-desc">Exportação gerenciada de soluções através da esteira ALM e treinamento dedicado das equipes executoras com documentação viva.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contract">
+        <div class="container">
+            <h2 class="section-title">Modelos de Engajamento & <span>Segurança Comercial</span></h2>
+            <p class="section-subtitle">Transparência jurídica, marcos de pagamento atrelados a entregáveis claros e conformidade corporativa.</p>
+
+            <div class="contract-grid">
+                <div class="engagement-box">
+                    <div class="sub-box-title">Estrutura de Contratação</div>
+                    
+                    <div class="model-item">
+                        <div class="model-name">Escopo Fechado (Fixed-Price)</div>
+                        <div class="model-desc">Ideal para projetos com requisitos consolidados. Escopo milimetricamente desenhado com cronograma de entrega rígido e custo previsível do início ao fim.</div>
+                    </div>
+                    
+                    <div class="model-item">
+                        <div class="model-name">Retainer Mensal (Squad Dedicada)</div>
+                        <div class="model-desc">Perfeito para empresas em aceleração contínua de transformação digital. Banco de horas flexível focado em melhorias, novos apps e suporte em governança CoE.</div>
+                    </div>
+                </div>
+
+                <div class="terms-box">
+                    <div class="sub-box-title">Garantias e Cláusulas Padrão</div>
+                    
+                    <div class="model-item">
+                        <div class="model-name">Propriedade Intelectual (IP)</div>
+                        <div class="model-desc">100% do código-fonte, fluxos, conectores customizados e esquemas de dados desenvolvidos pertencem integralmente ao cliente após a quitação dos marcos.</div>
+                    </div>
+                    
+                    <div class="model-item">
+                        <div class="model-name">Acordo de Confidencialidade (NDA)</div>
+                        <div class="model-desc">Garantia jurídica de sigilo absoluto sobre regras de negócio, dados internos e infraestrutura, ativa antes mesmo do primeiro dia de desenvolvimento.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cta-footer">
+                <h3>Pronto para transformar sua eficiência operacional?</h3>
+                <p>Agende uma sessão técnica de alinhamento com nossos arquitetos principais e monte o roadmap ideal para sua escala.</p>
+                <a href="https://wa.me/5511965066546" target="_blank" class="btn btn-primary">Iniciar Diagnóstico Gratuito via WhatsApp</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            &copy; 2026 Power Craft Studio. Todos os direitos reservados. Projetado para Performance e Governança Crítica.
+        </div>
+    </footer>
 
     <script>
         function openArch(evt, archName) {
