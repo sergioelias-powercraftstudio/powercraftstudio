@@ -1,10 +1,3 @@
-Aqui está o código completo do en.html (Versão em Inglês).
-
-Eu já apliquei as mesmas correções estéticas de proporção que fizemos no arquivo em português (2fr 3fr na grade de arquitetura, altura máxima ampliada para 500px nos mockups e os links do menu de idiomas corrigidos apontando para index.html e en.html).
-
-Substitua todo o conteúdo do seu arquivo en.html por este:
-
-HTML
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -382,7 +375,6 @@ HTML
             font-size: 0.95rem;
         }
 
-        /* UPDATED PROPORTION: 40% Text (2fr) and 60% Image (3fr) */
         .arch-body-grid {
             display: grid;
             grid-template-columns: 2fr 3fr;
@@ -447,7 +439,6 @@ HTML
         .mockup-dot:nth-child(2) { background-color: #f59e0b; }
         .mockup-dot:nth-child(3) { background-color: #10b981; }
 
-        /* VISUAL ADJUSTMENT: Increased max limits to let diagrams expand nicely */
         .mockup-screen-placeholder {
             background-color: var(--bg-primary);
             border: 1px dashed var(--border-color);
@@ -675,6 +666,7 @@ HTML
 </head>
 <body>
 
+    <!-- Header Navigation -->
     <header>
         <div class="container nav-wrapper">
             <div class="logo">PowerCraft<span>Studio</span></div>
@@ -693,6 +685,7 @@ HTML
         </div>
     </header>
 
+    <!-- 1. Hero Section -->
     <section id="hero">
         <div class="container">
             <span class="hero-tag">Platform Architecture & Governance</span>
@@ -716,6 +709,7 @@ HTML
         </div>
     </section>
 
+    <!-- 2. Executive Overview -->
     <section id="executive-overview">
         <div class="container">
             <h2 class="section-title">Modernizing Corporate Operations via <span>Microsoft Power Platform</span></h2>
@@ -724,7 +718,7 @@ HTML
             <div class="overview-grid">
                 <div class="overview-box">
                     <div class="overview-box-title">Unlock Existing Infrastructure</div>
-                    <div class="overview-box-desc">Maximize current Microsoft 365 / Dataverse environments without licensing waste or hidden overhead costs.</div>
+                    <div class="overview-box-desc">Maximize current Microsoft 365 / SharePoint environments without licensing waste or hidden overhead costs.</div>
                 </div>
                 <div class="overview-box">
                     <div class="overview-box-title">Drastic Cost Optimization</div>
@@ -742,6 +736,7 @@ HTML
         </div>
     </section>
 
+    <!-- 3. Transformation Journey Section -->
     <section id="transformation-journey">
         <div class="container">
             <h2 class="section-title">The Transformation Journey with <span>Power Platform</span></h2>
@@ -768,25 +763,28 @@ HTML
                     <div class="hero-tag" style="background-color: rgba(245, 158, 11, 0.1); color: #f59e0b; margin-bottom: 16px;">STEP 3</div>
                     <div class="card-title">Minimize Dev Overhead</div>
                     <div class="card-text">
-                        Avoid abusive traditional software development pricing. Our Low-Code architecture demands far fewer engineering hours, delivering <strong>massive financial savings</strong> and rapid market readiness.
+                        Avoid abusive traditional software development pricing. Our <strong>SharePoint First</strong> approach requires zero upfront Premium licensing investment, delivering massive financial savings.
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- 4. Interactive Use Cases & Architectures -->
     <section id="architecture-cases">
         <div class="container">
             <h2 class="section-title">Enterprise Architectures & <span>Proven Cases</span></h2>
             <p class="section-subtitle">Explore real architectural blueprints developed to mitigate multi-layered, complex business challenges.</p>
 
             <div class="architecture-layout">
+                <!-- Side Tabs -->
                 <div class="arch-tabs">
                     <button class="arch-tab-btn active" onclick="openArch(event, 'crm-erp')">CRM & ERP Integration</button>
                     <button class="arch-tab-btn" onclick="openArch(event, 'supply-chain')">Digital Supply Chain</button>
                     <button class="arch-tab-btn" onclick="openArch(event, 'finance-audit')">Bonus Audit Engine</button>
                 </div>
 
+                <!-- Tab 1 Content -->
                 <div id="crm-erp" class="arch-content active">
                     <div class="arch-header">
                         <div class="arch-meta">Salesforce & SAP Connectivity</div>
@@ -816,6 +814,7 @@ HTML
                     </div>
                 </div>
 
+                <!-- Tab 2 Content -->
                 <div id="supply-chain" class="arch-content">
                     <div class="arch-header">
                         <div class="arch-meta">Supply Chain Management App</div>
@@ -845,6 +844,7 @@ HTML
                     </div>
                 </div>
 
+                <!-- Tab 3 Content -->
                 <div id="finance-audit" class="arch-content">
                     <div class="arch-header">
                         <div class="arch-meta">Compensation Audit & Calculation Platform</div>
@@ -855,7 +855,7 @@ HTML
                         <div class="arch-layers">
                             <div class="layer-item">
                                 <div class="layer-title">Data Aggregation Layer</div>
-                                <div class="layer-desc">Automated extraction of legacy timecard logs, absences, and leave allowances into encrypted SharePoint Online repositories.</div>
+                                <div class="layer-desc">Automated extraction of legacy attendance tracking data, absences, and leave allowances into encrypted SharePoint Online repositories.</div>
                             </div>
                         </div>
                         
@@ -874,6 +874,7 @@ HTML
         </div>
     </section>
 
+    <!-- 5. CoE Governance & ALM Section -->
     <section id="governance">
         <div class="container">
             <h2 class="section-title">Enterprise Governance & <span>CoE Framework</span></h2>
@@ -882,10 +883,10 @@ HTML
             <div class="coe-pyramid-container">
                 <div class="pyramid-tier tier-1">
                     <div class="tier-title">Strategy & Innovation</div>
-                    <div class="tier-subtitle">ROI mapping, enterprise backlog curation, and business goal alignment.</div>
+                    <div class="tier-subtitle">ROI mapping, SharePoint-to-Dataverse architecture modeling, and business goal alignment.</div>
                 </div>
                 <div class="pyramid-tier tier-2">
-                    <div class="tier-title">Nurture & Training</div>
+                    <div class="tier-title">Continuous Training</div>
                     <div class="tier-subtitle">Modular training paths, live documentation, and development frameworks.</div>
                 </div>
                 <div class="pyramid-tier tier-3">
@@ -922,6 +923,7 @@ HTML
         </div>
     </section>
 
+    <!-- 6. Methodology Section -->
     <section id="methodology">
         <div class="container">
             <h2 class="section-title">The <span>Power Craft</span> Engineering Methodology</h2>
@@ -931,17 +933,17 @@ HTML
                 <div class="method-step">
                     <div class="step-number">1</div>
                     <div class="step-title">Scoping & Architectural Discovery</div>
-                    <div class="step-desc">Surgical review of operational pain points, reverse engineering of spreadsheet silos/legacy systems, and schema definition.</div>
+                    <div class="step-desc">Surgical review of operational friction points, reverse engineering of operational processes, documents, spreadsheets, and legacy systems, alongside fast schema definitions for the solution and required datasets.</div>
                 </div>
                 <div class="method-step">
                     <div class="step-number">2</div>
                     <div class="step-title">Architectural Design & DLP Blueprint</div>
-                    <div class="step-desc">Logical database modeling in Dataverse/SharePoint, transactional logic layout, and setup of strict Data Loss Prevention filters.</div>
+                    <div class="step-desc">Logical database modeling in SharePoint (with a clear upgrade path to Dataverse if needed), transactional logic layout, and setup of strict Data Loss Prevention filters.</div>
                 </div>
                 <div class="method-step">
                     <div class="step-number">3</div>
-                    <div class="step-title">Sprint-Based Development</div>
-                    <div class="step-desc">Iterative development loops focused on clean UI/UX, high-performance execution, background logic triggers, and regression testing.</div>
+                    <div class="step-title">Modular Development</div>
+                    <div class="step-desc">High-performance low-code solution engineering, background workflow automations, and continuous stress testing loops.</div>
                 </div>
                 <div class="method-step">
                     <div class="step-number">4</div>
@@ -952,6 +954,7 @@ HTML
         </div>
     </section>
 
+    <!-- 7. Contract, Terms & Closure Section -->
     <section id="contract">
         <div class="container">
             <h2 class="section-title">Engagement Models & <span>Commercial Safety</span></h2>
@@ -991,12 +994,14 @@ HTML
         </div>
     </section>
 
+    <!-- Footer -->
     <footer>
         <div class="container">
             &copy; 2026 Power Craft Studio. All rights reserved. Engineered for Performance and Critical Governance.
         </div>
     </footer>
 
+    <!-- Scripts for Tab Switching -->
     <script>
         function openArch(evt, archName) {
             var i, archcontent, archtablinks;
