@@ -1,10 +1,3 @@
-Sem problemas! Para facilitar e garantir que tudo funcione de primeira, aqui está o código completo do index.html (Versão em Português).
-
-Eu já fiz a alteração nos botões de idioma para você (linhas de código por volta de ~360). Agora os botões estão configurados como links reais que apontam para o index.html e para o en.html.
-
-Substitua todo o conteúdo do seu arquivo atual por este:
-
-HTML
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -382,13 +375,15 @@ HTML
             font-size: 0.95rem;
         }
 
+        /* PROPORÇÃO ATUALIZADA: 40% Texto (2fr) e 60% Imagem (3fr) */
         .arch-body-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 2fr 3fr;
             gap: 32px;
+            align-items: start;
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 992px) {
             .arch-body-grid {
                 grid-template-columns: 1fr;
             }
@@ -425,6 +420,7 @@ HTML
             display: flex;
             flex-direction: column;
             gap: 16px;
+            width: 100%;
         }
 
         .mockup-header {
@@ -444,22 +440,23 @@ HTML
         .mockup-dot:nth-child(2) { background-color: #f59e0b; }
         .mockup-dot:nth-child(3) { background-color: #10b981; }
 
+        /* AJUSTE VISUAL: Aumentado o espaço vertical máximo para as imagens respirarem */
         .mockup-screen-placeholder {
             background-color: var(--bg-primary);
             border: 1px dashed var(--border-color);
             border-radius: 6px;
-            min-height: 250px;
+            min-height: 320px;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 10px;
+            padding: 12px;
             position: relative;
         }
 
         .mockup-screen-placeholder img {
             width: 100%;
             height: auto;
-            max-height: 350px;
+            max-height: 500px;
             object-fit: contain;
             display: block;
             border-radius: 4px;
@@ -671,6 +668,7 @@ HTML
 </head>
 <body>
 
+    <!-- Header Navigation -->
     <header>
         <div class="container nav-wrapper">
             <div class="logo">PowerCraft<span>Studio</span></div>
@@ -689,6 +687,7 @@ HTML
         </div>
     </header>
 
+    <!-- 1. Hero Section -->
     <section id="hero">
         <div class="container">
             <span class="hero-tag">Arquitetura de Plataforma & Governança</span>
@@ -712,6 +711,7 @@ HTML
         </div>
     </section>
 
+    <!-- 2. Executive Overview -->
     <section id="executive-overview">
         <div class="container">
             <h2 class="section-title">Modernizando Operações Corporativas via <span>Microsoft Power Platform</span></h2>
@@ -738,6 +738,7 @@ HTML
         </div>
     </section>
 
+    <!-- 3. Transformation Journey Section -->
     <section id="transformation-journey">
         <div class="container">
             <h2 class="section-title">A Jornada de Transformação com <span>Power Platform</span></h2>
@@ -771,18 +772,21 @@ HTML
         </div>
     </section>
 
+    <!-- 4. Interactive Use Cases & Architectures -->
     <section id="architecture-cases">
         <div class="container">
             <h2 class="section-title">Arquiteturas Corporativas & <span>Casos Comprovados</span></h2>
             <p class="section-subtitle">Explore plantas arquitetônicas reais desenvolvidas para mitigar desafios de negócios complexos de várias camadas.</p>
 
             <div class="architecture-layout">
+                <!-- Abas Laterais -->
                 <div class="arch-tabs">
                     <button class="arch-tab-btn active" onclick="openArch(event, 'crm-erp')">Integração CRM & ERP</button>
                     <button class="arch-tab-btn" onclick="openArch(event, 'supply-chain')">Cadeia de Suprimentos Digital</button>
                     <button class="arch-tab-btn" onclick="openArch(event, 'finance-audit')">Motor de Auditoria de Bônus</button>
                 </div>
 
+                <!-- Conteúdo Aba 1 -->
                 <div id="crm-erp" class="arch-content active">
                     <div class="arch-header">
                         <div class="arch-meta">Conectividade Salesforce & SAP</div>
@@ -812,6 +816,7 @@ HTML
                     </div>
                 </div>
 
+                <!-- Conteúdo Aba 2 -->
                 <div id="supply-chain" class="arch-content">
                     <div class="arch-header">
                         <div class="arch-meta">Aplicativo de Gerenciamento de Supply Chain</div>
@@ -841,6 +846,7 @@ HTML
                     </div>
                 </div>
 
+                <!-- Conteúdo Aba 3 -->
                 <div id="finance-audit" class="arch-content">
                     <div class="arch-header">
                         <div class="arch-meta">Plataforma de Auditoria & Cálculo de Bônus</div>
@@ -870,6 +876,7 @@ HTML
         </div>
     </section>
 
+    <!-- 5. CoE Governance & ALM Section -->
     <section id="governance">
         <div class="container">
             <h2 class="section-title">Governança Enterprise & <span>Modelo CoE</span></h2>
@@ -918,6 +925,7 @@ HTML
         </div>
     </section>
 
+    <!-- 6. Methodology Section -->
     <section id="methodology">
         <div class="container">
             <h2 class="section-title">A Metodologia de Engenharia <span>Power Craft</span></h2>
@@ -948,6 +956,7 @@ HTML
         </div>
     </section>
 
+    <!-- 7. Contract, Terms & Closure Section -->
     <section id="contract">
         <div class="container">
             <h2 class="section-title">Modelos de Engajamento & <span>Segurança Comercial</span></h2>
@@ -956,12 +965,10 @@ HTML
             <div class="contract-grid">
                 <div class="engagement-box">
                     <div class="sub-box-title">Estrutura de Contratação</div>
-                    
                     <div class="model-item">
                         <div class="model-name">Escopo Fechado (Fixed-Price)</div>
                         <div class="model-desc">Ideal para projetos com requisitos consolidados. Escopo milimetricamente desenhado com cronograma de entrega rígido e custo previsível do início ao fim.</div>
                     </div>
-                    
                     <div class="model-item">
                         <div class="model-name">Retainer Mensal (Squad Dedicada)</div>
                         <div class="model-desc">Perfeito para empresas em aceleração contínua de transformação digital. Banco de horas flexível focado em melhorias, novos apps e suporte em governança CoE.</div>
@@ -970,12 +977,10 @@ HTML
 
                 <div class="terms-box">
                     <div class="sub-box-title">Garantias e Cláusulas Padrão</div>
-                    
                     <div class="model-item">
                         <div class="model-name">Propriedade Intelectual (IP)</div>
                         <div class="model-desc">100% do código-fonte, fluxos, conectores customizados e esquemas de dados desenvolvidos pertencem integralmente ao cliente após a quitação dos marcos.</div>
                     </div>
-                    
                     <div class="model-item">
                         <div class="model-name">Acordo de Confidencialidade (NDA)</div>
                         <div class="model-desc">Garantia jurídica de sigilo absoluto sobre regras de negócio, dados internos e infraestrutura, ativa antes mesmo do primeiro dia de desenvolvimento.</div>
@@ -991,12 +996,14 @@ HTML
         </div>
     </section>
 
+    <!-- Footer -->
     <footer>
         <div class="container">
             &copy; 2026 Power Craft Studio. Todos os direitos reservados. Projetado para Performance e Governança Crítica.
         </div>
     </footer>
 
+    <!-- Scripts para as Abas Alternarem -->
     <script>
         function openArch(evt, archName) {
             var i, archcontent, archtablinks;
