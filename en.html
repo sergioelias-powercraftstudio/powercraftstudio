@@ -717,6 +717,72 @@
             .alm-pipeline { flex-direction: column; text-align: center; }
             .pipeline-arrow { transform: rotate(90deg); margin: 8px 0; }
         }
+
+    /* ... all your existing CSS styles are up here ... */
+
+/* ========================================================
+   CÓDIGO UNIFICADO: EXPANSÃO DE IMAGENS & RESPONSIVIDADE
+   ======================================================== */
+
+/* 1. Ajuste Geral para Computadores e Smartphones (100% de largura) */
+#crm-erp .arch-body-grid, 
+#supply-chain .arch-body-grid, 
+#finance-audit .arch-body-grid {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+}
+
+#crm-erp .mockup-container, 
+#supply-chain .mockup-container, 
+#finance-audit .mockup-container {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    background: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+#crm-erp .mockup-header, 
+#supply-chain .mockup-header, 
+#finance-audit .mockup-header {
+    display: none !important;
+}
+
+#crm-erp .mockup-screen-placeholder, 
+#crm-erp .mockup-screen-placeholder img,
+#supply-chain .mockup-screen-placeholder, 
+#supply-chain .mockup-screen-placeholder img,
+#finance-audit .mockup-screen-placeholder, 
+#finance-audit .mockup-screen-placeholder img {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    max-height: none !important;
+    border-radius: 4px;
+}
+
+/* 2. Regras específicas para Smartphones (Telas até 767px) */
+@media (max-width: 767px) {
+    #crm-erp .arch-body-grid, 
+    #supply-chain .arch-body-grid, 
+    #finance-audit .arch-body-grid {
+        margin-top: 16px !important;
+    }
+    
+    /* Garante que a imagem se ajuste proporcionalmente na tela do celular */
+    .mockup-screen-placeholder img {
+        width: 100% !important;
+        height: auto !important;
+    }
+}
+
+ <!-- This is the closing tag you are looking for -->
     </style>
 </head>
 <body>
@@ -753,15 +819,14 @@
             
             <div class="hero-hook">
                 "Stop paying for unutilized software potential. Turn your Microsoft 365 license into a high-yielding operational asset."
-	<!-- We turn scattered spreadsheets, fragmented legacy data, and operational friction into secure, governed, and highly automated corporate ecosystems.>
             </div>
 
             <p class="hero-subtitle-text">
-                <!--Advanced Power Apps, Power Automate, and comprehensive SharePoint integrations customized for mission-critical performance, ironclad governance, and seamless legacy connectivity.>
+
             </p>
 
             <div class="hero-main-image-container">
-                <img src="PowerCraft-Studio.png" alt="Power Craft Studio Enterprise Architecture">
+                <img src="PowerCraft-Studio-us.png" alt="Power Craft Studio Enterprise Architecture">
             </div>
 
             <div class="btn-group">
@@ -832,109 +897,82 @@
         </div>
     </section>
 
-    <!-- 4. Interactive Use Cases & Architectures -->
-    <section id="architecture-cases">
-        <div class="container">
-            <h2 class="section-title">Enterprise Architectures & <span>Proven Cases</span></h2>
-            <p class="section-subtitle">Explore real architectural blueprints developed to mitigate multi-layered, complex business challenges.</p>
 
-            <div class="architecture-layout">
-                <!-- Side Tabs -->
-                <div class="arch-tabs">
-                    <button class="arch-tab-btn active" onclick="openArch(event, 'crm-erp')">CRM & ERP Integration</button>
-                    <button class="arch-tab-btn" onclick="openArch(event, 'supply-chain')">Digital Supply Chain</button>
-                    <button class="arch-tab-btn" onclick="openArch(event, 'finance-audit')">Bonus Audit Engine</button>
-                </div>
+<!-- 4. Interactive Use Cases & Architectures -->
+<section id="architecture-cases">
+    <div class="container">
+        <h2 class="section-title">Arquiteturas Corporativas & <span>Casos Comprovados</span></h2>
+        <p class="section-subtitle">Explore plantas arquitetônicas reais desenvolvidas para mitigar desafios de negócios complexos de várias camadas.</p>
 
-                <!-- Tab 1 Content -->
-                <div id="crm-erp" class="arch-content active">
-                    <div class="arch-header">
-                        <div class="arch-meta">Salesforce & SAP Connectivity</div>
-                        <h3 class="arch-main-title">Interlinking CRM and ERP Ecosystems</h3>
-                        <p class="arch-subtitle">Automated data orchestration and interdepartmental governance matrix.</p>
-                    </div>
-                    <div class="arch-body-grid">
-                        <div class="arch-layers">
-                            <div class="layer-item">
-                                <div class="layer-title">Data Ingestion Layer</div>
-                                <div class="layer-desc">Continuous Salesforce CRM tracking natively connected through highly secure and authenticated cloud endpoints.</div>
-                            </div>
-                            <div class="layer-item">
-                                <div class="layer-title">Interactive User Interface</div>
-                                <div class="layer-desc">Microsoft Power Apps delivering a unified, modern, and fully responsive UI tailored for sales and billing operations.</div>
-                            </div>
-                        </div>
-                        
-                        <div class="mockup-container">
-                            <div class="mockup-header">
-                                <div class="mockup-dot"></div><div class="mockup-dot"></div><div class="mockup-dot"></div>
-                            </div>
-                            <div class="mockup-screen-placeholder">
-                                <img src="BM_2.png" alt="Salesforce SAP Architecture">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Tab 2 Content -->
-                <div id="supply-chain" class="arch-content">
-                    <div class="arch-header">
-                        <div class="arch-meta">Supply Chain Management App</div>
-                        <h3 class="arch-main-title">Digital Supply Chain: From Field to Vendor</h3>
-                        <p class="arch-subtitle">Streamlining material requests, supply chain approvals, and automated RFQs.</p>
-                    </div>
-                    <div class="arch-body-grid">
-                        <div class="arch-layers">
-                            <div class="layer-item">
-                                <div class="layer-title">Field Mobility Layer</div>
-                                <div class="layer-desc">Mobile-optimized Power Apps allowing field technicians to submit real-time material requests straight from the site.</div>
-                            </div>
-                            <div class="layer-item">
-                                <div class="layer-title">Procurement Automation Engine</div>
-                                <div class="layer-desc">Power Automate running full end-to-end routing, instant push alerts, and automatic RFQ dispatches to external suppliers.</div>
-                            </div>
-                        </div>
-                        
-                        <div class="mockup-container">
-                            <div class="mockup-header">
-                                <div class="mockup-dot"></div><div class="mockup-dot"></div><div class="mockup-dot"></div>
-                            </div>
-                            <div class="mockup-screen-placeholder">
-                                <img src="BM_3.png" alt="Supply Chain App">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Tab 3 Content -->
-                <div id="finance-audit" class="arch-content">
-                    <div class="arch-header">
-                        <div class="arch-meta">Compensation Audit & Calculation Platform</div>
-                        <h3 class="arch-main-title">Automated Compensation Audit Engine</h3>
-                        <p class="arch-subtitle">Consolidating fragmented and legacy HR records into a secure, auditable financial workflow.</p>
-                    </div>
-                    <div class="arch-body-grid">
-                        <div class="arch-layers">
-                            <div class="layer-item">
-                                <div class="layer-title">Data Aggregation Layer</div>
-                                <div class="layer-desc">Automated extraction of legacy attendance tracking data, absences, and leave allowances into encrypted SharePoint Online repositories.</div>
-                            </div>
-                        </div>
-                        
-                        <div class="mockup-container">
-                            <div class="mockup-header">
-                                <div class="mockup-dot"></div><div class="mockup-dot"></div><div class="mockup-dot"></div>
-                            </div>
-                            <div class="mockup-screen-placeholder">
-                                <img src="BM_4.png" alt="Financial Audit Engine">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
+        <div class="architecture-layout">
+            <!-- Abas Laterais -->
+            <div class="arch-tabs">
+                <button class="arch-tab-btn active" onclick="openArch(event, 'crm-erp')">Integração CRM & ERP</button>
+                <button class="arch-tab-btn" onclick="openArch(event, 'supply-chain')">Cadeia de Suprimentos Digital</button>
+                <button class="arch-tab-btn" onclick="openArch(event, 'finance-audit')">Motor de Auditoria de Bônus</button>
             </div>
+
+            <!-- Conteúdo Aba 1 -->
+            <div id="crm-erp" class="arch-content active">
+                <div class="arch-header">
+                    <div class="arch-meta">Salesforce & SAP Connectivity</div>
+                    <h3 class="arch-main-title">Interlinking CRM and ERP Ecosystems</h3>
+                    <p class="arch-subtitle">Automated data orchestration and interdepartmental governance matrix.</p>
+                </div>
+                <div class="arch-body-grid">
+                    <div class="mockup-container">
+                        <div class="mockup-header">
+                            <div class="mockup-dot"></div><div class="mockup-dot"></div><div class="mockup-dot"></div>
+                        </div>
+                        <div class="mockup-screen-placeholder">
+                            <img src="BM_2-us.png" alt="Salesforce SAP Archiutecture">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Conteúdo Aba 2 -->
+            <div id="supply-chain" class="arch-content">
+                <div class="arch-header">
+                    <div class="arch-meta">Supply Chain Management App</div>
+                    <h3 class="arch-main-title">Digital Supply Chain: From Field to Vendor</h3>
+                    <p class="arch-subtitle">Streamlining material requests, supply chain approvals, and automated RFQs.</p>
+                </div>
+                <div class="arch-body-grid">
+                    <div class="mockup-container">
+                        <div class="mockup-header">
+                            <div class="mockup-dot"></div><div class="mockup-dot"></div><div class="mockup-dot"></div>
+                        </div>
+                        <div class="mockup-screen-placeholder">
+                            <img src="BM_3-us.png" alt="Supply Chain App">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Conteúdo Aba 3 -->
+            <div id="finance-audit" class="arch-content">
+                <div class="arch-header">
+                    <div class="arch-meta">Compensation Audit & Calculation Platform</div>
+                    <h3 class="arch-main-title">Automated Compensation Audit Engine</h3>
+                    <p class="arch-subtitle">Consolidating fragmented and legacy HR records into a secure, auditable financial workflow.</p>
+                </div>
+                <div class="arch-body-grid">
+                    <div class="mockup-container">
+                        <div class="mockup-header">
+                            <div class="mockup-dot"></div><div class="mockup-dot"></div><div class="mockup-dot"></div>
+                        </div>
+                        <div class="mockup-screen-placeholder">
+                            <img src="BM_4-us.png" alt="Audit & Calcuation Motor">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
-    </section>
+    </div>
+</section>
+
 
     <!-- 5. CoE Governance & ALM Section -->
     <section id="governance">
