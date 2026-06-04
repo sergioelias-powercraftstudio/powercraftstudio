@@ -715,6 +715,75 @@
             .alm-pipeline { flex-direction: column; text-align: center; }
             .pipeline-arrow { transform: rotate(90deg); margin: 8px 0; }
         }
+
+    /* ... all your existing CSS styles are up here ... */
+
+
+    /* ========================================================
+   CÓDIGO UNIFICADO: EXPANSÃO DE IMAGENS & RESPONSIVIDADE
+   ======================================================== */
+
+/* 1. Ajuste Geral para Computadores e Smartphones (100% de largura) */
+#crm-erp .arch-body-grid, 
+#supply-chain .arch-body-grid, 
+#finance-audit .arch-body-grid {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+}
+
+#crm-erp .mockup-container, 
+#supply-chain .mockup-container, 
+#finance-audit .mockup-container {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    background: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+#crm-erp .mockup-header, 
+#supply-chain .mockup-header, 
+#finance-audit .mockup-header {
+    display: none !important;
+}
+
+#crm-erp .mockup-screen-placeholder, 
+#crm-erp .mockup-screen-placeholder img,
+#supply-chain .mockup-screen-placeholder, 
+#supply-chain .mockup-screen-placeholder img,
+#finance-audit .mockup-screen-placeholder, 
+#finance-audit .mockup-screen-placeholder img {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    max-height: none !important;
+    border-radius: 4px;
+}
+
+/* 2. Regras específicas para Smartphones (Telas até 767px) */
+@media (max-width: 767px) {
+    #crm-erp .arch-body-grid, 
+    #supply-chain .arch-body-grid, 
+    #finance-audit .arch-body-grid {
+        margin-top: 16px !important;
+    }
+    
+    /* Garante que a imagem se ajuste proporcionalmente na tela do celular */
+    .mockup-screen-placeholder img {
+        width: 100% !important;
+        height: auto !important;
+    }
+}
+
+
+
+
     </style>
 </head>
 <body>
@@ -754,11 +823,11 @@
             </div>
 
             <p class="hero-subtitle-text">
-                <!--Advanced Power Apps, Power Automate e integrações completas com SharePoint customizados para performance de missão crítica, governança blindada e conectividade legada contínua.>
+                 
             </p>
 
             <div class="hero-main-image-container">
-                <img src="PowerCraft-Studio.png" alt="Power Craft Studio Enterprise Architecture">
+                <img src="PowerCraft-Studio-pt.png" alt="Power Craft Studio Enterprise Architecture">
             </div>
 
             <div class="btn-group">
@@ -830,108 +899,79 @@
     </section>
 
     <!-- 4. Interactive Use Cases & Architectures -->
-    <section id="architecture-cases">
-        <div class="container">
-            <h2 class="section-title">Arquiteturas Corporativas & <span>Casos Comprovados</span></h2>
-            <p class="section-subtitle">Explore plantas arquitetônicas reais desenvolvidas para mitigar desafios de negócios complexos de várias camadas.</p>
+<section id="architecture-cases">
+    <div class="container">
+        <h2 class="section-title">Arquiteturas Corporativas & <span>Casos Comprovados</span></h2>
+        <p class="section-subtitle">Explore plantas arquitetônicas reais desenvolvidas para mitigar desafios de negócios complexos de várias camadas.</p>
 
-            <div class="architecture-layout">
-                <!-- Abas Laterais -->
-                <div class="arch-tabs">
-                    <button class="arch-tab-btn active" onclick="openArch(event, 'crm-erp')">Integração CRM & ERP</button>
-                    <button class="arch-tab-btn" onclick="openArch(event, 'supply-chain')">Cadeia de Suprimentos Digital</button>
-                    <button class="arch-tab-btn" onclick="openArch(event, 'finance-audit')">Motor de Auditoria de Bônus</button>
-                </div>
-
-                <!-- Conteúdo Aba 1 -->
-                <div id="crm-erp" class="arch-content active">
-                    <div class="arch-header">
-                        <div class="arch-meta">Conectividade Salesforce & SAP</div>
-                        <h3 class="arch-main-title">Interligando Ecossistemas de CRM e ERP</h3>
-                        <p class="arch-subtitle">Orquestração automatizada de dados e matriz de governança interdepartamental.</p>
-                    </div>
-                    <div class="arch-body-grid">
-                        <div class="arch-layers">
-                            <div class="layer-item">
-                                <div class="layer-title">Camada de Ingestão de Dados</div>
-                                <div class="layer-desc">Rastreamento contínuo do Salesforce CRM conectado nativamente através de endpoints de nuvem autenticados e seguros.</div>
-                            </div>
-                            <div class="layer-item">
-                                <div class="layer-title">Interface de Usuário Interativa</div>
-                                <div class="layer-desc">Microsoft Power Apps entregando uma UI unificada, moderna e responsiva para a operação de vendas e faturamento.</div>
-                            </div>
-                        </div>
-                        
-                        <div class="mockup-container">
-                            <div class="mockup-header">
-                                <div class="mockup-dot"></div><div class="mockup-dot"></div><div class="mockup-dot"></div>
-                            </div>
-                            <div class="mockup-screen-placeholder">
-                                <img src="BM_2.png" alt="Arquitetura Salesforce SAP">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Conteúdo Aba 2 -->
-                <div id="supply-chain" class="arch-content">
-                    <div class="arch-header">
-                        <div class="arch-meta">App de Gerenciamento de Supply Chain</div>
-                        <h3 class="arch-main-title">Cadeia de Suprimentos Digital: Do Campo ao Fornecedor</h3>
-                        <p class="arch-subtitle">Agilizando requisições de materiais, aprovações de suprimentos e RFQs automatizadas.</p>
-                    </div>
-                    <div class="arch-body-grid">
-                        <div class="arch-layers">
-                            <div class="layer-item">
-                                <div class="layer-title">Camada de Mobilidade em Campo</div>
-                                <div class="layer-desc">Power Apps otimizados para dispositivos móveis, permitindo que equipes externas enviem requisições de materiais em tempo real.</div>
-                            </div>
-                            <div class="layer-item">
-                                <div class="layer-title">Motor de Automação de Compras</div>
-                                <div class="layer-desc">Power Automate executando a orquestração completa do fluxo, notificações imediatas e disparo automático de cotações para fornecedores externos.</div>
-                            </div>
-                        </div>
-                        
-                        <div class="mockup-container">
-                            <div class="mockup-header">
-                                <div class="mockup-dot"></div><div class="mockup-dot"></div><div class="mockup-dot"></div>
-                            </div>
-                            <div class="mockup-screen-placeholder">
-                                <img src="BM_3.png" alt="Aplicativo Supply Chain">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Conteúdo Aba 3 -->
-                <div id="finance-audit" class="arch-content">
-                    <div class="arch-header">
-                        <div class="arch-meta">Plataforma de Auditoria & Cálculo de Bônus</div>
-                        <h3 class="arch-main-title">Motor Automatizado de Auditoria de Remuneração</h3>
-                        <p class="arch-subtitle">Consolidando registros de RH legados e fragmentados em um fluxo de trabalho financeiro seguro e auditável.</p>
-                    </div>
-                    <div class="arch-body-grid">
-                        <div class="arch-layers">
-                            <div class="layer-item">
-                                <div class="layer-title">Camada de Agregação de Dados</div>
-                                <div class="layer-desc">Extração automatizada de lista de presença de sistema legado, faltas e afastamentos em repositórios SharePoint Online altamente seguros.</div>
-                            </div>
-                        </div>
-                        
-                        <div class="mockup-container">
-                            <div class="mockup-header">
-                                <div class="mockup-dot"></div><div class="mockup-dot"></div><div class="mockup-dot"></div>
-                            </div>
-                            <div class="mockup-screen-placeholder">
-                                <img src="BM_4.png" alt="Motor de Auditoria Financeira">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
+        <div class="architecture-layout">
+            <!-- Abas Laterais -->
+            <div class="arch-tabs">
+                <button class="arch-tab-btn active" onclick="openArch(event, 'crm-erp')">Integração CRM & ERP</button>
+                <button class="arch-tab-btn" onclick="openArch(event, 'supply-chain')">Cadeia de Suprimentos Digital</button>
+                <button class="arch-tab-btn" onclick="openArch(event, 'finance-audit')">Motor de Auditoria de Bônus</button>
             </div>
+
+            <!-- Conteúdo Aba 1 -->
+            <div id="crm-erp" class="arch-content active">
+                <div class="arch-header">
+                    <div class="arch-meta">Conectividade Salesforce & SAP</div>
+                    <h3 class="arch-main-title">Interligando Ecossistemas de CRM e ERP</h3>
+                    <p class="arch-subtitle">Orquestração automatizada de dados e matriz de governança interdepartamental.</p>
+                </div>
+                <div class="arch-body-grid">
+                    <div class="mockup-container">
+                        <div class="mockup-header">
+                            <div class="mockup-dot"></div><div class="mockup-dot"></div><div class="mockup-dot"></div>
+                        </div>
+                        <div class="mockup-screen-placeholder">
+                            <img src="BM_2-pt.png" alt="Arquitetura Salesforce SAP">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Conteúdo Aba 2 -->
+            <div id="supply-chain" class="arch-content">
+                <div class="arch-header">
+                    <div class="arch-meta">App de Gerenciamento de Supply Chain</div>
+                    <h3 class="arch-main-title">Cadeia de Suprimentos Digital: Do Campo ao Fornecedor</h3>
+                    <p class="arch-subtitle">Agilizando requisições de materiais, aprovações de suprimentos e RFQs automatizadas.</p>
+                </div>
+                <div class="arch-body-grid">
+                    <div class="mockup-container">
+                        <div class="mockup-header">
+                            <div class="mockup-dot"></div><div class="mockup-dot"></div><div class="mockup-dot"></div>
+                        </div>
+                        <div class="mockup-screen-placeholder">
+                            <img src="BM_3-pt.png" alt="Aplicativo Supply Chain">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Conteúdo Aba 3 -->
+            <div id="finance-audit" class="arch-content">
+                <div class="arch-header">
+                    <div class="arch-meta">Plataforma de Auditoria & Cálculo de Bônus</div>
+                    <h3 class="arch-main-title">Motor Automatizado de Auditoria de Remuneração</h3>
+                    <p class="arch-subtitle">Consolidando registros de RH legados e fragmentados em um fluxo de trabalho financeiro seguro e auditável.</p>
+                </div>
+                <div class="arch-body-grid">
+                    <div class="mockup-container">
+                        <div class="mockup-header">
+                            <div class="mockup-dot"></div><div class="mockup-dot"></div><div class="mockup-dot"></div>
+                        </div>
+                        <div class="mockup-screen-placeholder">
+                            <img src="BM_4-pt.png" alt="Motor de Auditoria Financeira">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
-    </section>
+    </div>
+</section>
 
     <!-- 5. CoE Governance & ALM Section -->
     <section id="governance">
