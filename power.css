@@ -1,0 +1,848 @@
+/* ========================================================
+   1. VARIÁVEIS GLOBAIS E CONFIGURAÇÕES BASE
+   ======================================================== */
+:root {
+  --bg-primario: #0b0f19;
+  --bg-secundario: #111827;
+  --bg-terciario: #1f2937;
+  --texto-principal: #f3f4f6;
+  --texto-mutado: #9ca3af;
+  --acento-verde: #10b981;
+  --acento-verde-hover: #059669;
+  --acento-azul: #3b82f6;
+  --cor-borda: #374151;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', Arial, system-ui, sans-serif;
+  background-color: var(--bg-primario);
+  color: var(--texto-principal);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ========================================================
+   2. CABEÇALHO E NAVEGAÇÃO
+   ======================================================== */
+header {
+  background-color: rgba(11, 15, 25, 0.8);
+  backdrop-filter: blur(12px);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  border-bottom: 1px solid var(--cor-borda);
+}
+
+.nav-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 80px;
+}
+
+.logo {
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.logo span {
+  color: var(--acento-verde);
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-left: 24px;
+}
+
+.linkedin-icon-link {
+  display: inline-flex;
+  align-items: center;
+  color: var(--texto-mutado);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.linkedin-icon-link:hover {
+  color: #0a66c2;
+}
+
+.linkedin-icon-link svg {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+}
+
+.lang-switch {
+  display: inline-flex;
+  gap: 8px;
+}
+
+.lang-btn {
+  background: transparent;
+  border: 1px solid var(--cor-borda);
+  color: var(--texto-mutado);
+  padding: 4px 8px;
+  font-size: 0.75rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.lang-btn.active {
+  border-color: var(--acento-verde);
+  color: var(--texto-principal);
+  background-color: rgba(16, 185, 129, 0.1);
+}
+
+nav {
+  display: flex;
+  align-items: center;
+}
+
+nav a {
+  color: var(--texto-mutado);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-left: 24px;
+  transition: color 0.3s ease;
+}
+
+nav a:hover, nav a.active {
+  color: var(--texto-principal);
+}
+
+/* ========================================================
+   3. ESTILOS GERAIS DE SEÇÃO
+   ======================================================== */
+section {
+  padding: 100px 0;
+  border-bottom: 1px solid var(--cor-borda);
+}
+
+.section-subtitle {
+  color: var(--texto-mutado);
+  font-size: 1.1rem;
+  max-width: 800px;
+  margin-bottom: 56px;
+}
+
+.hero-reduced-text {
+  color: var(--texto-mutado);
+  font-size: 1.1rem;
+  max-width: 1300px;
+  margin-bottom: 56px;
+}
+
+/* ========================================================
+   4. SEÇÃO HERO & PADRONIZAÇÃO DE TÍTULOS (DESKTOP)
+   ======================================================== */
+#hero {
+  padding-top: 180px;
+  padding-bottom: 120px;
+  background: radial-gradient(circle at top right, rgba(59, 130, 246, 0.08), transparent 45%);
+}
+
+.hero-tag {
+  display: inline-block;
+  background-color: rgba(16, 185, 129, 0.1);
+  color: var(--acento-verde);
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 24px;
+}
+
+/* PADRONIZAÇÃO: Todos os títulos principais do site agora medem exatamente 2rem no Desktop */
+.hero-title,
+.cta-title,
+.section-title {
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.5px;
+  margin-bottom: 24px;
+  max-width: 1100px;
+  display: block;
+  color: var(--texto-principal);
+}
+
+/* Garante a cor verde para os destaques dentro de qualquer um dos títulos */
+.hero-title span,
+.cta-title span,
+.section-title span {
+  color: var(--acento-verde);
+}
+
+.hero-hook {
+  font-size: 1.25rem;
+  color: var(--texto-principal);
+  border-left: 4px solid var(--acento-verde);
+  padding-left: 24px;
+  margin: 32px 0;
+  max-width: 800px;
+  font-style: italic;
+}
+
+.hero-subtitle-text {
+  font-size: 1.1rem;
+  color: var(--texto-mutado);
+  max-width: 750px;
+  margin-bottom: 40px;
+}
+
+.hero-main-image-container {
+  width: 100%;
+  max-width: 1300px;
+  margin: 0 auto 48px auto;
+  border: 1px solid var(--cor-borda);
+  border-radius: 8px;
+  padding: 12px;
+  background-color: var(--bg-secundario);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.hero-main-image-container img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 6px;
+}
+
+.btn-group {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 28px;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  gap: 8px;
+}
+
+.btn-primary {
+  background-color: var(--acento-verde);
+  color: #000;
+}
+
+.btn-primary:hover {
+  background-color: var(--acento-verde-hover);
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--acento-azul);
+  border: 1px solid var(--cor-borda);
+}
+
+.btn-secondary:hover {
+  background-color: var(--bg-secundario);
+  border-color: var(--acento-azul);
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+.btn svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+  transition: fill 0.3s ease;
+}
+
+/* ========================================================
+   5. RESUMO EXECUTIVO (CAIXAS INTERATIVAS)
+   ======================================================== */
+#executive-overview {
+  background-color: var(--bg-secundario);
+  padding: 80px 0;
+}
+ 
+.overview-single-box {
+  background-color: transparent;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+ 
+.overview-bullet-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+ 
+.overview-bullet-item {
+  background-color: var(--bg-primario);
+  border: 1px solid var(--cor-borda);
+  padding: 28px 32px;
+  border-radius: 8px;
+  transition: border-color 0.3s ease, transform 0.3s ease;
+  position: relative;
+}
+
+.overview-bullet-item:hover {
+  border-color: var(--acento-azul);
+  transform: translateX(4px);
+}
+ 
+.overview-bullet-item::before {
+  content: '';
+  position: absolute;
+  left: 18px;
+  top: 36px;
+  width: 6px;
+  height: 6px;
+  background-color: var(--acento-verde);
+  border-radius: 50%;
+}
+ 
+.overview-bullet-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--texto-principal);
+  padding-left: 12px;
+}
+ 
+.overview-bullet-desc {
+  color: var(--texto-mutado);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  padding-left: 12px;
+}
+ 
+.overview-grid { 
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); 
+  gap: 24px; 
+}
+
+.overview-box { 
+  background-color: var(--bg-primario); 
+  border: 1px solid var(--cor-borda); 
+  padding: 32px; 
+  border-radius: 8px;
+  transition: border-color 0.3s ease; 
+}
+
+.overview-box:hover { 
+  border-color: var(--acento-azul); 
+}
+
+.overview-box-title { 
+  font-size: 1.2rem; 
+  font-weight: 600; 
+  margin-bottom: 12px;
+  color: var(--texto-principal); 
+}
+
+.overview-box-desc { 
+  color: var(--texto-mutado); 
+  font-size: 0.9rem;
+}
+ 
+/* ========================================================
+   6. JORNADA DE TRANSFORMAÇÃO
+   ======================================================== */
+#transformation-journey {
+  background-color: var(--bg-primario);
+}
+ 
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 32px;
+}
+ 
+.card {
+  background-color: var(--bg-secundario);
+  border: 1px solid var(--cor-borda);
+  padding: 40px;
+  border-radius: 8px;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+ 
+.card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(16, 185, 129, 0.4);
+}
+ 
+.card-title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+ 
+.card-text {
+  color: var(--texto-mutado);
+  font-size: 0.95rem;
+}
+ 
+/* ========================================================
+   7. CASOS DE USO E ARQUITETURA
+   ======================================================== */
+#architecture-cases {
+  background-color: var(--bg-secundario);
+}
+ 
+.architecture-layout {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 40px;
+  margin-top: 40px;
+}
+ 
+@media (max-width: 900px) {
+  .architecture-layout {
+    grid-template-columns: 1fr;
+  }
+}
+ 
+.arch-tabs {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+ 
+.arch-tab-btn {
+  background-color: var(--bg-primario);
+  border: 1px solid var(--cor-borda);
+  color: var(--texto-mutado);
+  padding: 18px 24px;
+  border-radius: 6px;
+  text-align: left;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+ 
+.arch-tab-btn:hover, .arch-tab-btn.active {
+  border-color: var(--acento-verde);
+  color: var(--texto-principal);
+  background-color: var(--bg-terciario);
+}
+ 
+.arch-content {
+  background-color: var(--bg-primario);
+  border: 1px solid var(--cor-borda);
+  padding: 40px;
+  border-radius: 8px;
+  display: none;
+}
+ 
+.arch-content.active {
+  display: block;
+}
+ 
+.arch-header {
+  border-bottom: 1px solid var(--cor-borda);
+  padding-bottom: 20px;
+  margin-bottom: 24px;
+}
+ 
+.arch-meta {
+  font-size: 0.85rem;
+  color: var(--acento-azul);
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+ 
+.arch-main-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.arch-subtitle {
+  color: var(--texto-mutado);
+  font-size: 0.95rem;
+}
+ 
+.arch-body-grid {
+  display: block;
+  width: 100%;
+}
+ 
+.arch-layers {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+ 
+.layer-item {
+  border-left: 3px solid var(--acento-verde);
+  padding-left: 16px;
+}
+ 
+.layer-title {
+  font-weight: 600;
+  font-size: 1.05rem;
+  margin-bottom: 4px;
+}
+ 
+.layer-desc {
+  color: var(--texto-mutado);
+  font-size: 0.9rem;
+}
+ 
+.mockup-container {
+  background-color: var(--bg-secundario);
+  border: 1px solid var(--cor-borda);
+  border-radius: 8px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  margin-top: 20px;
+}
+ 
+.mockup-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border-bottom: 1px solid var(--cor-borda);
+  padding-bottom: 10px;
+}
+ 
+.mockup-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #ef4444;
+}
+.mockup-dot:nth-child(2) { background-color: #f59e0b; }
+.mockup-dot:nth-child(3) { background-color: #10b981; }
+ 
+.mockup-screen-placeholder {
+  background-color: var(--bg-primario);
+  border: 1px dashed var(--cor-borda);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+  position: relative;
+  width: 100%;
+}
+
+.mockup-screen-placeholder img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 4px;
+}
+ 
+/* ========================================================
+   8. PIRÂMIDE DE GOVERNANÇA CoE
+   ======================================================== */
+.coe-pyramid-container {
+  margin: 56px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+ 
+.pyramid-tier {
+  width: 100%;
+  text-align: center;
+  padding: 18px;
+  font-weight: 600;
+  border-radius: 6px;
+  border: 1px solid var(--cor-borda);
+  transition: transform 0.3s ease;
+}
+
+.pyramid-tier:hover { 
+  transform: scale(1.02); 
+}
+
+.tier-1 { width: 40%; background-color: rgba(59, 130, 246, 0.2); border-color: var(--acento-azul); }
+.tier-2 { width: 60%; background-color: rgba(16, 185, 129, 0.2); border-color: var(--acento-verde); }
+.tier-3 { width: 80%; background-color: rgba(245, 158, 11, 0.15); border-color: #f59e0b; }
+.tier-4 { width: 100%; background-color: rgba(239, 68, 68, 0.15); border-color: #ef4444; }
+ 
+.tier-title { font-size: 1.1rem; margin-bottom: 2px; color: var(--texto-principal); }
+.tier-subtitle { font-size: 0.8rem; color: var(--texto-mutado); font-weight: 400; }
+ 
+/* ========================================================
+   9. PIPELINE ALM
+   ======================================================== */
+.alm-pipeline {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin: 56px 0;
+  background-color: var(--bg-secundario);
+  padding: 32px;
+  border-radius: 8px;
+  border: 1px solid var(--cor-borda);
+  flex-wrap: wrap;
+}
+ 
+.pipeline-stage {
+  flex: 1;
+  background-color: var(--bg-primario);
+  border: 1px solid var(--cor-borda);
+  padding: 20px;
+  border-radius: 6px;
+  min-width: 200px;
+  position: relative;
+}
+ 
+.stage-badge {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--acento-verde);
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+ 
+.stage-name { font-weight: 600; font-size: 1.1rem; margin-bottom: 4px; }
+.stage-detail { color: var(--texto-mutado); font-size: 0.8rem; }
+ 
+.pipeline-arrow {
+  color: var(--acento-verde);
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+ 
+/* ========================================================
+   10. SEÇÃO METODOLOGIA
+   ======================================================== */
+.method-list {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.method-step {
+  position: relative;
+  padding-left: 48px;
+  margin-bottom: 40px;
+  display: block !important;
+}
+ 
+.method-step::before {
+  content: '';
+  position: absolute;
+  left: 16px;
+  top: 24px;
+  bottom: -48px;
+  width: 1px;
+  background-color: var(--cor-borda);
+  display: block !important;
+}
+ 
+.method-step:last-child::before {
+  display: none !important;
+}
+ 
+.step-number {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 32px;
+  height: 32px;
+  background-color: var(--bg-terciario);
+  border: 1px solid var(--acento-verde);
+  color: var(--acento-verde);
+  border-radius: 50%;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 0.85rem;
+  font-weight: 700;
+  z-index: 2;
+}
+ 
+.step-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--texto-principal);
+}
+ 
+.step-desc {
+  color: var(--texto-mutado);
+  font-size: 0.95rem;
+}
+ 
+/* ========================================================
+   11. CONTRATO E PAGAMENTO
+   ======================================================== */
+.contract-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 48px;
+  align-items: start;
+  margin-top: 40px;
+}
+ 
+.engagement-box, .terms-box {
+  background-color: var(--bg-secundario);
+  border: 1px solid var(--cor-borda);
+  padding: 40px;
+  border-radius: 8px;
+}
+ 
+.sub-box-title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 24px;
+  color: var(--texto-principal);
+  border-bottom: 1px solid var(--cor-borda);
+  padding-bottom: 12px;
+}
+ 
+.model-item {
+  margin-bottom: 24px;
+}
+ 
+.model-name {
+  font-weight: 600;
+  color: var(--acento-verde);
+  margin-bottom: 4px;
+}
+ 
+.model-desc {
+  color: var(--texto-mutado);
+  font-size: 0.9rem;
+}
+ 
+/* ========================================================
+   12. ELEMENTOS DE RODAPÉ & INTERAÇÃO (CTA)
+   ======================================================== */
+.footer-social-wrapper {
+  margin-top: 24px;
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+}
+ 
+.footer-link {
+  color: var(--texto-mutado);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+ 
+.footer-link:hover {
+  color: var(--acento-verde);
+}
+ 
+.cta-footer {
+  margin-top: 56px;
+  text-align: center;
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.05), transparent);
+  padding: 48px;
+  border-radius: 8px;
+  border: 1px solid rgba(16, 185, 129, 0.1);
+}
+
+.cta-footer h3 { 
+  font-size: 1.5rem; 
+  margin-bottom: 16px; 
+}
+
+.cta-footer p { 
+  color: var(--texto-mutado); 
+  margin-bottom: 32px;
+}
+ 
+footer {
+  padding: 40px 0;
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--texto-mutado);
+  border-top: 1px solid var(--cor-borda);
+}
+
+/* ========================================================
+   13. RESPONSIVIDADE GERAL TRADICIONAL (PONTO 3 - MOBILE)
+   ======================================================== */
+@media (max-width: 768px) {
+  
+  /* PONTO 3: Reduz TODOS os títulos principais juntos para 1.4rem no telemóvel */
+  .hero-title,
+  .cta-title,
+  .section-title { 
+    font-size: 1.4rem !important; 
+    line-height: 1.4 !important; 
+    display: block !important;
+    height: auto !important; 
+    overflow: visible !important; 
+  }
+  
+  /* Garante o distanciamento correto do topo exclusivamente no Hero */
+  .hero-title {
+    padding-top: 24px !important;
+  }
+  
+  section { 
+    padding: 60px 0; 
+  }
+  
+  nav { 
+    display: none;
+  }
+  
+  .alm-pipeline { 
+    flex-direction: column; 
+    text-align: center; 
+  }
+  
+  .pipeline-arrow { 
+    transform: rotate(90deg); 
+    margin: 8px 0;
+  }
+  
+  .overview-bullet-item { 
+    padding: 20px 24px; 
+  }
+  
+  .overview-bullet-item:hover { 
+    transform: none;
+  }
+}
