@@ -211,22 +211,22 @@ section {
   margin-bottom: 40px;
 }
 
+/* Remove margens, paddings e forças o container do Hero a ocupar 100% */
 .hero-main-image-container {
-  width: 100%;
-  max-width: 1300px;
-  margin: 0 auto 48px auto;
-  border: 1px solid var(--cor-borda);
-  border-radius: 8px;
-  padding: 12px;
-  background-color: var(--bg-secundario);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 0 40px 0 !important; /* Mantém apenas o espaço de 40px na parte de baixo, se ainda quiser afastar o conteúdo de baixo */
+  padding: 0 !important;
+  display: block !important;
 }
 
+/* Força a imagem do Hero a preencher todo o espaço disponível */
 .hero-main-image-container img {
-  width: 100%;
-  height: auto;
-  display: block;
-  border-radius: 6px;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  display: block !important;
+  max-width: 100% !important;
 }
 
 .btn-group {
@@ -492,11 +492,43 @@ section {
   font-size: 0.95rem;
 }
  
-.arch-body-grid {
-  display: block;
+
+/* Delete o código antigo dessas classes e cole este no lugar */
+
+.arch-body-grid,
+.mockup-container,
+.mockup-screen-placeholder {
   width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.arch-body-grid img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+  display: block;
+}
+
+/* Seleciona o arch-content especificamente dentro dessa área e zera os espaços */
+.arch-content {
+  padding: 0 !important;
+  margin: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important; /* Remove limites de largura máxima, se houver */
+}
+
+/* Caso a section principal que engloba tudo também tenha espaçamento */
+#crm-erp, #supply-chain, #finance-audit {
+  padding: 0 !important;
+  margin: 0 !important;
+  width: 100% !important;
 }
  
+
+
+
 .arch-layers {
   display: flex;
   flex-direction: column;
@@ -845,4 +877,95 @@ footer {
   .overview-bullet-item:hover { 
     transform: none;
   }
+
+/* Correção do posicionamento do link de âncora */
+section {
+    /* Ajuste os 90px de acordo com a altura real do seu header fixo */
+    scroll-margin-top: 90px; 
+    scroll-behavior: smooth; /* Deixa a rolagem suave ao clicar nos links */
+}
+
+/* Ajuste específico para o Mobile (opcional, caso seu header mude de tamanho no celular) */
+@media (max-width: 768px) {
+    section {
+        /* Se o menu mobile for mais alto ou mais baixo, ajuste este valor */
+        scroll-margin-top: 80px; 
+    }
+}
+
+/* ==========================================
+   PADRONIZAÇÃO GLOBAL DE SEÇÕES E ANCORAGEM 
+   ========================================== */
+section {
+    padding-top: 70px !important;    
+    padding-bottom: 60px !important; 
+    text-align: left;
+    scroll-margin-top: 105px !important; 
+    scroll-behavior: smooth;
+}
+
+/* ==========================================
+   SOLUÇÃO ULTRA FORTE (QUEBRA DE CACHE)
+   ========================================== */
+
+/* 1. Correção de rolagem para todas as seções padrão */
+#hero-overview, #methodology, #contract, #architecture-cases {
+    scroll-margin-top: 100px !important;
+}
+
+/* 2. Força o distanciamento do título principal no Desktop */
+#executive-overview {
+    scroll-margin-top: 165px !important; /* Empurra o título bem para baixo do header */
+    padding-top: 80px !important;
+    padding-bottom: 80px !important;
+}
+
+/* 3. Força a cor azulada no subtítulo da seção */
+#executive-overview .section-subtitle {
+    color: #a0aec0 !important;
+    margin-bottom: 45px !important;
+}
+
+/* 4. BLINDAGEM DOS ITENS (Ignora classes e foca direto nas tags internas) */
+#executive-overview div div {
+    display: block !important;
+    margin-bottom: 35px !important; /* CRIA O ESPAÇO ENTRE OS CONJUNTOS */
+    width: 100% !important;
+    text-align: left !important;
+}
+
+/* TITULOS DOS ITENS: Força a cor BRANCA e o espaço abaixo dele */
+#executive-overview div div h3 {
+    color: #ffffff !important;
+    font-size: 1.3rem !important;
+    font-weight: 600 !important;
+    margin-top: 0 !important;
+    margin-bottom: 12px !important; /* ESPAÇO ENTRE TÍTULO E DESCRIÇÃO */
+    display: block !important;
+}
+
+/* DESCRIÇÕES DOS ITENS: Força a cor AZUL/CINZA corporativa */
+#executive-overview div div p {
+    color: #a0aec0 !important; /* COR AZULADA ORIGINAL */
+    font-size: 1rem !important;
+    line-height: 1.6 !important;
+    margin: 0 !important;
+    display: block !important;
+}
+
+/* 5. Estabilização do Mobile e fim das duas linhas na troca de idioma */
+@media (max-width: 768px) {
+    #executive-overview, #hero-overview, #methodology, #contract, #architecture-cases {
+        scroll-margin-top: 100px !important; 
+    }
+    
+    #executive-overview {
+        padding-top: 50px !important;
+        padding-bottom: 50px !important;
+    }
+    
+    #executive-overview div div {
+        margin-bottom: 25px !important;
+    }
+}
 }
