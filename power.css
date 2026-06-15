@@ -25,6 +25,10 @@ body {
   color: var(--texto-principal);
   line-height: 1.6;
   overflow-x: hidden;
+  
+  /* ADICIONE ESTAS DUAS LINHAS AQUI: */
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px; 
 }
 
 .container {
