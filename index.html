@@ -19,7 +19,9 @@
 <div class="lang-switch">
             <a href="javascript:void(0);" class="lang-btn active">EN</a>
             <a href="javascript:void(0);" onclick="switchLanguage('pt.html')" class="lang-btn">PT</a>
-          </div>
+          
+
+</div>
 
                     <nav>
                         <a href="#hero-overview" class="active">Overview</a>
@@ -288,6 +290,51 @@
         window.location.href = targetPage;
       }
     }
+
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const navLinks = document.querySelectorAll('nav a');
+        
+        // Mapeia as seções correspondentes aos links do menu
+        const sections = Array.from(navLinks).map(link => {
+            return document.querySelector(link.getAttribute('href'));
+        }).filter(section => section !== null);
+
+        function activateMenuOnScroll() {
+            let currentSectionId = '';
+            // Detecta a posição atual da tela considerando o topo
+            const scrollPosition = window.scrollY + 120; 
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+
+                if (scrollPosition >= sectionTop && scrollPosition < (sectionTop + sectionHeight)) {
+                    currentSectionId = section.getAttribute('id');
+                }
+            });
+
+            // Força a 'Visão Geral' se estiver muito próximo ao topo absoluto da página
+            if (window.scrollY < 50 && sections.length > 0) {
+                currentSectionId = sections[0].getAttribute('id');
+            }
+
+            // Alterna a classe active (Branco) e inativo (Cinza original)
+            navLinks.forEach(link => {
+                if (link.getAttribute('href') === `#${currentSectionId}`) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+        }
+
+        // Executa a função ao rolar a página e no carregamento inicial
+        window.addEventListener('scroll', activateMenuOnScroll);
+        activateMenuOnScroll(); 
+    });
+
+
   </script>
 
 </body>
