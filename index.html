@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PowerCraftStudio · B2B Solutions Architect</title>
+    <!-- Fontes e Ícones -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* ... (mesmo CSS de antes, mantido intacto) ... */
+        :root {
+            --bg-dark: #0a1128;
+            --bg-light: #f8fafc;
+            --bg-card: #ffffff;
+            --text-primary: #1c2541;
+            --text-secondary: #475569;
+            --text-light: #ffffff;
+            --accent-blue: #0d6efd;
+            --accent-green: #28a745;
+            --border-radius: 0 px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { background-color: var(--bg-light); color: var(--text-primary); line-height: 1.6; overflow-x: hidden; }
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .btn-primary {
+            display: inline-block; background-color: var(--accent-blue); color: #fff;
+            padding: 12px 32px; border-radius: 50px; font-weight: 600; font-size: 1rem;
+            transition: all 0.3s ease; border: none; cursor: pointer; box-shadow: 0 4px 10px rgba(13, 110, 253, 0.2);
+        }
+        .btn-primary:hover { background-color: #0b5ed7; transform: translateY(-2px); box-shadow: 0 6px 15px rgba(13, 110, 253, 0.3); }
+
+        /* HERO SECTION */
+        .hero {
+            background: var(--bg-dark); min-height: 100vh; display: flex; align-items: center; padding: 10px 20px 80px 20px;
+            position: relative; overflow: hidden;
+        }
+        .hero-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; width: 100%;
+        }
+        .hero-text h1 { font-size: 3.5rem; color: #fff; font-weight: 700; margin-bottom: 1.5rem; letter-spacing: -0.02em; }
+        .hero-text p { font-size: 1.2rem; color: #475569; max-width: 500px; margin-bottom: 2.5rem; }
+        .hero-image-container {
+            border-radius: var(--border-radius); overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            background: #000; display: flex; justify-content: center; align-items: center;
+        }
+        .hero-image-container img { width: 100%; height: auto; display: block; min-height: 300px; object-fit: cover; }
+
+        /* SECTION TITLES */
+        .section { padding: 80px 0; }
+        .section-header { margin-bottom: 3rem; max-width: 700px; }
+        .section-header h2 { font-size: 2.2rem; font-weight: 700; margin-bottom: 2rem; border-left: 5px solid var(--accent-blue); padding-left: 1.2rem; }
+        .section-header p { color: var(--text-secondary); font-size: 1.1rem; }
+
+        /* ABOUT (FOUNDER) */
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
+        .about-text { display: flex; flex-direction: column; gap: 1rem; }
+        .about-text p { color: var(--text-secondary); }
+        .about-text strong { color: var(--text-primary); }
+
+        /* CORE COMPETENCIES & SPLIT LAYOUTS (ZIG-ZAG ALTERNATING) */
+        .alternating-item, .split-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+            margin-bottom: 3rem;
+        }
+        .alternating-item:last-child { margin-bottom: 0; }
+        .alt-image, .split-image-container {
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.04);
+            background: #fff;
+            display: flex;
+            justify-content: center;
+        }
+        .alt-image img, .split-image-container img { width: 100%; height: auto; object-fit: cover; min-height: 250px; max-height: 350px; }
+        .alt-text h4 { font-size: 1.4rem; margin-bottom: 1rem; color: var(--accent-blue); }
+        .alt-text p { color: var(--text-secondary); font-size: 1.05rem; }
+        .split-content { display: flex; flex-direction: column; gap: 1.8rem; }
+        .split-content .alt-text h4 { font-size: 1.1rem; margin-bottom: 0.3rem; }
+        .split-content .alt-text p { color: var(--text-secondary); font-size: 0.95rem; }
+
+        /* BUTTON TO CASES */
+        .btn-cases {
+            display: inline-block;
+            background: transparent;
+            color: var(--accent-blue);
+            padding: 8px 0;
+            font-weight: 600;
+            font-size: 0.95rem;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            border-bottom: 2px solid var(--accent-blue);
+        }
+        .btn-cases:hover {
+            color: #0b5ed7;
+            border-bottom-color: #0b5ed7;
+            transform: translateX(4px);
+        }
+        .btn-cases i {
+            margin-left: 6px;
+            font-size: 0.8rem;
+            transition: transform 0.3s ease;
+        }
+        .btn-cases:hover i {
+            transform: translateX(4px);
+        }
+
+        /* ENGAGEMENT MODELS (NOVO LAYOUT 1/3 e 2/3) */
+        .engagement-wrapper {
+            display: grid; grid-template-columns: 1fr 2fr; gap: 3rem; align-items: stretch;
+            background: #ffffff; padding: 0; border-radius: var(--border-radius);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.04); overflow: hidden;
+        }
+        .engagement-image-block { background: #e2e8f0; min-height: 350px; display: flex; justify-content: center; align-items: center; overflow: hidden; }
+        .engagement-image-block img { width: 100%; height: 100%; object-fit: cover; }
+        .engagement-text-block { display: flex; flex-direction: column; gap: 0; padding: 3rem 3rem 3rem 0; }
+        .engagement-text-item { padding-bottom: 1.5rem; margin-bottom: 1.5rem; border-bottom: 1px solid #e2e8f0; }
+        .engagement-text-item:last-child { border-bottom: none; padding-bottom: 0; margin-bottom: 0; }
+        .engagement-text-item h4 { font-size: 1.2rem; margin-bottom: 0.4rem; color: var(--bg-dark); }
+        .engagement-text-item p { color: var(--text-secondary); font-size: 0.95rem; }
+
+        /* GAME ON & CTA */
+        .game-on-section { background: var(--bg-dark); color: #fff; padding: 100px 0; text-align: center; }
+        .game-on-section h2 { font-size: 3rem; margin-bottom: 1.5rem; }
+        .game-on-section p { color: #9fb3c8; margin-bottom: 3rem; max-width: 600px; margin-left: auto; margin-right: auto; }
+        .links-cta { display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; }
+        .links-cta a { background: rgba(255,255,255,0.1); padding: 12px 32px; border-radius: 50px; transition: 0.3s; border: 1px solid rgba(255,255,255,0.1); }
+        .links-cta a:hover { background: var(--accent-blue); border-color: var(--accent-blue); transform: scale(1.02); }
+        .links-cta .btn-cases-white {
+            background: rgba(255,255,255,0.1);
+            color: #fff;
+            border: 1px solid rgba(255,255,255,0.2);
+            padding: 12px 32px;
+            border-radius: 50px;
+            transition: 0.3s;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+        }
+        .links-cta .btn-cases-white:hover {
+            background: var(--accent-blue);
+            border-color: var(--accent-blue);
+            transform: scale(1.02);
+        }
+        .footer-copy { margin-top: 4rem; font-size: 0.8rem; color: #64748b; }
+
+        /* MODAL DE CONTATO */
+        .modal-overlay { position: fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.7); z-index: 9999; display:flex; align-items:center; justify-content:center; opacity:0; pointer-events: none; transition: 0.3s; backdrop-filter: blur(4px); }
+        .modal-overlay.active { opacity:1; pointer-events: auto; }
+        .modal-container { background: #fff; max-width: 480px; width: 90%; padding: 2.5rem; border-radius: 0px; position: relative; box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
+        .modal-close { position: absolute; top:1rem; right:1.5rem; font-size: 2rem; cursor: pointer; background: none; border: none; color: #64748b; }
+        .form-group { margin-bottom: 1.2rem; }
+        .form-group label { display: block; font-weight: 600; margin-bottom: 0.4rem; font-size: 0.9rem; color: var(--text-primary); }
+        .form-group input, .form-group textarea { width:100%; padding: 0.8rem 1rem; border: 1px solid #e2e8f0; border-radius: 8px; font-size:0.95rem; }
+        .modal-submit { width: 100%; justify-content: center; margin-top: 0.5rem; }
+
+        /* ── Navigation Group (dots + language toggle) ── */
+        .nav-group {
+            position: fixed;
+            right: 2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 999;
+        }
+
+        /* ── navigation dots ── */
+        .nav-dots {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            align-items: center;
+        }
+        .nav-dots a {
+            display: block;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            transition: all 0.25s;
+            text-decoration: none;
+            box-shadow: 0 0 0 2px rgba(0,0,0,0.05);
+        }
+        .nav-dots a.active {
+            background: #0d6efd;
+            border-color: #0d6efd;
+            transform: scale(1.25);
+            box-shadow: 0 0 0 4px rgba(13, 110, 253, 0.3);
+        }
+        .nav-dots a:hover {
+            transform: scale(1.2);
+        }
+
+        /* ── Separador ── */
+        .nav-separator {
+            width: 14px;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.15);
+            margin: 0.8rem 0;
+        }
+
+        /* ── Language Toggle ── */
+        .lang-toggle {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            align-items: center;
+        }
+        .lang-toggle button {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.08);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            box-shadow: 0 0 0 2px rgba(0,0,0,0.05);
+            font-size: 0;
+        }
+        .lang-toggle button .flag {
+            font-size: 0.55rem;
+            line-height: 1;
+            filter: grayscale(0.2);
+            transition: filter 0.3s ease;
+        }
+        .lang-toggle button.active {
+            background: #0d6efd;
+            border-color: #0d6efd;
+            transform: scale(1.25);
+            box-shadow: 0 0 0 4px rgba(13, 110, 253, 0.3);
+        }
+        .lang-toggle button.active .flag {
+            filter: grayscale(0);
+        }
+        .lang-toggle button:hover {
+            transform: scale(1.2);
+            border-color: rgba(255, 255, 255, 0.8);
+        }
+        .lang-toggle button:hover .flag {
+            filter: grayscale(0);
+        }
+        /* Tooltip */
+        .lang-toggle button::after {
+            content: attr(data-lang);
+            position: absolute;
+            right: 24px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 0.6rem;
+            color: rgba(255, 255, 255, 0.6);
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+        .lang-toggle button:hover::after {
+            opacity: 1;
+        }
+
+/* =========================================
+   RESPONSIVIDADE - UNIFICADA
+   ========================================= */
+@media (max-width: 992px) {
+    .hero-grid, .about-grid { grid-template-columns: 1fr; }
+    .engagement-wrapper { grid-template-columns: 1fr; }
+    .engagement-text-block { padding: 2rem; }
+    .hero-text h1 { font-size: 2.8rem; }
+    .hero-image-container { order: -1; }
+    
+    .nav-group {
+        right: 1rem;
+    }
+    .nav-dots {
+        gap: 1rem;
+    }
+    .nav-dots a {
+        width: 12px;
+        height: 12px;
+    }
+    .nav-separator {
+        width: 12px;
+        margin: 0.5rem 0;
+    }
+    .lang-toggle {
+        gap: 1rem;
+    }
+    .lang-toggle button {
+        width: 12px;
+        height: 12px;
+    }
+    .lang-toggle button .flag {
+        font-size: 0.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .alternating-item, .split-layout {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        margin-bottom: 4rem;
+    }
+    .alternating-item .alt-text, 
+    .split-layout .split-content {
+        order: 1;
+    }
+    .alternating-item .alt-image, 
+    .split-layout .split-image-container {
+        order: 2;
+        width: 100%;
+    }
+    
+    /* HERO - MOBILE CORRIGIDO */
+    .hero .container {
+        padding: 2rem 1rem !important;
+        padding-left: calc(20px + 40px) !important;
+    }
+    
+    .hero-text {
+        min-width: unset !important;
+        max-width: 100% !important;
+        width: 100%;
+    }
+    
+    .hero-text h1 {
+        font-size: 2rem !important;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        white-space: normal;
+        line-height: 1.2;
+    }
+    
+    .hero-text p {
+        font-size: 0.95rem !important;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        white-space: normal;
+        line-height: 1.5;
+    }
+    
+    .hero-title {
+        font-size: 2rem !important;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        white-space: normal;
+        line-height: 1.2;
+    }
+    
+    .section-header h2 { font-size: 1.8rem; }
+    .alt-text h4 { font-size: 1.2rem; }
+    
+    /* Navigation Group - Mobile */
+    .nav-group {
+        right: 0.5rem;
+    }
+    .nav-dots {
+        gap: 0.6rem;
+    }
+    .nav-dots a {
+        width: 8px;
+        height: 8px;
+        border-width: 1.5px;
+    }
+    .nav-dots a.active {
+        transform: scale(1.3);
+        box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.3);
+    }
+    .nav-separator {
+        width: 8px;
+        margin: 0.25rem 0;
+    }
+    .lang-toggle {
+        gap: 0.6rem;
+    }
+    .lang-toggle button {
+        width: 8px;
+        height: 8px;
+        border-width: 1.5px;
+    }
+    .lang-toggle button .flag {
+        font-size: 0.3rem;
+    }
+    .lang-toggle button.active {
+        transform: scale(1.3);
+        box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.3);
+    }
+    .lang-toggle button::after {
+        font-size: 0.4rem;
+        right: 14px;
+    }
+    .lang-toggle button:hover::after {
+        opacity: 0;
+    }
+}
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Dots + Language Toggle - Agrupados -->
+    <div class="nav-group" id="navGroup">
+        <!-- Dots de navegação -->
+        <div class="nav-dots">
+            <a href="#Hero" class="active"></a>
+            <a href="#What-We-Do"></a>
+            <a href="#What-You-Get"></a>
+            <a href="#Services-Provided"></a>
+            <a href="#Roadmap"></a>
+            <a href="#Engagement-Models"></a>
+            <a href="#Safeguards"></a>
+            <a href="#Game-On"></a>
+        </div>
+        
+        <!-- Separador -->
+        <div class="nav-separator"></div>
+        
+        <!-- Language Toggle -->
+        <div class="lang-toggle">
+            <button class="active" data-lang="EN" onclick="toggleLanguage('en')">
+                <span class="flag">EN</span>
+            </button>
+            <button data-lang="PT" onclick="toggleLanguage('pt')">
+                <span class="flag">PT</span>
+            </button>
+        </div>
+    </div>
+
+<!-- HERO SECTION -->
+<section id="Hero" class="hero" style="background-image: url('CPCS.png'); background-size: 600px; background-position: left; background-repeat: no-repeat; position: relative;">
+    <div class="container" style="position: relative; z-index: 2; min-height: 80vh; display: grid; grid-template-columns: 1fr; padding: 2rem 0 2rem calc(20px + 150px); text-align: left;">
+        <p></p><p></p><img src="logo-white_350.png" alt="Logo" style="margin-left: auto;"/></p>
+        <div class="hero-text" style="max-width: 900px; position: relative; z-index: 1;">
+                <h1 class="hero-title" style="color: #ffffff; text-align: left; font-size: 3.5rem; margin-bottom: 0.5rem; text-shadow: 0 0 30px rgba(0, 255, 150, 0.15);">
+                    <span class="lang-en">The "SharePoint First" Advantage</span>
+                    <span class="lang-pt" style="display:none;">A Vantagem "SharePoint First"</span>
+                </h1>
+                <br>
+                <p style="color: rgba(235,235,235,1); font-size: 1.25rem; line-height: 1.6; margin-bottom: 3.0rem; max-width: 100%;">
+                    <span class="lang-en">Maximize your M365 investment with PowerCraftStudio's "SharePoint First" approach, offering agile, low-cost solutions that eliminate upfront licensing fees.<br><br></span>
+                    <span class="lang-pt" style="display:none;">Maximize seu investimento no M365 com a abordagem "SharePoint First" da PowerCraftStudio, que oferece soluções ágeis e de baixo custo, eliminando taxas iniciais de licenciamento.<br><br></span>
+                </p>
+                <a href="#" class="btn-primary open-modal-btn" style="display: inline-block; background: #0d6efd; color: #ffffff; padding: 0.85rem 2.8rem; border-radius: 50px; text-decoration: none; font-weight: 700; font-size: 1.1rem; transition: all 0.3s; box-shadow: 0 0 25px rgba(13, 110, 253, 0.4);">
+                    <span class="lang-en">Let's Talk</span>
+                    <span class="lang-pt" style="display:none;">Vamos Conversar</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: WHAT WE DO -->
+    <section id="What-We-Do" class="section" style="background: #f8fafc; padding: 80px 0;">
+        <div class="container">
+            <div class="section-header" style="margin-bottom: 2rem; text-align: left;">
+                <h2>
+                    <span class="lang-en">What We Do</span>
+                    <span class="lang-pt" style="display:none;">O Que Fazemos</span>
+                </h2>
+            </div>
+            <div class="split-layout">
+                <div class="split-image-container">
+                    <img src="answer-any-question.jpg" alt="What-We-Do Img" style="width: 100%; height: auto;" />
+                </div>
+                <div class="split-content">
+                     <div class="alt-text">
+                       <h4>
+                        <br>
+                       </h4> 
+                    </div>
+                    <div class="alt-text">
+                        <h4>
+                            <span class="lang-en">Bridging Operational Gaps</span>
+                            <span class="lang-pt" style="display:none;">Preenchendo Lacunas Operacionais</span>
+                        </h4>
+                        <p class="lang-en">Eliminate manual tasks, spreadsheet overload, and disconnected processes that are often overlooked due to high integration costs.</p>
+                        <p class="lang-pt" style="display:none;">Elimine tarefas manuais, o excesso de planilhas e processos desconectados que muitas vezes são ignorados devido aos altos custos de integração.</p>
+                    </div>
+                    <div class="alt-text">
+
+                    </div>
+                    <div class="alt-text">
+                        <h4>
+                            <span class="lang-en">Rapid Deployment & Integration</span>
+                            <span class="lang-pt" style="display:none;">Implantação e Integração Rápidas</span>
+                        </h4>
+                        <p class="lang-en">Optimize your core applications by deploying secure, customized tools in weeks rather than months, connecting the Power Platform directly to your legacy systems.</p>
+                        <p class="lang-pt" style="display:none;">Otimize suas aplicações principais implantando ferramentas seguras e personalizadas em semanas, em vez de meses, conectando a Power Platform diretamente aos seus sistemas legados.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: WHAT YOU GET -->
+    <section id="What-You-Get" class="section">
+        <div class="container">
+            <div class="section-header" style="margin-bottom: 2rem;">
+                <h2>
+                    <span class="lang-en">What You Get</span>
+                    <span class="lang-pt" style="display:none;">O Que Você Ganha</span>
+                </h2>
+            </div>
+            <div class="split-layout">
+                <div class="split-content">
+                    <div class="alt-text">
+                        <h4>
+                            <span class="lang-en">70%+ Lead Time Reduction</span>
+                            <span class="lang-pt" style="display:none;">70%+ Redução de Lead Time</span>
+                        </h4>
+                        <p class="lang-en">Optimization of internal approval workflows, minimization of email exchanges, and digitization of critical workflow handoffs.</p>
+                        <p class="lang-pt" style="display:none;">Otimização de fluxos de aprovação internos, redução de trocas de e-mails e digitalização de transferências críticas de etapas do processo.</p>
+                    </div>
+                    <div class="alt-text">
+                        <h4>
+                            <span class="lang-en">80%+ Automation Efficiency</span>
+                            <span class="lang-pt" style="display:none;">80%+ Eficiência de Automação</span>
+                        </h4>
+                        <p class="lang-en">Elimination of redundant works and manual tracking overhead for back-office and operations teams.</p>
+                        <p class="lang-pt" style="display:none;">Eliminação de tarefas redundantes e da carga de trabalho associada ao acompanhamento manual para as equipes de back-office e operações.</p>
+                    </div>
+                    <div class="alt-text">
+                        <h4>
+                            <span class="lang-en">Quantitative Value</span>
+                            <span class="lang-pt" style="display:none;">Valor Quantitativo</span>
+                        </h4>
+                        <p class="lang-en">Real-time KPI tracking and active SLA monitors.</p>
+                        <p class="lang-pt" style="display:none;">Rastreamento de KPI em tempo real e monitores de SLA ativos.</p>
+                        <p class="lang-en">Centralized and fully audited database backends.</p>
+                        <p class="lang-pt" style="display:none;">Backends de banco de dados centralizados e totalmente auditados.</p>
+                        <p class="lang-en">Error-free data entry validations.</p>
+                        <p class="lang-pt" style="display:none;">Validações de entrada de dados livres de erros.</p>
+                        <!-- NOVO BOTÃO PARA CASES -->
+                        <div style="margin-top: 1rem;">
+                            <a href="#" class="btn-cases" onclick="goToCases(event, 'what-you-get')">
+                                <span class="lang-en">View Case Studies <i class="fas fa-arrow-right"></i></span>
+                                <span class="lang-pt" style="display:none;">Ver Casos de Sucesso <i class="fas fa-arrow-right"></i></span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="split-image-container">
+                    <img src="contract-3.jpg" alt="What-You-GetImg" style="width: 100%; height: auto;" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: SERVICES PROVIDED -->
+    <section id="Services-Provided" class="section">
+        <div class="container">
+            <div class="section-header" style="margin-bottom: 2rem; text-align: left;">
+                <h2>
+                    <span class="lang-en">Services Provided</span>
+                    <span class="lang-pt" style="display:none;">Nossos Serviços</span>
+                </h2>
+            </div>
+            <div class="split-layout">
+                <div class="split-image-container">
+                    <img src="services.jpg" alt="Services Provided Img" style="width: 100%; height: auto;" />
+                </div>
+                <div class="split-content">
+                    <div class="alt-text">
+
+                    </div>
+                    <div class="alt-text">
+                        <h4>
+                            <span class="lang-en">End-to-End Building & Deployment</span>
+                            <span class="lang-pt" style="display:none;">Construção e Implantação End-tp-End</span>
+                        </h4>
+                        <p class="lang-en">Deliver complete projects, from requirements gathering, architecture, development, testing, and production launch.</p>
+                        <p class="lang-pt" style="display:none;">Entrega de projetos completos, desde o levantamento de requisitos, arquitetura, desenvolvimento e testes até o lançamento em produção.</p>
+                    </div>
+                    <div class="alt-text">
+                        <h4>
+                            <span class="lang-en">Solution Architecture</span>
+                            <span class="lang-pt" style="display:none;">Arquitetura de Soluções</span>
+                        </h4>
+                        <p class="lang-en">Workflow logic, integration layers, and security frameworks to connect the Power Platform into your underlying legacy assets.</p>
+                        <p class="lang-pt" style="display:none;">Lógica de fluxos de trabalho, camadas de integração e estruturas de segurança para conectar a Power Platform aos seus ativos legados.</p>
+                    </div>
+                    <div class="alt-text">
+                        <h4>
+                            <span class="lang-en">Support & Maintenance</span>
+                            <span class="lang-pt" style="display:none;">Suporte & Manutenção</span>
+                        </h4>
+                        <p class="lang-en">Continuous maintenance, performance optimization, and active troubleshooting for the applications we deploy.</p>
+                        <p class="lang-pt" style="display:none;">Manutenção contínua, otimização de desempenho e resolução proativa de problemas para as aplicações que implantamos.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: DELIVERY ROADMAP -->
+    <section id="Roadmap" class="section" style="background: #fff;">
+        <div class="container">
+            <div class="section-header" style="margin-bottom: 2rem;">
+                <h2>
+                    <span class="lang-en">Delivery Roadmap</span>
+                    <span class="lang-pt" style="display:none;">Roadmap</span>
+                </h2>
+            </div>
+            <div class="split-layout">
+                <div class="split-content">
+                    <div class="alt-text">
+
+                    </div>
+                    <div class="alt-text">
+                        <h4>
+                            <span class="lang-en">Requirements Gathering & Solution Design</span>
+                            <span class="lang-pt" style="display:none;">LLevantamento de Requisitos & Desenho da Solução</span>
+                        </h4>
+                        <p class="lang-en">Mapping business rules and operational requirements, conceptual solution architecture, application blueprint, and commercial proposal.</p>
+                        <p class="lang-pt" style="display:none;">Mapeamento de regras de negócio e requisitos operacionais, arquitetura conceitual da solução, projeto da aplicação e proposta comercial.</p>
+                    </div>
+                    <div class="alt-text">
+                        <h4>
+                            <span class="lang-en">Construction & Validations</span>
+                            <span class="lang-pt" style="display:none;">Construção & Validação</span>
+                        </h4>
+                        <p class="lang-en">Modular building, rigorous test, security role validations, and integrations.</p>
+                        <p class="lang-pt" style="display:none;">Desenvolvimento modular, testes rigorosos, validação de perfis de segurança e integrações.</p>
+                    </div>
+                    <div class="alt-text">
+                        <h4>
+                            <span class="lang-en">Go-Live & Post-Launch</span>
+                            <span class="lang-pt" style="display:none;">Go-Live e Pós-Lançamento</span>
+                        </h4>
+                        <p class="lang-en">Production launch, key-users training, and operating support.</p>
+                        <p class="lang-pt" style="display:none;">Lançamento em produção, treinamento de usuários-chave e suporte operacional.</p>
+                    </div>
+                </div>
+                <div class="split-image-container">
+                    <img src="roadmap.jpg" alt="Roadmap Img" style="width: 100%; height: auto;" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: ENGAGEMENT MODELS -->
+    <section id="Engagement-Models" class="section" style="background: #f8fafc; padding: 80px 0;">
+        <div class="container">
+            <div class="section-header" style="margin-bottom: 2rem; text-align: left;">
+                <h2>
+                    <span class="lang-en">Engagement Models</span>
+                    <span class="lang-pt" style="display:none;">Contratação</span>
+                </h2>
+            </div>
+            <div class="split-layout">
+                <div class="split-image-container">
+                    <img src="contract.jpg" alt="Engagement Models" style="width: 100%; height: auto; " />
+                </div>
+                <div class="split-content">
+                    <div class="alt-text">
+
+                    </div>
+                    <div class="alt-text">
+                        <h4>
+                            <span class="lang-en">Fixed Price</span>
+                            <span class="lang-pt" style="display:none;">Preço Fixo</span>
+                        </h4>
+                        <p class="lang-en">Maximum cost predictability through a clearly defined project scope and a single initial financial agreement.</p>
+                        <p class="lang-pt" style="display:none;">Máxima previsibilidade de custos por meio de um escopo de projeto bem delimitado e um único acordo financeiro inicial.</p>
+                    </div>
+                    <div class="alt-text">
+                        <h4>
+                            <span class="lang-en">Recurring Contract</span>
+                            <span class="lang-pt" style="display:none;">Contrato de Recorrência</span>
+                        </h4>
+                        <p class="lang-en">Continuous product evolution, rapid incident resolution, and specialized support backed by an agile team focused on excellence.</p>
+                        <p class="lang-pt" style="display:none;">Evolução contínua de produtos, correção rápida de incidentes e suporte especializado sustentados por uma equipe ágil focada em excelência..</p>
+                    </div>
+                    <div class="alt-text">
+                        <h4>
+                            <span class="lang-en">On-Demand Support</span>
+                            <span class="lang-pt" style="display:none;">Suporte Sob Demanda</span>
+                        </h4>
+                        <p class="lang-en">Total flexibility with ad-hoc hours for performance improvements and governance consulting, without the need for monthly contracts.</p>
+                        <p class="lang-pt" style="display:none;">Flexibilidade total com horas avulsas para melhorias de desempenho e consultoria de governança, sem a necessidade de contratos mensais.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: PROJECT SAFEGUARDS -->
+    <section id="Safeguards" class="section" style="background: #fff;">
+        <div class="container">
+            <div class="section-header" style="margin-bottom: 2rem;">
+                <h2>
+                    <span class="lang-en">Safeguards</span>
+                    <span class="lang-pt" style="display:none;">Salvaguardas</span>
+                </h2>
+            </div>
+            <div class="split-layout">
+                <div class="split-content">
+                    <div class="alt-text">
+                        <h4>
+                            <br>
+                        </h4>
+                    </div>
+                    <div class="alt-text">
+                        <h4>
+                            <span class="lang-en">Intellectual Property (IP) Safeguard</span>
+                            <span class="lang-pt" style="display:none;">Propriedade Intelectual (PI)</span>
+                        </h4>
+                        <p class="lang-en">Full ownership of source code, backend flows, custom integrations, and data schemas transitions directly to your company upon milestone completion.</p>
+                        <p class="lang-pt" style="display:none;">A propriedade do código-fonte, fluxos de backend, e integrações personalizadas é transferida para sua empresa na conclusão de cada etapa.</p>
+                    </div>
+                    <div class="alt-text">
+                        <h4>
+                            <span class="lang-en">Non-Disclosure Agreement (NDA)</span>
+                            <span class="lang-pt" style="display:none;">Acordo de Confidencialidade (NDA)</span>
+                        </h4>
+                        <p class="lang-en">Binding legal confidentiality guarding your internal infrastructure, business logic, and enterprise files.</p>
+                        <p class="lang-pt" style="display:none;">Garantia de confidencialidade protegendo sua infraestrutura interna, regras de negócio e arquivos corporativos.</p>
+                    </div>
+                </div>
+                <div class="split-image-container">
+                    <img src="safeguards-2.jpg" alt="Safeguards Img" style="width: 100%; height: auto;" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: GAME ON / CTA -->
+    <section id="Game-On" class="game-on-section">
+        <div class="container">
+            <h2>
+                <span class="lang-en">Let's Get Started?</span>
+                <span class="lang-pt" style="display:none;">Vamos Começar?</span>
+            </h2>
+            <p>
+                <span class="lang-en">Ready to transform your business operations<br>with high-impact custom applications?<br><br>Get in touch to discover how we eliminate operational bottlenecks.</span>
+                <span class="lang-pt" style="display:none;">Pronto para transformar suas operações de negócios com aplicativos personalizados de alto impacto?<br><br>Entre em contato para descobrir como eliminamos gargalos operacionais.</span>
+            </p>
+            <div class="links-cta">
+                <a href="https://www.linkedin.com/in/sergioelias-powercraftstudio" target="_blank">LinkedIn</a>
+                <a href="#" target="_blank">Upwork</a>
+                <!-- NOVO BOTÃO PARA CASES -->
+                <a href="#" class="btn-cases-white" onclick="goToCases(event, 'game-on')">
+                    <span class="lang-en">Case Studies <i class="fas fa-arrow-right"></i></span>
+                    <span class="lang-pt" style="display:none;">Casos de Sucesso <i class="fas fa-arrow-right"></i></span>
+                </a>
+                <a href="#" class="btn-primary open-modal-btn" style="background: var(--accent-blue); color: #fff; box-shadow: none;">
+                    <span class="lang-en">Contact Us</span>
+                    <span class="lang-pt" style="display:none;">Fale Conosco</span>
+                </a>
+            </div>
+            <div class="footer-copy">
+                &copy; 2026 PowerCraftStudio. 
+                <span class="lang-en">All rights reserved.</span>
+                <span class="lang-pt" style="display:none;">Todos os direitos reservados.</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- MODAL DE CONTATO -->
+    <div class="modal-overlay" id="modalContact">
+        <div class="modal-container">
+            <button class="modal-close" id="closeModalBtn">&times;</button>
+            <h3 style="margin-bottom: 0.5rem;">
+                <span class="lang-en">Let's Talk</span>
+                <span class="lang-pt" style="display:none;">Vamos Conversar</span>
+            </h3>
+            <p style="margin-bottom: 1.5rem; color: var(--text-secondary);">
+                <span class="lang-en">Fill out the form below and we will get back to you shortly.</span>
+                <span class="lang-pt" style="display:none;">Preencha o formulário abaixo e retornaremos em breve.</span>
+            </p>
+            <form action="https://api.web3forms.com/submit" method="POST">
+                <input type="hidden" name="access_key" value="b26ccd9f-1e8f-4d3a-ab0f-671a470a08ad" />
+                <div class="form-group">
+                    <label><span class="lang-en">Name</span><span class="lang-pt" style="display:none;">Nome</span></label>
+                    <input type="text" name="name" required placeholder="Your Name / Seu Nome">
+                </div>
+                <div class="form-group">
+                    <label>E-mail</label>
+                    <input type="email" name="email" required placeholder="your.email@company.com">
+                </div>
+                <div class="form-group">
+                    <label><span class="lang-en">Message</span><span class="lang-pt" style="display:none;">Mensagem</span></label>
+                    <textarea name="message" rows="3" required placeholder="Tell us briefly about your project or need"></textarea>
+                </div>
+                <button type="submit" class="btn-primary modal-submit">
+                    <span class="lang-en">Send Message</span>
+                    <span class="lang-pt" style="display:none;">Enviar Mensagem</span>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // FUNÇÃO TROCA DE IDIOMA
+        function toggleLanguage(lang) {
+            const btns = document.querySelectorAll('.lang-toggle button');
+            btns.forEach(btn => btn.classList.remove('active'));
+            document.querySelector(`.lang-toggle button[onclick="toggleLanguage('${lang}')"]`).classList.add('active');
+
+            const enEls = document.querySelectorAll('.lang-en');
+            const ptEls = document.querySelectorAll('.lang-pt');
+
+            if(lang === 'en') {
+                enEls.forEach(el => el.style.display = '');
+                ptEls.forEach(el => el.style.display = 'none');
+                document.documentElement.lang = 'en';
+            } else {
+                enEls.forEach(el => el.style.display = 'none');
+                ptEls.forEach(el => el.style.display = '');
+                document.documentElement.lang = 'pt';
+            }
+
+            // Salva o idioma no localStorage para ser usado pelo cases.html
+            localStorage.setItem('preferredLang', lang);
+        }
+
+        // FUNÇÃO PARA NAVEGAR PARA CASES MANTENDO O IDIOMA E A SEÇÃO DE ORIGEM
+        function goToCases(event, section) {
+            event.preventDefault();
+            
+            // Detecta qual idioma está ativo
+            const isPT = document.querySelector('.lang-pt').style.display !== 'none';
+            const lang = isPT ? 'pt' : 'en';
+            
+            // Salva no localStorage para garantir
+            localStorage.setItem('preferredLang', lang);
+            
+            // Navega para cases.html com o idioma e a seção de origem
+            window.location.href = 'cases.html?lang=' + lang + '&from=' + section;
+        }
+
+        // FUNÇÃO MODAL
+        document.addEventListener('DOMContentLoaded', function() {
+            const modal = document.getElementById('modalContact');
+            const openBtns = document.querySelectorAll('.open-modal-btn');
+            const closeBtn = document.getElementById('closeModalBtn');
+
+            openBtns.forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    modal.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                });
+            });
+
+            closeBtn.addEventListener('click', function() {
+                modal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+
+            // NAVEGAÇÃO POR DOTS - CORRIGIDA
+            const dots = document.querySelectorAll('.nav-dots a');
+            const sections = document.querySelectorAll('section[id]');
+
+            function updateActiveDot() {
+                const scrollPosition = window.scrollY + 150;
+                let currentIndex = 0;
+
+                sections.forEach((section, index) => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.offsetHeight;
+                    if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                        currentIndex = index;
+                    }
+                });
+
+                dots.forEach((dot, i) => {
+                    dot.classList.toggle('active', i === currentIndex);
+                });
+            }
+
+            dots.forEach((dot) => {
+                dot.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetSection = document.getElementById(targetId);
+                    if (targetSection) {
+                        targetSection.scrollIntoView({ behavior: 'smooth' });
+                    } else {
+                        console.log('Seção não encontrada:', targetId);
+                    }
+                });
+            });
+
+            window.addEventListener('scroll', updateActiveDot);
+
+            // =========================================================
+            // INICIALIZAÇÃO - LER IDIOMA E ÂNCORA DA URL
+            // =========================================================
+            const urlParams = new URLSearchParams(window.location.search);
+            
+            // 1. LER IDIOMA DA URL E APLICAR
+            const langFromUrl = urlParams.get('lang');
+            
+            if (langFromUrl && (langFromUrl === 'en' || langFromUrl === 'pt')) {
+                // Aplica o idioma vindo da URL
+                toggleLanguage(langFromUrl);
+            } else {
+                // Fallback: verifica localStorage ou navegador
+                const savedLang = localStorage.getItem('preferredLang');
+                if (savedLang) {
+                    toggleLanguage(savedLang);
+                } else {
+                    const browserLang = navigator.language || navigator.language;
+                    const defaultLang = browserLang.startsWith('pt') ? 'pt' : 'en';
+                    toggleLanguage(defaultLang);
+                }
+            }
+
+            // 2. ROLAGEM AUTOMÁTICA PARA A SEÇÃO DE ORIGEM
+            const anchor = urlParams.get('anchor');
+            
+            if (anchor) {
+                // Mapeia os parâmetros para IDs de seção
+                const sectionMap = {
+                    'what-you-get': 'What-You-Get',
+                    'game-on': 'Game-On'
+                };
+                
+                const sectionId = sectionMap[anchor];
+                if (sectionId) {
+                    setTimeout(() => {
+                        const targetSection = document.getElementById(sectionId);
+                        if (targetSection) {
+                            targetSection.scrollIntoView({ behavior: 'smooth' });
+                        }
+                    }, 400); // Pequeno delay para garantir que a página carregou
+                }
+            }
+
+            // Força o primeiro dot como ativo se nenhum estiver
+            if (!document.querySelector('.nav-dots a.active')) {
+                document.querySelector('.nav-dots a:first-child')?.classList.add('active');
+            }
+        });
+
+        // FUNÇÃO ROADMAP
+        function switchRoadmapStep(event, stepId) {
+            const allNodes = document.querySelectorAll('.roadmap-node');
+            allNodes.forEach(node => {
+                node.classList.remove('active');
+                const numberSpan = node.querySelector('.node-number');
+                if (numberSpan) {
+                    numberSpan.style.background = '#e5e7eb';
+                    numberSpan.style.color = '#6b7280';
+                }
+                const labelSpan = node.querySelector('.node-label');
+                if (labelSpan) {
+                    labelSpan.style.color = '#6b7280';
+                    labelSpan.style.fontWeight = '500';
+                }
+            });
+
+            const clickedNode = event.currentTarget;
+            clickedNode.classList.add('active');
+            const numberSpan = clickedNode.querySelector('.node-number');
+            if (numberSpan) {
+                numberSpan.style.background = '#1a73e8';
+                numberSpan.style.color = '#fff';
+            }
+            const labelSpan = clickedNode.querySelector('.node-label');
+            if (labelSpan) {
+                labelSpan.style.color = '#1a73e8';
+                labelSpan.style.fontWeight = '600';
+            }
+
+            const allPanels = document.querySelectorAll('.roadmap-detail-panel');
+            allPanels.forEach(panel => {
+                panel.style.display = 'none';
+            });
+
+            const selectedPanel = document.getElementById(stepId);
+            if (selectedPanel) {
+                selectedPanel.style.display = 'block';
+            }
+        }
+    </script>
+</body>
+</html>
