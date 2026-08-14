@@ -19,19 +19,20 @@
             background: #0a0a1a;
             color: #ffffff;
             min-height: 100vh;
-            overflow: hidden;
+            overflow-y: auto; /* Permite scroll quando necessário */
+            overflow-x: hidden;
         }
 
         /* ============================================================ */
         /* SECTION: CASE APPLICATIONS */
         /* ============================================================ */
         #case-applications {
-            padding: 60px 80px;
-            height: 100vh;
+            padding: 40px 60px;
+            min-height: 100vh; /* Altura mínima, não fixa */
             background: linear-gradient(135deg, #0a0a1a 0%, #1a1a2e 50%, #0a0a1a 100%);
             display: flex;
-            align-items: center;
-            overflow: hidden;
+            align-items: flex-start; /* Alinha ao topo em vez de centralizar */
+            overflow-y: auto;
         }
 
         .container-wrapper {
@@ -57,6 +58,7 @@
             display: flex;
             align-items: center;
             gap: 18px;
+            min-width: 0; /* Evita overflow */
         }
 
         /* Barra vertical azul antes do título - AUMENTADA PARA 48px */
@@ -65,7 +67,6 @@
             height: 48px;
             background: #0d6efd;
             flex-shrink: 0;
-            /*border-radius: 2px;*/
         }
 
         .section-page-title {
@@ -73,20 +74,18 @@
             font-weight: 700;
             color: #ffffff;
             letter-spacing: 1px;
-            /*background: linear-gradient(90deg, #10B981, #34D399);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;*/
             display: flex;
             align-items: center;
             height: 48px;
             line-height: 1;
+            word-break: break-word;
         }
 
         .header-controls {
             display: flex;
             align-items: center;
             gap: 12px;
+            flex-shrink: 0;
         }
 
         /* ============================================================ */
@@ -99,7 +98,7 @@
             width: 48px;
             height: 48px;
             border-radius: 50%;
-            border: 2px, solid #9CA3AF;
+            border: 2px solid #9CA3AF;
             background: rgba(255, 255, 255, 0.05);
             color: #e5e7eb;
             font-size: 14px;
@@ -316,6 +315,15 @@
             margin: 0;
         }
 
+        .footer-note {
+            text-align: center;
+            padding: 0.35rem;
+            color: #9CA3AF;
+            font-size: 0.68rem;
+            flex-shrink: 0;
+            margin-top: 20px;
+        }
+
         /* ============================================================ */
         /* RESPONSIVE */
         /* ============================================================ */
@@ -355,9 +363,14 @@
 
         @media (max-width: 768px) {
             #case-applications {
-                padding: 20px 20px;
+                padding: 20px 16px;
+                align-items: flex-start;
             }
-            
+
+            .container-wrapper {
+                padding: 0;
+            }
+
             .section-top-header {
                 flex-direction: column;
                 align-items: flex-start;
@@ -365,10 +378,32 @@
                 margin-bottom: 20px;
             }
 
+            .section-title-wrapper {
+                width: 100%;
+                gap: 12px;
+            }
+
+            .section-page-title {
+                font-size: 20px;
+                height: 36px;
+            }
+
+            .title-bar {
+                height: 36px;
+                width: 5px;
+            }
+
             .header-controls {
                 width: 100%;
                 justify-content: flex-start;
-                gap: 8px;
+                gap: 10px;
+            }
+
+            .btn-uniform {
+                width: 40px;
+                height: 40px;
+                font-size: 11px;
+                border-width: 1.5px;
             }
 
             .case-row-left,
@@ -383,75 +418,60 @@
             }
 
             .case-planned-card {
-                flex: 0 0 220px;
-                max-width: 220px;
+                flex: 0 0 200px;
+                max-width: 200px;
+            }
+
+            .case-planned-title {
+                font-size: 10px;
+                bottom: 10px;
+                padding: 4px 10px;
+                letter-spacing: 0.5px;
             }
 
             .case-spacer {
                 display: none;
             }
 
-            .case-planned-title {
-                font-size: 11px;
-                bottom: 12px;
-                padding: 4px 10px;
-                letter-spacing: 0.5px;
-            }
-
-            .section-page-title {
-                font-size: 22px;
-                height: 40px;
-            }
-            
             .case-row {
                 margin-bottom: 16px;
             }
 
-            .btn-uniform {
-                width: 40px;
-                height: 40px;
-                font-size: 11px;
-                border-width: 1px;
-            }
-
-            .title-bar {
-                height: 40px;
+            .footer-note {
+                font-size: 0.6rem;
+                margin-top: 16px;
             }
         }
 
         @media (max-width: 480px) {
             #case-applications {
-                padding: 16px 16px;
+                padding: 16px 12px;
+                min-height: 100vh;
             }
 
-            .case-planned-card {
-                flex: 0 0 100%;
-                max-width: 100%;
+            .section-top-header {
+                margin-bottom: 16px;
+                gap: 10px;
             }
 
-            .case-planned-image {
-                aspect-ratio: 16/9;
-            }
-
-            .case-planned-title {
-                font-size: 13px;
-                bottom: 14px;
-                padding: 6px 14px;
-                letter-spacing: 0.5px;
-            }
-
-            .case-planned-summary p {
-                font-size: 12px;
-                line-height: 1.4;
+            .section-title-wrapper {
+                gap: 10px;
             }
 
             .section-page-title {
-                font-size: 20px;
-                height: 36px;
+                font-size: 17px;
+                height: 30px;
+                letter-spacing: 0.5px;
             }
-            
-            .case-row {
-                margin-bottom: 12px;
+
+            .title-bar {
+                height: 30px;
+                width: 4px;
+            }
+
+            .header-controls {
+                gap: 8px;
+                flex-wrap: wrap;
             }
 
             .btn-uniform {
@@ -461,23 +481,104 @@
                 border-width: 1px;
             }
 
-            .title-bar {
-                height: 36px;
-                width: 5px;
+            .btn-uniform svg {
+                width: 18px;
+                height: 18px;
             }
 
-            .section-title-wrapper {
+            .case-row-inner {
                 gap: 12px;
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+            }
+
+            .case-planned-card {
+                flex: 0 0 100%;
+                max-width: 100%;
+                width: 100%;
+            }
+
+            .case-planned-image {
+                aspect-ratio: 16/9;
+            }
+
+            .case-planned-title {
+                font-size: 12px;
+                bottom: 12px;
+                padding: 6px 14px;
+                letter-spacing: 0.5px;
+            }
+
+            .case-planned-summary p {
+                font-size: 11px;
+                line-height: 1.4;
+            }
+
+            .case-row {
+                margin-bottom: 8px;
+            }
+
+            .case-row-left,
+            .case-row-right {
+                width: 100%;
+            }
+
+            .footer-note {
+                font-size: 0.55rem;
+                margin-top: 12px;
+                padding: 0.25rem;
+            }
+
+            /* Ajuste para tooltips em mobile */
+            .tooltip-container-top .custom-tooltip {
+                width: 120px;
+                font-size: 10px;
+                padding: 4px 10px;
+                bottom: 115%;
             }
         }
-        .footer-note {
-      text-align: center;
-      padding: 0.35rem;
-      color: var(--text-primary);
-      font-size: 0.68rem;
-      flex-shrink: 0;
-      background: var(--bg-light);
-    }
+
+        /* Para telas muito pequenas (até 360px) */
+        @media (max-width: 360px) {
+            #case-applications {
+                padding: 12px 8px;
+            }
+
+            .section-page-title {
+                font-size: 15px;
+                height: 26px;
+            }
+
+            .title-bar {
+                height: 26px;
+                width: 3px;
+            }
+
+            .btn-uniform {
+                width: 32px;
+                height: 32px;
+                font-size: 9px;
+            }
+
+            .btn-uniform svg {
+                width: 16px;
+                height: 16px;
+            }
+
+            .case-planned-title {
+                font-size: 10px;
+                padding: 4px 10px;
+            }
+
+            .case-planned-summary p {
+                font-size: 10px;
+            }
+
+            .header-controls {
+                gap: 6px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -515,9 +616,9 @@
                     <!-- Botão Back -->
                     <div class="tooltip-container-top">
                         <a href="javascript:void(0)" onclick="goBackToIndex()" class="btn-uniform" aria-label="Return to homepage">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://w3.org">
-    <path d="M5 5L19 19M19 5L5 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-</svg>
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M5 5L19 19M19 5L5 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                            </svg>
                         </a>
                         <span class="custom-tooltip" id="tooltipBack">Voltar</span>
                     </div>
@@ -594,7 +695,7 @@
                 </div>
 
             </div><!-- /cases-container -->
-             <div class="footer-note">© 2026 PowerCraftStudio. All rights reserved.</div>
+            <div class="footer-note">© 2026 PowerCraftStudio. All rights reserved.</div>
 
         </div><!-- /container-wrapper -->
         
@@ -625,7 +726,7 @@
             },
             pt: {
                 title: 'Da Arquitetura à Entrega',
-                back: 'Retornar a home-age',
+                back: 'Retornar a home-page',
                 tooltipEN: 'Idioma Inglês US',
                 tooltipPT: 'Idioma Português BR',
                 'cases.case1.title': 'GESTÃO GLOBAL DE GASTOS',
