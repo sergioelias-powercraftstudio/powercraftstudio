@@ -19,7 +19,7 @@
             background: #0a0a1a;
             color: #ffffff;
             min-height: 100vh;
-            overflow-y: auto; /* Permite scroll quando necessário */
+            overflow-y: auto;
             overflow-x: hidden;
         }
 
@@ -28,10 +28,10 @@
         /* ============================================================ */
         #case-applications {
             padding: 40px 60px;
-            min-height: 100vh; /* Altura mínima, não fixa */
+            min-height: 100vh;
             background: linear-gradient(135deg, #0a0a1a 0%, #1a1a2e 50%, #0a0a1a 100%);
             display: flex;
-            align-items: flex-start; /* Alinha ao topo em vez de centralizar */
+            align-items: flex-start;
             overflow-y: auto;
         }
 
@@ -58,10 +58,9 @@
             display: flex;
             align-items: center;
             gap: 18px;
-            min-width: 0; /* Evita overflow */
+            min-width: 0;
         }
 
-        /* Barra vertical azul antes do título - AUMENTADA PARA 48px */
         .title-bar {
             width: 6px;
             height: 48px;
@@ -118,7 +117,6 @@
             border-color: #9CA3AF;
         }
 
-        /* Botão de idioma ativo - azul #0d6efd com borda azul */
         .btn-uniform.lang-active {
             color: #ffffff;
             background: #0d6efd;
@@ -333,13 +331,13 @@
             }
             
             .case-planned-card {
-                flex: 0 0 260px;
-                max-width: 260px;
+                flex: 0 0 240px;
+                max-width: 240px;
             }
 
             .case-spacer {
-                flex: 0 0 50px;
-                width: 50px;
+                flex: 0 0 40px;
+                width: 40px;
             }
 
             .section-page-title {
@@ -348,7 +346,6 @@
             
             .case-planned-title {
                 font-size: 12px;
-                bottom: 16px;
                 padding: 6px 12px;
             }
             
@@ -361,14 +358,10 @@
             }
         }
 
-        @media (max-width: 768px) {
+        /* TABLET / MOBILE GRANDE - EMPILHA OS CARDS */
+        @media (max-width: 820px) {
             #case-applications {
-                padding: 20px 16px;
-                align-items: flex-start;
-            }
-
-            .container-wrapper {
-                padding: 0;
+                padding: 20px 20px;
             }
 
             .section-top-header {
@@ -384,13 +377,12 @@
             }
 
             .section-page-title {
-                font-size: 20px;
-                height: 36px;
+                font-size: 22px;
+                height: 40px;
             }
 
             .title-bar {
-                height: 36px;
-                width: 5px;
+                height: 40px;
             }
 
             .header-controls {
@@ -400,33 +392,33 @@
             }
 
             .btn-uniform {
-                width: 40px;
-                height: 40px;
-                font-size: 11px;
-                border-width: 1.5px;
+                width: 42px;
+                height: 42px;
+                font-size: 12px;
             }
 
+            /* EMPILHA OS CARDS EM COLUNA */
             .case-row-left,
             .case-row-right {
                 justify-content: center;
+                width: 100%;
             }
 
             .case-row-inner {
-                flex-wrap: wrap;
-                justify-content: center;
+                flex-direction: column;
+                align-items: center;
                 gap: 16px;
+                width: 100%;
             }
 
             .case-planned-card {
-                flex: 0 0 200px;
-                max-width: 200px;
+                flex: 0 0 100%;
+                max-width: 400px;
+                width: 100%;
             }
 
-            .case-planned-title {
-                font-size: 10px;
-                bottom: 10px;
-                padding: 4px 10px;
-                letter-spacing: 0.5px;
+            .case-planned-image {
+                aspect-ratio: 16/9;
             }
 
             .case-spacer {
@@ -434,7 +426,17 @@
             }
 
             .case-row {
-                margin-bottom: 16px;
+                margin-bottom: 12px;
+            }
+
+            .case-planned-title {
+                font-size: 13px;
+                padding: 8px 14px;
+                bottom: 0;
+            }
+
+            .case-planned-summary p {
+                font-size: 12px;
             }
 
             .footer-note {
@@ -443,6 +445,7 @@
             }
         }
 
+        /* MOBILE PEQUENO */
         @media (max-width: 480px) {
             #case-applications {
                 padding: 16px 12px;
@@ -459,13 +462,13 @@
             }
 
             .section-page-title {
-                font-size: 17px;
-                height: 30px;
+                font-size: 18px;
+                height: 32px;
                 letter-spacing: 0.5px;
             }
 
             .title-bar {
-                height: 30px;
+                height: 32px;
                 width: 4px;
             }
 
@@ -488,15 +491,10 @@
 
             .case-row-inner {
                 gap: 12px;
-                flex-direction: column;
-                align-items: center;
-                width: 100%;
             }
 
             .case-planned-card {
-                flex: 0 0 100%;
                 max-width: 100%;
-                width: 100%;
             }
 
             .case-planned-image {
@@ -505,9 +503,7 @@
 
             .case-planned-title {
                 font-size: 12px;
-                bottom: 12px;
-                padding: 6px 14px;
-                letter-spacing: 0.5px;
+                padding: 6px 12px;
             }
 
             .case-planned-summary p {
@@ -519,18 +515,12 @@
                 margin-bottom: 8px;
             }
 
-            .case-row-left,
-            .case-row-right {
-                width: 100%;
-            }
-
             .footer-note {
                 font-size: 0.55rem;
                 margin-top: 12px;
                 padding: 0.25rem;
             }
 
-            /* Ajuste para tooltips em mobile */
             .tooltip-container-top .custom-tooltip {
                 width: 120px;
                 font-size: 10px;
@@ -539,7 +529,7 @@
             }
         }
 
-        /* Para telas muito pequenas (até 360px) */
+        /* MOBILE MUITO PEQUENO */
         @media (max-width: 360px) {
             #case-applications {
                 padding: 12px 8px;
@@ -547,11 +537,11 @@
 
             .section-page-title {
                 font-size: 15px;
-                height: 26px;
+                height: 28px;
             }
 
             .title-bar {
-                height: 26px;
+                height: 28px;
                 width: 3px;
             }
 
@@ -592,7 +582,6 @@
             <!-- HEADER - MODIFICADO -->
             <div class="section-top-header">
                 <div class="section-title-wrapper">
-                    <!-- Barra vertical azul - AUMENTADA PARA 48px -->
                     <div class="title-bar"></div>
                     <h2 class="section-page-title" id="pageTitle">From Architecture to Delivery</h2>
                 </div>
@@ -628,7 +617,7 @@
             <!-- BUSINESS CASES - LAYOUT COM DESLOCAMENTO VISUAL -->
             <div class="cases-container">
 
-                <!-- BLOCO A - Linha Superior (Alinhado à Esquerda) -->
+                <!-- BLOCO A - Linha Superior -->
                 <div class="case-row case-row-left">
                     <div class="case-row-inner">
                         <!-- Case 1: Global Spend Management -->
@@ -643,8 +632,6 @@
                                 </div>
                             </div>
                         </a>
-
-                        <div class="case-spacer"></div>
 
                         <!-- Case 2: Incentive Compensation Management -->
                         <a href="icma.html" class="case-planned-card" data-case="1">
@@ -661,7 +648,7 @@
                     </div>
                 </div>
 
-                <!-- BLOCO B - Linha Inferior (Alinhado à Direita) -->
+                <!-- BLOCO B - Linha Inferior -->
                 <div class="case-row case-row-right">
                     <div class="case-row-inner">
                         <!-- Case 3: Identity & Customer Onboarding -->
@@ -676,8 +663,6 @@
                                 </div>
                             </div>
                         </a>
-
-                        <div class="case-spacer"></div>
 
                         <!-- Case 4: Resource Request & Approval -->
                         <a href="rra.html" class="case-planned-card" data-case="3">
@@ -749,7 +734,6 @@
         function switchLanguage(lang) {
             currentLang = lang;
             
-            // Atualiza botões
             const buttons = document.querySelectorAll('.header-controls .btn-uniform');
             buttons.forEach(btn => {
                 btn.classList.remove('lang-active');
@@ -759,18 +743,13 @@
                 }
             });
 
-            // Atualiza textos
             const t = translations[lang];
             
-            // Título da página
             document.getElementById('pageTitle').textContent = t.title;
-            
-            // Tooltips
             document.getElementById('tooltipBack').textContent = t.back;
             document.getElementById('tooltipEN').textContent = t.tooltipEN;
             document.getElementById('tooltipPT').textContent = t.tooltipPT;
             
-            // Cases (títulos e descrições)
             for (let i = 0; i < 4; i++) {
                 const titleEl = document.getElementById('caseTitle' + i);
                 const descEl = document.getElementById('caseDesc' + i);
@@ -784,10 +763,7 @@
                 }
             }
 
-            // Salva o idioma no localStorage para ser usado pelos cases
             localStorage.setItem('preferredLang', lang);
-
-            // Atualiza os links dos cards para incluir o idioma e a seção de origem
             updateCaseLinks(lang);
 
             console.log('Idioma alterado para:', lang);
