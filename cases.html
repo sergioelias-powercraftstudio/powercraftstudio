@@ -19,20 +19,19 @@
             background: #0a0a1a;
             color: #ffffff;
             min-height: 100vh;
-            overflow-y: auto;
-            overflow-x: hidden;
+            overflow: hidden;
         }
 
         /* ============================================================ */
         /* SECTION: CASE APPLICATIONS */
         /* ============================================================ */
         #case-applications {
-            padding: 40px 60px;
-            min-height: 100vh;
+            padding: 60px 80px;
+            height: 100vh;
             background: linear-gradient(135deg, #0a0a1a 0%, #1a1a2e 50%, #0a0a1a 100%);
             display: flex;
-            align-items: flex-start;
-            overflow-y: auto;
+            align-items: center;
+            overflow: hidden;
         }
 
         .container-wrapper {
@@ -58,14 +57,15 @@
             display: flex;
             align-items: center;
             gap: 18px;
-            min-width: 0;
         }
 
+        /* Barra vertical azul antes do título - AUMENTADA PARA 48px */
         .title-bar {
             width: 6px;
             height: 48px;
             background: #0d6efd;
             flex-shrink: 0;
+            /*border-radius: 2px;*/
         }
 
         .section-page-title {
@@ -73,18 +73,20 @@
             font-weight: 700;
             color: #ffffff;
             letter-spacing: 1px;
+            /*background: linear-gradient(90deg, #10B981, #34D399);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;*/
             display: flex;
             align-items: center;
             height: 48px;
             line-height: 1;
-            word-break: break-word;
         }
 
         .header-controls {
             display: flex;
             align-items: center;
             gap: 12px;
-            flex-shrink: 0;
         }
 
         /* ============================================================ */
@@ -97,7 +99,7 @@
             width: 48px;
             height: 48px;
             border-radius: 50%;
-            border: 2px solid #9CA3AF;
+            border: 2px, solid #9CA3AF;
             background: rgba(255, 255, 255, 0.05);
             color: #e5e7eb;
             font-size: 14px;
@@ -117,6 +119,7 @@
             border-color: #9CA3AF;
         }
 
+        /* Botão de idioma ativo - azul #0d6efd com borda azul */
         .btn-uniform.lang-active {
             color: #ffffff;
             background: #0d6efd;
@@ -313,17 +316,8 @@
             margin: 0;
         }
 
-        .footer-note {
-            text-align: center;
-            padding: 0.35rem;
-            color: #9CA3AF;
-            font-size: 0.68rem;
-            flex-shrink: 0;
-            margin-top: 20px;
-        }
-
         /* ============================================================ */
-        /* RESPONSIVE */
+        /* RESPONSIVE - AJUSTES PARA TÍTULOS APARECEREM NO MOBILE */
         /* ============================================================ */
         @media (max-width: 1024px) {
             #case-applications {
@@ -346,6 +340,7 @@
             
             .case-planned-title {
                 font-size: 12px;
+                bottom: 16px;
                 padding: 6px 12px;
             }
             
@@ -358,12 +353,16 @@
             }
         }
 
-        /* TABLET / MOBILE - EMPILHA TODOS OS CARDS */
-        @media (max-width: 820px) {
+        @media (max-width: 768px) {
             #case-applications {
-                padding: 20px 16px;
+                padding: 20px 20px;
+                height: auto;
+                min-height: 100vh;
+                overflow-y: auto;
+                align-items: flex-start;
+                padding-top: 30px;
             }
-
+            
             .section-top-header {
                 flex-direction: column;
                 align-items: flex-start;
@@ -371,215 +370,168 @@
                 margin-bottom: 20px;
             }
 
-            .section-title-wrapper {
-                width: 100%;
-                gap: 12px;
-            }
-
-            .section-page-title {
-                font-size: 22px;
-                height: 40px;
-            }
-
-            .title-bar {
-                height: 40px;
-            }
-
             .header-controls {
                 width: 100%;
                 justify-content: flex-start;
-                gap: 10px;
+                gap: 8px;
             }
 
-            .btn-uniform {
-                width: 42px;
-                height: 42px;
-                font-size: 12px;
-            }
-
-            /* EMPILHA TODOS OS CARDS EM UMA ÚNICA COLUNA */
-            .case-row-left,
-            .case-row-right {
-                justify-content: center;
-                width: 100%;
-            }
-
-            .case-row-inner {
-                flex-direction: column;
-                align-items: center;
-                gap: 16px;
-                width: 100%;
-            }
-
-            /* Cada card ocupa 100% da largura disponível */
+            /* Cards menores para caber na tela e mostrar títulos */
             .case-planned-card {
-                flex: 0 0 100%;
-                max-width: 420px;
-                width: 100%;
+                flex: 0 0 180px;
+                max-width: 180px;
             }
 
             .case-planned-image {
-                aspect-ratio: 16/9;
+                aspect-ratio: 4/3;
+            }
+
+            .case-row-left,
+            .case-row-right {
+                justify-content: center;
+            }
+
+            .case-row-inner {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 12px;
             }
 
             .case-spacer {
                 display: none;
             }
 
-            .case-row {
-                margin-bottom: 0;
-            }
-
-            /* Espaçamento entre os cards */
-            .case-row:first-child .case-row-inner {
-                gap: 16px;
-            }
-
-            .case-row:last-child .case-row-inner {
-                gap: 16px;
-                margin-top: 16px;
-            }
-
             .case-planned-title {
-                font-size: 13px;
-                padding: 8px 14px;
-                bottom: 0;
-            }
-
-            .case-planned-summary p {
-                font-size: 12px;
-            }
-
-            .footer-note {
-                font-size: 0.6rem;
-                margin-top: 20px;
-            }
-        }
-
-        /* MOBILE PEQUENO */
-        @media (max-width: 480px) {
-            #case-applications {
-                padding: 16px 12px;
-                min-height: 100vh;
-            }
-
-            .section-top-header {
-                margin-bottom: 16px;
-                gap: 10px;
-            }
-
-            .section-title-wrapper {
-                gap: 10px;
-            }
-
-            .section-page-title {
-                font-size: 18px;
-                height: 32px;
+                font-size: 10px;
+                bottom: 8px;
+                padding: 4px 10px;
                 letter-spacing: 0.5px;
+                line-height: 1.2;
             }
 
-            .title-bar {
-                height: 32px;
-                width: 4px;
+            /* Títulos menores e mais compactos */
+            .section-page-title {
+                font-size: 20px;
+                height: 36px;
             }
-
-            .header-controls {
-                gap: 8px;
-                flex-wrap: wrap;
+            
+            .case-row {
+                margin-bottom: 12px;
             }
 
             .btn-uniform {
-                width: 36px;
-                height: 36px;
-                font-size: 10px;
+                width: 40px;
+                height: 40px;
+                font-size: 11px;
                 border-width: 1px;
             }
 
-            .btn-uniform svg {
-                width: 18px;
-                height: 18px;
+            .title-bar {
+                height: 36px;
+                width: 5px;
             }
 
-            .case-planned-card {
-                max-width: 100%;
-            }
-
-            .case-planned-image {
-                aspect-ratio: 16/9;
-            }
-
-            .case-planned-title {
-                font-size: 12px;
-                padding: 6px 12px;
-            }
-
-            .case-planned-summary p {
-                font-size: 11px;
-                line-height: 1.4;
-            }
-
-            .case-row:first-child .case-row-inner {
+            .section-title-wrapper {
                 gap: 12px;
-            }
-
-            .case-row:last-child .case-row-inner {
-                gap: 12px;
-                margin-top: 12px;
-            }
-
-            .footer-note {
-                font-size: 0.55rem;
-                margin-top: 16px;
-                padding: 0.25rem;
-            }
-
-            .tooltip-container-top .custom-tooltip {
-                width: 120px;
-                font-size: 10px;
-                padding: 4px 10px;
-                bottom: 115%;
             }
         }
 
-        /* MOBILE MUITO PEQUENO */
-        @media (max-width: 360px) {
-            #case-applications {
-                padding: 12px 8px;
+        @media (max-width: 600px) {
+            .case-planned-card {
+                flex: 0 0 155px;
+                max-width: 155px;
             }
 
-            .section-page-title {
-                font-size: 15px;
-                height: 28px;
-            }
-
-            .title-bar {
-                height: 28px;
-                width: 3px;
-            }
-
-            .btn-uniform {
-                width: 32px;
-                height: 32px;
-                font-size: 9px;
-            }
-
-            .btn-uniform svg {
-                width: 16px;
-                height: 16px;
+            .case-planned-image {
+                aspect-ratio: 4/3;
             }
 
             .case-planned-title {
-                font-size: 10px;
-                padding: 4px 10px;
+                font-size: 9px;
+                bottom: 6px;
+                padding: 3px 8px;
+                letter-spacing: 0.3px;
+            }
+
+            .case-row-inner {
+                gap: 10px;
+            }
+
+            #case-applications {
+                padding: 16px 14px;
+                padding-top: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            #case-applications {
+                padding: 12px 10px;
+                padding-top: 16px;
+            }
+
+            .case-planned-card {
+                flex: 0 0 130px;
+                max-width: 130px;
+            }
+
+            .case-planned-image {
+                aspect-ratio: 4/3;
+            }
+
+            .case-planned-title {
+                font-size: 8px;
+                bottom: 4px;
+                padding: 2px 6px;
+                letter-spacing: 0.2px;
+                line-height: 1.1;
+            }
+
+            .case-row-inner {
+                gap: 8px;
+            }
+
+            .section-page-title {
+                font-size: 16px;
+                height: 30px;
+            }
+
+            .title-bar {
+                height: 30px;
+                width: 4px;
+            }
+
+            .section-title-wrapper {
+                gap: 8px;
+            }
+
+            .btn-uniform {
+                width: 34px;
+                height: 34px;
+                font-size: 9px;
+                border-width: 1px;
             }
 
             .case-planned-summary p {
-                font-size: 10px;
+                font-size: 9px;
+                line-height: 1.3;
             }
 
-            .header-controls {
-                gap: 6px;
+            .case-planned-overlay {
+                padding: 12px;
             }
+
+            .case-row {
+                margin-bottom: 8px;
+            }
+        }
+
+        .footer-note {
+            text-align: center;
+            padding: 0.35rem;
+            color: var(--text-primary);
+            font-size: 0.68rem;
+            flex-shrink: 0;
+            background: var(--bg-light);
         }
     </style>
 </head>
@@ -594,6 +546,7 @@
             <!-- HEADER - MODIFICADO -->
             <div class="section-top-header">
                 <div class="section-title-wrapper">
+                    <!-- Barra vertical azul - AUMENTADA PARA 48px -->
                     <div class="title-bar"></div>
                     <h2 class="section-page-title" id="pageTitle">From Architecture to Delivery</h2>
                 </div>
@@ -617,7 +570,7 @@
                     <!-- Botão Back -->
                     <div class="tooltip-container-top">
                         <a href="javascript:void(0)" onclick="goBackToIndex()" class="btn-uniform" aria-label="Return to homepage">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://w3.org">
                                 <path d="M5 5L19 19M19 5L5 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
                             </svg>
                         </a>
@@ -629,7 +582,7 @@
             <!-- BUSINESS CASES - LAYOUT COM DESLOCAMENTO VISUAL -->
             <div class="cases-container">
 
-                <!-- BLOCO A - Linha Superior (Cards 1 e 2) -->
+                <!-- BLOCO A - Linha Superior (Alinhado à Esquerda) -->
                 <div class="case-row case-row-left">
                     <div class="case-row-inner">
                         <!-- Case 1: Global Spend Management -->
@@ -644,6 +597,8 @@
                                 </div>
                             </div>
                         </a>
+
+                        <div class="case-spacer"></div>
 
                         <!-- Case 2: Incentive Compensation Management -->
                         <a href="icma.html" class="case-planned-card" data-case="1">
@@ -660,7 +615,7 @@
                     </div>
                 </div>
 
-                <!-- BLOCO B - Linha Inferior (Cards 3 e 4) -->
+                <!-- BLOCO B - Linha Inferior (Alinhado à Direita) -->
                 <div class="case-row case-row-right">
                     <div class="case-row-inner">
                         <!-- Case 3: Identity & Customer Onboarding -->
@@ -675,6 +630,8 @@
                                 </div>
                             </div>
                         </a>
+
+                        <div class="case-spacer"></div>
 
                         <!-- Case 4: Resource Request & Approval -->
                         <a href="rra.html" class="case-planned-card" data-case="3">
@@ -723,7 +680,7 @@
             },
             pt: {
                 title: 'Da Arquitetura à Entrega',
-                back: 'Retornar a home-page',
+                back: 'Retornar a home-age',
                 tooltipEN: 'Idioma Inglês US',
                 tooltipPT: 'Idioma Português BR',
                 'cases.case1.title': 'GESTÃO GLOBAL DE GASTOS',
@@ -746,6 +703,7 @@
         function switchLanguage(lang) {
             currentLang = lang;
             
+            // Atualiza botões
             const buttons = document.querySelectorAll('.header-controls .btn-uniform');
             buttons.forEach(btn => {
                 btn.classList.remove('lang-active');
@@ -755,13 +713,18 @@
                 }
             });
 
+            // Atualiza textos
             const t = translations[lang];
             
+            // Título da página
             document.getElementById('pageTitle').textContent = t.title;
+            
+            // Tooltips
             document.getElementById('tooltipBack').textContent = t.back;
             document.getElementById('tooltipEN').textContent = t.tooltipEN;
             document.getElementById('tooltipPT').textContent = t.tooltipPT;
             
+            // Cases (títulos e descrições)
             for (let i = 0; i < 4; i++) {
                 const titleEl = document.getElementById('caseTitle' + i);
                 const descEl = document.getElementById('caseDesc' + i);
@@ -775,7 +738,10 @@
                 }
             }
 
+            // Salva o idioma no localStorage para ser usado pelos cases
             localStorage.setItem('preferredLang', lang);
+
+            // Atualiza os links dos cards para incluir o idioma e a seção de origem
             updateCaseLinks(lang);
 
             console.log('Idioma alterado para:', lang);
