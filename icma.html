@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PowerCraftStudio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,600;14..32,700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg-light: #f8fafc;
+      --bg-card: #ffffff;
+      --text-primary: #1c2541;
+      --text-secondary: #475569;
+      --accent-blue: #0d6efd;
+      --accent-blue-gray: #9CA3AF;
+      --accent-green: #10B981;
+      --border-radius:0px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    html, body {
+      height: 100%;
+      overflow: hidden;
+    }
+
+    body {
+      background: var(--bg-light);
+      color: var(--text-primary);
+      line-height: 1.5;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .lang-pt { display: none !important; }
+    html[lang="pt"] .lang-en { display: none !important; }
+    html[lang="pt"] .lang-pt { display: block !important; }
+    html[lang="pt"] span.lang-pt,
+    html[lang="pt"] strong.lang-pt { display: inline !important; }
+
+    /* ============================================================ */
+    /* HEADER - MODIFICADO CONFORME css-header.txt */
+    /* ============================================================ */
+    header {
+      background: var(--bg-light);
+      padding: 2rem 1.75rem 0.6rem;
+      flex-shrink: 0;
+    }
+
+    .section-top-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .section-title-wrapper {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .title-bar {
+      width: 6px;
+      height: 48px;
+      background: var(--accent-blue);
+      flex-shrink: 0;
+    }
+
+    .section-page-title {
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--text-primary);
+      letter-spacing: 1px;
+      display: flex;
+      align-items: center;
+      height: 48px;
+      line-height: 1;
+    }
+
+    .header-controls {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .lang-toggle-inline {
+      display: flex;
+      align-items: center;
+      background: transparent;
+      padding: 0;
+      border-radius: 0;
+      gap: 6px;
+    }
+
+    .lang-toggle-inline button {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: 1.5px solid var(--accent-blue-gray);
+      background: transparent;
+      cursor: pointer;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--text-secondary);
+      transition: all 0.22s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .lang-toggle-inline button.active {
+      background: var(--accent-blue);
+      border-color: var(--accent-blue);
+      color: #ffffff;
+      box-shadow: 0 2px 8px rgba(13, 110, 253, 0.3);
+    }
+
+    .lang-toggle-inline button:hover:not(.active) {
+      color: var(--accent-green);
+      background: rgba(16, 185, 129, 0.06);
+    }
+
+    .circle-icon-btn {
+      width: 48px;
+      height: 48px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: none;
+      border: 1.5px solid var(--accent-blue-gray);
+      cursor: pointer;
+      padding: 0;
+      transition: transform 0.2s;
+      border-radius: 50%;
+    }
+    .circle-icon-btn:hover {
+      transform: scale(1.08);
+    }
+    .circle-icon-btn svg {
+      width: 36px;
+      height: 36px;
+    }
+
+    /* ============================================================ */
+    /* TOOLTIP - ESTILO ATUALIZADO CONFORME REFERÊNCIA */
+    /* ============================================================ */
+    .tooltip-container-top {
+      position: relative;
+      display: inline-block;
+    }
+
+    .tooltip-container-top .custom-tooltip {
+      visibility: hidden;
+      opacity: 0;
+      width: 160px;
+      background: rgba(16, 185, 129, 0.9);
+      color: #ffffff;
+      text-align: center;
+      border-radius: 6px;
+      padding: 6px 12px;
+      position: absolute;
+      z-index: 10;
+      bottom: 110%;
+      left: 50%;
+      transform: translateX(-50%);
+      transition: opacity 0.3s ease;
+      font-size: 12px;
+      font-weight: 500;
+      backdrop-filter: blur(4px);
+      pointer-events: none;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+
+    .tooltip-container-top .custom-tooltip::after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      border: 6px solid transparent;
+      border-top-color: rgba(16, 185, 129, 0.9);
+    }
+
+    .tooltip-container-top:hover .custom-tooltip {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    .container {
+      flex: 1;
+      display: grid;
+      grid-template-columns: 1fr 1.8fr;
+      gap: 1.25rem;
+      padding: 0.75rem 1.5rem 1rem;
+      min-height: 0;
+      align-items: stretch;
+    }
+
+    .content {
+      background: var(--bg-card);
+      border-radius: var(--border-radius);
+      padding: 1.25rem 1.4rem;
+      border: 1px solid #ffffff;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.03);
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      overflow-y: auto;
+    }
+
+    .section h2 {
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: var(--accent-blue);
+      margin-bottom: 0.2rem;
+      font-weight: 700;
+    }
+
+    .section p {
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    .section ul {
+      padding-left: 1rem;
+      margin-top: 0.15rem;
+    }
+    .section li {
+      font-size: 0.78rem;
+      margin-bottom: 0.15rem;
+      color: var(--text-secondary);
+      line-height: 1.4;
+    }
+    .section li strong {
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+
+    .section-divider {
+      height: 1px;
+      background: #e2e8f0;
+      margin: 0.1rem 0;
+    }
+
+    .visual {
+      border-radius: var(--border-radius);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #ffffff;
+    }
+    .visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+      border-radius: var(--border-radius);
+    }
+
+    .footer-note {
+      text-align: center;
+      padding: 0.35rem;
+      color: var(--text-secondary);
+      font-size: 0.68rem;
+      flex-shrink: 0;
+      background: var(--bg-light);
+    }
+
+    @media (max-width: 900px) {
+      html, body {
+        overflow: auto;
+        height: auto;
+      }
+      header {
+        padding: 1rem 1rem 0.5rem;
+      }
+      .section-top-header {
+        flex-direction: column;
+        gap: 12px;
+      }
+      .section-title-wrapper {
+        gap: 12px;
+        width: 100%;
+      }
+      .title-bar {
+        height: 36px;
+      }
+      .section-page-title {
+        font-size: 24px;
+        height: 36px;
+      }
+      .container {
+        grid-template-columns: 1fr;
+        padding: 0.75rem 1rem 1rem;
+        gap: 1rem;
+      }
+      .content {
+        padding: 1.15rem;
+        overflow-y: visible;
+      }
+      .visual {
+        min-height: 220px;
+      }
+      .header-controls {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+    .lang-toggle-inline {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="section-top-header">
+      <div class="section-title-wrapper">
+        <div class="title-bar"></div>
+        <div class="section-page-title">
+          <span class="lang-en">Incentive Compensation Management (ICM)</span>
+          <span class="lang-pt">Gestão de Compensação por Incentivo (ICM)</span>
+        </div>
+      </div>
+      <div class="header-controls">
+        <div class="lang-toggle-inline">
+          <!-- EN Button with Tooltip -->
+          <div class="tooltip-container-top">
+            <button id="btn-en" class="active" onclick="setLang('en')">EN</button>
+            <span class="custom-tooltip">
+              <span class="lang-en">English language</span>
+              <span class="lang-pt">Idioma inglês</span>
+            </span>
+          </div>
+
+          <!-- PT Button with Tooltip -->
+          <div class="tooltip-container-top">
+            <button id="btn-pt" onclick="setLang('pt')">PT</button>
+            <span class="custom-tooltip">
+              <span class="lang-en">Portuguese language</span>
+              <span class="lang-pt">Idioma português</span>
+            </span>
+          </div>
+        </div>
+        
+        <!-- Back Button with Tooltip -->
+        <div class="tooltip-container-top">
+          <button class="circle-icon-btn" onclick="goBack()" aria-label="Back">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://w3.org">
+              <path d="M7.5 7.5L16.5 16.5M16.5 7.5L7.5 16.5" stroke="#10B981" stroke-width="1.5" stroke-linecap="round" />
+            </svg>
+          </button>
+          <span class="custom-tooltip">
+            <span class="lang-en">Back to Cases</span>
+            <span class="lang-pt">Voltar aos Casos</span>
+          </span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="content">
+      <div class="section">
+        <h2><span class="lang-en">Context</span><span class="lang-pt">Contexto</span></h2>
+        <p>
+          <span class="lang-en">Dynamic corporate environments rely on variable compensation and complex sales incentives to drive growth. This solution automates base pay, overtime, absence deductions, and multi-tiered rewards into a single auditable repository for global payroll sign-off.</span>
+          <span class="lang-pt">Ambientes corporativos dinâmicos dependem de compensação variável e incentivos complexos. A solução automatiza pagamento base, horas extras, deduções e recompensas em um repositório auditável para aprovação global.</span>
+        </p>
+      </div>
+
+      <div class="section-divider"></div>
+
+      <div class="section">
+        <h2><span class="lang-en">Challenges</span><span class="lang-pt">Desafios</span></h2>
+        <ul>
+          <li>
+            <span class="lang-en"><strong>Errors:</strong> Manual combination of registries, time logs, and shift rules caused frequent discrepancies.</span>
+            <span class="lang-pt"><strong>Erros:</strong> Combinação manual de registros e regras de turno gerava discrepâncias.</span>
+          </li>
+          <li>
+            <span class="lang-en"><strong>Opaque Changes:</strong> No structured way to record target modifications or discretionary overrides.</span>
+            <span class="lang-pt"><strong>Alterações opacas:</strong> Sem estrutura para registrar modificações de meta.</span>
+          </li>
+          <li>
+            <span class="lang-en"><strong>Reconciliation:</strong> Excessive manual effort to balance cross-entity payroll before disbursement.</span>
+            <span class="lang-pt"><strong>Reconciliação:</strong> Esforço manual para equilibrar folhas entre entidades.</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="section-divider"></div>
+
+      <div class="section">
+        <h2><span class="lang-en">Solution</span><span class="lang-pt">Solução</span></h2>
+        <p>
+          <span class="lang-en">A centralized platform on <strong>Microsoft Power Platform</strong> (Power Apps, Power Automate, SharePoint) with automated data processing, manager checkpoints, and corporate validation before automated payroll routing. Eliminates spreadsheets and enforces compliance.</span>
+          <span class="lang-pt">Plataforma centralizada no <strong>Microsoft Power Platform</strong> com processamento automatizado, pontos de verificação e validação corporativa antes do roteamento para folha. Elimina planilhas e garante conformidade.</span>
+        </p>
+      </div>
+    </div>
+
+    <div class="visual">
+      <img id="caseImage" src="incentive-compensation-management.jpg" alt="Incentive Compensation Management">
+    </div>
+  </div>
+
+  <div class="footer-note">© 2026 PowerCraftStudio. All rights reserved.</div>
+
+  <script>
+    let fromSection = 'hero';
+
+    // Mapeamento das imagens por idioma
+    const imageMap = {
+        en: 'incentive-compensation-management.jpg',
+        pt: 'incentive-compensation-management-pt.jpg'
+    };
+
+    function setLang(lang) {
+      document.documentElement.lang = lang;
+      document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+      document.getElementById('btn-pt').classList.toggle('active', lang === 'pt');
+      
+      // Troca a imagem conforme o idioma
+      const imgElement = document.getElementById('caseImage');
+      if (imgElement && imageMap[lang]) {
+          imgElement.src = imageMap[lang];
+          imgElement.alt = lang === 'en' 
+              ? 'Incentive Compensation Management' 
+              : 'Gestão de Compensação por Incentivo';
+      }
+      
+      localStorage.setItem('preferredLang', lang);
+    }
+
+    function goBack() {
+      const currentLang = document.documentElement.lang || 'en';
+      const urlParams = new URLSearchParams(window.location.search);
+      const from = urlParams.get('from') || 'hero';
+      
+      window.location.href = 'cases.html?lang=' + currentLang + '&from=' + from;
+    }
+
+    (function init() {
+      const params = new URLSearchParams(window.location.search);
+      let lang = params.get('lang');
+      
+      if (!lang) {
+        lang = localStorage.getItem('preferredLang') || 'en';
+      }
+      
+      fromSection = params.get('from') || 'hero';
+      
+      setLang(lang);
+    })();
+  </script>
+</body>
+</html>
