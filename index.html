@@ -840,22 +840,18 @@
         // FUNÇÃO PARA NAVEGAR PARA CASES MANTENDO O IDIOMA E A SEÇÃO DE ORIGEM
 function goToCases(event, section) {
     event.preventDefault();
+    
+    // Detecta qual idioma está ativo
     const isPT = document.querySelector('.lang-pt').style.display !== 'none';
     const lang = isPT ? 'pt' : 'en';
-
-    // Captura o parâmetro force da URL atual
-    const urlParams = new URLSearchParams(window.location.search);
-    const force = urlParams.get('force');
-
-    // Constrói a URL base
-    let url = 'cases.html?lang=' + lang + '&from=' + section;
-
-    // Se existir force, adiciona à URL de destino
-    if (force) {
-        url += '&force=' + force;
-    }
-
+    
+    // Salva a preferência de idioma
     localStorage.setItem('preferredLang', lang);
+    
+    // Constrói a URL relativa (sem domínio)
+    let url = 'cases.html?lang=' + lang + '&from=' + section;
+    
+    // Redireciona para a página cases.html com os parâmetros
     window.location.href = url;
 }
 
