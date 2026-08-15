@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,600;14..32,700&display=swap" rel="stylesheet" />
   <style>
+    /* (estilos iguais aos originais – mantidos) */
     :root {
       --bg-light: #f8fafc;
       --bg-card: #ffffff;
@@ -45,9 +46,6 @@
     html[lang="pt"] span.lang-pt,
     html[lang="pt"] strong.lang-pt { display: inline !important; }
 
-    /* ============================================================ */
-    /* HEADER - MODIFICADO CONFORME css-header.txt */
-    /* ============================================================ */
     header {
       background: var(--bg-light);
       padding: 2rem 1.75rem 0.6rem;
@@ -151,9 +149,6 @@
       height: 36px;
     }
 
-    /* ============================================================ */
-    /* TOOLTIP - ESTILO ATUALIZADO CONFORME REFERÊNCIA */
-    /* ============================================================ */
     .tooltip-container-top {
       position: relative;
       display: inline-block;
@@ -338,8 +333,7 @@
         </div>
       </div>
       <div class="header-controls">
-        <div class="lang-toggle-inline">
-          <!-- EN Button with Tooltip -->
+        <div class="lang-toggle-inline lang-toggle-group">
           <div class="tooltip-container-top">
             <button id="btn-en" class="active" onclick="setLang('en')">EN</button>
             <span class="custom-tooltip">
@@ -347,8 +341,6 @@
               <span class="lang-pt">Idioma inglês</span>
             </span>
           </div>
-
-          <!-- PT Button with Tooltip -->
           <div class="tooltip-container-top">
             <button id="btn-pt" onclick="setLang('pt')">PT</button>
             <span class="custom-tooltip">
@@ -357,8 +349,6 @@
             </span>
           </div>
         </div>
-        
-        <!-- Back Button with Tooltip -->
         <div class="tooltip-container-top">
           <button class="circle-icon-btn" onclick="goBack()" aria-label="Back">
             <svg viewBox="0 0 24 24" fill="none" xmlns="http://w3.org">
@@ -383,9 +373,7 @@
           <span class="lang-pt">Ambientes corporativos dinâmicos dependem de compensação variável e incentivos complexos. A solução automatiza pagamento base, horas extras, deduções e recompensas em um repositório auditável para aprovação global.</span>
         </p>
       </div>
-
       <div class="section-divider"></div>
-
       <div class="section">
         <h2><span class="lang-en">Challenges</span><span class="lang-pt">Desafios</span></h2>
         <ul>
@@ -403,9 +391,7 @@
           </li>
         </ul>
       </div>
-
       <div class="section-divider"></div>
-
       <div class="section">
         <h2><span class="lang-en">Solution</span><span class="lang-pt">Solução</span></h2>
         <p>
@@ -414,7 +400,6 @@
         </p>
       </div>
     </div>
-
     <div class="visual">
       <img id="caseImage" src="incentive-compensation-management.jpg" alt="Incentive Compensation Management">
     </div>
@@ -424,8 +409,6 @@
 
   <script>
     let fromSection = 'hero';
-
-    // Mapeamento das imagens por idioma
     const imageMap = {
         en: 'incentive-compensation-management.jpg',
         pt: 'incentive-compensation-management-pt.jpg'
@@ -435,8 +418,6 @@
       document.documentElement.lang = lang;
       document.getElementById('btn-en').classList.toggle('active', lang === 'en');
       document.getElementById('btn-pt').classList.toggle('active', lang === 'pt');
-      
-      // Troca a imagem conforme o idioma
       const imgElement = document.getElementById('caseImage');
       if (imgElement && imageMap[lang]) {
           imgElement.src = imageMap[lang];
@@ -444,7 +425,6 @@
               ? 'Incentive Compensation Management' 
               : 'Gestão de Compensação por Incentivo';
       }
-      
       localStorage.setItem('preferredLang', lang);
     }
 
@@ -452,20 +432,34 @@
       const currentLang = document.documentElement.lang || 'en';
       const urlParams = new URLSearchParams(window.location.search);
       const from = urlParams.get('from') || 'hero';
-      
-      window.location.href = 'cases.html?lang=' + currentLang + '&from=' + from;
+      const force = urlParams.get('force') ? '&force=' + urlParams.get('force') : '';
+      window.location.href = 'cases.html?lang=' + currentLang + '&from=' + from + force;
     }
 
     (function init() {
+      const host = window.location.hostname;
+      const isBr = host.includes('com.br');
       const params = new URLSearchParams(window.location.search);
-      let lang = params.get('lang');
+      const force = params.get('force');
       
+      let useBr = isBr;
+      if (force === 'br') useBr = true;
+      if (force === 'intl') useBr = false;
+
+      if (useBr) {
+        const toggleGroup = document.querySelector('.lang-toggle-group');
+        if (toggleGroup) toggleGroup.style.display = 'none';
+        setLang('pt');
+        window.setLang = function() {};
+        console.log('Modo .com.br ativado (force ou domínio)');
+        return;
+      }
+
+      let lang = params.get('lang');
       if (!lang) {
         lang = localStorage.getItem('preferredLang') || 'en';
       }
-      
       fromSection = params.get('from') || 'hero';
-      
       setLang(lang);
     })();
   </script>
