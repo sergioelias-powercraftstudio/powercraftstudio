@@ -762,11 +762,12 @@
     
     cards.forEach((card, index) => {
         if (index < files.length) {
+            // Garante que o href seja construído corretamente
             card.href = files[index] + '?lang=' + lang + '&from=' + from;
+            console.log('Link atualizado:', card.href); // Para debug
         }
     });
 }
-
         // ============================================================
         // FUNÇÃO: Voltar para a homepage
         // ============================================================
