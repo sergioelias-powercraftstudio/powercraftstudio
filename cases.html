@@ -772,24 +772,31 @@
         // ============================================================
         // FUNÇÃO: Voltar para a homepage
         // ============================================================
-        function goBackToIndex() {
-            console.log('Retornar a home-page');
-            
-            const urlParams = new URLSearchParams(window.location.search);
-            fromSection = urlParams.get('from') || 'hero';
-            
-            const anchorMap = {
-                'what-you-get': 'what-you-get',
-                'game-on': 'game-on',
-                'cases': 'what-you-get'
-            };
-            
-            const anchor = anchorMap[fromSection] || '';
-            const lang = currentLang || 'en';
-            const force = urlParams.get('force') ? '&force=' + urlParams.get('force') : '';
-            
-            window.location.href = 'index.html?lang=' + lang + (anchor ? '&anchor=' + anchor : '') + force;
-        }
+function goBackToIndex() {
+    // Obtém o idioma atual
+    const lang = currentLang || 'en';
+    
+    // Obtém a seção de origem (from) da URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const fromSection = urlParams.get('from') || 'hero';
+    
+    // Mapeia a seção de origem para o âncora correto
+    const anchorMap = {
+        'what-you-get': 'what-you-get',
+        'game-on': 'game-on',
+        'cases': 'what-you-get'
+    };
+    const anchor = anchorMap[fromSection] || '';
+    
+    // Constrói a URL relativa para o index.html
+    let url = 'index.html?lang=' + lang;
+    if (anchor) {
+        url += '&anchor=' + anchor;
+    }
+    
+    // Redireciona para o index.html
+    window.location.href = url;
+}
 
         // ============================================================
         // INICIALIZAÇÃO
