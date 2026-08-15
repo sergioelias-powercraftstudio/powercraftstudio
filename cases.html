@@ -662,7 +662,7 @@
     <!-- ============================================================ -->
     <!-- SCRIPTS -->
     <!-- ============================================================ -->
-    <script>
+ <script>
         // ============================================================
         // DADOS DOS CASES (para i18n)
         // ============================================================
@@ -703,103 +703,105 @@
         // ============================================================
         // FUNÇÃO: Trocar idioma
         // ============================================================
- function switchLanguage(lang) {
-    currentLang = lang;
-    
-    // Atualiza botões
-    const buttons = document.querySelectorAll('.header-controls .btn-uniform');
-    buttons.forEach(btn => {
-        btn.classList.remove('lang-active');
-        const btnLang = btn.dataset.lang;
-        if (btnLang && btnLang.toLowerCase() === lang) {
-            btn.classList.add('lang-active');
+        function switchLanguage(lang) {
+            currentLang = lang;
+            
+            // Atualiza botões
+            const buttons = document.querySelectorAll('.header-controls .btn-uniform');
+            buttons.forEach(btn => {
+                btn.classList.remove('lang-active');
+                const btnLang = btn.dataset.lang;
+                if (btnLang && btnLang.toLowerCase() === lang) {
+                    btn.classList.add('lang-active');
+                }
+            });
+
+            // Atualiza textos
+            const t = translations[lang];
+            
+            // Título da página
+            const titleEl = document.getElementById('pageTitle');
+            if (titleEl) titleEl.textContent = t.title;
+            
+            // Tooltips
+            const tooltipBack = document.getElementById('tooltipBack');
+            if (tooltipBack) tooltipBack.textContent = t.back;
+            
+            const tooltipEN = document.getElementById('tooltipEN');
+            if (tooltipEN) tooltipEN.textContent = t.tooltipEN;
+            
+            const tooltipPT = document.getElementById('tooltipPT');
+            if (tooltipPT) tooltipPT.textContent = t.tooltipPT;
+            
+            // Cases (títulos e descrições)
+            for (let i = 0; i < 4; i++) {
+                const titleElCase = document.getElementById('caseTitle' + i);
+                const descElCase = document.getElementById('caseDesc' + i);
+                if (titleElCase) {
+                    const key = 'cases.case' + (i+1) + '.title';
+                    titleElCase.textContent = translations[lang][key] || titleElCase.textContent;
+                }
+                if (descElCase) {
+                    const key = 'cases.case' + (i+1) + '.desc';
+                    descElCase.textContent = translations[lang][key] || descElCase.textContent;
+                }
+            }
+
+            // Salva o idioma no localStorage
+            localStorage.setItem('preferredLang', lang);
+
+            // Atualiza os links dos cards
+            updateCaseLinks(lang);
+
+            console.log('Idioma alterado para:', lang);
         }
-    });
-
-    // Atualiza textos
-    const t = translations[lang];
-    
-    // Título da página
-    document.getElementById('pageTitle').textContent = t.title;
-    
-    // Tooltips
-    document.getElementById('tooltipBack').textContent = t.back;
-    document.getElementById('tooltipEN').textContent = t.tooltipEN;
-    document.getElementById('tooltipPT').textContent = t.tooltipPT;
-    
-    // Cases (títulos e descrições)
-    for (let i = 0; i < 4; i++) {
-        const titleEl = document.getElementById('caseTitle' + i);
-        const descEl = document.getElementById('caseDesc' + i);
-        if (titleEl) {
-            const key = 'cases.case' + (i+1) + '.title';
-            titleEl.textContent = translations[lang][key] || titleEl.textContent;
-        }
-        if (descEl) {
-            const key = 'cases.case' + (i+1) + '.desc';
-            descEl.textContent = translations[lang][key] || descEl.textContent;
-        }
-    }
-
-    // Salva o idioma no localStorage
-    localStorage.setItem('preferredLang', lang);
-
-    // Atualiza os links dos cards para incluir o idioma e a seção de origem
-    updateCaseLinks(lang);
-
-    console.log('Idioma alterado para:', lang);
-}
 
         // ============================================================
         // FUNÇÃO: Atualizar links dos cards com o idioma
         // ============================================================
         function updateCaseLinks(lang) {
-    const cards = document.querySelectorAll('.case-planned-card');
-    const files = ['gma.html', 'icma.html', 'icoa.html', 'rra.html'];
-    
-    const urlParams = new URLSearchParams(window.location.search);
-    const from = urlParams.get('from') || 'hero';
-    
-    cards.forEach((card, index) => {
-        if (index < files.length) {
-            // Garante que o href seja construído corretamente
-            card.href = files[index] + '?lang=' + lang + '&from=' + from;
-            console.log('Link atualizado:', card.href); // Para debug
+            const cards = document.querySelectorAll('.case-planned-card');
+            const files = ['gma.html', 'icma.html', 'icoa.html', 'rra.html'];
+            
+            const urlParams = new URLSearchParams(window.location.search);
+            const from = urlParams.get('from') || 'hero';
+            
+            cards.forEach((card, index) => {
+                if (index < files.length) {
+                    card.href = files[index] + '?lang=' + lang + '&from=' + from;
+                    console.log('Link atualizado:', card.href); // Para debug
+                }
+            });
         }
-    });
-}
+
         // ============================================================
         // FUNÇÃO: Voltar para a homepage
         // ============================================================
-function goBackToIndex() {
-    // Obtém o idioma atual
-    const lang = currentLang || 'en';
-    
-    // Obtém a seção de origem (from) da URL
-    const urlParams = new URLSearchParams(window.location.search);
-    const fromSection = urlParams.get('from') || 'hero';
-    
-    // Mapeia a seção de origem para o âncora correto
-    const anchorMap = {
-        'what-you-get': 'what-you-get',
-        'game-on': 'game-on',
-        'cases': 'what-you-get'
-    };
-    const anchor = anchorMap[fromSection] || '';
-    
-    // Constrói a URL relativa para o index.html
-    let url = 'index.html?lang=' + lang;
-    if (anchor) {
-        url += '&anchor=' + anchor;
-    }
-    
-    // Redireciona para o index.html
-    window.location.href = url;
-}
-    
-    // Redireciona para o index.html
-    window.location.href = url;
-}
+        function goBackToIndex() {
+            // Obtém o idioma atual
+            const lang = currentLang || 'en';
+            
+            // Obtém a seção de origem (from) da URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const fromSection = urlParams.get('from') || 'hero';
+            
+            // Mapeia a seção de origem para o âncora correto
+            const anchorMap = {
+                'what-you-get': 'what-you-get',
+                'game-on': 'game-on',
+                'cases': 'what-you-get'
+            };
+            const anchor = anchorMap[fromSection] || '';
+            
+            // Constrói a URL relativa para o index.html
+            let url = 'index.html?lang=' + lang;
+            if (anchor) {
+                url += '&anchor=' + anchor;
+            }
+            
+            // Redireciona para o index.html
+            window.location.href = url;
+        }
 
         // ============================================================
         // INICIALIZAÇÃO
@@ -808,7 +810,7 @@ function goBackToIndex() {
             console.log('Cases page loaded');
             
             // =========================================================
-            // DETECÇÃO DE DOMÍNIO e suporte a ?force
+            // DETECÇÃO DE DOMÍNIO
             // =========================================================
             const host = window.location.hostname;
             const isBr = host.includes('com.br');
@@ -829,28 +831,28 @@ function goBackToIndex() {
                 // Sobrescreve a função para evitar troca acidental
                 window.switchLanguage = function() {};
                 console.log('Modo .com.br ativado (force ou domínio)');
-                return; // Interrompe a execução para não aplicar a lógica normal
+            } else {
+                // =========================================================
+                // COMPORTAMENTO NORMAL PARA OUTROS DOMÍNIOS
+                // =========================================================
+                let lang = urlParams.get('lang');
+                
+                if (!lang) {
+                    lang = localStorage.getItem('preferredLang');
+                }
+                
+                if (!lang) {
+                    const browserLang = navigator.language || navigator.language;
+                    lang = browserLang.startsWith('pt') ? 'pt' : 'en';
+                }
+                
+                fromSection = urlParams.get('from') || 'hero';
+                
+                switchLanguage(lang);
             }
-
-            // =========================================================
-            // COMPORTAMENTO NORMAL PARA OUTROS DOMÍNIOS
-            // =========================================================
-            let lang = urlParams.get('lang');
-            
-            if (!lang) {
-                lang = localStorage.getItem('preferredLang');
-            }
-            
-            if (!lang) {
-                const browserLang = navigator.language || navigator.language;
-                lang = browserLang.startsWith('pt') ? 'pt' : 'en';
-            }
-            
-            fromSection = urlParams.get('from') || 'hero';
-            
-            switchLanguage(lang);
         });
     </script>
+
 
 </body>
 </html>
