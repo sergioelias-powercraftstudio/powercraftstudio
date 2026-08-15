@@ -703,76 +703,74 @@
         // ============================================================
         // FUNÇÃO: Trocar idioma
         // ============================================================
-        function switchLanguage(lang) {
-            currentLang = lang;
-            
-            // Atualiza botões
-            const buttons = document.querySelectorAll('.header-controls .btn-uniform');
-            buttons.forEach(btn => {
-                btn.classList.remove('lang-active');
-                const btnLang = btn.dataset.lang;
-                if (btnLang && btnLang.toLowerCase() === lang) {
-                    btn.classList.add('lang-active');
-                }
-            });
-
-            // Atualiza textos
-            const t = translations[lang];
-            
-            // Título da página
-            document.getElementById('pageTitle').textContent = t.title;
-            
-            // Tooltips
-            document.getElementById('tooltipBack').textContent = t.back;
-            document.getElementById('tooltipEN').textContent = t.tooltipEN;
-            document.getElementById('tooltipPT').textContent = t.tooltipPT;
-            
-            // Cases (títulos e descrições)
-            for (let i = 0; i < 4; i++) {
-                const titleEl = document.getElementById('caseTitle' + i);
-                const descEl = document.getElementById('caseDesc' + i);
-                if (titleEl) {
-                    const key = 'cases.case' + (i+1) + '.title';
-                    titleEl.textContent = translations[lang][key] || titleEl.textContent;
-                }
-                if (descEl) {
-                    const key = 'cases.case' + (i+1) + '.desc';
-                    descEl.textContent = translations[lang][key] || descEl.textContent;
-                }
-            }
-
-            // Salva o idioma no localStorage para ser usado pelos cases
-            localStorage.setItem('preferredLang', lang);
-
-            // Atualiza os links dos cards para incluir o idioma e a seção de origem
-            updateCaseLinks(lang);
-
-            console.log('Idioma alterado para:', lang);
+ function switchLanguage(lang) {
+    currentLang = lang;
+    
+    // Atualiza botões
+    const buttons = document.querySelectorAll('.header-controls .btn-uniform');
+    buttons.forEach(btn => {
+        btn.classList.remove('lang-active');
+        const btnLang = btn.dataset.lang;
+        if (btnLang && btnLang.toLowerCase() === lang) {
+            btn.classList.add('lang-active');
         }
+    });
+
+    // Atualiza textos
+    const t = translations[lang];
+    
+    // Título da página
+    document.getElementById('pageTitle').textContent = t.title;
+    
+    // Tooltips
+    document.getElementById('tooltipBack').textContent = t.back;
+    document.getElementById('tooltipEN').textContent = t.tooltipEN;
+    document.getElementById('tooltipPT').textContent = t.tooltipPT;
+    
+    // Cases (títulos e descrições)
+    for (let i = 0; i < 4; i++) {
+        const titleEl = document.getElementById('caseTitle' + i);
+        const descEl = document.getElementById('caseDesc' + i);
+        if (titleEl) {
+            const key = 'cases.case' + (i+1) + '.title';
+            titleEl.textContent = translations[lang][key] || titleEl.textContent;
+        }
+        if (descEl) {
+            const key = 'cases.case' + (i+1) + '.desc';
+            descEl.textContent = translations[lang][key] || descEl.textContent;
+        }
+    }
+
+    // Salva o idioma no localStorage
+    localStorage.setItem('preferredLang', lang);
+
+    // Atualiza os links dos cards para incluir o idioma e a seção de origem
+    updateCaseLinks(lang);
+
+    console.log('Idioma alterado para:', lang);
+}
 
         // ============================================================
         // FUNÇÃO: Atualizar links dos cards com o idioma
         // ============================================================
         function updateCaseLinks(lang) {
-            const cards = document.querySelectorAll('.case-planned-card');
-            const files = ['gma.html', 'icma.html', 'icoa.html', 'rra.html'];
-            
-            const urlParams = new URLSearchParams(window.location.search);
-            const from = urlParams.get('from') || 'hero';
-            // Preserva o parâmetro force se existir
-            const force = urlParams.get('force') ? '&force=' + urlParams.get('force') : '';
-            
-            cards.forEach((card, index) => {
-                if (index < files.length) {
-                    card.href = files[index] + '?lang=' + lang + '&from=' + from + force;
-                }
-            });
+    const cards = document.querySelectorAll('.case-planned-card');
+    const files = ['gma.html', 'icma.html', 'icoa.html', 'rra.html'];
+    
+    const urlParams = new URLSearchParams(window.location.search);
+    const from = urlParams.get('from') || 'hero';
+    
+    cards.forEach((card, index) => {
+        if (index < files.length) {
+            card.href = files[index] + '?lang=' + lang + '&from=' + from;
         }
+    });
+}
 
         // ============================================================
         // FUNÇÃO: Voltar para a homepage
         // ============================================================
-        function goBackToIndex() {
+function goBackToIndex() {
     // Obtém o idioma atual
     const lang = currentLang || 'en';
     
@@ -793,6 +791,10 @@
     if (anchor) {
         url += '&anchor=' + anchor;
     }
+    
+    // Redireciona para o index.html
+    window.location.href = url;
+}
     
     // Redireciona para o index.html
     window.location.href = url;
