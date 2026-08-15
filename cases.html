@@ -551,20 +551,23 @@
                     <h2 class="section-page-title" id="pageTitle">From Architecture to Delivery</h2>
                 </div>
                 <div class="header-controls">
-                    <!-- Botão EN -->
-                    <div class="tooltip-container-top">
-                        <button class="btn-uniform lang-active" data-lang="EN" onclick="switchLanguage('en')">
-                            <span class="flag">EN</span>
-                        </button>
-                        <span class="custom-tooltip" id="tooltipEN">Language English</span>
-                    </div>
+                    <!-- Grupo de botões de idioma (EN/PT) - será oculto no .com.br ou com ?force=br -->
+                    <div class="lang-toggle-group">
+                        <!-- Botão EN -->
+                        <div class="tooltip-container-top">
+                            <button class="btn-uniform lang-active" data-lang="EN" onclick="switchLanguage('en')">
+                                <span class="flag">EN</span>
+                            </button>
+                            <span class="custom-tooltip" id="tooltipEN">Language English</span>
+                        </div>
 
-                    <!-- Botão PT -->
-                    <div class="tooltip-container-top">
-                        <button class="btn-uniform" data-lang="PT" onclick="switchLanguage('pt')">
-                            <span class="flag">PT</span>
-                        </button>
-                        <span class="custom-tooltip" id="tooltipPT">Idioma Português</span>
+                        <!-- Botão PT -->
+                        <div class="tooltip-container-top">
+                            <button class="btn-uniform" data-lang="PT" onclick="switchLanguage('pt')">
+                                <span class="flag">PT</span>
+                            </button>
+                            <span class="custom-tooltip" id="tooltipPT">Idioma Português</span>
+                        </div>
                     </div>
 
                     <!-- Botão Back -->
@@ -756,10 +759,12 @@
             
             const urlParams = new URLSearchParams(window.location.search);
             const from = urlParams.get('from') || 'hero';
+            // Preserva o parâmetro force se existir
+            const force = urlParams.get('force') ? '&force=' + urlParams.get('force') : '';
             
             cards.forEach((card, index) => {
                 if (index < files.length) {
-                    card.href = files[index] + '?lang=' + lang + '&from=' + from;
+                    card.href = files[index] + '?lang=' + lang + '&from=' + from + force;
                 }
             });
         }
@@ -781,8 +786,9 @@
             
             const anchor = anchorMap[fromSection] || '';
             const lang = currentLang || 'en';
+            const force = urlParams.get('force') ? '&force=' + urlParams.get('force') : '';
             
-            window.location.href = 'index.html?lang=' + lang + (anchor ? '&anchor=' + anchor : '');
+            window.location.href = 'index.html?lang=' + lang + (anchor ? '&anchor=' + anchor : '') + force;
         }
 
         // ============================================================
@@ -791,7 +797,34 @@
         document.addEventListener('DOMContentLoaded', function() {
             console.log('Cases page loaded');
             
+            // =========================================================
+            // DETECÇÃO DE DOMÍNIO e suporte a ?force
+            // =========================================================
+            const host = window.location.hostname;
+            const isBr = host.includes('com.br');
             const urlParams = new URLSearchParams(window.location.search);
+            const force = urlParams.get('force');
+            
+            let useBr = isBr;
+            if (force === 'br') useBr = true;
+            if (force === 'intl') useBr = false;
+
+            if (useBr) {
+                // Força português e oculta os botões de idioma
+                const toggleGroup = document.querySelector('.lang-toggle-group');
+                if (toggleGroup) toggleGroup.style.display = 'none';
+                
+                // Força o idioma PT
+                switchLanguage('pt');
+                // Sobrescreve a função para evitar troca acidental
+                window.switchLanguage = function() {};
+                console.log('Modo .com.br ativado (force ou domínio)');
+                return; // Interrompe a execução para não aplicar a lógica normal
+            }
+
+            // =========================================================
+            // COMPORTAMENTO NORMAL PARA OUTROS DOMÍNIOS
+            // =========================================================
             let lang = urlParams.get('lang');
             
             if (!lang) {
