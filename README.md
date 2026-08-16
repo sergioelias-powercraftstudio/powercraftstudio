@@ -57,13 +57,4 @@ The international site automatically detects the user's browser language:
 - **Portuguese (PT)** – Available via language selector
 
 ---
-
-## 💻 Local Development
-
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/sergioelias-powercraftstudio/powercraftstudio.git
-Navigate to the project folder
-
-bash
-cd powercraftstudio
+**Desenvolvido pela PowerCraftStudio**
