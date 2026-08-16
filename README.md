@@ -1,4 +1,3 @@
-markdown
 # PowerCraftStudio
 
 Official institutional website of PowerCraftStudio, developed to present our services, products, and portfolio in English (US) and Portuguese (PT).
@@ -25,8 +24,6 @@ powercraftstudio/
 ├── assets/ # Images, icons, and resources
 ├── README.md # Project documentation
 └── LICENSE # License information
-
-text
 
 ---
 
@@ -57,4 +54,18 @@ The international site automatically detects the user's browser language:
 - **Portuguese (PT)** – Available via language selector
 
 ---
-**Desenvolvido pela PowerCraftStudio**
+
+🤝 Contributing
+This is an institutional project. We do not currently accept external contributions. For suggestions or issues, please contact us directly.
+
+📞 Contact
+Website: https://powercraftstudio.digital
+
+Email: contact@powercraftstudio.digital
+
+📄 License
+This project is licensed under the MIT License – see the LICENSE file for details.
+
+Built with 💙 by PowerCraftStudio
+
+---
