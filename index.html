@@ -980,10 +980,9 @@
             
             .container {
                 padding: 0 16px;
-                flex: 0 1 auto; /* Remove o flex:1 para não forçar altura extra */
+                flex: 0 1 auto;
             }
             
-            /* Hero */
             .hero .container {
                 gap: 0.8rem;
                 justify-content: center;
@@ -1028,7 +1027,6 @@
                 font-size: 0.65rem;
             }
             
-            /* Features */
             .features-grid {
                 grid-template-columns: 1fr;
                 gap: 1rem;
@@ -1037,7 +1035,6 @@
                 grid-template-columns: 1fr !important;
             }
             
-            /* Engagement */
             .engagement-grid {
                 grid-template-columns: 1fr 1fr;
                 gap: 0.8rem;
@@ -1058,7 +1055,6 @@
                 font-size: 0.75rem;
             }
             
-            /* Roadmap */
             #Roadmap .features-grid {
                 margin-top: 1.2rem;
                 margin-bottom: 0.5rem;
@@ -1071,7 +1067,6 @@
                 margin-bottom: 0.3rem !important;
             }
             
-            /* CTA */
             .cta-section h2 {
                 font-size: 2rem;
             }
@@ -1080,7 +1075,6 @@
                 margin: 0.8rem auto 1.2rem;
             }
             
-            /* Geral */
             .section-title {
                 font-size: 2rem;
                 margin-bottom: 0.8rem;
@@ -1154,7 +1148,6 @@
                 padding: 0 12px;
             }
             
-            /* Hero */
             .hero .container {
                 gap: 0.5rem;
             }
@@ -1202,7 +1195,6 @@
                 font-size: 0.9rem;
             }
             
-            /* Engagement */
             .engagement-grid {
                 grid-template-columns: 1fr 1fr;
                 gap: 0.6rem;
@@ -1224,7 +1216,6 @@
                 line-height: 1.4;
             }
             
-            /* Roadmap */
             #Roadmap .features-grid {
                 margin-top: 0.8rem;
                 gap: 0.8rem;
@@ -1776,6 +1767,9 @@
             let lastMoveX = 0;
             let velocity = 0;
 
+            // ============================================================
+            // 1. DRAG COM MOUSE - MAIS RÁPIDO
+            // ============================================================
             document.addEventListener('mousedown', (e) => {
                 if (e.target.closest('a') || e.target.closest('button') || e.target.closest('.btn-primary') || e.target.closest('.btn-glass')) {
                     return;
@@ -1796,7 +1790,7 @@
                 
                 e.preventDefault();
                 const x = e.pageX - window.scrollX;
-                const walk = (startX - x) * 1.2;
+                const walk = (startX - x) * 2.0;
                 const newScroll = scrollLeft + walk;
                 
                 const maxScroll = document.documentElement.scrollWidth - window.innerWidth;
@@ -1820,8 +1814,8 @@
                     document.documentElement.style.cursor = 'grab';
                     document.body.style.userSelect = '';
                     
-                    if (Math.abs(velocity) > 0.5) {
-                        momentum = velocity * 30;
+                    if (Math.abs(velocity) > 0.3) {
+                        momentum = velocity * 50;
                         animateMomentum();
                     }
                 }
@@ -1837,7 +1831,7 @@
                 const maxScroll = document.documentElement.scrollWidth - window.innerWidth;
                 let newScroll = currentScroll - momentum;
                 
-                momentum *= 0.96;
+                momentum *= 0.98;
                 
                 if (newScroll <= 0 || newScroll >= maxScroll) {
                     momentum = 0;
@@ -1853,7 +1847,9 @@
                 }
             }
 
-            // TOUCH
+            // ============================================================
+            // 2. TOUCH - MAIS RÁPIDO
+            // ============================================================
             let touchStartX = 0;
             let touchScrollLeft = 0;
             let isTouching = false;
@@ -1874,7 +1870,7 @@
                 if (!isTouching) return;
                 
                 const x = e.touches[0].pageX - window.scrollX;
-                const walk = (touchStartX - x) * 1.2;
+                const walk = (touchStartX - x) * 1.8;
                 const newScroll = touchScrollLeft + walk;
                 const maxScroll = document.documentElement.scrollWidth - window.innerWidth;
                 
@@ -1894,19 +1890,22 @@
             document.addEventListener('touchend', () => {
                 if (isTouching) {
                     isTouching = false;
-                    if (Math.abs(velocity) > 0.5) {
-                        momentum = velocity * 30;
+                    if (Math.abs(velocity) > 0.3) {
+                        momentum = velocity * 50;
                         animateMomentum();
                     }
                 }
             }, { passive: true });
 
-            // WHEEL
+            // ============================================================
+            // 3. SCROLL DO MOUSE / TOUCHPAD - MAIS RÁPIDO
+            // ============================================================
             document.addEventListener('wheel', (e) => {
                 if (isDragging || isTouching) return;
                 
                 e.preventDefault();
-                const delta = e.deltaY || e.deltaX;
+                
+                const delta = (e.deltaY || e.deltaX) * 1.5;
                 const currentScroll = window.scrollX;
                 const maxScroll = document.documentElement.scrollWidth - window.innerWidth;
                 const newScroll = currentScroll + delta;
@@ -1917,7 +1916,84 @@
                 });
             }, { passive: false });
 
-            // HIDE INDICATOR
+            // ============================================================
+            // 4. HOVER SCROLL - MOVIMENTO RÁPIDO AO PASSAR O MOUSE
+            // ============================================================
+            let hoverInterval = null;
+            let hoverSpeed = 0;
+            let hoverDirection = 0; // 1 = direita, -1 = esquerda, 0 = parado
+            
+            document.addEventListener('mousemove', (e) => {
+                // Ignora se estiver arrastando ou clicou em elementos interativos
+                if (isDragging || e.target.closest('a') || e.target.closest('button') || 
+                    e.target.closest('.btn-primary') || e.target.closest('.btn-glass')) {
+                    return;
+                }
+                
+                const windowWidth = window.innerWidth;
+                const mouseX = e.clientX;
+                
+                // Zonas de ativação: 15% das bordas
+                const edgeZone = windowWidth * 0.15;
+                
+                if (mouseX < edgeZone) {
+                    // Mouse na borda esquerda - scroll para esquerda
+                    const intensity = 1 - (mouseX / edgeZone);
+                    hoverDirection = -1;
+                    hoverSpeed = 8 + (intensity * 12); // Velocidade variável de 8 a 20
+                    
+                    if (!hoverInterval) {
+                        hoverInterval = setInterval(() => {
+                            const currentScroll = window.scrollX;
+                            const maxScroll = document.documentElement.scrollWidth - window.innerWidth;
+                            const newScroll = currentScroll + (hoverDirection * hoverSpeed);
+                            window.scrollTo({
+                                left: Math.max(0, Math.min(newScroll, maxScroll)),
+                                behavior: 'auto'
+                            });
+                        }, 16); // ~60fps
+                    }
+                } else if (mouseX > windowWidth - edgeZone) {
+                    // Mouse na borda direita - scroll para direita
+                    const intensity = 1 - ((windowWidth - mouseX) / edgeZone);
+                    hoverDirection = 1;
+                    hoverSpeed = 8 + (intensity * 12);
+                    
+                    if (!hoverInterval) {
+                        hoverInterval = setInterval(() => {
+                            const currentScroll = window.scrollX;
+                            const maxScroll = document.documentElement.scrollWidth - window.innerWidth;
+                            const newScroll = currentScroll + (hoverDirection * hoverSpeed);
+                            window.scrollTo({
+                                left: Math.max(0, Math.min(newScroll, maxScroll)),
+                                behavior: 'auto'
+                            });
+                        }, 16);
+                    }
+                } else {
+                    // Mouse no centro - para o scroll
+                    if (hoverInterval) {
+                        clearInterval(hoverInterval);
+                        hoverInterval = null;
+                        hoverDirection = 0;
+                        hoverSpeed = 0;
+                    }
+                }
+            });
+
+            // Para o hover scroll quando o mouse sai da janela
+            document.addEventListener('mouseleave', () => {
+                if (hoverInterval) {
+                    clearInterval(hoverInterval);
+                    hoverInterval = null;
+                    hoverDirection = 0;
+                    hoverSpeed = 0;
+                }
+            });
+
+            // ============================================================
+            // 5. ESCONDE INDICADOR
+            // ============================================================
             let hasScrolled = false;
             document.addEventListener('scroll', function() {
                 if (window.scrollX > 50 && !hasScrolled) {
@@ -1930,7 +2006,9 @@
                 }
             });
 
-            // MODAL
+            // ============================================================
+            // 6. MODAL
+            // ============================================================
             const modal = document.getElementById('modalContact');
             const openBtns = document.querySelectorAll('.open-modal-btn');
             const closeBtn = document.getElementById('closeModalBtn');
@@ -1956,7 +2034,9 @@
                 }
             });
 
-            // LANGUAGE INIT
+            // ============================================================
+            // 7. LANGUAGE INIT
+            // ============================================================
             const host = window.location.hostname;
             const isBr = host.includes('com.br');
             const urlParams = new URLSearchParams(window.location.search);
