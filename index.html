@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>PowerCraftStudio</title>
 
     <!-- Fonts & Icons -->
@@ -40,6 +40,10 @@
 
             --shadow-glow-purple: 0 0 60px rgba(124, 58, 237, 0.2);
             --shadow-glow-cyan: 0 0 60px rgba(6, 182, 212, 0.15);
+            
+            /* Variáveis para responsivo */
+            --slide-padding-top: 120px;
+            --slide-padding-bottom: 40px;
         }
 
         /* -------- RESET + LAYOUT HORIZONTAL -------- */
@@ -47,7 +51,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            user-select: none; /* Evita seleção de texto durante drag */
+            user-select: none;
         }
 
         html {
@@ -56,13 +60,13 @@
             height: 100vh;
             scroll-behavior: smooth;
             cursor: grab;
+            -webkit-overflow-scrolling: touch;
         }
 
         html:active {
             cursor: grabbing;
         }
 
-        /* Esconde a scrollbar padrão mas mantém funcionalidade */
         html::-webkit-scrollbar {
             height: 6px;
         }
@@ -103,7 +107,7 @@
         img {
             display: block;
             max-width: 100%;
-            pointer-events: none; /* Evita conflitos com drag */
+            pointer-events: none;
         }
 
         /* -------- CONTAINER DE SEÇÕES HORIZONTAIS -------- */
@@ -123,12 +127,12 @@
             overflow-x: hidden;
             display: flex;
             flex-direction: column;
-            margin-top: 120px;
+            padding-top: var(--slide-padding-top);
+            padding-bottom: var(--slide-padding-bottom);
             position: relative;
-            pointer-events: auto; /* Permite interação com elementos internos */
+            pointer-events: auto;
         }
 
-        /* Scroll interno para seções com muito conteúdo */
         .section-slide::-webkit-scrollbar {
             width: 4px;
         }
@@ -147,6 +151,9 @@
             position: relative;
             z-index: 1;
             padding: 0 20px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
         }
 
         /* -------- BADGE / LABELS -------- */
@@ -201,7 +208,7 @@
             box-shadow: var(--shadow-glow-purple);
             position: relative;
             overflow: hidden;
-            pointer-events: auto; /* Garante que o botão seja clicável */
+            pointer-events: auto;
             z-index: 10;
         }
         .btn-primary::before {
@@ -333,7 +340,9 @@
             }
         }
 
-        /* -------- HERO -------- */
+        /* ================================================================
+           HERO — LAYOUT OTIMIZADO
+           ================================================================ */
         .hero {
             background: var(--dark-bg);
             position: relative;
@@ -353,7 +362,6 @@
             opacity: 0.3;
             animation: floatShape 20s ease-in-out infinite alternate;
         }
-        /* ESSE É O CARA */
         .hero-bg-shapes .shape:nth-child(1) {
             width: 50%;
             height: 500px;
@@ -394,43 +402,16 @@
             z-index: 1;
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 4rem;
+            gap: 2rem;
             align-items: center;
+            flex: 1;
+            min-height: 0;
         }
 
-        .hero-content .logo-container {
-            margin-bottom: 2rem;
+        .hero-content {
             display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-        .hero-content .logo-container img {
-            height: 56px;
-            width: auto;
-            filter: brightness(0) invert(1);
-        }
-        .hero-content .logo-container .logo-text {
-            font-size: 1.4rem;
-            font-weight: 400;
-            color: #fff;
-            letter-spacing: -0.02em;
-        }
-        .hero-content .logo-container .logo-text .studio {
-            color: var(--neon-cyan);
-        }
-
-        .hero-content .hero-tag {
-            display: inline-block;
-            background: rgba(6, 182, 212, 0.1);
-            border: 1px solid rgba(6, 182, 212, 0.2);
-            padding: 6px 20px;
-            border-radius: 100px;
-            font-size: 0.75rem;
-            font-weight: 400;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            color: var(--neon-cyan);
-            margin-bottom: 1.5rem;
+            flex-direction: column;
+            justify-content: center;
         }
 
         .hero-content h1 {
@@ -438,7 +419,7 @@
             font-weight: 400;
             line-height: 1.05;
             letter-spacing: -0.03em;
-            margin-bottom: 1.2rem;
+            margin-bottom: 0.8rem;
         }
         .hero-content h1 .gradient-text {
             background: linear-gradient(135deg, var(--electric-purple), var(--neon-cyan), var(--neon-pink));
@@ -451,7 +432,7 @@
             color: var(--text-gray);
             max-width: 600px;
             line-height: 1.8;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
         }
 
         .hero-actions {
@@ -460,35 +441,16 @@
             gap: 1rem;
         }
 
-        .hero-stats {
-            display: flex;
-            gap: 3rem;
-            margin-top: 3rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.16);
-        }
-        .hero-stats .stat .number {
-            font-size: 2.4rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, var(--electric-purple), var(--neon-cyan));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            letter-spacing: -0.02em;
-        }
-        .hero-stats .stat .label {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            font-weight: 500;
-            margin-top: 2px;
-        }
-
+        /* -------- HERO VISUAL + LOGO + STATS -------- */
         .hero-visual {
             position: relative;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
+            justify-content: center;
+            gap: 1.5rem;
         }
+
         .hero-visual .orb {
             position: absolute;
             width: 250px;
@@ -497,6 +459,7 @@
             background: radial-gradient(circle, rgba(124, 58, 237, 0.3), transparent 70%);
             filter: blur(60px);
             animation: pulseOrb 4s ease-in-out infinite alternate;
+            z-index: 0;
         }
         @keyframes pulseOrb {
             0% {
@@ -508,56 +471,54 @@
                 opacity: 1;
             }
         }
-        .hero-visual .floating-card {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(20px);
-            border: 1px solid var(--glass-border);
-            border-radius: 28px;
-            padding: 2rem;
-            width: 100%;
-            max-width: 420px;
+
+        .hero-visual .logo-wrapper {
             position: relative;
-            z-index: 2;
-            box-shadow: var(--shadow-glow-purple);
-            animation: floatCard 6s ease-in-out infinite alternate;
+            z-index: 1;
+            width: 100%;
+            max-width: 480px;
         }
-        @keyframes floatCard {
-            0% {
-                transform: translateY(0);
-            }
-            100% {
-                transform: translateY(-15px);
-            }
+
+        .hero-visual .logo-wrapper img {
+            width: 100%;
+            height: auto;
+            max-height: 200px;
+            object-fit: contain;
+            display: block;
+            margin: 0 auto;
         }
-        .floating-card .card-icon {
-            font-size: 2.2rem;
-            color: var(--neon-cyan);
-            margin-bottom: 0.8rem;
-        }
-        .floating-card h3 {
-            font-size: 1.2rem;
-            font-weight: 400;
-            margin-bottom: 0.4rem;
-        }
-        .floating-card p {
-            color: var(--text-gray);
-            font-size: 0.9rem;
-            line-height: 1.6;
-        }
-        .floating-card .tech-tags {
+
+        .hero-stats {
+            position: relative;
+            z-index: 1;
             display: flex;
-            gap: 0.6rem;
-            flex-wrap: wrap;
-            margin-top: 1rem;
+            gap: 2.5rem;
+            justify-content: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.16);
+            width: 100%;
+            max-width: 480px;
         }
-        .floating-card .tech-tags span {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 3px 14px;
-            border-radius: 100px;
-            font-size: 0.65rem;
-            font-weight: 400;
-            color: var(--text-gray);
-            border: 1px solid rgba(255, 255, 255, 0.06);
+        .hero-stats .stat {
+            text-align: center;
+        }
+        .hero-stats .stat .number {
+            font-size: 2.4rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--electric-purple), var(--neon-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.02em;
+            display: block;
+        }
+        .hero-stats .stat .label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            font-weight: 500;
+            display: block;
+            margin-top: 2px;
+            line-height: 1.2;
         }
 
         /* -------- CARDS -------- */
@@ -818,6 +779,7 @@
             text-align: center;
             color: var(--text-muted);
             font-size: 0.8rem;
+            margin-top: auto;
         }
         .footer .footer-logo {
             display: flex;
@@ -860,6 +822,8 @@
             border-radius: 28px;
             position: relative;
             box-shadow: var(--shadow-glow-purple);
+            max-height: 90vh;
+            overflow-y: auto;
         }
         .modal-close {
             position: absolute;
@@ -914,16 +878,28 @@
             margin-top: 0.5rem;
         }
 
-        /* -------- RESPONSIVE -------- */
+        /* ================================================================
+           RESPONSIVE — AJUSTES PARA MOBILE
+           ================================================================ */
+
+        /* Tablets e telas médias */
         @media (max-width: 1024px) {
-            .section-slide {
-                padding: 40px 30px;
+            :root {
+                --slide-padding-top: 100px;
+                --slide-padding-bottom: 30px;
             }
+            
+            .section-slide {
+                padding-top: var(--slide-padding-top);
+                padding-bottom: var(--slide-padding-bottom);
+            }
+            
             .hero .container {
                 grid-template-columns: 1fr;
-                gap: 2.5rem;
+                gap: 1.5rem;
                 text-align: center;
             }
+            
             .hero-content p {
                 margin-left: auto;
                 margin-right: auto;
@@ -934,9 +910,23 @@
             .hero-stats {
                 justify-content: center;
             }
-            .hero-content .logo-container {
-                justify-content: center;
+            
+            .hero-visual .logo-wrapper {
+                max-width: 380px;
             }
+            .hero-visual .logo-wrapper img {
+                max-height: 150px;
+            }
+            
+            .hero-stats {
+                gap: 2rem;
+                padding-top: 1rem;
+                max-width: 400px;
+            }
+            .hero-stats .stat .number {
+                font-size: 2rem;
+            }
+            
             .features-grid {
                 grid-template-columns: 1fr 1fr;
             }
@@ -954,7 +944,7 @@
                 font-size: 2.4rem;
             }
             .hero-content h1 {
-                font-size: 3.2rem;
+                font-size: 3rem;
             }
             .scroll-indicator {
                 bottom: 20px;
@@ -963,15 +953,73 @@
             }
         }
 
+        /* Smartphones grandes */
         @media (max-width: 768px) {
+            :root {
+                --slide-padding-top: 70px;
+                --slide-padding-bottom: 16px;
+            }
+            
             .section-slide {
-                padding: 30px 20px;
+                padding-top: var(--slide-padding-top);
+                padding-bottom: var(--slide-padding-bottom);
+                height: 100vh;
+                min-height: 100vh;
+                overflow-y: auto;
             }
+            
+            .container {
+                padding: 0 16px;
+            }
+            
+            .hero .container {
+                gap: 0.8rem;
+                justify-content: center;
+            }
+            
             .hero-content h1 {
-                font-size: 2.4rem;
+                font-size: 2.2rem;
+                margin-bottom: 0.5rem;
             }
+            .hero-content p {
+                font-size: 0.95rem;
+                margin-bottom: 1rem;
+            }
+            
+            .hero-actions {
+                gap: 0.6rem;
+            }
+            .hero-actions .btn-primary,
+            .hero-actions .btn-glass {
+                padding: 10px 20px;
+                font-size: 0.8rem;
+                gap: 8px;
+            }
+            
+            .hero-visual .logo-wrapper {
+                max-width: 280px;
+            }
+            .hero-visual .logo-wrapper img {
+                max-height: 100px;
+            }
+            
+            .hero-stats {
+                gap: 1.2rem;
+                padding-top: 0.8rem;
+                max-width: 320px;
+            }
+            .hero-stats .stat .number {
+                font-size: 1.6rem;
+            }
+            .hero-stats .stat .label {
+                font-size: 0.65rem;
+            }
+            
             .features-grid {
                 grid-template-columns: 1fr;
+            }
+            .features-grid[style*="grid-template-columns: repeat(2, 1fr)"] {
+                grid-template-columns: 1fr !important;
             }
             .engagement-grid {
                 grid-template-columns: 1fr;
@@ -979,13 +1027,7 @@
             .cta-section h2 {
                 font-size: 2rem;
             }
-            .hero-stats {
-                gap: 1.5rem;
-                flex-wrap: wrap;
-            }
-            .hero-stats .stat .number {
-                font-size: 1.8rem;
-            }
+            
             .floating-card {
                 padding: 1.2rem;
                 max-width: 100%;
@@ -1012,38 +1054,164 @@
             .scroll-indicator {
                 display: none;
             }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            .section-sub {
+                font-size: 1rem;
+            }
+            
+            .feature-card {
+                padding: 1.5rem 1.2rem;
+            }
+            
+            .asymmetric-grid .visual-block .gradient-box {
+                min-height: 200px;
+                padding: 1.8rem;
+            }
+            
+            .content-block .item {
+                padding-left: 0.8rem;
+            }
+            
+            .btn-primary, .btn-glass {
+                padding: 12px 24px;
+                font-size: 0.9rem;
+            }
         }
 
+        /* Smartphones pequenos */
         @media (max-width: 480px) {
-            .hero-content h1 {
-                font-size: 1.8rem;
+            :root {
+                --slide-padding-top: 60px;
+                --slide-padding-bottom: 12px;
             }
+            
+            .section-slide {
+                padding-top: var(--slide-padding-top);
+                padding-bottom: var(--slide-padding-bottom);
+                height: 100vh;
+                min-height: 100vh;
+            }
+            
+            .container {
+                padding: 0 12px;
+            }
+            
+            .hero .container {
+                gap: 0.5rem;
+            }
+            
+            .hero-content h1 {
+                font-size: 1.6rem;
+                margin-bottom: 0.3rem;
+            }
+            .hero-content p {
+                font-size: 0.85rem;
+                margin-bottom: 0.8rem;
+            }
+            
+            .hero-actions .btn-primary,
+            .hero-actions .btn-glass {
+                padding: 8px 16px;
+                font-size: 0.7rem;
+                gap: 6px;
+            }
+            
+            .hero-visual .logo-wrapper {
+                max-width: 200px;
+            }
+            .hero-visual .logo-wrapper img {
+                max-height: 70px;
+            }
+            
+            .hero-stats {
+                gap: 1rem;
+                padding-top: 0.5rem;
+                max-width: 280px;
+            }
+            .hero-stats .stat .number {
+                font-size: 1.3rem;
+            }
+            .hero-stats .stat .label {
+                font-size: 0.55rem;
+            }
+            
             .section-title {
                 font-size: 1.6rem;
             }
-            .btn-primary,
-            .btn-glass {
-                padding: 10px 20px;
-                font-size: 0.8rem;
-            }
+            
             .modal-container {
                 padding: 1.5rem;
-            }
-            .hero-stats .stat .number {
-                font-size: 1.4rem;
-            }
-            .hero-content .logo-container img {
-                height: 40px;
-            }
-            .hero-content .logo-container .logo-text {
-                font-size: 1.1rem;
+                width: 95%;
             }
             .lang-toggle-top {
                 top: 12px;
                 right: 12px;
+                padding: 4px 6px;
             }
+            .lang-toggle-top button {
+                font-size: 0.55rem;
+                padding: 2px 8px;
+            }
+            
+            .feature-card .icon-wrap {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+            .feature-card h4 {
+                font-size: 1rem;
+            }
+            .feature-card p {
+                font-size: 0.85rem;
+            }
+            
+            .engagement-item {
+                padding: 1rem 0.8rem;
+            }
+            .engagement-item .emoji {
+                font-size: 1.6rem;
+            }
+            
+            .cta-section h2 {
+                font-size: 1.6rem;
+            }
+            .cta-section p {
+                font-size: 0.9rem;
+            }
+            
+            .gradient-box h3 {
+                font-size: 1.1rem;
+            }
+            .gradient-box p {
+                font-size: 0.8rem;
+                max-width: 100%;
+            }
+            .gradient-box .big-number {
+                font-size: 2.5rem;
+            }
+            
+            .asymmetric-grid .visual-block .gradient-box {
+                min-height: 160px;
+                padding: 1.2rem;
+            }
+            
+            .footer {
+                font-size: 0.7rem;
+                padding: 1rem 0;
+            }
+            .footer .footer-logo img {
+                height: 22px;
+            }
+        }
+
+        /* Ajuste para iPhone com notch */
+        @supports (padding: max(0px)) {
             .section-slide {
-                padding: 20px 16px;
+                padding-top: max(var(--slide-padding-top), env(safe-area-inset-top, 0px));
+                padding-bottom: max(var(--slide-padding-bottom), env(safe-area-inset-bottom, 0px));
             }
         }
     </style>
@@ -1081,10 +1249,10 @@
                         <span class="lang-en">Beyond Integration and <span class="gradient-text">Intelligent Evolution</span></span>
                         <span class="lang-pt" style="display:none;">Além da Integração<br>e <span class="gradient-text">Evolução Inteligente</span></span>
                     </h1>
-                    <p><br>
+                    <p>
                         <span class="lang-en"><strong style="color: #fff; font-weight: normal;">Power Platform</strong> solutions that not only connect but also adapt and evolve with your company.</span>
                         <span class="lang-pt" style="display:none;"><strong style="color: #fff; font-weight: normal;">Soluções da Power Platform</strong> que não apenas se conectam, mas também se adaptam e evoluem com a sua empresa.</span>
-                    </p><br>
+                    </p>
                     <div class="hero-actions">
                         <a href="#" class="btn-primary open-modal-btn">
                             <span class="lang-en">Start the Journey</span>
@@ -1097,37 +1265,35 @@
                             <i class="fas fa-arrow-right"></i>
                         </a>
                     </div>
-                    
                 </div>
 
                 <div class="hero-visual">
                     <div class="orb"></div>
-                    <div class="logo-container">
-                        <img src="logo_1143.png" style="width: 400px;margin-top:90px; height: auto; object-fit: contain; display: block; margin-left: auto;" alt="PowerCraftStudio" />
-                    
+                    <div class="logo-wrapper">
+                        <img src="logo_1143.png" alt="PowerCraftStudio" />
+                    </div>
                     <div class="hero-stats">
                         <div class="stat">
                             <span class="number">70%+</span>
                             <span class="label">
-                                <span class="lang-en"><br>Faster Delivery</span>
-                                <span class="lang-pt" style="display:none;"><br>Entrega Mais Rápida</span>
+                                <span class="lang-en">Faster Delivery</span>
+                                <span class="lang-pt" style="display:none;">Entrega Mais Rápida</span>
                             </span>
                         </div>
                         <div class="stat">
                             <span class="number">80%+</span>
                             <span class="label">
-                                <span class="lang-en"><br>Automation Gains</span>
-                                <span class="lang-pt" style="display:none;"><br>Ganhos de Automação</span>
+                                <span class="lang-en">Automation Gains</span>
+                                <span class="lang-pt" style="display:none;">Ganhos de Automação</span>
                             </span>
                         </div>
                         <div class="stat">
                             <span class="number">100%</span>
                             <span class="label">
-                                <span class="lang-en"><br>Remote Job <br></span>
-                                <span class="lang-pt" style="display:none;"><br>Trabalho Remoto<br></span>
+                                <span class="lang-en">Remote Job</span>
+                                <span class="lang-pt" style="display:none;">Trabalho Remoto</span>
                             </span>
                         </div>
-                    </div>
                     </div>
                 </div>
             </div>
@@ -1156,7 +1322,6 @@
                             <span class="lang-en">Eliminate manual tasks, spreadsheet overload, and disconnected workflows by securely bridging Power Platform to SAP, Salesforce, and on-prem legacy systems, without exposing sensitive endpoints.</span>
                             <span class="lang-pt" style="display:none;">Elimine tarefas manuais, o excesso de planilhas e fluxos de trabalho desconectados, integrando com segurança a Power Platform ao SAP, Salesforce e sistemas legados on-prem, sem expor endpoints sensíveis.</span>
                         </p>
-                        <!--span class="metric">🔒 NIST Compliant</span-->
                     </div>
 
                     <div class="feature-card">
@@ -1170,23 +1335,8 @@
                             <span class="lang-en">Deploy secure, customized solutions in weeks, not months, with automated CI/CD pipelines, role-based access control (RBAC), and full auditability, reducing deployment risk and ensuring compliance.</span>
                             <span class="lang-pt" style="display:none;">Implante soluções seguras e personalizadas em semanas, não meses, com pipelines CI/CD automatizados, controle de acesso baseado em funções (RBAC) e auditoria completa, reduzindo riscos de implantação e garantindo conformidade.</span>
                         </p>
-                        <!--span class="metric">🧠 80% Less Manual</span-->
                     </div>
-
-                    <!--div class="feature-card">
-                        <div class="icon-wrap"><i class="fas fa-rocket"></i></div>
-                        <div class="icon-wrap"><i class="fas fa-brain"></i></div>
-                        <h4>
-                            <span class="lang-en">CI/CD Pipeline Governance</span>
-                            <span class="lang-pt" style="display:none;">Governança com CI/CD</span>
-                        </h4>
-                        <p>
-                            <span class="lang-en"><strong style="color: #fff; font-weight: normal;">PowerCraft</strong><strong style="color: var(--text-green); font-weight: normal;">Studio</strong> delivers automated testing, deployment, and rollback — with full audit trails and SLA-backed reliability.</span>
-                            <span class="lang-pt" style="display:none;">A <strong style="color: #fff; font-weight: normal;">PowerCraft</strong><strong style="color: var(--text-green); font-weight: normal;">Studio</strong> entrega testes automatizados, implantação e rollback — com trilhas de auditoria completas e confiabilidade com SLA.</span>
-                        </p>
-                        <span class="metric">🚀 99.9% Uptime</span>
-                    </div>
-                </div-->
+                </div>
             </div>
         </section>
 
@@ -1372,8 +1522,7 @@
                 </p>
 
                 <div class="features-grid" style="grid-template-columns: repeat(2, 1fr);">
-                    <div class="feature-card" >
-                       
+                    <div class="feature-card">
                         <div class="icon-wrap"><i class="fas fa-copyright"></i></div>
                         <div>
                             <h4>
@@ -1399,32 +1548,6 @@
                             </p>
                         </div>
                     </div>
-                    <!--div class="safeguard-item">
-                        <div class="icon"><i class="fas fa-database"></i></div>
-                        <div>
-                            <h4>
-                                <span class="lang-en">Data Privacy Compliance</span>
-                                <span class="lang-pt" style="display:none;">Conformidade de Privacidade</span>
-                            </h4>
-                            <p>
-                                <span class="lang-en"><strong style="color: #fff; font-weight: normal;">PowerCraft</strong><strong style="color: var(--text-green); font-weight: normal;">Studio</strong> follows GDPR, LGPD, and SOC2-aligned practices ensuring your data remains secure.</span>
-                                <span class="lang-pt" style="display:none;">A <strong style="color: #fff; font-weight: normal;">PowerCraft</strong><strong style="color: var(--text-green); font-weight: normal;">Studio</strong> segue práticas alinhadas com GDPR, LGPD e SOC2 garantindo que seus dados permaneçam seguros.</span>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="safeguard-item">
-                        <div class="icon"><i class="fas fa-handshake"></i></div>
-                        <div>
-                            <h4>
-                                <span class="lang-en">Transparent Governance</span>
-                                <span class="lang-pt" style="display:none;">Governança Transparente</span>
-                            </h4>
-                            <p>
-                                <span class="lang-en"><strong style="color: #fff; font-weight: normal;">PowerCraft</strong><strong style="color: var(--text-green); font-weight: normal;">Studio</strong> provides real-time dashboards, SLA-backed monitors, and full auditability.</span>
-                                <span class="lang-pt" style="display:none;">A <strong style="color: #fff; font-weight: normal;">PowerCraft</strong><strong style="color: var(--text-green); font-weight: normal;">Studio</strong> oferece dashboards em tempo real, monitores com SLA e auditoria completa.</span>
-                            </p>
-                        </div>
-                    </div-->
                 </div>
             </div>
         </section>
@@ -1453,8 +1576,8 @@
                     </a>
                 </div>
 
-                <!-- ===== FOOTER (dentro do último slide) ===== -->
-                <div class="footer" style="border-top: 1px solid rgba(255,255,255,0.04); margin-top: 3rem; padding: 1.5rem 0; text-align: center; color: var(--text-muted); font-size: 0.9rem;">
+                <!-- ===== FOOTER ===== -->
+                <div class="footer">
                     <div class="footer-logo">
                         <img src="logo-white_350.png" alt="PowerCraftStudio" />
                     </div>
@@ -1471,7 +1594,6 @@
             <button class="modal-close" id="closeModalBtn">&times;</button>
             <div style="display: flex; align-items: center; gap: 0.8rem; margin-bottom: 0.5rem;">
                 <img src="PCSWhiteExpanded-504.png" alt="PowerCraftStudio" style="height: 32px; width: auto; filter: brightness(0) invert(1);" />
-                <!--h3 style="font-size: 1.4rem; font-weight: 700;">PowerCraftStudio</h3-->
             </div>
             <p style="color: var(--text-gray); margin-bottom: 1.5rem; font-size: 0.9rem;">
                 <span class="lang-en">Share your vision and we'll build the roadmap together.</span>
@@ -1549,7 +1671,6 @@
             const wrapper = document.querySelector('.horizontal-wrapper');
             const indicator = document.getElementById('scrollIndicator');
             
-            // Variáveis para controle do drag
             let isDragging = false;
             let startX = 0;
             let scrollLeft = 0;
@@ -1558,11 +1679,7 @@
             let lastMoveX = 0;
             let velocity = 0;
 
-            // ============================================================
-            // 1. DRAG COM MOUSE (arrastar)
-            // ============================================================
             document.addEventListener('mousedown', (e) => {
-                // Ignora se clicou em botões ou links
                 if (e.target.closest('a') || e.target.closest('button') || e.target.closest('.btn-primary') || e.target.closest('.btn-glass')) {
                     return;
                 }
@@ -1574,8 +1691,6 @@
                 velocity = 0;
                 document.body.style.cursor = 'grabbing';
                 document.documentElement.style.cursor = 'grabbing';
-                
-                // Previne seleção de texto durante o drag
                 document.body.style.userSelect = 'none';
             });
 
@@ -1584,17 +1699,15 @@
                 
                 e.preventDefault();
                 const x = e.pageX - window.scrollX;
-                const walk = (startX - x) * 1.2; // Multiplicador para sensibilidade
+                const walk = (startX - x) * 1.2;
                 const newScroll = scrollLeft + walk;
                 
-                // Limita ao máximo do scroll
                 const maxScroll = document.documentElement.scrollWidth - window.innerWidth;
                 window.scrollTo({
                     left: Math.max(0, Math.min(newScroll, maxScroll)),
                     behavior: 'auto'
                 });
                 
-                // Calcula velocidade para momentum
                 const now = Date.now();
                 if (now - lastMoveTime > 20) {
                     velocity = (x - lastMoveX) / (now - lastMoveTime);
@@ -1610,7 +1723,6 @@
                     document.documentElement.style.cursor = 'grab';
                     document.body.style.userSelect = '';
                     
-                    // Efeito de momentum (continua rolando suavemente)
                     if (Math.abs(velocity) > 0.5) {
                         momentum = velocity * 30;
                         animateMomentum();
@@ -1618,7 +1730,6 @@
                 }
             });
 
-            // Efeito de momentum
             function animateMomentum() {
                 if (Math.abs(momentum) < 0.5) {
                     momentum = 0;
@@ -1629,10 +1740,8 @@
                 const maxScroll = document.documentElement.scrollWidth - window.innerWidth;
                 let newScroll = currentScroll - momentum;
                 
-                // Aplica atrito
                 momentum *= 0.96;
                 
-                // Se chegou no limite, para
                 if (newScroll <= 0 || newScroll >= maxScroll) {
                     momentum = 0;
                 }
@@ -1647,15 +1756,12 @@
                 }
             }
 
-            // ============================================================
-            // 2. TOUCH (mobile) - arrastar com dedo
-            // ============================================================
+            // TOUCH
             let touchStartX = 0;
             let touchScrollLeft = 0;
             let isTouching = false;
 
             document.addEventListener('touchstart', (e) => {
-                // Ignora se tocou em elementos interativos
                 if (e.target.closest('a') || e.target.closest('button') || e.target.closest('.btn-primary') || e.target.closest('.btn-glass')) {
                     return;
                 }
@@ -1680,7 +1786,6 @@
                     behavior: 'auto'
                 });
                 
-                // Calcula velocidade para momentum
                 const now = Date.now();
                 if (now - lastMoveTime > 20) {
                     velocity = (x - lastMoveX) / (now - lastMoveTime);
@@ -1692,8 +1797,6 @@
             document.addEventListener('touchend', () => {
                 if (isTouching) {
                     isTouching = false;
-                    
-                    // Efeito de momentum no mobile
                     if (Math.abs(velocity) > 0.5) {
                         momentum = velocity * 30;
                         animateMomentum();
@@ -1701,16 +1804,11 @@
                 }
             }, { passive: true });
 
-            // ============================================================
-            // 3. SCROLL DO MOUSE / TOUCHPAD CONVERTIDO PARA HORIZONTAL
-            // ============================================================
+            // WHEEL
             document.addEventListener('wheel', (e) => {
-                // Se o usuário está arrastando, não interfere
                 if (isDragging || isTouching) return;
                 
                 e.preventDefault();
-                
-                // Converte o deltaY (vertical) em scroll horizontal
                 const delta = e.deltaY || e.deltaX;
                 const currentScroll = window.scrollX;
                 const maxScroll = document.documentElement.scrollWidth - window.innerWidth;
@@ -1722,9 +1820,7 @@
                 });
             }, { passive: false });
 
-            // ============================================================
-            // 4. ESCONDE INDICADOR APÓS PRIMEIRO SCROLL
-            // ============================================================
+            // HIDE INDICATOR
             let hasScrolled = false;
             document.addEventListener('scroll', function() {
                 if (window.scrollX > 50 && !hasScrolled) {
@@ -1737,9 +1833,7 @@
                 }
             });
 
-            // ============================================================
-            // 5. MODAL
-            // ============================================================
+            // MODAL
             const modal = document.getElementById('modalContact');
             const openBtns = document.querySelectorAll('.open-modal-btn');
             const closeBtn = document.getElementById('closeModalBtn');
@@ -1765,9 +1859,7 @@
                 }
             });
 
-            // ============================================================
-            // 6. LANGUAGE INIT
-            // ============================================================
+            // LANGUAGE INIT
             const host = window.location.hostname;
             const isBr = host.includes('com.br');
             const urlParams = new URLSearchParams(window.location.search);
@@ -1798,7 +1890,6 @@
                 }
             }
 
-            // Scroll horizontal para seção de origem
             const anchor = urlParams.get('anchor');
             if (anchor) {
                 const map = {
