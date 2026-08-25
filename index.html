@@ -341,7 +341,7 @@
         }
 
         /* ================================================================
-           HERO — LAYOUT OTIMIZADO
+           HERO
            ================================================================ */
         .hero {
             background: var(--dark-bg);
@@ -441,7 +441,6 @@
             gap: 1rem;
         }
 
-        /* -------- HERO VISUAL + LOGO + STATS -------- */
         .hero-visual {
             position: relative;
             display: flex;
@@ -652,12 +651,15 @@
             font-size: 0.9rem;
         }
 
-        /* -------- ENGAGEMENT -------- */
+        /* ================================================================
+           ENGAGEMENT — CORREÇÃO PARA MOBILE
+           ================================================================ */
         .engagement-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 1.2rem;
             margin-top: 2rem;
+            margin-bottom: 1rem;
         }
         .engagement-item {
             background: var(--card-bg);
@@ -685,6 +687,14 @@
             color: var(--text-gray);
             font-size: 0.8rem;
             line-height: 1.6;
+        }
+
+        /* ================================================================
+           ROADMAP — CORREÇÃO PARA MOBILE
+           ================================================================ */
+        #Roadmap .features-grid {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
         }
 
         /* -------- SAFEGUARDS -------- */
@@ -957,7 +967,7 @@
         @media (max-width: 768px) {
             :root {
                 --slide-padding-top: 70px;
-                --slide-padding-bottom: 16px;
+                --slide-padding-bottom: 30px;
             }
             
             .section-slide {
@@ -970,11 +980,14 @@
             
             .container {
                 padding: 0 16px;
+                flex: 0 1 auto; /* Remove o flex:1 para não forçar altura extra */
             }
             
+            /* Hero */
             .hero .container {
                 gap: 0.8rem;
                 justify-content: center;
+                flex: 0 1 auto;
             }
             
             .hero-content h1 {
@@ -1015,17 +1028,84 @@
                 font-size: 0.65rem;
             }
             
+            /* Features */
             .features-grid {
                 grid-template-columns: 1fr;
+                gap: 1rem;
             }
             .features-grid[style*="grid-template-columns: repeat(2, 1fr)"] {
                 grid-template-columns: 1fr !important;
             }
+            
+            /* Engagement */
             .engagement-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: 1fr 1fr;
+                gap: 0.8rem;
+                margin-top: 1.2rem;
+                margin-bottom: 0.5rem;
             }
+            .engagement-item {
+                padding: 1rem 0.8rem;
+            }
+            .engagement-item .emoji {
+                font-size: 1.6rem;
+                margin-bottom: 0.3rem;
+            }
+            .engagement-item h4 {
+                font-size: 0.85rem;
+            }
+            .engagement-item p {
+                font-size: 0.75rem;
+            }
+            
+            /* Roadmap */
+            #Roadmap .features-grid {
+                margin-top: 1.2rem;
+                margin-bottom: 0.5rem;
+            }
+            #Roadmap .feature-card {
+                padding: 1.2rem 1rem;
+            }
+            #Roadmap .feature-card div[style*="font-size: 1.8rem"] {
+                font-size: 1.4rem !important;
+                margin-bottom: 0.3rem !important;
+            }
+            
+            /* CTA */
             .cta-section h2 {
                 font-size: 2rem;
+            }
+            .cta-section p {
+                font-size: 0.95rem;
+                margin: 0.8rem auto 1.2rem;
+            }
+            
+            /* Geral */
+            .section-title {
+                font-size: 2rem;
+                margin-bottom: 0.8rem;
+            }
+            .section-sub {
+                font-size: 1rem;
+                margin-bottom: 0.5rem;
+            }
+            
+            .feature-card {
+                padding: 1.5rem 1.2rem;
+            }
+            
+            .asymmetric-grid .visual-block .gradient-box {
+                min-height: 200px;
+                padding: 1.8rem;
+            }
+            
+            .content-block .item {
+                padding-left: 0.8rem;
+            }
+            
+            .btn-primary, .btn-glass {
+                padding: 12px 24px;
+                font-size: 0.9rem;
             }
             
             .floating-card {
@@ -1054,38 +1134,13 @@
             .scroll-indicator {
                 display: none;
             }
-            
-            .section-title {
-                font-size: 2rem;
-            }
-            .section-sub {
-                font-size: 1rem;
-            }
-            
-            .feature-card {
-                padding: 1.5rem 1.2rem;
-            }
-            
-            .asymmetric-grid .visual-block .gradient-box {
-                min-height: 200px;
-                padding: 1.8rem;
-            }
-            
-            .content-block .item {
-                padding-left: 0.8rem;
-            }
-            
-            .btn-primary, .btn-glass {
-                padding: 12px 24px;
-                font-size: 0.9rem;
-            }
         }
 
         /* Smartphones pequenos */
         @media (max-width: 480px) {
             :root {
                 --slide-padding-top: 60px;
-                --slide-padding-bottom: 12px;
+                --slide-padding-bottom: 20px;
             }
             
             .section-slide {
@@ -1099,6 +1154,7 @@
                 padding: 0 12px;
             }
             
+            /* Hero */
             .hero .container {
                 gap: 0.5rem;
             }
@@ -1140,6 +1196,52 @@
             
             .section-title {
                 font-size: 1.6rem;
+                margin-bottom: 0.5rem;
+            }
+            .section-sub {
+                font-size: 0.9rem;
+            }
+            
+            /* Engagement */
+            .engagement-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 0.6rem;
+                margin-top: 0.8rem;
+            }
+            .engagement-item {
+                padding: 0.8rem 0.6rem;
+                border-radius: 14px;
+            }
+            .engagement-item .emoji {
+                font-size: 1.3rem;
+                margin-bottom: 0.2rem;
+            }
+            .engagement-item h4 {
+                font-size: 0.75rem;
+            }
+            .engagement-item p {
+                font-size: 0.65rem;
+                line-height: 1.4;
+            }
+            
+            /* Roadmap */
+            #Roadmap .features-grid {
+                margin-top: 0.8rem;
+                gap: 0.8rem;
+            }
+            #Roadmap .feature-card {
+                padding: 1rem 0.8rem;
+                border-radius: 16px;
+            }
+            #Roadmap .feature-card div[style*="font-size: 1.8rem"] {
+                font-size: 1.2rem !important;
+                margin-bottom: 0.2rem !important;
+            }
+            #Roadmap .feature-card h4 {
+                font-size: 0.85rem;
+            }
+            #Roadmap .feature-card p {
+                font-size: 0.75rem;
             }
             
             .modal-container {
@@ -1168,18 +1270,12 @@
                 font-size: 0.85rem;
             }
             
-            .engagement-item {
-                padding: 1rem 0.8rem;
-            }
-            .engagement-item .emoji {
-                font-size: 1.6rem;
-            }
-            
             .cta-section h2 {
                 font-size: 1.6rem;
             }
             .cta-section p {
                 font-size: 0.9rem;
+                margin: 0.5rem auto 1rem;
             }
             
             .gradient-box h3 {
@@ -1200,7 +1296,8 @@
             
             .footer {
                 font-size: 0.7rem;
-                padding: 1rem 0;
+                padding: 0.8rem 0;
+                margin-top: 0.5rem;
             }
             .footer .footer-logo img {
                 height: 22px;
@@ -1406,11 +1503,11 @@
                     <span class="lang-pt" style="display:none;">Seu <span class="gradient">Roadmap</span> para o Sucesso</span>
                 </h2>
                 <p class="section-sub">
-                    <span class="lang-en">A proven, transparent process from <strong style="color: #fff; font-weight: normal;">PowerCraft</strong><strong style="color: var(--text-green); font-weight: normal;">Studio</strong> that de-risks your investment and delivers measurable results.<br><br></b></span>
+                    <span class="lang-en">A proven, transparent process from <strong style="color: #fff; font-weight: normal;">PowerCraft</strong><strong style="color: var(--text-green); font-weight: normal;">Studio</strong> that de-risks your investment and delivers measurable results.</span>
                     <span class="lang-pt" style="display:none;">Um processo comprovado e transparente da <strong style="color: #fff; font-weight: normal;">PowerCraft</strong><strong style="color: var(--text-green); font-weight: normal;">Studio</strong> que reduz riscos do seu investimento e entrega resultados mensuráveis.</span>
                 </p>
 
-                <div class="features-grid" style="margin-top: 2rem; grid-template-columns: repeat(3, 1fr);">
+                <div class="features-grid">
                     <div class="feature-card" style="border-left: 4px solid var(--electric-purple);">
                         <div style="font-size: 1.8rem; margin-bottom: 0.5rem;">🔍</div>
                         <h4>
@@ -1456,7 +1553,7 @@
                     <span class="lang-pt" style="display:none;">Modelos de <span class="gradient">Contratação</span></span>
                 </h2>
                 <p class="section-sub">
-                    <span class="lang-en"><strong style="color: #fff; font-weight: normal;">PowerCraft</strong><strong style="color: var(--text-green); font-weight: normal;">Studio</strong> offers flexible partnership models designed to fit your project complexity, budget, and risk tolerance.<br><br></span>
+                    <span class="lang-en"><strong style="color: #fff; font-weight: normal;">PowerCraft</strong><strong style="color: var(--text-green); font-weight: normal;">Studio</strong> offers flexible partnership models designed to fit your project complexity, budget, and risk tolerance.</span>
                     <span class="lang-pt" style="display:none;">A <strong style="color: #fff; font-weight: normal;">PowerCraft</strong><strong style="color: var(--text-green); font-weight: normal;">Studio</strong> oferece modelos de parceria flexíveis projetados para se adequar à complexidade, orçamento e tolerância a riscos do seu projeto.</span>
                 </p>
 
