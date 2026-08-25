@@ -1,0 +1,1827 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PowerCraftStudio</title>
+
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+
+    <style>
+        /* ================================================================
+           DESIGN SYSTEM — PowerCraftStudio 2026 (Horizontal Edition)
+           ================================================================ */
+
+        /* -------- ROOT -------- */
+        :root {
+            --font: 'Space Grotesk', sans-serif;
+
+            /* Paleta ousada */
+            --electric-purple: #7c3aed;
+            --electric-purple-dark: #5b21b6;
+            --neon-cyan: #06b6d4;
+            --neon-pink: #ec4899;
+            --vibrant-orange: #f59e0b;
+            --deep-indigo: #1e1b4b;
+            --dark-bg: #0f0a1a;
+            --blue-bg: #7c3aed;
+            --card-bg: rgba(255, 255, 255, 0.04);
+            --glass-border: rgba(255, 255, 255, 0.08);
+
+            --text-white: #ffffff;
+            --text-green: #12A672;
+            --text-gray: #a5b4fc;
+            --text-muted: #818cf8;
+            --text-blue: #163E64;
+
+            --shadow-glow-purple: 0 0 60px rgba(124, 58, 237, 0.2);
+            --shadow-glow-cyan: 0 0 60px rgba(6, 182, 212, 0.15);
+        }
+
+        /* -------- RESET + LAYOUT HORIZONTAL -------- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            user-select: none; /* Evita seleção de texto durante drag */
+        }
+
+        html {
+            overflow-x: auto;
+            overflow-y: hidden;
+            height: 100vh;
+            scroll-behavior: smooth;
+            cursor: grab;
+        }
+
+        html:active {
+            cursor: grabbing;
+        }
+
+        /* Esconde a scrollbar padrão mas mantém funcionalidade */
+        html::-webkit-scrollbar {
+            height: 6px;
+        }
+        html::-webkit-scrollbar-track {
+            background: var(--dark-bg);
+        }
+        html::-webkit-scrollbar-thumb {
+            background: var(--electric-purple);
+            border-radius: 10px;
+        }
+
+        body {
+            font-family: var(--font);
+            background: var(--dark-bg);
+            color: var(--text-white);
+            line-height: 1.6;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            flex-wrap: nowrap;
+            width: fit-content;
+            min-width: 100vw;
+            cursor: grab;
+        }
+
+        body:active {
+            cursor: grabbing;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            cursor: pointer;
+        }
+        ul {
+            list-style: none;
+        }
+        img {
+            display: block;
+            max-width: 100%;
+            pointer-events: none; /* Evita conflitos com drag */
+        }
+
+        /* -------- CONTAINER DE SEÇÕES HORIZONTAIS -------- */
+        .horizontal-wrapper {
+            display: flex;
+            flex-wrap: nowrap;
+            height: 100vh;
+            width: fit-content;
+            min-width: 100vw;
+        }
+
+        /* Cada seção ocupa 100vw da tela */
+        .section-slide {
+            flex: 0 0 100vw;
+            height: 100vh;
+            overflow-y: auto;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            margin-top: 120px;
+            position: relative;
+            pointer-events: auto; /* Permite interação com elementos internos */
+        }
+
+        /* Scroll interno para seções com muito conteúdo */
+        .section-slide::-webkit-scrollbar {
+            width: 4px;
+        }
+        .section-slide::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .section-slide::-webkit-scrollbar-thumb {
+            background: var(--electric-purple);
+            border-radius: 10px;
+        }
+
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+            padding: 0 20px;
+        }
+
+        /* -------- BADGE / LABELS -------- */
+        .badge {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--neon-cyan);
+            background: rgba(6, 182, 212, 0.1);
+            border: 1px solid rgba(6, 182, 212, 0.2);
+            padding: 6px 20px;
+            border-radius: 100px;
+            margin-bottom: 16px;
+        }
+
+        .section-title {
+            font-size: 3.2rem;
+            font-weight: 400;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            margin-bottom: 1.2rem;
+        }
+        .section-title .gradient {
+            background: linear-gradient(135deg, var(--electric-purple), var(--neon-cyan), var(--neon-pink));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .section-sub {
+            font-size: 1.15rem;
+            color: var(--text-gray);
+            max-width: 580px;
+            line-height: 1.8;
+        }
+
+        /* -------- BOTÕES -------- */
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: linear-gradient(135deg, var(--electric-purple), var(--neon-cyan));
+            color: #fff;
+            padding: 16px 40px;
+            border-radius: 60px;
+            font-weight: 400;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            box-shadow: var(--shadow-glow-purple);
+            position: relative;
+            overflow: hidden;
+            pointer-events: auto; /* Garante que o botão seja clicável */
+            z-index: 10;
+        }
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, var(--neon-cyan), var(--neon-pink));
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+        .btn-primary:hover::before {
+            opacity: 1;
+        }
+        .btn-primary span,
+        .btn-primary i {
+            position: relative;
+            z-index: 1;
+        }
+        .btn-primary:hover {
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 0 80px rgba(124, 58, 237, 0.3);
+        }
+
+        .btn-glass {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(12px);
+            color: #fff;
+            padding: 14px 36px;
+            border-radius: 60px;
+            font-weight: 400;
+            font-size: 1rem;
+            border: 1px solid var(--glass-border);
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            pointer-events: auto;
+            z-index: 10;
+        }
+        .btn-glass:hover {
+            background: rgba(124, 58, 237, 0.15);
+            border-color: var(--electric-purple);
+            transform: translateY(-4px);
+        }
+
+        /* -------- LANGUAGE TOGGLE (Topo) -------- */
+        .lang-toggle-top {
+            position: fixed;
+            top: 24px;
+            right: 32px;
+            display: flex;
+            gap: 8px;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(12px);
+            padding: 6px 10px;
+            border-radius: 100px;
+            border: 1px solid var(--glass-border);
+            pointer-events: auto;
+        }
+        .lang-toggle-top button {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-size: 0.7rem;
+            font-weight: 400;
+            padding: 4px 12px;
+            border-radius: 100px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+            font-family: var(--font);
+            letter-spacing: 0.5px;
+        }
+        .lang-toggle-top button:hover {
+            color: var(--text-white);
+            background: rgba(255, 255, 255, 0.05);
+        }
+        .lang-toggle-top button.active {
+            background: var(--electric-purple);
+            color: #fff;
+            box-shadow: 0 0 20px rgba(124, 58, 237, 0.3);
+        }
+
+        /* -------- SCROLL INDICATOR -------- */
+        .scroll-indicator {
+            position: fixed;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--text-muted);
+            font-size: 0.7rem;
+            font-weight: 400;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(12px);
+            padding: 8px 20px;
+            animation: pulseIndicator 2s ease-in-out infinite;
+            pointer-events: none;
+        }
+        .scroll-indicator .arrow {
+            font-size: 1.2rem;
+            color: var(--neon-cyan);
+            animation: slideArrow 1.5s ease-in-out infinite;
+        }
+        @keyframes slideArrow {
+            0%,
+            100% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+            50% {
+                transform: translateX(8px);
+                opacity: 0.5;
+            }
+        }
+        @keyframes pulseIndicator {
+            0%,
+            100% {
+                opacity: 0.6;
+            }
+            50% {
+                opacity: 1;
+            }
+        }
+
+        /* -------- HERO -------- */
+        .hero {
+            background: var(--dark-bg);
+            position: relative;
+            overflow: hidden;
+        }
+      
+        .hero-bg-shapes {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            overflow: hidden;
+        }
+        .hero-bg-shapes .shape {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.3;
+            animation: floatShape 20s ease-in-out infinite alternate;
+        }
+        /* ESSE É O CARA */
+        .hero-bg-shapes .shape:nth-child(1) {
+            width: 50%;
+            height: 500px;
+            background: var(--electric-purple);
+            top: -100px;
+            right: -100px;
+        }
+        .hero-bg-shapes .shape:nth-child(2) {
+            width: 400px;
+            height: 400px;
+            background: var(--neon-cyan);
+            bottom: -100px;
+            left: -100px;
+            animation-delay: -5s;
+        }
+        .hero-bg-shapes .shape:nth-child(3) {
+            width: 300px;
+            height: 300px;
+            background: var(--neon-pink);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation-delay: -10s;
+            opacity: 0.1;
+        }
+
+        @keyframes floatShape {
+            0% {
+                transform: translate(0, 0) scale(1);
+            }
+            100% {
+                transform: translate(40px, -40px) scale(1.1);
+            }
+        }
+
+        .hero .container {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-content .logo-container {
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .hero-content .logo-container img {
+            height: 56px;
+            width: auto;
+            filter: brightness(0) invert(1);
+        }
+        .hero-content .logo-container .logo-text {
+            font-size: 1.4rem;
+            font-weight: 400;
+            color: #fff;
+            letter-spacing: -0.02em;
+        }
+        .hero-content .logo-container .logo-text .studio {
+            color: var(--neon-cyan);
+        }
+
+        .hero-content .hero-tag {
+            display: inline-block;
+            background: rgba(6, 182, 212, 0.1);
+            border: 1px solid rgba(6, 182, 212, 0.2);
+            padding: 6px 20px;
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 400;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--neon-cyan);
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 400;
+            line-height: 1.05;
+            letter-spacing: -0.03em;
+            margin-bottom: 1.2rem;
+        }
+        .hero-content h1 .gradient-text {
+            background: linear-gradient(135deg, var(--electric-purple), var(--neon-cyan), var(--neon-pink));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero-content p {
+            font-size: 1.15rem;
+            color: var(--text-gray);
+            max-width: 600px;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 3rem;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.16);
+        }
+        .hero-stats .stat .number {
+            font-size: 2.4rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--electric-purple), var(--neon-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.02em;
+        }
+        .hero-stats .stat .label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            font-weight: 500;
+            margin-top: 2px;
+        }
+
+        .hero-visual {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .hero-visual .orb {
+            position: absolute;
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(124, 58, 237, 0.3), transparent 70%);
+            filter: blur(60px);
+            animation: pulseOrb 4s ease-in-out infinite alternate;
+        }
+        @keyframes pulseOrb {
+            0% {
+                transform: scale(0.8);
+                opacity: 0.5;
+            }
+            100% {
+                transform: scale(1.2);
+                opacity: 1;
+            }
+        }
+        .hero-visual .floating-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 28px;
+            padding: 2rem;
+            width: 100%;
+            max-width: 420px;
+            position: relative;
+            z-index: 2;
+            box-shadow: var(--shadow-glow-purple);
+            animation: floatCard 6s ease-in-out infinite alternate;
+        }
+        @keyframes floatCard {
+            0% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(-15px);
+            }
+        }
+        .floating-card .card-icon {
+            font-size: 2.2rem;
+            color: var(--neon-cyan);
+            margin-bottom: 0.8rem;
+        }
+        .floating-card h3 {
+            font-size: 1.2rem;
+            font-weight: 400;
+            margin-bottom: 0.4rem;
+        }
+        .floating-card p {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+        .floating-card .tech-tags {
+            display: flex;
+            gap: 0.6rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+        .floating-card .tech-tags span {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 3px 14px;
+            border-radius: 100px;
+            font-size: 0.65rem;
+            font-weight: 400;
+            color: var(--text-gray);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        /* -------- CARDS -------- */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.8rem;
+            margin-top: 2.5rem;
+        }
+        .feature-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(8px);
+            border: 1px solid var(--glass-border);
+            border-radius: 22px;
+            padding: 2rem 1.8rem;
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(124, 58, 237, 0.05), rgba(6, 182, 212, 0.05));
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+        .feature-card:hover::before {
+            opacity: 1;
+        }
+        .feature-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--electric-purple);
+            box-shadow: var(--shadow-glow-purple);
+        }
+        .feature-card .icon-wrap {
+            width: 50px;
+            height: 50px;
+            border-radius: 14px;
+            background: linear-gradient(135deg, rgba(124, 58, 237, 0.2), rgba(6, 182, 212, 0.2));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            color: var(--neon-cyan);
+            margin-bottom: 1rem;
+        }
+        .feature-card h4 {
+            font-size: 1.1rem;
+            font-weight: 400;
+            margin-bottom: 0.4rem;
+        }
+        .feature-card p {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
+        .feature-card .metric {
+            display: inline-block;
+            margin-top: 0.8rem;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--neon-cyan);
+            background: rgba(6, 182, 212, 0.1);
+            padding: 3px 14px;
+            border-radius: 100px;
+            border: 1px solid rgba(6, 182, 212, 0.15);
+        }
+
+        /* -------- ASYMMETRIC GRID -------- */
+        .asymmetric-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 3.5rem;
+            align-items: center;
+            margin-top: 1.5rem;
+        }
+        .asymmetric-grid .visual-block {
+            position: relative;
+        }
+        .asymmetric-grid .visual-block .gradient-box {
+            background: linear-gradient(135deg, var(--electric-purple-dark), var(--deep-indigo));
+            border-radius: 28px;
+            padding: 2.5rem;
+            position: relative;
+            overflow: hidden;
+            min-height: 280px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .gradient-box .big-number {
+            font-size: 5rem;
+            font-weight: 700;
+            opacity: 0.1;
+            position: absolute;
+            bottom: 10px;
+            right: 20px;
+            line-height: 1;
+        }
+        .gradient-box h3 {
+            font-size: 1.6rem;
+            font-weight: 400;
+            margin-bottom: 0.4rem;
+            position: relative;
+            z-index: 1;
+        }
+        .gradient-box p {
+            color: rgba(255, 255, 255, 0.8);
+            position: relative;
+            z-index: 1;
+            max-width: 80%;
+            font-size: 0.9rem;
+        }
+        .asymmetric-grid .content-block {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        .content-block .item {
+            border-left: 3px solid var(--electric-purple);
+            padding-left: 1.2rem;
+        }
+        .content-block .item h4 {
+            font-size: 1.1rem;
+            font-weight: 400;
+            margin-bottom: 0.2rem;
+        }
+        .content-block .item p {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+        }
+
+        /* -------- ENGAGEMENT -------- */
+        .engagement-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.2rem;
+            margin-top: 2rem;
+        }
+        .engagement-item {
+            background: var(--card-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 18px;
+            padding: 1.5rem 1.2rem;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        .engagement-item:hover {
+            border-color: var(--electric-purple);
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-glow-purple);
+        }
+        .engagement-item .emoji {
+            font-size: 2rem;
+            margin-bottom: 0.6rem;
+        }
+        .engagement-item h4 {
+            font-size: 0.95rem;
+            font-weight: 400;
+            margin-bottom: 0.2rem;
+        }
+        .engagement-item p {
+            color: var(--text-gray);
+            font-size: 0.8rem;
+            line-height: 1.6;
+        }
+
+        /* -------- SAFEGUARDS -------- */
+        .safeguards-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        .safeguard-item {
+            background: var(--card-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 18px;
+            padding: 1.5rem 1.2rem;
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+            text-align: left;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .safeguard-item:hover {
+            border-color: var(--neon-cyan);
+            transform: translateX(4px);
+        }
+        .safeguard-item .icon {
+            font-size: 2.0rem;
+            color: var(--neon-cyan);
+            flex-shrink: 0;
+        }
+        
+        .safeguard-item h4 {
+            font-size: 0.95rem;
+            font-weight: 400;
+            margin-bottom: 0.2rem;
+        }
+        .safeguard-item p {
+            color: var(--text-gray);
+            font-size: 0.85rem;
+            line-height: 1.6;
+        }
+
+        /* -------- CTA SECTION -------- */
+        .cta-section {
+            position: relative;
+            overflow: hidden;
+            background: var(--dark-bg);
+        }
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(circle at 20% 50%, rgba(124, 58, 237, 0.15), transparent 50%),
+                radial-gradient(circle at 80% 50%, rgba(6, 182, 212, 0.1), transparent 50%);
+        }
+        .cta-section .container {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+        .cta-section h2 {
+            font-size: 3.2rem;
+            font-weight: 400;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+        }
+        .cta-section h2 .gradient {
+            background: linear-gradient(135deg, var(--electric-purple), var(--neon-cyan), var(--neon-pink));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .cta-section p {
+            color: var(--text-gray);
+            max-width: 600px;
+            margin: 1.2rem auto 2rem;
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+        .cta-actions {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        /* -------- FOOTER -------- */
+        .footer {
+            border-top: 1px solid rgba(255, 255, 255, 0.04);
+            padding: 1.5rem 0;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+        }
+        .footer .footer-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .footer .footer-logo img {
+            height: 28px;
+            width: auto;
+            filter: brightness(0) invert(1) opacity(0.6);
+        }
+
+        /* -------- MODAL -------- */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(16px);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .modal-container {
+            background: var(--card-bg);
+            backdrop-filter: blur(24px);
+            border: 1px solid var(--glass-border);
+            max-width: 480px;
+            width: 92%;
+            padding: 2.5rem;
+            border-radius: 28px;
+            position: relative;
+            box-shadow: var(--shadow-glow-purple);
+        }
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1.2rem;
+            font-size: 1.4rem;
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        .modal-close:hover {
+            color: #fff;
+        }
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        .form-group label {
+            display: block;
+            font-weight: 400;
+            font-size: 0.75rem;
+            color: var(--text-gray);
+            margin-bottom: 0.2rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--glass-border);
+            border-radius: 14px;
+            font-size: 0.9rem;
+            color: #fff;
+            transition: all 0.3s;
+        }
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: var(--electric-purple);
+            outline: none;
+            box-shadow: 0 0 0 4px rgba(124, 58, 237, 0.1);
+        }
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: var(--text-muted);
+        }
+        .modal-submit {
+            width: 100%;
+            justify-content: center;
+            margin-top: 0.5rem;
+        }
+
+        /* -------- RESPONSIVE -------- */
+        @media (max-width: 1024px) {
+            .section-slide {
+                padding: 40px 30px;
+            }
+            .hero .container {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+                text-align: center;
+            }
+            .hero-content p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .hero-actions {
+                justify-content: center;
+            }
+            .hero-stats {
+                justify-content: center;
+            }
+            .hero-content .logo-container {
+                justify-content: center;
+            }
+            .features-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .asymmetric-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            .engagement-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .safeguards-list {
+                grid-template-columns: 1fr;
+            }
+            .section-title {
+                font-size: 2.4rem;
+            }
+            .hero-content h1 {
+                font-size: 3.2rem;
+            }
+            .scroll-indicator {
+                bottom: 20px;
+                padding: 6px 16px;
+                font-size: 0.6rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .section-slide {
+                padding: 30px 20px;
+            }
+            .hero-content h1 {
+                font-size: 2.4rem;
+            }
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            .engagement-grid {
+                grid-template-columns: 1fr;
+            }
+            .cta-section h2 {
+                font-size: 2rem;
+            }
+            .hero-stats {
+                gap: 1.5rem;
+                flex-wrap: wrap;
+            }
+            .hero-stats .stat .number {
+                font-size: 1.8rem;
+            }
+            .floating-card {
+                padding: 1.2rem;
+                max-width: 100%;
+            }
+            .gradient-box .big-number {
+                font-size: 3.5rem;
+            }
+            .gradient-box h3 {
+                font-size: 1.3rem;
+            }
+            .gradient-box {
+                min-height: 220px;
+                padding: 1.8rem;
+            }
+            .lang-toggle-top {
+                top: 16px;
+                right: 16px;
+                padding: 4px 8px;
+            }
+            .lang-toggle-top button {
+                font-size: 0.6rem;
+                padding: 3px 10px;
+            }
+            .scroll-indicator {
+                display: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content h1 {
+                font-size: 1.8rem;
+            }
+            .section-title {
+                font-size: 1.6rem;
+            }
+            .btn-primary,
+            .btn-glass {
+                padding: 10px 20px;
+                font-size: 0.8rem;
+            }
+            .modal-container {
+                padding: 1.5rem;
+            }
+            .hero-stats .stat .number {
+                font-size: 1.4rem;
+            }
+            .hero-content .logo-container img {
+                height: 40px;
+            }
+            .hero-content .logo-container .logo-text {
+                font-size: 1.1rem;
+            }
+            .lang-toggle-top {
+                top: 12px;
+                right: 12px;
+            }
+            .section-slide {
+                padding: 20px 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== LANGUAGE TOGGLE (TOPO) ===== -->
+    <div class="lang-toggle-top" id="langToggle">
+        <button class="active" onclick="toggleLanguage('en')">EN</button>
+        <button onclick="toggleLanguage('pt')">PT</button>
+    </div>
+
+    <!-- ===== SCROLL INDICATOR ===== -->
+    <div class="scroll-indicator" id="scrollIndicator">
+        <span class="arrow">←</span>
+        <span class="lang-en">Drag or scroll to explore</span>
+        <span class="lang-pt" style="display:none;">Arraste ou role para explorar</span>
+        <span class="arrow">→</span>
+    </div>
+
+    <!-- ===== HORIZONTAL WRAPPER ===== -->
+    <div class="horizontal-wrapper" id="horizontalWrapper">
+
+        <!-- ===== SLIDE 1: HERO ===== -->
+        <section id="Hero" class="section-slide hero">
+            <div class="hero-bg-shapes">
+                <div class="shape"></div>
+                <div class="shape"></div>
+                <div class="shape"></div>
+            </div>
+
+            <div class="container">
+                <div class="hero-content">
+                    <h1>
+                        <span class="lang-en">Beyond Integration and <span class="gradient-text">Intelligent Evolution</span></span>
+                        <span class="lang-pt" style="display:none;">Além da Integração<br>e <span class="gradient-text">Evolução Inteligente</span></span>
+                    </h1>
+                    <p><br>
+                        <span class="lang-en"><strong style="color: #fff; font-weight: normal;">Power Platform</strong> solutions that not only connect but also adapt and evolve with your company.</span>
+                        <span class="lang-pt" style="display:none;"><strong style="color: #fff; font-weight: normal;">Soluções da Power Platform</strong> que não apenas se conectam, mas também se adaptam e evoluem com a sua empresa.</span>
+                    </p><br>
+                    <div class="hero-actions">
+                        <a href="#" class="btn-primary open-modal-btn">
+                            <span class="lang-en">Start the Journey</span>
+                            <span class="lang-pt" style="display:none;">Inicie a Jornada</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                        <a href="#" class="btn-glass" onclick="goToCases(event, 'hero')">
+                            <span class="lang-en">See Success Stories</span>
+                            <span class="lang-pt" style="display:none;">Veja Casos de Sucesso</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                    
+                </div>
+
+                <div class="hero-visual">
+                    <div class="orb"></div>
+                    <div class="logo-container">
+                        <img src="logo_1143.png" style="width: 400px;margin-top:90px; height: auto; object-fit: contain; display: block; margin-left: auto;" alt="PowerCraftStudio" />
+                    
+                    <div class="hero-stats">
+                        <div class="stat">
+                            <span class="number">70%+</span>
+                            <span class="label">
+                                <span class="lang-en"><br>Faster Delivery</span>
+                                <span class="lang-pt" style="display:none;"><br>Entrega Mais Rápida</span>
+                            </span>
+                        </div>
+                        <div class="stat">
+                            <span class="number">80%+</span>
+                            <span class="label">
+                                <span class="lang-en"><br>Automation Gains</span>
+                                <span class="lang-pt" style="display:none;"><br>Ganhos de Automação</span>
+                            </span>
+                        </div>
+                        <div class="stat">
+                            <span class="number">100%</span>
+                            <span class="label">
+                                <span class="lang-en"><br>Remote Job <br></span>
+                                <span class="lang-pt" style="display:none;"><br>Trabalho Remoto<br></span>
+                            </span>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== SLIDE 2: DIFFERENTIATORS ===== -->
+        <section id="Differentiators" class="section-slide" style="background: var(--dark-bg);">
+            <div class="container">
+                <h2 class="section-title">
+                    <span class="lang-en">Building for the <span class="gradient">Next Era</span></span>
+                    <span class="lang-pt" style="display:none;">Construíndo para a <span class="gradient">Próxima Era</span></span>
+                </h2>
+                <p class="section-sub">
+                    <span class="lang-en">We don't just automate, we architect intelligence into every layer of your enterprise stack.</span>
+                    <span class="lang-pt" style="display:none;">Não apenas automatizamos, arquitetamos inteligência em cada camada da estrutura tecnológica da sua empresa.</span>
+                </p>
+
+                <div class="features-grid" style="grid-template-columns: repeat(2, 1fr);">
+                    <div class="feature-card">
+                        <div class="icon-wrap"><i class="fas fa-shield-alt"></i></div>
+                        <h4>
+                            <span class="lang-en">Enterprise Integration & Automation</span>
+                            <span class="lang-pt" style="display:none;">Integração Empresarial & Automação</span>
+                        </h4>
+                        <p>
+                            <span class="lang-en">Eliminate manual tasks, spreadsheet overload, and disconnected workflows by securely bridging Power Platform to SAP, Salesforce, and on-prem legacy systems, without exposing sensitive endpoints.</span>
+                            <span class="lang-pt" style="display:none;">Elimine tarefas manuais, o excesso de planilhas e fluxos de trabalho desconectados, integrando com segurança a Power Platform ao SAP, Salesforce e sistemas legados on-prem, sem expor endpoints sensíveis.</span>
+                        </p>
+                        <!--span class="metric">🔒 NIST Compliant</span-->
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="icon-wrap"><i class="fas fa-rocket"></i></div>
+                        
+                        <h4>
+                            <span class="lang-en">Zero-Trust Security & Governance</span>
+                            <span class="lang-pt" style="display:none;">Segurança Zero-Trust & Governança</span>
+                        </h4>
+                        <p>
+                            <span class="lang-en">Deploy secure, customized solutions in weeks, not months, with automated CI/CD pipelines, role-based access control (RBAC), and full auditability, reducing deployment risk and ensuring compliance.</span>
+                            <span class="lang-pt" style="display:none;">Implante soluções seguras e personalizadas em semanas, não meses, com pipelines CI/CD automatizados, controle de acesso baseado em funções (RBAC) e auditoria completa, reduzindo riscos de implantação e garantindo conformidade.</span>
+                        </p>
+                        <!--span class="metric">🧠 80% Less Manual</span-->
+                    </div>
+
+                    <!--div class="feature-card">
+                        <div class="icon-wrap"><i class="fas fa-rocket"></i></div>
+                        <div class="icon-wrap"><i class="fas fa-brain"></i></div>
+                        <h4>
+                            <span class="lang-en">CI/CD Pipeline Governance</span>
+                            <span class="lang-pt" style="display:none;">Governança com CI/CD</span>
+                        </h4>
+                        <p>
+                            <span class="lang-en"><strong style="color: #fff; font-weight: normal;">PowerCraft</strong><strong style="color: var(--text-green); font-weight: normal;">Studio</strong> delivers automated testing, deployment, and rollback — with full audit trails and SLA-backed reliability.</span>
+                            <span class="lang-pt" style="display:none;">A <strong style="color: #fff; font-weight: normal;">PowerCraft</strong><strong style="color: var(--text-green); font-weight: normal;">Studio</strong> entrega testes automatizados, implantação e rollback — com trilhas de auditoria completas e confiabilidade com SLA.</span>
+                        </p>
+                        <span class="metric">🚀 99.9% Uptime</span>
+                    </div>
+                </div-->
+            </div>
+        </section>
+
+        <!-- ===== SLIDE 3: SERVICES ===== -->
+        <section id="Services" class="section-slide" style="background: rgba(255,255,255,0.02);">
+            <div class="container">
+                <h2 class="section-title">
+                    <span class="lang-en">Enterprise <span class="gradient">Services</span></span>
+                    <span class="lang-pt" style="display:none;">Serviços <span class="gradient">Empresariais</span></span>
+                </h2>
+
+                <div class="asymmetric-grid">
+                    <div class="visual-block">
+                        <div class="gradient-box">
+                            <div class="big-number">+</div>
+                            <h3>
+                                <span class="lang-en">End-to-End</span>
+                                <span class="lang-pt" style="display:none;">End-to-End</span>
+                            </h3>
+                            <p>
+                                <span class="lang-en"><br>Full lifecycle delivery, from requirements discovery to production deployment.</span>
+                                <span class="lang-pt" style="display:none;">Entrega de ciclo de vida completo, desde o levantamento de requisitos até a implantação em produção.</span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="content-block">
+                        <div class="item">
+                            <h4>
+                                <span class="lang-en">End-to-End From Architecture to Deployment</span>
+                                <span class="lang-pt" style="display:none;">End-to-End Da Arquitetura até a Implantação</span>
+                            </h4>
+                            <p>
+                                <span class="lang-en">Full lifecycle delivery, from requirements discovery and solution design through CI/CD-driven development, UAT governance, and zero-downtime Deployent deployment.</span>
+                                <span class="lang-pt" style="display:none;">Entrega completa do ciclo de vida, descoberta de requisitos, design da solução, desenvolvimento com CI/CD, governança de testes de aceitação (UAT) e implantação em produção com tempo de inatividade zero.</span>
+                            </p>
+                        </div>
+                        <div class="item">
+                            <h4>
+                                <span class="lang-en">Enterprise Integration Architecture</span>
+                                <span class="lang-pt" style="display:none;">Automação Inteligente de Fluxos</span>
+                            </h4>
+                            <p>
+                                <span class="lang-en">Secure API-led connectivity (Azure API Management, Logic Apps, on-prem gateways) bridging Power Platform to legacy ERP/CRM assets under Zero-Trust frameworks (Entra ID + RBAC + encryption).</span>
+                                <span class="lang-pt" style="display:none;">Conectividade segura via APIs (Azure API Management, Logic Apps, gateways on-prem) integrando Power Platform a sistemas legados (ERP/CRM) sob frameworks Zero-Trust (Entra ID + RBAC + criptografia).</span>
+                            </p>
+                        </div>
+                        <div class="item">
+                            <h4>
+                                <span class="lang-en">Production Governance & Managed Support</span>
+                                <span class="lang-pt" style="display:none;">Governança & Melhoria Contínua</span>
+                            </h4>
+                            <p>
+                                <span class="lang-en">Continuous monitoring (Application Insights), capacity planning, license optimization, and SLA-backed incident respons, ensuring 99.9% uptime for mission-critical operations.</span>
+                                <span class="lang-pt" style="display:none;">Monitoramento contínuo (Application Insights), planejamento de capacidade, otimização de licenças e resposta a incidentes com SLA—garantindo 99,9% de disponibilidade para operações críticas.</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== SLIDE 4: ROADMAP ===== -->
+        <section id="Roadmap" class="section-slide" style="background: var(--dark-bg);">
+            <div class="container">
+                <h2 class="section-title">
+                    <span class="lang-en">Your <span class="gradient">Roadmap</span> to Success</span>
+                    <span class="lang-pt" style="display:none;">Seu <span class="gradient">Roadmap</span> para o Sucesso</span>
+                </h2>
+                <p class="section-sub">
+                    <span class="lang-en">A proven, transparent process from <strong style="color: #fff; font-weight: normal;">PowerCraft</strong><strong style="color: var(--text-green); font-weight: normal;">Studio</strong> that de-risks your investment and delivers measurable results.<br><br></b></span>
+                    <span class="lang-pt" style="display:none;">Um processo comprovado e transparente da <strong style="color: #fff; font-weight: normal;">PowerCraft</strong><strong style="color: var(--text-green); font-weight: normal;">Studio</strong> que reduz riscos do seu investimento e entrega resultados mensuráveis.</span>
+                </p>
+
+                <div class="features-grid" style="margin-top: 2rem; grid-template-columns: repeat(3, 1fr);">
+                    <div class="feature-card" style="border-left: 4px solid var(--electric-purple);">
+                        <div style="font-size: 1.8rem; margin-bottom: 0.5rem;">🔍</div>
+                        <h4>
+                            <span class="lang-en">Discover & Design</span>
+                            <span class="lang-pt" style="display:none;">Descobrir & Projetar</span>
+                        </h4>
+                        <p>
+                            <span class="lang-en">Map out requirements, design the architecture, and present commercial proposals with clear milestones.</span>
+                            <span class="lang-pt" style="display:none;">Mapear os requisitos, projete a arquitetura e apresente propostas comerciais com marcos claros.</span>
+                        </p>
+                    </div>
+                    <div class="feature-card" style="border-left: 4px solid var(--neon-cyan);">
+                        <div style="font-size: 1.8rem; margin-bottom: 0.5rem;">⚙️</div>
+                        <h4>
+                            <span class="lang-en">Build & Validate</span>
+                            <span class="lang-pt" style="display:none;">Construir & Validar</span>
+                        </h4>
+                        <p>
+                            <span class="lang-en">Deliver agile development with CI/CD, rigorous testing, and UAT governance.</span>
+                            <span class="lang-pt" style="display:none;">Entregar desenvolvimento ágil com CI/CD, testes rigorosos e governança UAT.</span>
+                        </p>
+                    </div>
+                    <div class="feature-card" style="border-left: 4px solid var(--neon-pink);">
+                        <div style="font-size: 1.8rem; margin-bottom: 0.5rem;">🚀</div>
+                        <h4>
+                            <span class="lang-en">Launch & Evolve</span>
+                            <span class="lang-pt" style="display:none;">Lançar & Evoluir</span>
+                        </h4>
+                        <p>
+                            <span class="lang-en">Ensure zero-downtime deployment, hypercare support, and continuous optimization.</span>
+                            <span class="lang-pt" style="display:none;">Garantir implantação sem downtime, suporte hipercare e otimização contínua.</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== SLIDE 5: ENGAGEMENT ===== -->
+        <section id="Engagement" class="section-slide" style="background: rgba(255,255,255,0.02);">
+            <div class="container">
+                <h2 class="section-title">
+                    <span class="lang-en">Engagement <span class="gradient">Models</span></span>
+                    <span class="lang-pt" style="display:none;">Modelos de <span class="gradient">Contratação</span></span>
+                </h2>
+                <p class="section-sub">
+                    <span class="lang-en"><strong style="color: #fff; font-weight: normal;">PowerCraft</strong><strong style="color: var(--text-green); font-weight: normal;">Studio</strong> offers flexible partnership models designed to fit your project complexity, budget, and risk tolerance.<br><br></span>
+                    <span class="lang-pt" style="display:none;">A <strong style="color: #fff; font-weight: normal;">PowerCraft</strong><strong style="color: var(--text-green); font-weight: normal;">Studio</strong> oferece modelos de parceria flexíveis projetados para se adequar à complexidade, orçamento e tolerância a riscos do seu projeto.</span>
+                </p>
+
+                <div class="engagement-grid">
+                    <div class="engagement-item">
+                        <div class="emoji">📋</div>
+                        <h4>
+                            <span class="lang-en">Fixed Scope</span>
+                            <span class="lang-pt" style="display:none;">Escopo Fixo</span>
+                        </h4>
+                        <p>
+                            <span class="lang-en">Delivery defined deliverables, predictable budget, and fixed milestones.</span>
+                            <span class="lang-pt" style="display:none;">Entrega com produtos definidos, orçamento previsível e marcos fixos.</span>
+                        </p>
+                    </div>
+                    <div class="engagement-item">
+                        <div class="emoji">🔄</div>
+                        <h4>
+                            <span class="lang-en">Recurring Partnership</span>
+                            <span class="lang-pt" style="display:none;">Parceria Recorrente</span>
+                        </h4>
+                        <p>
+                            <span class="lang-en">Provide continuous evolution, rapid incident response, and proactive governance.</span>
+                            <span class="lang-pt" style="display:none;">Oferecer evolução contínua, resposta rápida a incidentes e governança proativa.</span>
+                        </p>
+                    </div>
+                    <div class="engagement-item">
+                        <div class="emoji">⚡</div>
+                        <h4>
+                            <span class="lang-en">On-Demand Advisory</span>
+                            <span class="lang-pt" style="display:none;">Consultoria Sob Demanda</span>
+                        </h4>
+                        <p>
+                            <span class="lang-en"><strong style="color: #fff; font-weight: normal;">PowerCraft</strong><strong style="color: var(--text-green); font-weight: normal;">Studio</strong> offers flexible support for performance tuning and architecture reviews.</span>
+                            <span class="lang-pt" style="display:none;">A <strong style="color: #fff; font-weight: normal;">PowerCraft</strong><strong style="color: var(--text-green); font-weight: normal;">Studio</strong> oferece suporte flexível para ajustes de performance e revisões de arquitetura.</span>
+                        </p>
+                    </div>
+                    <div class="engagement-item">
+                        <div class="emoji">🧩</div>
+                        <h4>
+                            <span class="lang-en">Custom Offer</span>
+                            <span class="lang-pt" style="display:none;">Oferta Customizada</span>
+                        </h4>
+                        <p>
+                            <span class="lang-en">Tailored combinations for your unique requirements.</span>
+                            <span class="lang-pt" style="display:none;">Combinações personalizadas para suas necessidades únicas.</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== SLIDE 6: SAFEGUARDS ===== -->
+        <section id="Safeguards" class="section-slide" style="background: var(--dark-bg);">
+            <div class="container">
+                <h2 class="section-title">
+                    <span class="lang-en">Your <span class="gradient">Safeguards</span></span>
+                    <span class="lang-pt" style="display:none;">Suas <span class="gradient">Salvaguardas</span></span>
+                </h2>
+                <p class="section-sub">
+                    <span class="lang-en"><strong style="color: #fff; font-weight: normal;">PowerCraft</strong><strong style="color: var(--text-green); font-weight: normal;">Studio</strong> protects what matters most — your intellectual property, data, and competitive advantage.</span>
+                    <span class="lang-pt" style="display:none;">A <strong style="color: #fff; font-weight: normal;">PowerCraft</strong><strong style="color: var(--text-green); font-weight: normal;">Studio</strong> protege o que é mais importante — sua propriedade intelectual, dados e vantagem competitiva.</span>
+                </p>
+
+                <div class="features-grid" style="grid-template-columns: repeat(2, 1fr);">
+                    <div class="feature-card" >
+                       
+                        <div class="icon-wrap"><i class="fas fa-copyright"></i></div>
+                        <div>
+                            <h4>
+                                <span class="lang-en">Full IP Transfer</span>
+                                <span class="lang-pt" style="display:none;">Transferência Total de PI</span>
+                            </h4>
+                            <p>
+                                <span class="lang-en">Guarantee you own everything, source code, logic, data schemas. No ongoing licensing fees.</span>
+                                <span class="lang-pt" style="display:none;">Garantia que você seja dono de tudo, código-fonte, lógica, esquemas de dados. Sem taxas contínuas.</span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="icon-wrap"><i class="fas fa-lock"></i></div>
+                        <div>
+                            <h4>
+                                <span class="lang-en">Ironclad NDA</span>
+                                <span class="lang-pt" style="display:none;">NDA Blindado</span>
+                            </h4>
+                            <p>
+                                <span class="lang-en">Sign binding confidentiality protecting your infrastructure and business logic.</span>
+                                <span class="lang-pt" style="display:none;">Assinar confidencialidade vinculativa protegendo sua infraestrutura e lógica de negócios.</span>
+                            </p>
+                        </div>
+                    </div>
+                    <!--div class="safeguard-item">
+                        <div class="icon"><i class="fas fa-database"></i></div>
+                        <div>
+                            <h4>
+                                <span class="lang-en">Data Privacy Compliance</span>
+                                <span class="lang-pt" style="display:none;">Conformidade de Privacidade</span>
+                            </h4>
+                            <p>
+                                <span class="lang-en"><strong style="color: #fff; font-weight: normal;">PowerCraft</strong><strong style="color: var(--text-green); font-weight: normal;">Studio</strong> follows GDPR, LGPD, and SOC2-aligned practices ensuring your data remains secure.</span>
+                                <span class="lang-pt" style="display:none;">A <strong style="color: #fff; font-weight: normal;">PowerCraft</strong><strong style="color: var(--text-green); font-weight: normal;">Studio</strong> segue práticas alinhadas com GDPR, LGPD e SOC2 garantindo que seus dados permaneçam seguros.</span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="safeguard-item">
+                        <div class="icon"><i class="fas fa-handshake"></i></div>
+                        <div>
+                            <h4>
+                                <span class="lang-en">Transparent Governance</span>
+                                <span class="lang-pt" style="display:none;">Governança Transparente</span>
+                            </h4>
+                            <p>
+                                <span class="lang-en"><strong style="color: #fff; font-weight: normal;">PowerCraft</strong><strong style="color: var(--text-green); font-weight: normal;">Studio</strong> provides real-time dashboards, SLA-backed monitors, and full auditability.</span>
+                                <span class="lang-pt" style="display:none;">A <strong style="color: #fff; font-weight: normal;">PowerCraft</strong><strong style="color: var(--text-green); font-weight: normal;">Studio</strong> oferece dashboards em tempo real, monitores com SLA e auditoria completa.</span>
+                            </p>
+                        </div>
+                    </div-->
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== SLIDE 7: CTA ===== -->
+        <section id="Cta" class="section-slide cta-section">
+            <div class="container">
+                <h2>
+                    <span class="lang-en">Ready to Build the <span class="gradient">Future</span><br>with PowerCraft<strong style="font-weight: normal; color: var(--text-green)">Studio</strong>?</span>
+                    <span class="lang-pt" style="display:none;">Pronto para Construir o <span class="gradient">Futuro</span><br>com a PowerCraft<strong style="font-weight: normal; color: var(--text-green)">Studio</strong>?</span>
+                </h2>
+                <p>
+                    <span class="lang-en">Let's architect your next-generation enterprise together — with intelligence, security, and full ownership.</span>
+                    <span class="lang-pt" style="display:none;">Vamos arquitetar juntos sua empresa de próxima geração — com inteligência, segurança e propriedade total.</span>
+                </p>
+                <div class="cta-actions">
+                    <a href="#" class="btn-glass" onclick="goToCases(event, 'cta')" style="border-color: rgba(255,255,255,0.2);">
+                        <span class="lang-en">Explore Case Studies</span>
+                        <span class="lang-pt" style="display:none;">Explore Casos de Sucesso</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <a href="#" class="btn-primary open-modal-btn">
+                        <span class="lang-en">Start Your Journey</span>
+                        <span class="lang-pt" style="display:none;">Inicie Sua Jornada</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- ===== FOOTER (dentro do último slide) ===== -->
+                <div class="footer" style="border-top: 1px solid rgba(255,255,255,0.04); margin-top: 3rem; padding: 1.5rem 0; text-align: center; color: var(--text-muted); font-size: 0.9rem;">
+                    <div class="footer-logo">
+                        <img src="logo-white_350.png" alt="PowerCraftStudio" />
+                    </div>
+                    &copy; 2026 All rights reserved. 
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- ===== MODAL ===== -->
+    <div class="modal-overlay" id="modalContact">
+        <div class="modal-container">
+            <button class="modal-close" id="closeModalBtn">&times;</button>
+            <div style="display: flex; align-items: center; gap: 0.8rem; margin-bottom: 0.5rem;">
+                <img src="PCSWhiteExpanded-504.png" alt="PowerCraftStudio" style="height: 32px; width: auto; filter: brightness(0) invert(1);" />
+                <!--h3 style="font-size: 1.4rem; font-weight: 700;">PowerCraftStudio</h3-->
+            </div>
+            <p style="color: var(--text-gray); margin-bottom: 1.5rem; font-size: 0.9rem;">
+                <span class="lang-en">Share your vision and we'll build the roadmap together.</span>
+                <span class="lang-pt" style="display:none;">Compartilhe sua visão e construiremos o roadmap juntos.</span>
+            </p>
+            <form action="https://api.web3forms.com/submit" method="POST">
+                <input type="hidden" name="access_key" value="b26ccd9f-1e8f-4d3a-ab0f-671a470a08ad" />
+                <div class="form-group">
+                    <label>
+                        <span class="lang-en">Name</span>
+                        <span class="lang-pt" style="display:none;">Nome</span>
+                    </label>
+                    <input type="text" name="name" required placeholder="Your name" />
+                </div>
+                <div class="form-group">
+                    <label>E-mail</label>
+                    <input type="email" name="email" required placeholder="you@company.com" />
+                </div>
+                <div class="form-group">
+                    <label>
+                        <span class="lang-en">Message</span>
+                        <span class="lang-pt" style="display:none;">Mensagem</span>
+                    </label>
+                    <textarea name="message" rows="3" required placeholder="Tell us about your project and goals"></textarea>
+                </div>
+                <button type="submit" class="btn-primary modal-submit">
+                    <span class="lang-en">Send Message</span>
+                    <span class="lang-pt" style="display:none;">Enviar Mensagem</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- ===== SCRIPTS ===== -->
+    <script>
+        // ============================================================
+        // LANGUAGE TOGGLE
+        // ============================================================
+        function toggleLanguage(lang) {
+            const btns = document.querySelectorAll('#langToggle button');
+            btns.forEach(btn => btn.classList.remove('active'));
+            document.querySelector(`#langToggle button[onclick="toggleLanguage('${lang}')"]`).classList.add('active');
+
+            const enEls = document.querySelectorAll('.lang-en');
+            const ptEls = document.querySelectorAll('.lang-pt');
+
+            if (lang === 'en') {
+                enEls.forEach(el => el.style.display = '');
+                ptEls.forEach(el => el.style.display = 'none');
+                document.documentElement.lang = 'en';
+            } else {
+                enEls.forEach(el => el.style.display = 'none');
+                ptEls.forEach(el => el.style.display = '');
+                document.documentElement.lang = 'pt';
+            }
+            localStorage.setItem('preferredLang', lang);
+        }
+
+        // ============================================================
+        // GO TO CASES
+        // ============================================================
+        function goToCases(event, section) {
+            event.preventDefault();
+            const isPT = document.querySelector('.lang-pt').style.display !== 'none';
+            const lang = isPT ? 'pt' : 'en';
+            localStorage.setItem('preferredLang', lang);
+            window.location.href = 'cases.html?lang=' + lang + '&from=' + section;
+        }
+
+        // ============================================================
+        // HORIZONTAL SCROLL COM DRAG/MOUSE + SCROLL VERTICAL CONVERTIDO
+        // ============================================================
+        document.addEventListener('DOMContentLoaded', function() {
+            const wrapper = document.querySelector('.horizontal-wrapper');
+            const indicator = document.getElementById('scrollIndicator');
+            
+            // Variáveis para controle do drag
+            let isDragging = false;
+            let startX = 0;
+            let scrollLeft = 0;
+            let momentum = 0;
+            let lastMoveTime = 0;
+            let lastMoveX = 0;
+            let velocity = 0;
+
+            // ============================================================
+            // 1. DRAG COM MOUSE (arrastar)
+            // ============================================================
+            document.addEventListener('mousedown', (e) => {
+                // Ignora se clicou em botões ou links
+                if (e.target.closest('a') || e.target.closest('button') || e.target.closest('.btn-primary') || e.target.closest('.btn-glass')) {
+                    return;
+                }
+                
+                isDragging = true;
+                startX = e.pageX - window.scrollX;
+                scrollLeft = window.scrollX;
+                momentum = 0;
+                velocity = 0;
+                document.body.style.cursor = 'grabbing';
+                document.documentElement.style.cursor = 'grabbing';
+                
+                // Previne seleção de texto durante o drag
+                document.body.style.userSelect = 'none';
+            });
+
+            document.addEventListener('mousemove', (e) => {
+                if (!isDragging) return;
+                
+                e.preventDefault();
+                const x = e.pageX - window.scrollX;
+                const walk = (startX - x) * 1.2; // Multiplicador para sensibilidade
+                const newScroll = scrollLeft + walk;
+                
+                // Limita ao máximo do scroll
+                const maxScroll = document.documentElement.scrollWidth - window.innerWidth;
+                window.scrollTo({
+                    left: Math.max(0, Math.min(newScroll, maxScroll)),
+                    behavior: 'auto'
+                });
+                
+                // Calcula velocidade para momentum
+                const now = Date.now();
+                if (now - lastMoveTime > 20) {
+                    velocity = (x - lastMoveX) / (now - lastMoveTime);
+                    lastMoveTime = now;
+                    lastMoveX = x;
+                }
+            });
+
+            document.addEventListener('mouseup', () => {
+                if (isDragging) {
+                    isDragging = false;
+                    document.body.style.cursor = '';
+                    document.documentElement.style.cursor = 'grab';
+                    document.body.style.userSelect = '';
+                    
+                    // Efeito de momentum (continua rolando suavemente)
+                    if (Math.abs(velocity) > 0.5) {
+                        momentum = velocity * 30;
+                        animateMomentum();
+                    }
+                }
+            });
+
+            // Efeito de momentum
+            function animateMomentum() {
+                if (Math.abs(momentum) < 0.5) {
+                    momentum = 0;
+                    return;
+                }
+                
+                const currentScroll = window.scrollX;
+                const maxScroll = document.documentElement.scrollWidth - window.innerWidth;
+                let newScroll = currentScroll - momentum;
+                
+                // Aplica atrito
+                momentum *= 0.96;
+                
+                // Se chegou no limite, para
+                if (newScroll <= 0 || newScroll >= maxScroll) {
+                    momentum = 0;
+                }
+                
+                window.scrollTo({
+                    left: Math.max(0, Math.min(newScroll, maxScroll)),
+                    behavior: 'auto'
+                });
+                
+                if (Math.abs(momentum) > 0.5) {
+                    requestAnimationFrame(animateMomentum);
+                }
+            }
+
+            // ============================================================
+            // 2. TOUCH (mobile) - arrastar com dedo
+            // ============================================================
+            let touchStartX = 0;
+            let touchScrollLeft = 0;
+            let isTouching = false;
+
+            document.addEventListener('touchstart', (e) => {
+                // Ignora se tocou em elementos interativos
+                if (e.target.closest('a') || e.target.closest('button') || e.target.closest('.btn-primary') || e.target.closest('.btn-glass')) {
+                    return;
+                }
+                
+                isTouching = true;
+                touchStartX = e.touches[0].pageX - window.scrollX;
+                touchScrollLeft = window.scrollX;
+                momentum = 0;
+                velocity = 0;
+            }, { passive: true });
+
+            document.addEventListener('touchmove', (e) => {
+                if (!isTouching) return;
+                
+                const x = e.touches[0].pageX - window.scrollX;
+                const walk = (touchStartX - x) * 1.2;
+                const newScroll = touchScrollLeft + walk;
+                const maxScroll = document.documentElement.scrollWidth - window.innerWidth;
+                
+                window.scrollTo({
+                    left: Math.max(0, Math.min(newScroll, maxScroll)),
+                    behavior: 'auto'
+                });
+                
+                // Calcula velocidade para momentum
+                const now = Date.now();
+                if (now - lastMoveTime > 20) {
+                    velocity = (x - lastMoveX) / (now - lastMoveTime);
+                    lastMoveTime = now;
+                    lastMoveX = x;
+                }
+            }, { passive: true });
+
+            document.addEventListener('touchend', () => {
+                if (isTouching) {
+                    isTouching = false;
+                    
+                    // Efeito de momentum no mobile
+                    if (Math.abs(velocity) > 0.5) {
+                        momentum = velocity * 30;
+                        animateMomentum();
+                    }
+                }
+            }, { passive: true });
+
+            // ============================================================
+            // 3. SCROLL DO MOUSE / TOUCHPAD CONVERTIDO PARA HORIZONTAL
+            // ============================================================
+            document.addEventListener('wheel', (e) => {
+                // Se o usuário está arrastando, não interfere
+                if (isDragging || isTouching) return;
+                
+                e.preventDefault();
+                
+                // Converte o deltaY (vertical) em scroll horizontal
+                const delta = e.deltaY || e.deltaX;
+                const currentScroll = window.scrollX;
+                const maxScroll = document.documentElement.scrollWidth - window.innerWidth;
+                const newScroll = currentScroll + delta;
+                
+                window.scrollTo({
+                    left: Math.max(0, Math.min(newScroll, maxScroll)),
+                    behavior: 'smooth'
+                });
+            }, { passive: false });
+
+            // ============================================================
+            // 4. ESCONDE INDICADOR APÓS PRIMEIRO SCROLL
+            // ============================================================
+            let hasScrolled = false;
+            document.addEventListener('scroll', function() {
+                if (window.scrollX > 50 && !hasScrolled) {
+                    hasScrolled = true;
+                    indicator.style.opacity = '0';
+                    indicator.style.transition = 'opacity 0.8s ease';
+                    setTimeout(() => {
+                        indicator.style.display = 'none';
+                    }, 800);
+                }
+            });
+
+            // ============================================================
+            // 5. MODAL
+            // ============================================================
+            const modal = document.getElementById('modalContact');
+            const openBtns = document.querySelectorAll('.open-modal-btn');
+            const closeBtn = document.getElementById('closeModalBtn');
+
+            openBtns.forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    modal.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                });
+            });
+
+            closeBtn.addEventListener('click', function() {
+                modal.classList.remove('active');
+                document.body.style.overflow = 'hidden';
+            });
+
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = 'hidden';
+                }
+            });
+
+            // ============================================================
+            // 6. LANGUAGE INIT
+            // ============================================================
+            const host = window.location.hostname;
+            const isBr = host.includes('com.br');
+            const urlParams = new URLSearchParams(window.location.search);
+            const force = urlParams.get('force');
+
+            let useBr = isBr || force === 'br';
+            if (force === 'intl') useBr = false;
+
+            if (useBr) {
+                toggleLanguage('pt');
+                document.querySelectorAll('#langToggle button').forEach(btn => {
+                    btn.style.cursor = 'default';
+                    btn.onclick = null;
+                });
+                return;
+            }
+
+            const langFromUrl = urlParams.get('lang');
+            if (langFromUrl && ['en', 'pt'].includes(langFromUrl)) {
+                toggleLanguage(langFromUrl);
+            } else {
+                const saved = localStorage.getItem('preferredLang');
+                if (saved) {
+                    toggleLanguage(saved);
+                } else {
+                    const browserLang = navigator.language || 'en';
+                    toggleLanguage(browserLang.startsWith('pt') ? 'pt' : 'en');
+                }
+            }
+
+            // Scroll horizontal para seção de origem
+            const anchor = urlParams.get('anchor');
+            if (anchor) {
+                const map = {
+                    'what-you-get': 'Differentiators',
+                    'game-on': 'Cta',
+                    'hero': 'Hero'
+                };
+                const id = map[anchor];
+                if (id) {
+                    setTimeout(() => {
+                        const el = document.getElementById(id);
+                        if (el) {
+                            const offset = el.offsetLeft;
+                            window.scrollTo({
+                                left: offset,
+                                behavior: 'smooth'
+                            });
+                        }
+                    }, 400);
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>
