@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Case 3 · PowerCraftStudio</title>
+    <title>PowerCraftStudio - Case 3</title>
 
     <!-- Fonts & Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -13,451 +13,468 @@
 
     <style>
         /* ================================================================
-   CASE 1 — Global Spend Management
-   PowerCraftStudio 2026
-   ================================================================ */
+           CASE 3 — Identity & Customer Onboarding
+           PowerCraftStudio 2026
+           ================================================================ */
 
-:root {
-    --font: 'Space Grotesk', sans-serif;
-    --electric-purple: #7c3aed;
-    --electric-purple-dark: #5b21b6;
-    --neon-cyan: #06b6d4;
-    --neon-pink: #ec4899;
-    --dark-bg: #0f0a1a;
-    --card-bg: rgba(255, 255, 255, 0.04);
-    --glass-border: rgba(255, 255, 255, 0.08);
-    --text-white: #ffffff;
-    --text-green: #12A672;
-    --text-gray: #a5b4fc;
-    --text-muted: #818cf8;
-    --shadow-glow-purple: 0 0 60px rgba(124, 58, 237, 0.2);
-}
+        :root {
+            --font: 'Space Grotesk', sans-serif;
+            --electric-purple: #7c3aed;
+            --electric-purple-dark: #5b21b6;
+            --neon-cyan: #06b6d4;
+            --neon-pink: #ec4899;
+            --dark-bg: #0f0a1a;
+            --card-bg: rgba(255, 255, 255, 0.04);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --text-white: #ffffff;
+            --text-green: #12A672;
+            --text-gray: #a5b4fc;
+            --text-muted: #818cf8;
+            --shadow-glow-purple: 0 0 60px rgba(124, 58, 237, 0.2);
+        }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    -webkit-tap-highlight-color: transparent;
-}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
 
-html {
-    overflow-x: hidden;
-    overflow-y: auto;
-    min-height: 100vh;
-    scroll-behavior: smooth;
-}
+        html {
+            overflow-x: hidden;
+            overflow-y: auto;
+            min-height: 100vh;
+            scroll-behavior: smooth;
+        }
 
-body {
-    font-family: var(--font);
-    background: var(--dark-bg);
-    color: var(--text-white);
-    line-height: 1.6;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    padding: 0;
-    margin: 0;
-    -webkit-font-smoothing: antialiased;
-}
+        body {
+            font-family: var(--font);
+            background: var(--dark-bg);
+            color: var(--text-white);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            padding: 0;
+            margin: 0;
+            -webkit-font-smoothing: antialiased;
+        }
 
-a {
-    text-decoration: none;
-    color: inherit;
-}
-ul {
-    list-style: none;
-}
-img {
-    display: block;
-    max-width: 100%;
-}
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        ul {
+            list-style: none;
+        }
+        img {
+            display: block;
+            max-width: 100%;
+        }
 
-/* ===== LAYOUT ===== */
-.main-wrapper {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    padding: 12px 14px 20px;
-    max-width: 1400px;
-    margin: 0 auto;
-    width: 100%;
-    min-height: 100vh;
-}
+        /* ===== LAYOUT ===== */
+        .main-wrapper {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            padding: 12px 14px 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+            min-height: 100vh;
+        }
 
-/* ===== HEADER ===== */
-.page-header {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    gap: 10px;
-    margin-bottom: 16px;
-    flex-shrink: 0;
-}
+        /* ===== HEADER ===== */
+        .page-header {
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            gap: 10px;
+            margin-bottom: 16px;
+            flex-shrink: 0;
+        }
 
-.back-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    color: var(--text-gray);
-    font-size: 0.8rem;
-    font-weight: 500;
-    padding: 12px 20px;
-    border-radius: 50px;
-    border: 1.5px solid var(--glass-border);
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(12px);
-    transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
-    cursor: pointer;
-    width: 100%;
-    text-decoration: none;
-}
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            color: var(--text-gray);
+            font-size: 0.8rem;
+            font-weight: 500;
+            padding: 12px 20px;
+            border-radius: 50px;
+            border: 1.5px solid var(--glass-border);
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(12px);
+            transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+            cursor: pointer;
+            width: 100%;
+            text-decoration: none;
+        }
 
-.back-btn:active {
-    transform: scale(0.97);
-    background: rgba(124, 58, 237, 0.15);
-    border-color: var(--electric-purple);
-}
+        .back-btn:active {
+            transform: scale(0.97);
+            background: rgba(124, 58, 237, 0.15);
+            border-color: var(--electric-purple);
+        }
 
-.back-btn i {
-    font-size: 1rem;
-    color: var(--neon-cyan);
-}
+        .back-btn i {
+            font-size: 1rem;
+            color: var(--neon-cyan);
+        }
 
-.lang-toggle-top {
-    display: flex;
-    gap: 6px;
-    background: rgba(255, 255, 255, 0.04);
-    backdrop-filter: blur(12px);
-    padding: 4px 8px;
-    border-radius: 100px;
-    border: 1px solid var(--glass-border);
-    justify-content: center;
-    width: 100%;
-}
+        .lang-toggle-top {
+            display: flex;
+            gap: 6px;
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(12px);
+            padding: 4px 8px;
+            border-radius: 100px;
+            border: 1px solid var(--glass-border);
+            justify-content: center;
+            width: 100%;
+        }
 
-.lang-toggle-top button {
-    background: none;
-    border: none;
-    color: var(--text-muted);
-    font-size: 0.65rem;
-    font-weight: 500;
-    padding: 6px 16px;
-    border-radius: 100px;
-    cursor: pointer;
-    transition: all 0.3s;
-    font-family: var(--font);
-    letter-spacing: 0.5px;
-}
+        .lang-toggle-top button {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-size: 0.65rem;
+            font-weight: 500;
+            padding: 6px 16px;
+            border-radius: 100px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: var(--font);
+            letter-spacing: 0.5px;
+        }
 
-.lang-toggle-top button:active {
-    transform: scale(0.95);
-}
+        .lang-toggle-top button:active {
+            transform: scale(0.95);
+        }
 
-.lang-toggle-top button.active {
-    background: var(--electric-purple);
-    color: #fff;
-    box-shadow: 0 0 20px rgba(124, 58, 237, 0.3);
-}
+        .lang-toggle-top button.active {
+            background: var(--electric-purple);
+            color: #fff;
+            box-shadow: 0 0 20px rgba(124, 58, 237, 0.3);
+        }
 
-/* ===== CONTEÚDO ===== */
-.content-area {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 4px 0;
-}
+        /* ===== CONTEÚDO ===== */
+        .content-area {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 4px 0;
+        }
 
-.section-title {
-    font-size: 1.3rem;
-    font-weight: 400;
-    line-height: 1.1;
-    letter-spacing: -0.02em;
-    margin-bottom: 12px;
-    text-align: center;
-    width: 100%;
-}
+        .section-title {
+            font-size: 1.6rem;
+            font-weight: 400;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            margin-bottom: 12px;
+            text-align: center;
+            width: 100%;
+        }
 
-.section-title .highlight {
-    background: linear-gradient(135deg, var(--electric-purple), var(--neon-cyan), var(--neon-pink));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
+        .section-title .highlight {
+            background: linear-gradient(135deg, var(--electric-purple), var(--neon-cyan), var(--neon-pink));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
 
-/* ===== KPIs ===== */
-.kpi-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
-    width: 96%;
-    max-width: 900px;
-    margin: 0 auto 12px auto;
-    flex-wrap: wrap;
-    padding: 12px 10px;
-    background: rgba(124, 58, 237, 0.08);
-    border: 1px solid rgba(124, 58, 237, 0.15);
-    border-radius: 16px;
-    box-shadow: 0 0 40px rgba(124, 58, 237, 0.08);
-    backdrop-filter: blur(4px);
-}
+        /* ===== KPIs ===== */
+        .kpi-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            width: 96%;
+            max-width: 900px;
+            margin: 0 auto 12px auto;
+            flex-wrap: wrap;
+            padding: 12px 10px;
+            background: rgba(124, 58, 237, 0.08);
+            border: 1px solid rgba(124, 58, 237, 0.15);
+            border-radius: 16px;
+            box-shadow: 0 0 40px rgba(124, 58, 237, 0.08);
+            backdrop-filter: blur(4px);
+        }
 
-.kpi-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    flex: 1;
-    min-width: 60px;
-}
+        .kpi-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            flex: 1;
+            min-width: 60px;
+        }
 
-.kpi-value {
-    font-size: 2rem;
-    font-weight: 800;
-    background: linear-gradient(135deg, var(--electric-purple), var(--neon-cyan));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    line-height: 1;
-    letter-spacing: -0.03em;
-}
+        .kpi-value {
+            font-size: 1.2rem;
+            font-weight: 600;
+            background: linear-gradient(135deg, var(--electric-purple), var(--neon-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+            letter-spacing: -0.03em;
+        }
 
-.kpi-label {
-    font-size: 0.65rem;
-    color: var(--text-gray);
-    font-weight: 400;
-    letter-spacing: 0.3px;
-    margin-top: 2px;
-}
+        .kpi-label {
+            font-size: 0.65rem;
+            color: var(--text-gray);
+            font-weight: 400;
+            letter-spacing: 0.3px;
+            margin-top: 2px;
+        }
 
-/* ===== DESCRIÇÃO ===== */
-.info-flow-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    width: 100%;
-    margin-bottom: 8px;
-}
+        /* ===== DESCRIÇÃO ===== */
+        .info-flow-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            width: 100%;
+            margin-bottom: 8px;
+        }
 
-.section-sub {
-    font-size: 0.7rem;
-    color: var(--text-gray);
-    max-width: 100%;
-    line-height: 1.5;
-    text-align: center;
-    width: 100%;
-    font-weight: 500;
-    letter-spacing: 0.3px;
-    padding: 0 4px;
-}
+        .section-sub {
+            font-size: 0.7rem;
+            color: var(--text-gray);
+            max-width: 100%;
+            line-height: 1.5;
+            text-align: center;
+            width: 100%;
+            font-weight: 400;
+            letter-spacing: 0.3px;
+            padding: 0 4px;
+        }
 
-.section-sub strong {
-    color: var(--text-white);
-    font-weight: 600;
-}
+        .section-sub strong {
+            color: var(--text-white);
+            font-weight: 600;
+        }
 
-/* ===== FLUXO ===== */
-.flow-container {
-    display: flex;
-    align-items: center;
-    gap: 0.4rem;
-    width: 100%;
-    max-width: 900px;
-    justify-content: center;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    padding: 4px 2px;
-    -webkit-overflow-scrolling: touch;
-}
+        /* ===== FLUXO ===== */
+        .flow-container {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            width: 100%;
+            max-width: 900px;
+            justify-content: center;
+            flex-wrap: nowrap;
+            overflow-x: auto;
+            padding: 4px 2px;
+            -webkit-overflow-scrolling: touch;
+        }
 
-.flow-step {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 4px;
-    color: var(--text-gray);
-    font-weight: 500;
-    text-align: center;
-    flex-shrink: 0;
-    min-width: 50px;
-}
+        .flow-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            color: var(--text-gray);
+            font-weight: 500;
+            text-align: center;
+            flex-shrink: 0;
+            min-width: 50px;
+        }
 
-.flow-step .step-icon {
-    width: 38px;
-    height: 38px;
-    border-radius: 50%;
-    background: rgba(124, 58, 237, 0.1);
-    border: 1.5px solid var(--glass-border);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.9rem;
-    color: var(--neon-cyan);
-    transition: all 0.3s ease;
-    flex-shrink: 0;
-}
+        .flow-step .step-icon {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: rgba(124, 58, 237, 0.1);
+            border: 1.5px solid var(--glass-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            color: var(--neon-cyan);
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
 
-.flow-step:active .step-icon {
-    transform: scale(0.92);
-    background: rgba(124, 58, 237, 0.2);
-    border-color: var(--electric-purple);
-}
+        .flow-step:active .step-icon {
+            transform: scale(0.92);
+            background: rgba(124, 58, 237, 0.2);
+            border-color: var(--electric-purple);
+        }
 
-.flow-step .step-label {
-    font-size: 0.5rem;
-    text-transform: uppercase;
-    letter-spacing: 0.3px;
-    color: var(--text-muted);
-    max-width: 60px;
-    line-height: 1.1;
-    text-align: center;
-}
+        .flow-step .step-label {
+            font-size: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+            color: var(--text-muted);
+            max-width: 60px;
+            line-height: 1.1;
+            text-align: center;
+        }
 
-.flow-arrow {
-    color: var(--text-muted);
-    font-size: 0.6rem;
-    opacity: 0.3;
-    flex-shrink: 0;
-}
+        .flow-arrow {
+            color: var(--text-muted);
+            font-size: 0.6rem;
+            opacity: 0.3;
+            flex-shrink: 0;
+        }
 
-/* ===== TECH STACK ===== */
-.tech-footer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 6px;
-    width: 100%;
-    padding-top: 10px;
-    border-top: 1px solid var(--glass-border);
-    margin-top: 4px;
-}
+        /* ===== TECH STACK ===== */
+        .tech-footer {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            width: 100%;
+            padding-top: 10px;
+            border-top: 1px solid var(--glass-border);
+            margin-top: 4px;
+        }
 
-.tech-label {
-    font-size: 0.55rem;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-}
+        .tech-label {
+            font-size: 0.55rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+        }
 
-.tech-items {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
-    flex-wrap: wrap;
-}
+        .tech-items {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
 
-.tech-item {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    color: var(--text-gray);
-    font-size: 0.7rem;
-    font-weight: 500;
-    transition: all 0.3s ease;
-}
+        .tech-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-gray);
+            font-size: 0.7rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
 
-.tech-item:active {
-    transform: scale(0.95);
-}
+        .tech-item:active {
+            transform: scale(0.95);
+        }
 
-.tech-item i {
-    font-size: 0.85rem;
-    color: var(--neon-cyan);
-}
+        .tech-item i {
+            font-size: 0.85rem;
+            color: var(--neon-cyan);
+        }
 
-/* ===== ANIMAÇÃO ===== */
-.content-area {
-    animation: fadeInUp 0.5s ease forwards;
-}
+        /* ===== ANIMAÇÃO ===== */
+        .content-area {
+            animation: fadeInUp 0.5s ease forwards;
+        }
 
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(15px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
-/* ================================================================
-   RESPONSIVO
-   ================================================================ */
+        /* ================================================================
+           RESPONSIVO
+           ================================================================ */
 
-@media (min-width: 768px) {
-    .main-wrapper { padding: 24px 40px 30px; }
-    .page-header { flex-direction: row; justify-content: space-between; gap: 1rem; margin-bottom: 20px; }
-    .back-btn { width: auto; padding: 14px 28px; font-size: 0.95rem; }
-    .back-btn:hover { background: rgba(124, 58, 237, 0.2); border-color: var(--electric-purple); transform: translateX(-6px); box-shadow: 0 0 40px rgba(124, 58, 237, 0.15); }
-    .back-btn:hover i { transform: translateX(-4px); }
-    .lang-toggle-top { width: auto; padding: 6px 10px; }
-    .lang-toggle-top button { font-size: 0.7rem; padding: 4px 14px; }
-    .lang-toggle-top button:hover { color: var(--text-white); background: rgba(255,255,255,0.05); }
-    .section-title { font-size: 1.9rem; margin-bottom: 16px; }
-    .kpi-container { gap: 2.5rem; padding: 1.2rem 2rem; width: 75%; border-radius: 22px; }
-    .kpi-value { font-size: 3.5rem; }
-    .kpi-label { font-size: 0.9rem; }
-    .section-sub { font-size: 0.85rem; max-width: 750px; }
-    .flow-container { gap: 1.2rem; width: 80%; flex-wrap: wrap; overflow-x: visible; }
-    .flow-step { min-width: 70px; }
-    .flow-step .step-icon { width: 48px; height: 48px; font-size: 1.3rem; }
-    .flow-step:hover .step-icon { background: rgba(124,58,237,0.2); border-color: var(--electric-purple); transform: scale(1.05); }
-    .flow-step .step-label { font-size: 0.6rem; max-width: 80px; }
-    .flow-arrow { font-size: 1rem; }
-    .tech-footer { padding-top: 1rem; }
-    .tech-label { font-size: 0.65rem; }
-    .tech-items { gap: 2rem; }
-    .tech-item { font-size: 0.85rem; }
-    .tech-item i { font-size: 1rem; }
-    .tech-item:hover { color: var(--text-white); }
-    .tech-item:hover i { color: var(--electric-purple); transform: translateY(-2px); }
-}
+        @media (min-width: 768px) {
+            /* SERGIO
+            .main-wrapper { padding: 24px 40px 30px; } */
+            .main-wrapper { padding: 20px 20px 20px; }
 
-@media (min-width: 1024px) {
-    .main-wrapper { padding: 30px 60px 40px; }
-    .section-title { font-size: 2.2rem; }
-    .kpi-container { gap: 4rem; padding: 1.5rem 2.5rem; width: 66.67%; }
-    .kpi-value { font-size: 4.5rem; }
-    .kpi-label { font-size: 1rem; }
-    .flow-container { width: 66.67%; gap: 1.8rem; }
-}
+            .page-header { flex-direction: row; justify-content: space-between; gap: 1rem; margin-bottom: 20px; }
+            .back-btn { width: auto; padding: 14px 28px; font-size: 0.95rem; }
+            .back-btn:hover { background: rgba(124, 58, 237, 0.2); border-color: var(--electric-purple); transform: translateX(-6px); box-shadow: 0 0 40px rgba(124, 58, 237, 0.15); }
+            .back-btn:hover i { transform: translateX(-4px); }
+            .lang-toggle-top { width: auto; padding: 6px 10px; }
+            .lang-toggle-top button { font-size: 0.7rem; padding: 4px 14px; }
+            .lang-toggle-top button:hover { color: var(--text-white); background: rgba(255,255,255,0.05); }
 
-@media (max-width: 400px) {
-    .main-wrapper { padding: 8px 8px 14px; }
-    .section-title { font-size: 1.3rem; margin-bottom: 8px; }
-    .kpi-container { gap: 0.6rem; padding: 8px 6px; width: 98%; border-radius: 12px; margin-bottom: 8px; }
-    .kpi-value { font-size: 1.5rem; }
-    .kpi-label { font-size: 0.55rem; }
-    .section-sub { font-size: 0.6rem; padding: 0 2px; }
-    .flow-container { gap: 0.2rem; }
-    .flow-step { min-width: 40px; }
-    .flow-step .step-icon { width: 30px; height: 30px; font-size: 0.7rem; border-width: 1px; }
-    .flow-step .step-label { font-size: 0.4rem; max-width: 40px; }
-    .flow-arrow { font-size: 0.45rem; }
-    .tech-item { font-size: 0.6rem; }
-    .tech-item i { font-size: 0.7rem; }
-    .tech-items { gap: 0.7rem; }
-    .back-btn { font-size: 0.7rem; padding: 10px 14px; }
-    .lang-toggle-top button { font-size: 0.55rem; padding: 4px 12px; }
-}
+            /*SERGIO 
+            .section-title { font-size: 2.2rem; margin-bottom: 16px; } */
+            .section-title { font-size: 1.8rem; margin-bottom: 4px; }
+            /*SERGIO */   
+            .kpi-container { gap: 2.5rem; padding: 1.2rem 2rem; width: 75%; border-radius: 22px; }
+            
+            /*SERGIO 
+            .kpi-value { font-size: 3.5rem; } */
+            .kpi-value { font-size: 2rem; }
 
-@media (max-width: 340px) {
-    .section-title { font-size: 1.1rem; }
-    .kpi-value { font-size: 1.2rem; }
-    .kpi-label { font-size: 0.5rem; }
-    .flow-step .step-icon { width: 24px; height: 24px; font-size: 0.55rem; }
-    .flow-step .step-label { font-size: 0.35rem; max-width: 32px; }
-    .flow-arrow { font-size: 0.35rem; }
-    .tech-item { font-size: 0.5rem; }
-    .tech-item i { font-size: 0.6rem; }
-}
+            .kpi-label { font-size: 0.9rem; }
+            .section-sub { font-size: 0.9rem; max-width: 880px; }
+
+            /* SERGIO
+            .flow-container { gap: 1.2rem; width: 80%; flex-wrap: wrap; overflow-x: visible; } */
+            .flow-container { gap: 0.8rem; width: 100%; flex-wrap: wrap; overflow-x: visible; }
+
+            .flow-step { min-width: 70px; }
+            .flow-step .step-icon { width: 48px; height: 48px; font-size: 1.3rem; }
+            .flow-step:hover .step-icon { background: rgba(124,58,237,0.2); border-color: var(--electric-purple); transform: scale(1.05); }
+            .flow-step .step-label { font-size: 0.6rem; max-width: 80px; }
+            .flow-arrow { font-size: 1rem; }
+            .tech-footer { padding-top: 1rem; }
+            .tech-label { font-size: 0.65rem; }
+            .tech-items { gap: 2rem; }
+            .tech-item { font-size: 0.85rem; }
+            .tech-item i { font-size: 1rem; }
+            .tech-item:hover { color: var(--text-white); }
+            .tech-item:hover i { color: var(--electric-purple); transform: translateY(-2px); }
+        }
+
+        /*//SERGIO AQUI */
+
+        @media (min-width: 1024px) {
+            .main-wrapper { padding: 30px 20px 20px; }
+            .section-title { font-size: 1.8rem; /* 2.2rem; } */
+            .kpi-container { gap: 2rem; padding: 1rem 1rem; width: 66.67%; }
+            .kpi-value { font-size: 1rem; }
+            .kpi-label { font-size: 0.8rem; }
+            .flow-container { width: 66.67%; gap: 1.8rem; }
+        }
+
+        @media (max-width: 400px) {
+            .main-wrapper { padding: 8px 8px 14px; }
+            .section-title { font-size: 1.3rem; margin-bottom: 8px; }
+            .kpi-container { gap: 0.6rem; padding: 8px 6px; width: 98%; border-radius: 12px; margin-bottom: 8px; }
+            .kpi-value { font-size: 1.5rem; }
+            .kpi-label { font-size: 0.55rem; }
+            .section-sub { font-size: 0.6rem; padding: 0 2px; }
+            .flow-container { gap: 0.2rem; }
+            .flow-step { min-width: 40px; }
+            .flow-step .step-icon { width: 30px; height: 30px; font-size: 0.7rem; border-width: 1px; }
+            .flow-step .step-label { font-size: 0.4rem; max-width: 40px; }
+            .flow-arrow { font-size: 0.45rem; }
+            .tech-item { font-size: 0.6rem; }
+            .tech-item i { font-size: 0.7rem; }
+            .tech-items { gap: 0.7rem; }
+            .back-btn { font-size: 0.7rem; padding: 10px 14px; }
+            .lang-toggle-top button { font-size: 0.55rem; padding: 4px 12px; }
+        }
+
+        @media (max-width: 340px) {
+            .section-title { font-size: 1.1rem; }
+            .kpi-value { font-size: 1.2rem; }
+            .kpi-label { font-size: 0.5rem; }
+            .flow-step .step-icon { width: 24px; height: 24px; font-size: 0.55rem; }
+            .flow-step .step-label { font-size: 0.35rem; max-width: 32px; }
+            .flow-arrow { font-size: 0.35rem; }
+            .tech-item { font-size: 0.5rem; }
+            .tech-item i { font-size: 0.6rem; }
+        }
     </style>
 </head>
 <body>
@@ -467,11 +484,11 @@ img {
 
         <!-- ===== HEADER: Back Button + Language Toggle ===== -->
         <div class="page-header">
-            <!-- Back Button -->
-            <a href="cases.html" class="back-btn">
+            <!-- Back Button - Agora volta para a seção Cases -->
+            <a href="index.html?anchor=cases" class="back-btn">
                 <i class="fas fa-arrow-left"></i>
                 <span>
-                    <span class="lang-en">Back to Cases</span>
+                    <span class="lang-en">Back to Case Studies</span>
                     <span class="lang-pt" style="display:none;">Voltar aos Cases</span>
                 </span>
             </a>
@@ -487,80 +504,67 @@ img {
         <div class="content-area">
             <!-- TÍTULO -->
             <h2 class="section-title" id="pageTitle">
-                <span class="lang-en">Identity &amp; Customer <span class="highlight">Onboarding</span></span>
-                <span class="lang-pt" style="display:none;">Identidade &amp; <span class="highlight">Onboarding</span> de Clientes</span>
+                <span class="lang-en">Identity & Customer <span class="highlight">Onboarding</span></span>
+                <span class="lang-pt" style="display:none;">Identidade & <span class="highlight">Onboarding</span> de Clientes</span>
             </h2>
             <p><br></p>
-            <!-- ===== KPIs (PURPLE GLOW) ===== -->
-            <div class="kpi-container">
-                <div class="kpi-item">
-                    <div class="kpi-value">-55%</div>
-                    <div class="kpi-label">
-                        <span class="lang-en">Onboarding Cycle</span>
-                        <span class="lang-pt" style="display:none;">Ciclo de Onboarding</span>
-                    </div>
-                </div>
-                <div class="kpi-item">
-                    <div class="kpi-value">Zero</div>
-                    <div class="kpi-label">
-                        <span class="lang-en">Data Leakage</span>
-                        <span class="lang-pt" style="display:none;">Vazamento de Dados</span>
-                    </div>
-                </div>
-                <div class="kpi-item">
-                    <div class="kpi-value">Real-Time</div>
-                    <div class="kpi-label">
-                        <span class="lang-en">Ecosystem Sync</span>
-                        <span class="lang-pt" style="display:none;">Sincronização em Tempo Real</span>
-                    </div>
-                </div>
-            </div>
 
-            <!-- ===== DESCRIÇÃO + FLUXO ===== -->
+            <!-- ===== DESCRIÇÃO ===== -->
             <div class="info-flow-wrapper">
+                 <span class="tech-label">
+                    <span class="lang-en">Challenges & Solution</span>
+                    <span class="lang-pt" style="display:none;">Desafios & Solução</span>
+                </span>
                 <p class="section-sub" id="pageSub">
                     <span class="lang-en">
-                        Streamlined identity verification, automated document processing, <br>and secure customer journey management, from ingestion to provisioning.
+                        A multi-platform gateway native to Salesforce CRM and SAP ERP, connected to the Power Platform.<br>It unifies document ingestion and enables parallel departmental reviews (market segmentation, pricing, credit) prior to account provisioning.
                     </span>
                     <span class="lang-pt" style="display:none;">
-                        Verificação de identidade simplificada, processamento automatizado de documentos <br>e gestão segura da jornada do cliente, da captura ao provisionamento.
+                        Um gateway multiplataforma nativo do Salesforce CRM e do SAP ERP, conectado à Power Platform.<br>Ele unifica a ingestão de documentos e permite revisões departamentais paralelas (segmentação de mercado, precificação, crédito) antes do provisionamento da conta.
                     </span>
                 </p>
+
+                <!-- ===== KPIs ===== -->
+                <div class="kpi-container">
+                    <div class="kpi-item">
+                        <div class="kpi-value">-55%</div>
+                        <div class="kpi-label">
+                            <span class="lang-en">Onboarding Cycle</span>
+                            <span class="lang-pt" style="display:none;">Ciclo de Onboarding</span>
+                        </div>
+                    </div>
+                    <div class="kpi-item">
+                        <div class="kpi-value">0</div>
+                        <div class="kpi-label">
+                            <span class="lang-en">Data Leakage</span>
+                            <span class="lang-pt" style="display:none;">Vazamento de Dados</span>
+                        </div>
+                    </div>
+                    <div class="kpi-item">
+                        <div class="kpi-value">Real Time</div>
+                        <div class="kpi-label">
+                            <span class="lang-en">Bidirectional Sync CRM ERP</span>
+                            <span class="lang-pt" style="display:none;">Sincronização Online CRM ERP </span>
+                        </div>
+                    </div>
+                </div>
 
                 <!-- ===== FLUXO DO PROCESSO ===== -->
                 <div class="flow-container">
                     <div class="flow-step">
-                        <div class="step-icon"><i class="fas fa-cloud-upload-alt"></i></div>
+                        <div class="step-icon"><i class="fas fa-id-card"></i></div>
                         <span class="step-label">
-                            <span class="lang-en">Ingestion</span>
-                            <span class="lang-pt" style="display:none;">Captura</span>
+                            <span class="lang-en">Salesforce Connection</span>
+                            <span class="lang-pt" style="display:none;">Conexão Salesforce</span>
                         </span>
                     </div>
                     <span class="flow-arrow"><i class="fas fa-chevron-right"></i></span>
 
                     <div class="flow-step">
-                        <div class="step-icon"><i class="fas fa-cogs"></i></div>
+                        <div class="step-icon"><i class="fas fa-file-alt"></i></div>
                         <span class="step-label">
-                            <span class="lang-en">Workflow</span>
-                            <span class="lang-pt" style="display:none;">Automação</span>
-                        </span>
-                    </div>
-                    <span class="flow-arrow"><i class="fas fa-chevron-right"></i></span>
-
-                    <div class="flow-step">
-                        <div class="step-icon"><i class="fas fa-users-cog"></i></div>
-                        <span class="step-label">
-                            <span class="lang-en">Reviews</span>
-                            <span class="lang-pt" style="display:none;">Revisões</span>
-                        </span>
-                    </div>
-                    <span class="flow-arrow"><i class="fas fa-chevron-right"></i></span>
-
-                    <div class="flow-step">
-                        <div class="step-icon"><i class="fas fa-handshake"></i></div>
-                        <span class="step-label">
-                            <span class="lang-en">Strategy</span>
-                            <span class="lang-pt" style="display:none;">Estratégia</span>
+                            <span class="lang-en">Data Capture Worklow</span>
+                            <span class="lang-pt" style="display:none;">Fluxo Captura de Dados</span>
                         </span>
                     </div>
                     <span class="flow-arrow"><i class="fas fa-chevron-right"></i></span>
@@ -568,8 +572,26 @@ img {
                     <div class="flow-step">
                         <div class="step-icon"><i class="fas fa-check-circle"></i></div>
                         <span class="step-label">
-                            <span class="lang-en">Provisioning</span>
-                            <span class="lang-pt" style="display:none;">Provisionamento</span>
+                            <span class="lang-en">Departmental Review</span>
+                            <span class="lang-pt" style="display:none;">Revisões Departamentais</span>
+                        </span>
+                    </div>
+                    <span class="flow-arrow"><i class="fas fa-chevron-right"></i></span>
+
+                    <div class="flow-step">
+                        <div class="step-icon"><i class="fas fa-user-check"></i></div>
+                        <span class="step-label">
+                            <span class="lang-en">Commercial Strategy</span>
+                            <span class="lang-pt" style="display:none;">Estrtégia Comercial</span>
+                        </span>
+                    </div>
+                    <span class="flow-arrow"><i class="fas fa-chevron-right"></i></span>
+
+                    <div class="flow-step">
+                        <div class="step-icon"><i class="fas fa-check-circle"></i></div>
+                        <span class="step-label">
+                            <span class="lang-en">SAP Provisioning</span>
+                            <span class="lang-pt" style="display:none;">Provisionamento SAP</span>
                         </span>
                     </div>
                 </div>
@@ -577,26 +599,29 @@ img {
 
             <!-- ===== TECH STACK ===== -->
             <div class="tech-footer">
-                <p><br></p>
                 <span class="tech-label">
                     <span class="lang-en">Tech Stack</span>
                     <span class="lang-pt" style="display:none;">Tecnologias</span>
                 </span>
                 <div class="tech-items">
                     <span class="tech-item">
-                        <i class="fab fa-salesforce"></i>
+                        <img src="salesforce.png" alt="Power Apps" style="width: 30px; height: 23px;">
                         <span>Salesforce</span>
                     </span>
                     <span class="tech-item">
-                        <i class="fas fa-cloud"></i>
-                        <span>Power Platform</span>
+                        <img src="power-2t.png" alt="Power Apps" style="width: 30px; height: 21.5px;">
+                        <span>Power Apps</span>
                     </span>
                     <span class="tech-item">
-                        <i class="fas fa-database"></i>
+                        <img src="powerautomate-blue.png" alt="Power Automate" style="width: 30px; height: 24.85px;">
+                        <span>Power Automate</span>
+                    </span>
+                    <span class="tech-item">
+                        <img src="sharepoint-blue.png" alt="SharePoint" style="width: 30px; height: 30px;">
                         <span>SharePoint</span>
                     </span>
                     <span class="tech-item">
-                        <i class="fas fa-sap"></i>
+                        <img src="sap.png" alt="Power Apps" style="width: 30px; height: 30px;">
                         <span>SAP ERP</span>
                     </span>
                 </div>
@@ -611,8 +636,6 @@ img {
         // FUNÇÃO: Trocar idioma
         // ============================================================
         function toggleLanguage(lang) {
-            currentLang = lang;
-            
             const btns = document.querySelectorAll('#langToggle button');
             btns.forEach(btn => btn.classList.remove('active'));
             document.querySelector(`#langToggle button[onclick="toggleLanguage('${lang}')"]`).classList.add('active');
@@ -636,9 +659,6 @@ img {
         // ============================================================
         // INICIALIZAÇÃO
         // ============================================================
-        let currentLang = 'en';
-        let fromSection = 'hero';
-
         document.addEventListener('DOMContentLoaded', function() {
             const host = window.location.hostname;
             const isBr = host.includes('com.br');
@@ -656,9 +676,6 @@ img {
                 const browserLang = navigator.language || 'en';
                 lang = browserLang.startsWith('pt') ? 'pt' : 'en';
             }
-
-            fromSection = urlParams.get('from') || 'hero';
-            console.log('📍 Página case3 carregada de:', fromSection);
 
             if (useBr) {
                 document.querySelector('.lang-toggle-top').style.display = 'none';
