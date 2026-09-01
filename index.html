@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PowerCraftStudio - Site Completo</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        html, body { overflow-x: hidden; }
+        body { font-family: Arial, sans-serif; background-color: #F8F4F4; color: #333; }
+
+        /* ===== ANIMAÇÃO DA FOLHA (GIRAR E FLUTUAR) ===== */
+        @keyframes floatAndSpin { 0% { transform: translateY(0px) rotate(0deg); } 50% { transform: translateY(-10px) rotate(180deg); } 100% { transform: translateY(0px) rotate(360deg); } }
+        .leaf-section img, .cta-leaf { animation: floatAndSpin 6s ease-in-out infinite; transform-origin: center; }
+
+        /* CABEÇALHO FIXO */
+        .fixed-header { position: fixed; top: 0; left: 0; width: 100%; z-index: 999; display: flex; flex-direction: column; transition: background-color 0.4s ease, color 0.4s ease; }
+        .fixed-header.dark { background-color: #1B1510; }
+        .fixed-header.dark .brand-top { color: #ffffff; }
+        .fixed-header.dark .top-stripe { background-color: #d3f36b; }
+        .fixed-header.dark .top-stripe-green { background-color: #d3f36b; }
+        .fixed-header.green { background-color: #C1FF72; }
+        .fixed-header.green .brand-top { color: #000000; }
+        .fixed-header.green .top-stripe { background-color: #C1FF72; }
+        .fixed-header.green .top-stripe-green { background-color: #C1FF72; }
+        
+        .header-inner { display: flex; justify-content: space-between; align-items: center; padding: 30px 60px; height: 110px; }
+        .brand-top { font-size: 36px; font-weight: 600; transition: color 0.4s ease; }
+        .lang-buttons { display: flex; gap: 15px; }
+        .btn-lang { width: 50px; height: 50px; border-radius: 50%; border: 2px solid transparent; background-color: #f8f4f0; color: #000; display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 700; cursor: pointer; transition: all 0.3s; }
+        .btn-lang.active { border-color: #000; box-shadow: 0 0 0 2px #fff; }
+
+        /* PÁGINAS */
+        .page { min-height: 100vh; position: relative; width: 100%; }
+        .page1, .page3, .page5, .page10, .page12 { padding-top: 120px; }
+        .page2, .page4, .page6, .page7, .page8, .page9 { padding-top: 120px; }
+
+        /* Página 1 */
+        .page1 { background-color: #000000; }
+        .page1-main { text-align: center; margin-bottom: 40px; }
+        .platform-title { font-size: 28px; color: #d3f36b; display: inline-block; border-bottom: 2px solid #d3f36b; padding-bottom: 10px; margin-bottom: 20px; }
+        .subtitle { font-size: 22px; margin-bottom: 30px; display: flex; justify-content: center; flex-wrap: wrap; gap: 20px; color: #ffffff; }
+        .icons-row { display: flex; justify-content: center; align-items: flex-start; gap: 40px; }
+        .icons-row img { width: 60px; height: 60px; object-fit: contain; }
+        .leaf-section { display: flex; justify-content: center; align-items: center; gap: 30px; margin-bottom: 60px; padding: 0 20px; }
+        .leaf-section img { width: 70px; height: 70px; flex-shrink: 0; }
+        .leaf-text { max-width: 900px; text-align: left; font-size: 20px; line-height: 1.5; color: #ffffff; }
+        .leaf-text span { color: #d3f36b; }
+        .domain { text-align: left; padding: 0 60px 50px 60px; font-size: 52px; font-weight: 700; color: #ffffff; letter-spacing: -1px; }
+
+        /* Página 2 */
+        .page2 { background-color: #F8F4F4; }
+        .page2-container { display: flex; padding: 80px 60px; gap: 60px; align-items: flex-start; }
+        .left-col { display: flex; align-items: center; gap: 20px; min-width: 250px; }
+        .number-badge { width: 60px; height: 60px; border-radius: 50%; background-color: #d3f36b; display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: bold; color: #000; }
+        .section-label { background-color: #000; color: #fff; padding: 15px 30px; border-radius: 40px; font-size: 18px; white-space: nowrap; }
+        .right-col { max-width: 800px; min-width: 0; }
+        .right-col h1 { font-size: 44px; font-weight: 700; color: #000; margin-bottom: 40px; }
+        .right-col p { font-size: 22px; color: #555; line-height: 1.6; margin-bottom: 100px; }
+        .stats-grid { display: flex; gap: 60px; }
+        .stat-item { display: flex; flex-direction: column; }
+        .stat-number { font-size: 72px; font-weight: 400; color: #000; line-height: 1; margin-bottom: 20px; }
+        .stat-text { font-size: 18px; color: #666; line-height: 1.5; max-width: 150px; }
+
+        /* Página 3 */
+        .page3 { background-color: #1B1510; color: #ffffff; }
+        .page3-container { display: flex; padding: 80px 60px; gap: 60px; align-items: flex-start; }
+        .page3 .number-badge { background-color: #d3f36b; color: #000; }
+        .page3 .section-label { background-color: #ffffff; color: #000; }
+        .services-title { font-size: 44px; font-weight: 700; color: #ffffff !important; margin-bottom: 40px; }
+        .services-list { list-style: none; margin-bottom: 60px; padding: 0; }
+        .services-list li { font-size: 22px; color: #e0e0e0; margin-bottom: 15px; display: flex; align-items: center; gap: 15px; }
+        .services-list li::before { content: "•"; color: #c1ff72; font-size: 32px; line-height: 1; }
+        .service-block { display: flex; gap: 60px; align-items: flex-start; padding: 40px 0; border-bottom: 2px solid #c1ff72; }
+        .service-block:last-child { border-bottom: none; }
+        .service-block h2 { font-size: 36px; font-weight: 700; min-width: 300px; line-height: 1.2; }
+        .service-block h2.green { color: #c1ff72; }
+        .service-block h2.white { color: #ffffff; }
+        .service-block p { font-size: 20px; color: #d0d0d0; line-height: 1.6; flex: 1; margin-top: 10px; }
+
+        /* Página 4 */
+        .page4 { background-color: #F8F4F0; }
+        .page4-container { display: flex; padding: 80px 60px; gap: 60px; align-items: flex-start; }
+        .page4 .section-label { background-color: #000; color: #fff; }
+        .engagement-block { display: flex; gap: 60px; align-items: flex-start; padding: 40px 0; border-bottom: 2px solid #C1FF72; }
+        .engagement-block:last-child { border-bottom: none; }
+        .engagement-block h2 { font-size: 36px; font-weight: 700; min-width: 300px; line-height: 1.2; color: #000; }
+        .engagement-block p { font-size: 20px; color: #555; line-height: 1.6; flex: 1; margin-top: 10px; }
+
+        /* Página 5 */
+        .page5 { background-color: #1B1510; color: #ffffff; }
+        .page5-container { display: flex; padding: 80px 60px; gap: 60px; align-items: flex-start; }
+        .page5 .number-badge { background-color: #d3f36b; color: #000; }
+        .page5 .section-label { background-color: #ffffff; color: #000; }
+        .page5-title { font-size: 44px; font-weight: 700; color: #ffffff !important; margin-bottom: 40px; }
+        
+        .page5-subtitle { font-size: 22px; color: #d0d0d0 !important; line-height: 1.6; margin-bottom: 80px; max-width: 900px; }
+        .roadmap-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+        .roadmap-col { display: flex; flex-direction: column; min-width: 0; }
+        .roadmap-col h2 { font-size: 28px; font-weight: 600; color: #ffffff !important; margin-bottom: 15px; min-height: 70px; }
+        .roadmap-line { height: 2px; background-color: #c1ff72; margin-bottom: 20px; width: 100%; }
+        .roadmap-col p { font-size: 18px; color: #d0d0d0 !important; line-height: 1.6; }
+
+        /* Páginas 6-9 */
+        .page6 { background-color: #C1FF72; }
+        .page6-content { display: flex; flex: 1; width: 100%; }
+        .page6-sidebar { width: 45%; padding: 60px; display: flex; flex-direction: column; align-items: flex-start; min-width: 0; }
+        .tech-staks-title { font-size: 28px; font-weight: 600; color: #000; border-bottom: 3px solid #000; padding-bottom: 10px; margin-bottom: 40px; }
+        .tech-stacks-img { width: 100%; max-width: 400px; height: auto; margin: 0 auto; }
+        .page6-card { flex: 1; background-color: #F8F4F0; padding: 60px; min-width: 0; }
+        .global-title { font-size: 48px; font-weight: 700; color: #000; margin-bottom: 40px; }
+        .global-text { font-size: 22px; color: #555; line-height: 1.6; margin-bottom: 40px; }
+        .global-stats { display: flex; gap: 60px; margin-top: 60px; }
+        .global-stat-item { display: flex; flex-direction: column; }
+        .global-stat-number { font-size: 72px; font-weight: 400; color: #000; line-height: 1; margin-bottom: 15px; }
+        .global-stat-text { font-size: 18px; color: #666; line-height: 1.5; }
+
+        /* Página 10 */
+        .page10 { background-color: #1B1510; color: #ffffff; display: flex; flex-direction: column; }
+        .cta-content { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 0 10%; gap: 30px; }
+        .cta-group { display: flex; align-items: center; gap: 40px; }
+        .cta-leaf { width: 80px; height: 80px; }
+        .cta-title { font-size: 56px; font-weight: 600; color: #ffffff; margin-bottom: 20px; }
+        .cta-subtitle { font-size: 24px; color: #d0d0d0; line-height: 1.6; max-width: 700px; }
+        .cta-bottom { display: flex; align-items: center; gap: 20px; margin-top: 80px; cursor: pointer; }
+        .cta-contact-text { font-size: 72px; font-weight: 700; color: #ffffff; }
+        .cta-btn { background-color: #C1FF72; border: none; width: 150px; height: 80px; border-radius: 40px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: transform 0.3s; }
+        .cta-btn:hover { transform: scale(1.05); }
+        .cta-btn-circle { background-color: #ffffff; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; color: #000; font-weight: bold; }
+
+        /* Página 12 */
+        .page12 { background-color: #1B1510; color: #ffffff; min-height: auto; padding-bottom: 60px; }
+        .footer-content { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 40px; padding: 80px 60px 40px 60px; }
+        .footer-left { max-width: 500px; }
+        .footer-title { font-size: 48px; font-weight: 700; margin-bottom: 40px; }
+        .footer-contact { font-size: 20px; margin-bottom: 15px; display: flex; align-items: center; gap: 15px; }
+        .footer-contact svg { width: 24px; height: 24px; fill: #C1FF72; }
+        .footer-url { font-size: 20px; margin-bottom: 10px; color: #d0d0d0; }
+        .footer-nav { display: flex; gap: 40px; }
+        .footer-links { display: flex; flex-direction: column; gap: 15px; }
+        .footer-links a { color: #ffffff; text-decoration: none; font-size: 18px; transition: color 0.3s; }
+        .footer-links a:hover { color: #C1FF72; }
+        .footer-bottom { border-top: 1px solid #333; margin: 40px 60px 0; padding-top: 20px; text-align: center; font-size: 18px; color: #d0d0d0; }
+        .back-to-top { position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px; border-radius: 50%; background-color: #C1FF72; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: transform 0.3s; z-index: 10; }
+        .back-to-top:hover { transform: scale(1.1); }
+        .back-to-top svg { width: 30px; height: 30px; fill: #1B1510; }
+
+        /* MODAL */
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); display: none; align-items: center; justify-content: center; z-index: 9999; }
+        .modal-overlay.active { display: flex; }
+        .modal-content { background-color: #F8F4F0; width: 90%; max-width: 1100px; padding: 30px; border-radius: 8px; position: relative; max-height: 95vh; display: flex; flex-direction: column; }
+        .modal-close { position: absolute; top: 15px; right: 15px; font-size: 24px; font-weight: bold; cursor: pointer; color: #333; z-index: 10; }
+        .modal-container { display: flex; gap: 40px; align-items: flex-start; flex: 1; overflow: hidden; }
+        .modal-left { flex: 0 0 30%; max-width: 300px; }
+        .modal-left .number-badge { width: 60px; height: 60px; border-radius: 50%; background-color: #d3f36b; display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: bold; color: #000; }
+        .modal-left .section-label { background-color: #000; color: #fff; padding: 15px 30px; border-radius: 40px; font-size: 18px; white-space: nowrap; }
+        .modal-left-text { margin-top: 20px; font-size: 18px; color: #555; line-height: 1.5; }
+        .modal-right { flex: 1; min-width: 0; }
+        .modal-right h1 { font-size: 40px; font-weight: 700; color: #000; margin-bottom: 20px; }
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; font-size: 16px; color: #555; margin-bottom: 5px; }
+        .form-group input, .form-group textarea { width: 100%; font-family: Arial, sans-serif; font-size: 20px; color: #333; background: transparent; border: none; border-bottom: 2px solid #aaa; padding: 8px 0; outline: none; transition: border-color 0.3s; }
+        .form-group input:focus, .form-group textarea:focus { border-bottom-color: #C1FF72; }
+        .form-group textarea { resize: none; height: 80px; }
+        .submit-btn { background-color: #C1FF72; color: #000; width: 100%; border: none; padding: 15px; font-size: 22px; font-weight: 600; border-radius: 40px; cursor: pointer; transition: transform 0.3s; margin-top: 15px; }
+        .submit-btn:hover { transform: scale(1.02); }
+
+        /* RESPONSIVIDADE MOBILE */
+        @media (max-width: 768px) {
+            .header-inner { flex-direction: column; align-items: flex-start; gap: 15px; height: auto; padding: 15px 20px; }
+            .brand-top { font-size: 24px; }
+            .lang-buttons { gap: 10px; }
+            .btn-lang { width: 40px; height: 40px; font-size: 14px; border: 2px solid transparent; }
+            .btn-lang.active { border-color: #000; box-shadow: 0 0 0 2px #fff; }
+
+            .page { padding-top: 160px !important; }
+            
+            .platform-title { font-size: 20px; }
+            .subtitle { font-size: 16px; gap: 8px; }
+            .icons-row { gap: 15px; }
+            .icons-row img { width: 35px; height: 35px; }
+            .leaf-section { gap: 10px; margin-bottom: 30px; }
+            .leaf-section img { width: 40px; height: 40px; }
+            .leaf-text { font-size: 14px; }
+            .domain { font-size: 28px; padding-left: 20px; padding-right: 20px; padding-bottom: 30px; }
+            
+            .page2-container, .page3-container, .page4-container, .page5-container { flex-direction: column; padding: 40px 20px; gap: 30px; width: 100%; }
+            .left-col { width: 100%; min-width: 0; gap: 10px; }
+            .number-badge { width: 45px; height: 45px; font-size: 18px; }
+            .section-label { padding: 10px 20px; font-size: 14px; }
+            
+            .right-col { width: 100%; max-width: 100%; }
+            .right-col h1, .services-title, .page5-title { font-size: 26px; margin-bottom: 20px; }
+            .right-col p, .page5-subtitle, .services-list li { font-size: 16px; }
+            .right-col p { margin-bottom: 60px; }
+            
+            .stat-number { font-size: 48px; margin-bottom: 10px; }
+            .stat-text { font-size: 14px; }
+            .stats-grid { gap: 30px; }
+            
+            .service-block, .engagement-block { flex-direction: column; gap: 15px; padding: 25px 0; width: 100%; }
+            .service-block h2, .engagement-block h2 { font-size: 24px; min-width: 0; }
+            .service-block p, .engagement-block p { font-size: 14px; }
+            
+            .roadmap-grid { grid-template-columns: 1fr; gap: 30px; width: 100%; }
+            .roadmap-col { width: 100%; }
+            .roadmap-col h2 { font-size: 24px; min-height: auto; margin-bottom: 10px; }
+            .page5-subtitle { font-size: 16px; color: #d0d0d0 !important; }
+            .roadmap-col p { font-size: 14px; color: #d0d0d0 !important; }
+
+            .page6-content { flex-direction: column; width: 100%; }
+            .page6-sidebar { width: 100%; padding: 30px 20px; align-items: center; }
+            .tech-staks-title { font-size: 24px; margin-bottom: 20px; }
+            .tech-stacks-img { max-width: 250px; }
+            .page6-card { width: 100%; padding: 30px 20px; }
+            .global-title { font-size: 26px; margin-bottom: 20px; }
+            .global-text { font-size: 14px; margin-bottom: 20px; }
+            .global-stat-number { font-size: 48px; margin-bottom: 10px; }
+            .global-stat-text { font-size: 14px; }
+            .global-stats { flex-direction: column; gap: 20px; margin-top: 30px; }
+
+            .cta-content { gap: 20px; }
+            .cta-leaf { width: 40px; height: 40px; }
+            .cta-title { font-size: 26px; margin-bottom: 10px; }
+            .cta-subtitle { font-size: 14px; }
+            .cta-bottom { gap: 10px; margin-top: 40px; }
+            .cta-contact-text { font-size: 32px; }
+            .cta-btn { width: 100px; height: 50px; }
+            .cta-btn-circle { width: 40px; height: 40px; font-size: 18px; }
+
+            .footer-content { padding: 40px 20px; gap: 30px; }
+            .footer-title { font-size: 26px; margin-bottom: 20px; }
+            .footer-contact, .footer-url { font-size: 14px; }
+            .footer-links a { font-size: 16px; }
+
+            .modal-content { padding: 20px; }
+            .modal-left { width: 100%; max-width: 100%; flex: 1; }
+            .modal-left .number-badge { width: 45px; height: 45px; font-size: 18px; }
+            .modal-left .section-label { padding: 10px 20px; font-size: 14px; }
+            .modal-left-text { font-size: 14px; }
+            .modal-right h1 { font-size: 24px; }
+            .modal-container { flex-direction: column; gap: 20px; }
+            .form-group input, .form-group textarea { font-size: 16px; }
+            .submit-btn { font-size: 18px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Cabeçalho Fixo Global -->
+    <header class="fixed-header dark" id="dynamicHeader">
+        <div class="top-stripe"></div>
+        <div class="header-inner">
+            <div class="brand-top">PowerCraftStudio</div>
+            <div class="lang-buttons">
+                <button class="btn-lang btn-en active" onclick="setLanguage('en')">EN</button>
+                <button class="btn-lang btn-pt" onclick="setLanguage('pt')">PT</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ==================== PÁGINA 1 ==================== -->
+    <section class="page page1" id="page-1">
+        <main class="page1-main">
+            <h1 class="platform-title" data-en="Microsoft Power Platform" data-pt="Microsoft Power Platform">Microsoft Power Platform</h1>
+            <p class="subtitle">
+                <span>Power Apps</span>
+                <span>Power Automate</span>
+                <span>SharePoint</span>
+            </p>
+            <div class="icons-row">
+                <img src="logo-apps.png" alt="Power Apps">
+                <img src="logo-automate.png" alt="Power Automate">
+                <img src="logo-sharepoint.png" alt="SharePoint">
+            </div>
+        </main>
+        <section class="leaf-section">
+            <img src="logo-leaf.svg" alt="Primary Leaf">
+            <p class="leaf-text" data-en="Transform your <span>Office 365</span> into a high-performance operational asset at no additional cost. Expand the use of the power platform ecosystem in your business processes." data-pt="Transforme seu <span>Office 365</span> em um ativo operacional de alta performance sem custo adicional. Expanda o uso do ecossistema da power platform nos seus processos de negócio.">Transform your <span>Office 365</span> into a high-performance operational asset at no additional cost. Expand the use of the power platform ecosystem in your business processes.</p>
+        </section>
+        <footer class="domain">
+            PowerCraftStudio.digital
+        </footer>
+    </section>
+
+    <!-- ==================== PÁGINA 2 ==================== -->
+    <section class="page page2" id="page-2">
+        <main class="page2-container">
+            <div class="left-col">
+                <div class="number-badge">1</div>
+                <div class="section-label" data-en="Stats & Facts" data-pt="Números & Fatos">Stats & Facts</div>
+            </div>
+            <div class="right-col">
+                <h1 data-en="The SharePoint first advantage" data-pt="A primeira vantagem do SharePoint">The SharePoint first advantage</h1>
+                <p data-en="Your company mitigates immediate investments in premium licensing and adopts highly efficient solutions." data-pt="Sua empresa mitiga investimentos imediatos em licenciamento premium e adota soluções altamente eficientes.">Your company mitigates immediate investments in premium licensing and adopts highly efficient solutions.</p>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-number">70%+</div>
+                        <div class="stat-text" data-en="Accelerate process cycle times" data-pt="Acelere os tempos de ciclo dos processos">Accelerate process cycle times</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">80%+</div>
+                        <div class="stat-text" data-en="Achieve reduction in operational efforts" data-pt="Alcance redução nos esforços operacionais">Achieve reduction in operational efforts</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">Zero</div>
+                        <div class="stat-text" data-en="Premium licenses achievement" data-pt="Conquista de licenças premium">Premium licenses achievement</div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </section>
+
+    <!-- ==================== PÁGINA 3 ==================== -->
+    <section class="page page3" id="page-3">
+        <main class="page3-container">
+            <div class="left-col">
+                <div class="number-badge">2</div>
+                <div class="section-label" data-en="Services" data-pt="Serviços">Services</div>
+            </div>
+            <div class="right-col">
+                <h1 class="services-title" data-en="What we do" data-pt="O que fazemos">What we do</h1>
+                <ul class="services-list">
+                    <li data-en="Robust tailored solutions" data-pt="Soluções robustas e personalizadas">Robust tailored solutions</li>
+                    <li data-en="Agility of the low-code ecosystem" data-pt="Agilidade do ecossistema low-code">Agility of the low-code ecosystem</li>
+                    <li data-en="Delivery critical process automation and governance" data-pt="Automação de processos críticos e governança">Delivery critical process automation and governance</li>
+                    <li data-en="Significant reduced timelines." data-pt="Redução significativa de prazos.">Significant reduced timelines.</li>
+                </ul>
+                <div class="service-block">
+                    <h2 class="green" data-en="End-to-End<br>Projects" data-pt="Projetos<br>de ponta a ponta">End-to-End<br>Projects</h2>
+                    <p data-en="Requirements gathering, solution design, application development, integration and governance, acceptance testing, and deployment." data-pt="Levantamento de requisitos, design da solução, desenvolvimento de aplicativos, integração e governança, testes de aceitação e implantação.">Requirements gathering, solution design, application development, integration and governance, acceptance testing, and deployment.</p>
+                </div>
+                <div class="service-block">
+                    <h2 class="white" data-en="Solution<br>Architecture" data-pt="Arquitetura<br>de Soluções">Solution<br>Architecture</h2>
+                    <p data-en="Design the workflow logic, integration layers, and security protocols required to connect the Power Platform with your legacy systems." data-pt="Projete a lógica do fluxo de trabalho, camadas de integração e protocolos de segurança necessários para conectar a Power Platform aos seus sistemas legados.">Design the workflow logic, integration layers, and security protocols required to connect the Power Platform with your legacy systems.</p>
+                </div>
+                <div class="service-block">
+                    <h2 class="white" data-en="Governance &<br>Support" data-pt="Governança &<br>Suporte">Governance &<br>Support</h2>
+                    <p data-en="Ongoing maintenance and dedicated support for the solutions we build, ensuring long-term stability." data-pt="Manutenção contínua e suporte dedicado para as soluções que construímos, garantindo estabilidade de longo prazo.">Ongoing maintenance and dedicated support for the solutions we build, ensuring long-term stability.</p>
+                </div>
+            </div>
+        </main>
+    </section>
+
+    <!-- ==================== PÁGINA 4 ==================== -->
+    <section class="page page4" id="page-4">
+        <main class="page4-container">
+            <div class="left-col">
+                <div class="number-badge">3</div>
+                <div class="section-label" data-en="Engagements" data-pt="Contratações">Engagements</div>
+            </div>
+            <div class="right-col">
+                <h1 data-en="Engagement Models" data-pt="Modelos de Contratação">Engagement Models</h1>
+                <div class="engagement-block">
+                    <h2 data-en="Fixed Price" data-pt="Preço Fixo">Fixed Price</h2>
+                    <p data-en="Cost predictability with clearly defined scope, fixed milestones, and a single financial agreement." data-pt="Previsibilidade de custos com escopo claramente definido, marcos fixos e um único acordo financeiro.">Cost predictability with clearly defined scope, fixed milestones, and a single financial agreement.</p>
+                </div>
+                <div class="engagement-block">
+                    <h2 data-en="Recurring<br>Contract" data-pt="Contrato<br>Recorrente">Recurring<br>Contract</h2>
+                    <p data-en="Continuous product and rapid incident resolution, and proactive governance with dedicated capacity." data-pt="Produto contínuo e resolução rápida de incidentes, e governança proativa com capacidade dedicada.">Continuous product and rapid incident resolution, and proactive governance with dedicated capacity.</p>
+                </div>
+                <div class="engagement-block">
+                    <h2 data-en="On Demand" data-pt="Sob Demanda">On Demand</h2>
+                    <p data-en="Flexible ad-hoc support for performance tuning, governance consulting, and emergency troubleshooting." data-pt="Suporte flexível e ad-hoc para ajuste de desempenho, consultoria de governança e solução de problemas de emergência.">Flexible ad-hoc support for performance tuning, governance consulting, and emergency troubleshooting.</p>
+                </div>
+            </div>
+        </main>
+    </section>
+
+    <!-- ==================== PÁGINA 5 ==================== -->
+    <section class="page page5" id="page-5">
+        <main class="page5-container">
+            <div class="left-col">
+                <div class="number-badge">4</div>
+                <div class="section-label" data-en="Methodology" data-pt="Metodologia">Methodology</div>
+            </div>
+            <div class="right-col">
+                <h1 class="page5-title" data-en="Your roadmap to success" data-pt="Seu roadmap para o sucesso">Your roadmap to success</h1>
+                <p class="page5-subtitle" data-en="A proven, transparent process from PowerCraftStudio that derisks your investment and delivers measurable results." data-pt="Um processo comprovado e transparente da PowerCraftStudio que reduz os riscos do seu investimento e entrega resultados mensuráveis.">A proven, transparent process from PowerCraftStudio that derisks your investment and delivers measurable results.</p>
+                <div class="roadmap-grid">
+                    <div class="roadmap-col">
+                        <h2 data-en="Discover & Design" data-pt="Descobrir & Projetar">Discover & Design</h2>
+                        <div class="roadmap-line"></div>
+                        <p data-en="Map out requirements, design the architecture, and present commercial proposals with clear milestones." data-pt="Mapeie os requisitos, projete a arquitetura e apresente propostas comerciais com marcos claros.">Map out requirements, design the architecture, and present commercial proposals with clear milestones.</p>
+                    </div>
+                    <div class="roadmap-col">
+                        <h2 data-en="Build & Validate" data-pt="Construir & Validar">Build & Validate</h2>
+                        <div class="roadmap-line"></div>
+                        <p data-en="Deliver agile development with CI/CD, rigorous testing, and UAT governance." data-pt="Entregue desenvolvimento ágil com CI/CD, testes rigorosos e governança UAT.">Deliver agile development with CI/CD, rigorous testing, and UAT governance.</p>
+                    </div>
+                    <div class="roadmap-col">
+                        <h2 data-en="Launch & Evolve" data-pt="Lançar & Evoluir">Launch & Evolve</h2>
+                        <div class="roadmap-line"></div>
+                        <p data-en="Ensure zero-downtime deployment, hyper care support, and continuous optimization." data-pt="Garanta implantação sem tempo de inatividade, suporte hiper cuidado e otimização contínua.">Ensure zero-downtime deployment, hyper care support, and continuous optimization.</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </section>
+
+    <!-- ==================== PÁGINA 6 ==================== -->
+    <section class="page page6" id="page-6">
+        <main class="page6-content">
+            <div class="page6-sidebar">
+                <h2 class="tech-staks-title" data-en="Tech Staks" data-pt="Pilhas de Tecnologia">Tech Staks</h2>
+                <img src="case1.png" alt="Tech Stacks" class="tech-stacks-img">
+            </div>
+            <div class="page6-card">
+                <h1 class="global-title" data-en="Global Spend Management" data-pt="Gestão Global de Gastos">Global Spend Management</h1>
+                <p class="global-text" data-en="Organizations operating across borders require meticulous oversight of local channel disbursements." data-pt="Organizações que operam além-fronteiras exigem supervisão meticulosa dos desembolsos locais dos canais.">Organizations operating across borders require meticulous oversight of local channel disbursements.</p>
+                <p class="global-text" data-en="Managing co-marketing investments, incentive funds, rebates, and market development programs across complex regional limits and variable currencies." data-pt="Gerenciar investimentos de co-marketing, fundos de incentivo, descontos e programas de desenvolvimento de mercado em limites regionais complexos e moedas variáveis.">Managing co-marketing investments, incentive funds, rebates, and market development programs across complex regional limits and variable currencies.</p>
+                <div class="global-stats">
+                    <div class="global-stat-item">
+                        <div class="global-stat-number">4</div>
+                        <div class="global-stat-text" data-en="Native languages en-US pt-BR es-SP fr-CD" data-pt="Idiomas nativos en-US pt-BR es-SP fr-CD">Native languages en-US pt-BR es-SP fr-CD</div>
+                    </div>
+                    <div class="global-stat-item">
+                        <div class="global-stat-number">100%</div>
+                        <div class="global-stat-text" data-en="Fiscal compliance guard" data-pt="Guarda de conformidade fiscal">Fiscal compliance guard</div>
+                    </div>
+                    <div class="global-stat-item">
+                        <div class="global-stat-number">100%</div>
+                        <div class="global-stat-text" data-en="Audit traceability" data-pt="Rastreabilidade de auditoria">Audit traceability</div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </section>
+
+    <!-- ==================== PÁGINA 7 ==================== -->
+    <section class="page page6" id="page-7">
+        <main class="page6-content">
+            <div class="page6-sidebar">
+                <h2 class="tech-staks-title" data-en="Tech Staks" data-pt="Pilhas de Tecnologia">Tech Staks</h2>
+                <img src="case2.png" alt="Tech Stacks" class="tech-stacks-img">
+            </div>
+            <div class="page6-card">
+                <h1 class="global-title" data-en="Incentive Compensation" data-pt="Compensação por Incentivos">Incentive Compensation</h1>
+                <p class="global-text" data-en="Dynamic corporate environments rely on variable compensation and complex sales incentives to drive growth." data-pt="Ambientes corporativos dinâmicos dependem de remuneração variável e incentivos de vendas complexos para impulsionar o crescimento.">Dynamic corporate environments rely on variable compensation and complex sales incentives to drive growth.</p>
+                <p class="global-text" data-en="This solution automates base pay, overtime, absence deductions, and multi-tiered rewards into a single auditable repository for global payroll sign-off." data-pt="Esta solução automatiza salário-base, horas extras, deduções de ausência e recompensas em múltiplos níveis em um único repositório auditável para aprovação da folha de pagamento global.">This solution automates base pay, overtime, absence deductions, and multi-tiered rewards into a single auditable repository for global payroll sign-off.</p>
+                <div class="global-stats">
+                    <div class="global-stat-item">
+                        <div class="global-stat-number">5 Days</div>
+                        <div class="global-stat-text" data-en="52 staff time saved" data-pt="52 horas de equipe economizadas">52 staff time saved</div>
+                    </div>
+                    <div class="global-stat-item">
+                        <div class="global-stat-number">100%</div>
+                        <div class="global-stat-text" data-en="Calculation precision" data-pt="Precisão de cálculo">Calculation precision</div>
+                    </div>
+                    <div class="global-stat-item">
+                        <div class="global-stat-number">100%</div>
+                        <div class="global-stat-text" data-en="Compliance Trail" data-pt="Trilha de conformidade">Compliance Trail</div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </section>
+
+    <!-- ==================== PÁGINA 8 ==================== -->
+    <section class="page page6" id="page-8">
+        <main class="page6-content">
+            <div class="page6-sidebar">
+                <h2 class="tech-staks-title" data-en="Tech Staks" data-pt="Pilhas de Tecnologia">Tech Staks</h2>
+                <img src="case3.png" alt="Tech Stacks" class="tech-stacks-img">
+            </div>
+            <div class="page6-card">
+                <h1 class="global-title" data-en="Compensation Onboarding" data-pt="Onboarding de Compensação">Compensation Onboarding</h1>
+                <p class="global-text" data-en="Establish new client pipelines requires strict corporate verification before transacting." data-pt="Estabelecer novos pipelines de clientes exige verificação corporativa rigorosa antes da transação.">Establish new client pipelines requires strict corporate verification before transacting.</p>
+                <p class="global-text" data-en="This portal standardizes screening across multiple departments to safely transition prospects into qualified operational partners" data-pt="Este portal padroniza a triagem em vários departamentos para transicionar com segurança prospects em parceiros operacionais qualificados">This portal standardizes screening across multiple departments to safely transition prospects into qualified operational partners</p>
+                <div class="global-stats">
+                    <div class="global-stat-item">
+                        <div class="global-stat-number">-55%</div>
+                        <div class="global-stat-text" data-en="Onboarding Cycle" data-pt="Ciclo de Onboarding">Onboarding Cycle</div>
+                    </div>
+                    <div class="global-stat-item">
+                        <div class="global-stat-number">Zero</div>
+                        <div class="global-stat-text" data-en="Data leakage" data-pt="Vazamento de dados">Data leakage</div>
+                    </div>
+                    <div class="global-stat-item">
+                        <div class="global-stat-number">Real-time</div>
+                        <div class="global-stat-text" data-en="Bidirectional sync across CRN workflow and ERP" data-pt="Sincronização bidirecional entre fluxo de trabalho CRN e ERP">Bidirectional sync across CRN workflow and ERP</div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </section>
+
+    <!-- ==================== PÁGINA 9 ==================== -->
+    <section class="page page6" id="page-9">
+        <main class="page6-content">
+            <div class="page6-sidebar">
+                <h2 class="tech-staks-title" data-en="Tech Staks" data-pt="Pilhas de Tecnologia">Tech Staks</h2>
+                <img src="case4.png" alt="Tech Stacks" class="tech-stacks-img">
+            </div>
+            <div class="page6-card">
+                <h1 class="global-title" data-en="Resources Request & Approval" data-pt="Solicitação e Aprovação de Recursos">Resources Request & Approval</h1>
+                <p class="global-text" data-en="Across infrastructure, manufacturing, and engineering, field inventory demands and safety clearances require rapid cycles under strict cost budgets." data-pt="Em infraestrutura, manufatura e engenharia, as demandas de inventário de campo e liberações de segurança exigem ciclos rápidos sob orçamentos de custos rígidos.">Across infrastructure, manufacturing, and engineering, field inventory demands and safety clearances require rapid cycles under strict cost budgets.</p>
+                <p class="global-text" data-en="Transparent visibility across administrative lines is essential to limit asset idleness and project delays" data-pt="Visibilidade transparente entre linhas administrativas é essencial para limitar a ociosidade de ativos e atrasos em projetos">Transparent visibility across administrative lines is essential to limit asset idleness and project delays</p>
+                <div class="global-stats">
+                    <div class="global-stat-item">
+                        <div class="global-stat-number">100%</div>
+                        <div class="global-stat-text" data-en="Paperless transition, digital from request to fulfillment" data-pt="Transição sem papel, digital do pedido ao atendimento">Paperless transition, digital from request to fulfillment</div>
+                    </div>
+                    <div class="global-stat-item">
+                        <div class="global-stat-number">Real-time</div>
+                        <div class="global-stat-text" data-en="Operation analytics, live insights, smarter decisions" data-pt="Analytics operacional, insights ao vivo, decisões mais inteligentes">Operation analytics, live insights, smarter decisions</div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </section>
+
+    <!-- ==================== PÁGINA 10 (CTA) ==================== -->
+    <section class="page page10" id="page-10">
+        <main class="cta-content">
+            <div class="cta-group">
+                <img src="logo-leaf.svg" alt="Primary Leaf" class="cta-leaf">
+                <div>
+                    <h1 class="cta-title" data-en="Ready to something great?" data-pt="Pronto para algo incrível?">Ready to something great?</h1>
+                    <p class="cta-subtitle" data-en="Let's architect your enterprise together, with intelligence, security, and full ownership." data-pt="Vamos arquitetar a sua empresa juntos, com inteligência, segurança e total propriedade.">Let's architect your enterprise together, with intelligence, security, and full ownership.</p>
+                </div>
+            </div>
+            <div class="cta-bottom" onclick="openModal()">
+                <span class="cta-contact-text" data-en="Contact." data-pt="Contato.">Contact.</span>
+                <button class="cta-btn">
+                    <span class="cta-btn-circle">&#8594;</span>
+                </button>
+            </div>
+        </main>
+    </section>
+
+    <!-- ==================== PÁGINA 11 (MODAL) ==================== -->
+    <div class="modal-overlay" id="contactModal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal()">&times;</span>
+            <div class="modal-container">
+                <div class="modal-left">
+                    <div style="display: flex; align-items: center; gap: 15px;">
+                        <div class="number-badge">5</div>
+                        <div class="section-label" data-en="Contact us" data-pt="Fale Conosco">Contact us</div>
+                    </div>
+                    <p class="modal-left-text" data-en="Let's collaborate and create something amazing! Tell me about your project, I'm all ears." data-pt="Vamos colaborar e criar algo incrível! Conte-me sobre o seu projeto, sou todo ouvidos.">Let's collaborate and create something amazing! Tell me about your project, I'm all ears.</p>
+                </div>
+                <div class="modal-right">
+                    <h1 data-en="Get in touch" data-pt="Entre em contato">Get in touch</h1>
+                    <form onsubmit="submitForm(event)">
+                        <div class="form-group">
+                            <label for="name" data-en="Name" data-pt="Nome">Name</label>
+                            <input type="text" id="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email" data-en="Email" data-pt="E-mail">Email</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message" data-en="Tell us about your project" data-pt="Conte-nos sobre seu projeto">Tell us about your project</label>
+                            <textarea id="message" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn" data-en="Submit message" data-pt="Enviar mensagem">Submit message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== PÁGINA 12 (FOOTER) ==================== -->
+    <section class="page page12" id="page-12">
+        <main class="footer-content">
+            <div class="footer-left">
+                <h2 class="footer-title" data-en="Build something together?" data-pt="Vamos construir algo juntos?">Build something together?</h2>
+                <div class="footer-contact">
+                    <svg viewBox="0 0 24 24"><path d="M14 3v4a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1zm-5 10a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-6a1 1 0 0 0-1-1H9zm9-9a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h4z"/></svg>
+                    <a href="mailto:contact@powercraftstudio.digital" style="color: #fff; text-decoration: none;" data-en="contact@powercraftstudio.digital" data-pt="contact@powercraftstudio.digital">contact@powercraftstudio.digital</a>
+                </div>
+                <div class="footer-url">https://powercraftstudio.digital</div>
+                <div class="footer-url">https://powercraftstudio.com.br</div>
+            </div>
+
+            <div class="footer-nav">
+                <div class="footer-links">
+                    <a href="#page-1" data-en="HOME" data-pt="INÍCIO">HOME</a>
+                    <a href="#page-2" data-en="ABOUT" data-pt="SOBRE">ABOUT</a>
+                    <a href="#page-3" data-en="SERVICES" data-pt="SERVIÇOS">SERVICES</a>
+                    <a href="#page-6" data-en="CASES" data-pt="CASES">CASES</a>
+                    <a href="#page-10" data-en="CONTACT" data-pt="CONTATO">CONTACT</a>
+                </div>
+                <div class="footer-links">
+                    <a href="#" data-en="Upwork" data-pt="Upwork">Upwork</a>
+                    <a href="#" data-en="LinkedIn" data-pt="LinkedIn">LinkedIn</a>
+                </div>
+            </div>
+        </main>
+        
+        <div class="footer-bottom" data-en="© 2026 PowerCraftStudio Copyright" data-pt="© 2026 PowerCraftStudio Copyright">© 2026 PowerCraftStudio Copyright</div>
+    </section>
+
+    <!-- Botão Voltar ao Topo -->
+    <div class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'});">
+        <svg viewBox="0 0 24 24"><path d="M12 4l-8 8h5v8h6v-8h5z"/></svg>
+    </div>
+
+    <script>
+        // ===== LOGICA DE TRADUÇÃO (EN / PT) =====
+        function setLanguage(lang) {
+            document.documentElement.lang = lang === 'pt' ? 'pt-br' : 'en';
+            document.querySelector('.btn-en').classList.toggle('active', lang === 'en');
+            document.querySelector('.btn-pt').classList.toggle('active', lang === 'pt');
+            document.querySelectorAll('[data-en]').forEach(el => {
+                const text = el.getAttribute(`data-${lang}`);
+                if (text !== null) { el.innerHTML = text; }
+            });
+        }
+
+        // ===== FUNÇÕES DO MODAL =====
+        function openModal() { document.getElementById('contactModal').classList.add('active'); }
+        function closeModal() { document.getElementById('contactModal').classList.remove('active'); }
+
+        // ===== FUNÇÃO DE ENVIO =====
+        function submitForm(event) {
+            event.preventDefault();
+            var name = document.getElementById('name').value;
+            var email = document.getElementById('email').value;
+            var message = document.getElementById('message').value;
+            var subject = "Contato do Site - " + name;
+            var body = "Nome: " + name + "\n\n" + "Email: " + email + "\n\n" + "Mensagem:\n" + message;
+            window.location.href = "mailto:contact@powercraftstudio.digital?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
+            closeModal();
+            document.getElementById('name').value = '';
+            document.getElementById('email').value = '';
+            document.getElementById('message').value = '';
+        }
+
+        // ===== LÓGICA DO CABEÇALHO FIXO DINÂMICO =====
+        const header = document.getElementById('dynamicHeader');
+        const sections = document.querySelectorAll('.page');
+        const observerOptions = { root: null, rootMargin: '-50% 0px -50% 0px', threshold: 0 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const sectionId = entry.target.id;
+                    header.classList.remove('dark', 'green');
+                    if (['page-1', 'page-3', 'page-5', 'page-10', 'page-12'].includes(sectionId)) {
+                        header.classList.add('dark');
+                    } else {
+                        header.classList.add('green');
+                    }
+                }
+            });
+        }, observerOptions);
+        sections.forEach(section => { observer.observe(section); });
+    </script>
+</body>
+</html>
