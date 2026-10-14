@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="400" height="400" role="img" aria-label="Fixed Price">
+  <path d="M48 30 Q48 14 64 14 H116 L152 50 V170 Q152 186 136 186 H64 Q48 186 48 170 Z" fill="none" stroke="#00AB55" stroke-width="6" stroke-linejoin="round"/>
+  <path d="M116 14 V50 H152" fill="none" stroke="#00AB55" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+  <circle cx="100" cy="88" r="24" fill="#00AB55"/>
+  <path d="M109,79 C109,71 91,72 91,80 C91,89 109,86 109,96 C109,104 91,104 91,96 M100,67 V109" fill="none" stroke="#000" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="68" cy="130" r="5" fill="#00AB55"/><line x1="82" y1="130" x2="134" y2="130" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round"/><circle cx="68" cy="148" r="5" fill="#00AB55"/><line x1="82" y1="148" x2="134" y2="148" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round"/><circle cx="68" cy="166" r="5" fill="#00AB55"/><line x1="82" y1="166" x2="134" y2="166" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round"/>
+</svg>
