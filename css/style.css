@@ -1,0 +1,1714 @@
+:root
+{
+    --header-footer-height: clamp(80px, 19.6vh, 3.77cm);
+    --core-height: clamp(250px, 60.8vh, 11.68cm);
+    --side-padding: 183px;
+    --color-primary: #262626;
+    --color-bg1: #262626;
+    --color-text: #FFFFFF;
+
+    /* Add these inside your :root block */
+    --color-bg2: #f8f9fa;
+    --color-text-bg2: #001320;
+
+    --font-family: 'Segoe UI', Arial, sans-serif;
+
+    /* Responsive typography rules */
+    --fs-h1: 3rem;
+    --fs-h2: 2rem;
+    --fs-h3: 1.5rem;
+    --fs-body: 1rem;
+    --fs-small: 0.875rem;
+
+    --container-max: 1200px;
+    --transition: padding 0.3s ease, gap 0.3s ease;
+    /* Fixed: Changed terminal period to semicolon */
+}
+
+/* Base Setup */
+html,
+body
+{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    font-family: var(--font-family);
+    /* Fixed: Linked directly to your custom font variable */
+    background-color: var(--color-primary);
+    color: var(--color-text);
+}
+
+/* ========================================================
+   UNIFIED STRUCTURAL MULTI-DOT & DOUBLE LANG CIRCLES
+   ======================================================== */
+
+.global-navigation-overlay
+{
+    position: fixed;
+    top: 530px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 999;
+}
+
+.global-menu
+{
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: none;
+    border: none;
+    padding: 0;
+}
+
+/* Base style for ALL circles - strictly unified parameters */
+.nav-dot,
+.lang-dot
+{
+    width: 8px;
+    /* Identical widths */
+    height: 8px;
+    /* Identical heights */
+    box-sizing: border-box;
+    background-color: transparent;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    display: inline-block;
+    padding: 0;
+}
+
+/* ========================================================
+   NAVIGATION DOTS UNIVERSAL COLOR UPDATE (#A6A6A6)
+   ======================================================== */
+
+.nav-dot
+{
+    border: 1px solid #A6A6A6;
+    /* Borda universal visível em fundos escuros e claros */
+}
+
+.nav-dot:hover,
+.nav-dot.active
+{
+    background-color: #A6A6A6;
+    transform: scale(1.2);
+}
+
+/* 2. LANGUAGE DOT DETAILS */
+.lang-dot
+{
+    border: 1px solid #00AB55;
+    /* 1px green border */
+}
+
+#btnEn
+{
+    margin-left: 12px;
+    /* Separating gap from the section dots layout */
+}
+
+/* Language Highlight Profile */
+.lang-dot:hover,
+.lang-dot.active
+{
+    background-color: #00AB55;
+    transform: scale(1.2);
+}
+
+html
+{
+    scroll-behavior: smooth;
+}
+
+
+/* ========================================================
+   SECTION CONTAINER ENGINE
+   ======================================================== */
+.main-section
+{
+    display: grid;
+    grid-template-rows: var(--header-footer-height) var(--core-height) var(--header-footer-height);
+    width: 100%;
+    min-height: 100vh;
+}
+
+/* Base Structural Segments */
+.section-header,
+.section-core,
+.section-footer
+{
+    box-sizing: border-box;
+    padding-left: var(--side-padding);
+    padding-right: var(--side-padding);
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 24px;
+    transition: var(--transition);
+}
+
+.section-header
+{
+    background-color: var(--color-primary);
+    border-bottom: 1px solid #d0d4dc;
+}
+
+.section-core
+{
+    background-color: var(--color-primary);
+}
+
+.section-footer
+{
+    background-color: var(--color-primary);
+    border-top: 1px solid #e2e2e7;
+}
+
+/* Asset Layout Rules */
+.media-asset
+{
+    max-height: 65%;
+    width: auto;
+    object-fit: contain;
+    border-radius: 6px;
+}
+
+.logo-img
+{
+    width: 400px;
+}
+
+h1,
+h2,
+h3,
+h4
+{
+    line-height: 1.2;
+    font-weight: 300;
+    margin: 0;
+}
+
+/* Add custom bottom margins below */
+h1
+{
+    font-size: var(--fs-h1);
+    margin-bottom: 1.5rem;
+    /* Adds spacing under h1 */
+}
+
+h3
+{
+    font-size: var(--fs-h3);
+    max-width: 100%;
+    margin-bottom: 1rem;
+    /* Adds slightly smaller spacing under h3 */
+}
+
+h4
+{
+    font-size: var(--fs-body);
+}
+
+h2
+{
+    font-size: var(--fs-h2);
+}
+
+
+p
+{
+    margin: 0;
+}
+
+a
+{
+    color: inherit;
+    text-decoration: none;
+}
+
+img
+{
+    max-width: 100%;
+    display: block;
+}
+
+/* Cleans structural parameters inside the containers */
+/* Update this block in your CSS file */
+.text-group h1
+{
+    margin: 0 0 3rem 0;
+    /* Top: 0, Right: 0, Bottom: 1.5rem, Left: 0 */
+    padding: 0;
+}
+
+.text-group h3
+{
+    margin: 0 0 3rem 0;
+    /* Top: 0, Right: 0, Bottom: 1rem, Left: 0 */
+    padding: 0;
+}
+
+.text-group h2,
+.text-group p
+{
+    margin: 0;
+    padding: 0;
+}
+
+
+/* Bilingual Hiding System Engine */
+[data-en],
+[data-pt]
+{
+    display: none;
+}
+
+body.lang-en [data-en]
+{
+    display: inline-block;
+}
+
+body.lang-pt [data-pt]
+{
+    display: inline-block;
+}
+
+/* ========================================================
+   SINGLE VIEW MODIFIER (For sections without Header/Footer)
+   ======================================================== */
+.main-section.single-view
+{
+    /* Changes from 3 unequal rows to 1 single full-height block */
+    grid-template-rows: 1fr;
+    height: 100vh;
+}
+
+.main-section.single-view .section-core
+{
+    /* Ensures the single core element expands to fill the 100vh space */
+    height: 100%;
+}
+
+
+
+/* ========================================================
+   MOBILE OVERRIDES (Fixed Mobile Positioning)
+   ======================================================== */
+@media (max-width: 768px)
+{
+    :root
+    {
+        --side-padding: 24px;
+    }
+
+
+    .global-navigation-overlay {
+        position: fixed !important;
+        top: auto !important;
+        bottom: 24px !important; /* Distância segura da borda inferior da tela */
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        right: auto !important;
+        z-index: 9999 !important;
+    }
+
+    .global-menu
+    {
+        padding: 0;
+        gap: 12px;
+        /* Pulls circles slightly closer together on narrow phone screens */
+    }
+
+    /* REMOVED the conflicting grid-template-rows: auto 1fr auto rule from here */
+    .main-section
+    {
+        min-height: 100vh;
+        width: 100%;
+    }
+
+    .section-header
+    {
+        padding-top: 70px;
+        /* Gives padding so the floating dots do not block top content text */
+        padding-bottom: 20px;
+    }
+
+    .section-core
+    {
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        padding-top: 40px;
+        padding-bottom: 40px;
+        gap: 20px;
+    }
+
+    .section-footer
+    {
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+}
+
+/* ========================================================
+   CINEMATIC STICKY STACK LAYERING SYSTEM
+   ======================================================== */
+
+/* The timeline container controls the total scroll length (4 full viewports long) */
+.about-sticky-timeline
+{
+    position: relative;
+    height: 400vh;
+    background-color: var(--color-primary);
+}
+
+/* This container locks itself onto the browser viewport window while scrolling happens */
+.sticky-viewport-container
+{
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Base style for all layout panels stacking on top of each other */
+.about-layer
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.4s ease;
+}
+
+/* Setup Layer 0: The clean introductory text slide */
+.layer-intro
+{
+    opacity: 1;
+    z-index: 10;
+}
+
+.layer-intro.faded-out
+{
+    opacity: 0;
+    transform: scale(0.95);
+    pointer-events: none;
+}
+
+.central-intro
+{
+    max-width: 1200px;
+    text-align: left;
+}
+
+/* Setup Cards Layers 1, 2, and 3: Positioned off-screen at the bottom by default */
+.layer-card
+{
+    z-index: 20;
+    transform: translateY(100vh);
+    /* Sits below the window waiting to slide up */
+    background-color: var(--color-primary);
+}
+
+/* Active Card Class: Triggers smooth slide up over previous panels */
+.layer-card.stage-up
+{
+    transform: translateY(0);
+}
+
+/* ========================================================
+   EXACT TWO-COLUMN STRUCTURAL SPLIT
+   ======================================================== */
+.split-columns-layout
+{
+    display: flex;
+    width: 100%;
+    height: var(--core-height) !important;
+    /* Locks parameters within your 11.68cm specification */
+    align-items: center;
+    justify-content: space-between;
+    gap: 60px;
+}
+
+/* Left Column: Exactly half-width, components horizontally centered */
+.column-left-media
+{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+}
+
+/* Right Column: Exactly half-width, text content aligned left */
+.column-right-text
+{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    justify-content: center;
+}
+
+/* Elements Custom Styles inside columns */
+.gain-icon-large
+{
+    max-height: 80px !important;
+    width: auto;
+    object-fit: contain;
+    margin-bottom: 20px;
+}
+
+.key-indicator-pill
+{
+    /*background-color: rgba(0, 171, 85, 0.12);*/
+    color: #00AB55;
+    /*border: 1px solid rgba(0, 171, 85, 0.3);*/
+    /*padding: 6px 14px;*/
+    /*border-radius: 20px;*/
+    font-size: var(--fs-small);
+    font-weight: 300;
+    margin-bottom: 16px;
+    display: inline-block;
+}
+
+.column-left-media h3
+{
+    margin: 0;
+    font-size: var(--fs-h3);
+    color: var(--color-text);
+}
+
+.column-right-text p
+{
+    font-size: var(--fs-body);
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.85);
+    max-width: 550px;
+}
+
+/* ========================================================
+   SERVICES SECTION LIGHT THEME OVERRIDE
+   ======================================================== */
+
+section#services.services-theme-override,
+section#services.services-theme-override .sticky-viewport-container,
+section#services.services-theme-override .about-layer,
+section#services.services-theme-override .layer-card,
+section#services.services-theme-override .section-core {
+    background-color: var(--color-bg2) !important;
+}
+
+/* Cor do texto para todos os elementos padrão dentro da seção de serviços */
+section#services.services-theme-override h1,
+section#services.services-theme-override h2,
+section#services.services-theme-override h3,
+section#services.services-theme-override h4,
+section#services.services-theme-override p,
+section#services.services-theme-override .column-right-text h3 {
+    color: var(--color-text-bg2) !important;
+}
+
+/* Garantir que os títulos h1 da coluna esquerda na seção de serviços também fiquem com a cor escura correta */
+section#services.services-theme-override .column-left-media h1 {
+    color: var(--color-text-bg2) !important;
+}
+
+section#services.services-theme-override .column-right-text h3 {
+    color: rgba(0, 19, 32, 0.85) !important;
+}
+
+/* ========================================================
+   ENGAGEMENT SECTION STYLES (3-COLUMN GRID)
+   ======================================================== */
+
+#engagement {
+    background-color: var(--color-primary, #262626);
+    color: #ffffff;
+}
+
+#engagement .engagement-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    align-items: stretch;
+}
+
+#engagement .engagement-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 40px 32px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+#engagement .engagement-card:hover {
+    border-color: rgba(255, 255, 255, 0.3);
+    transform: translateY(-4px);
+}
+
+#engagement .engagement-card h1 {
+    font-size: var(--fs-h2, 2rem);
+    margin-bottom: 24px;
+    color: #ffffff;
+    font-weight: 300; /* Ajustado para Light */
+}
+
+#engagement .engagement-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#engagement .engagement-list li {
+    font-size: var(--fs-h4, 1.1rem);
+    color: rgba(255, 255, 255, 0.85);
+    margin-bottom: 16px;
+    position: relative;
+    padding-left: 24px;
+    line-height: 1.5;
+    font-weight: 300; /* Ajustado para Light */
+}
+
+#engagement .engagement-list li::before {
+    content: "—";
+    position: absolute;
+    left: 0;
+    color: #A6A6A6;
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 900px) {
+    #engagement .engagement-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+}
+
+/* ========================================================
+   CONTACT LAYERED STYLES
+   ======================================================== */
+
+#contact-layer-1 .custom-form input,
+#contact-layer-1 .custom-form textarea {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 6px;
+    padding: 16px 20px;
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 300;
+    font-family: inherit;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+    box-sizing: border-box;
+}
+
+#contact-layer-1 .custom-form input:focus,
+#contact-layer-1 .custom-form textarea:focus {
+    outline: none;
+    border-color: #A6A6A6;
+    background: rgba(255, 255, 255, 0.06);
+}
+
+#contact-layer-1 .custom-form input::placeholder,
+#contact-layer-1 .custom-form textarea::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+    font-weight: 300;
+}
+
+#contact-layer-1 .btn-submit {
+    background: transparent;
+    border: none;
+    color: #ffffff;
+    font-size: 1.15rem;
+    font-weight: 300;
+    cursor: pointer;
+    padding: 10px 0;
+    display: inline-flex;
+    align-items: center;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+#contact-layer-1 .btn-submit:hover {
+    color: #A6A6A6;
+    transform: translateX(4px);
+}
+
+/* ========================================================
+   SCROLL ARROW & TOOLTIP (ALINHADO À ESQUERDA DOS DOTS)
+   ======================================================== */
+
+.scroll-arrow-container {
+    position: absolute;
+    bottom: 60px;
+    /* Alinhado exatamente à esquerda dos pontos de navegação */
+    left: calc(50% - 180px); 
+    display: flex;
+    align-items: center;
+    z-index: 60;
+    pointer-events: auto; /* Permite capturar o hover */
+}
+
+/* A Seta Minimalista (Apenas visual, sem comportamento de link/botão) */
+.scroll-arrow {
+    font-size: 1.3rem;
+    color: rgba(255, 255, 255, 0.5);
+    animation: bounceVertical 2s infinite;
+    user-select: none;
+    cursor: default;
+}
+
+/* Caso seja a seção de serviços com fundo claro */
+.services-theme-override .scroll-arrow {
+    color: rgba(0, 0, 0, 0.5);
+}
+
+/* Tooltip Discreto posicionado À ESQUERDA da seta */
+.scroll-arrow-container .scroll-tooltip {
+    visibility: hidden;
+    opacity: 0;
+    background: rgba(0, 0, 0, 0.85);
+    color: #ffffff;
+    font-size: 0.75rem;
+    font-weight: 300;
+    padding: 5px 10px;
+    border-radius: 4px;
+    white-space: nowrap;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    pointer-events: none;
+    
+    /* Posicionamento fixo à esquerda da seta */
+    position: absolute;
+    right: 25px; /* Empurra o balão para a esquerda da seta */
+}
+
+/* Fundo do tooltip ajustado para o tema claro de serviços, se necessário */
+.services-theme-override .scroll-arrow-container .scroll-tooltip {
+    background: rgba(0, 0, 0, 0.85);
+    color: #ffffff;
+}
+
+/* Exibir o Tooltip suavemente ao passar o mouse na seta */
+.scroll-arrow-container:hover .scroll-tooltip {
+    visibility: visible;
+    opacity: 1;
+}
+
+@keyframes bounceVertical {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-5px);
+    }
+    60% {
+        transform: translateY(-2px);
+    }
+}
+
+/* ========================================================
+   REFINAMENTO FINAL - SEÇÃO #CASES (SEM LINHA & COM RESPIRO)
+   ======================================================== */
+
+section#cases.cases-standalone-section {
+    background-color: #f8f9fa !important;
+    color: #111111 !important;
+    height: 100vh !important;
+    max-height: 100vh !important;
+    overflow: hidden !important;
+    display: flex !important;
+    align-items: center !important;
+    padding: 15px 0 !important;
+    box-sizing: border-box !important;
+}
+
+#cases .cases-inner-wrapper {
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+    padding: 0 24px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+}
+
+/* Título com Font-Weight 400 confirmado */
+#cases .case-main-title {
+    font-size: 1.25rem !important;
+    font-weight: 400 !important; /* CONFIRMADO */
+    color: #111111 !important;
+    margin-bottom: 16px !important;
+    letter-spacing: -0.3px !important;
+    text-align: left !important;
+    text-transform: uppercase;
+}
+
+/* Grid Conteúdo Principal */
+#cases .case-content-grid {
+    display: grid !important;
+    grid-template-columns: 1.1fr 0.9fr !important;
+    gap: 32px !important;
+    align-items: start !important;
+    margin-bottom: 12px !important; /* Reduzido para aproximar os KPIs */
+}
+
+#cases .case-text-block p {
+    font-size: 0.86rem !important;
+    font-weight: 400 !important;
+    line-height: 1.4 !important;
+    color: #111111 !important;
+    margin-bottom: 8px !important;
+    text-align: left !important;
+}
+
+#cases .case-image-block img {
+    width: 100% !important;
+    height: auto !important;
+    max-height: 300px !important;
+    object-fit: contain !important;
+    border-radius: 6px !important;
+    border: 1px solid rgba(0, 0, 0, 0.08) !important;
+    background: #ffffff !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04) !important;
+}
+
+/* Rodapé de Indicadores: SEM LINHA e com recuo inferior para os dots */
+#cases .case-kpi-footer {
+    border-top: none !important; /* REMOVIDA A LINHA SEPARADORA */
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+    margin-bottom: 30px !important; /* Empurra os textos para CIMA dos dots */
+    text-align: left !important;
+}
+
+#cases .case-kpi-footer h3 {
+    font-size: 0.75rem !important;
+    font-weight: 400 !important;
+    color: #111111 !important;
+    letter-spacing: 1.2px !important;
+    margin-bottom: 6px !important;
+}
+
+#cases .kpi-grid {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 20px !important;
+}
+
+#cases .kpi-card .kpi-number {
+    display: block !important;
+    font-size: 2rem !important;
+    font-weight: 400 !important;
+    color: #111111 !important;
+    line-height: 1 !important;
+    margin-bottom: 2px !important;
+}
+
+#cases .kpi-card .kpi-label {
+    display: block !important;
+    font-size: 0.78rem !important;
+    font-weight: 400 !important;
+    color: #111111 !important;
+}
+
+/* Suporte Idiomas */
+body.lang-en #home #cases .case-img.img-en { display: block !important; }
+body.lang-en #home #cases .case-img.img-pt { display: none !important; }
+body.lang-pt #home #cases .case-img.img-pt { display: block !important; }
+body.lang-pt #home #cases .case-img.img-en { display: none !important; }
+
+/* Grid específico para 2 indicadores no rodapé do Case 4 */
+#cases .kpi-grid-2col {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 40px !important;
+}
+
+/* ========================================================
+   ESTILO UNIFICADO PARA OS 4 CASES (FUNDO CLARO & VIEWPORT ÚNICA)
+   ======================================================== */
+
+section.cases-standalone-section {
+    background-color: #f8f9fa !important;
+    color: #111111 !important;
+    height: 100vh !important;
+    max-height: 100vh !important;
+    overflow: hidden !important;
+    display: flex !important;
+    align-items: center !important;
+    padding: 15px 0 !important;
+    box-sizing: border-box !important;
+    position: relative !important;
+}
+
+
+/*SERGIO ALTEREI DE 1200 PARA 1000PX */
+
+section.cases-standalone-section .cases-inner-wrapper {
+    max-width: 1000px !important;
+    margin: 0 auto !important;
+    padding: 0 12px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+}
+
+/* Título com Font-Weight 400 */
+section.cases-standalone-section .case-main-title {
+    font-size: 1.25rem !important;
+    font-weight: 400 !important;
+    color: #111111 !important;
+    margin-bottom: 16px !important;
+    letter-spacing: -0.3px !important;
+    text-align: left !important;
+    text-transform: uppercase;
+}
+
+/* Grid Conteúdo Principal */
+section.cases-standalone-section .case-content-grid {
+    display: grid !important;
+    grid-template-columns: 1.1fr 0.9fr !important;
+    gap: 32px !important;
+    align-items: start !important;
+    margin-bottom: 12px !important;
+}
+
+section.cases-standalone-section .case-text-block p {
+    font-size: 0.86rem !important;
+    font-weight: 400 !important;
+    line-height: 1.4 !important;
+    color: #111111 !important;
+    margin-bottom: 8px !important;
+    text-align: left !important;
+}
+
+section.cases-standalone-section .case-image-block img {
+    width: 100% !important;
+    height: auto !important;
+    max-height: 400px !important;
+    object-fit: contain !important;
+    border-radius: 6px !important;
+    border: 1px solid rgba(0, 0, 0, 0.08) !important;
+    background: #ffffff !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04) !important;
+}
+
+/* Rodapé de Indicadores: Sem linha e com respiro para os dots */
+section.cases-standalone-section .case-kpi-footer {
+    border-top: none !important;
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+    margin-bottom: 30px !important;
+    text-align: left !important;
+}
+
+section.cases-standalone-section .case-kpi-footer h3 {
+    font-size: 0.75rem !important;
+    font-weight: 400 !important;
+    color: #111111 !important;
+    letter-spacing: 1.2px !important;
+    margin-bottom: 6px !important;
+}
+
+section.cases-standalone-section .kpi-grid {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 20px !important;
+}
+
+section.cases-standalone-section .kpi-grid-2col {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 40px !important;
+}
+
+section.cases-standalone-section .kpi-card .kpi-number {
+    display: block !important;
+    font-size: 2rem !important;
+    font-weight: 400 !important;
+    color: #111111 !important;
+    line-height: 1 !important;
+    margin-bottom: 2px !important;
+}
+
+section.cases-standalone-section .kpi-card .kpi-label {
+    display: block !important;
+    font-size: 0.78rem !important;
+    font-weight: 400 !important;
+    color: #111111 !important;
+}
+
+/* Suporte de Idiomas para as Imagens dos Cases */
+body.lang-en section.cases-standalone-section .case-img.img-en { display: block !important; }
+body.lang-en section.cases-standalone-section .case-img.img-pt { display: none !important; }
+body.lang-pt section.cases-standalone-section .case-img.img-pt { display: block !important; }
+body.lang-pt section.cases-standalone-section .case-img.img-en { display: none !important; }
+
+body.lang-en #home .case-img.img-en { display: block !important; }
+body.lang-en #home .case-img.img-pt { display: none !important; }
+body.lang-pt #home .case-img.img-pt { display: block !important; }
+body.lang-pt #home .case-img.img-en { display: none !important; }
+
+
+/* Reforço de visibilidade para os links de navegação (dots) no fundo claro */
+section.cases-standalone-section ~ .nav-navigation-container .nav-dot,
+.cases-standalone-section .nav-dot {
+    background-color: rgba(0, 0, 0, 0.2) !important;
+    border: 1.5px solid #111111 !important;
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin: 0 4px;
+    transition: all 0.3s ease;
+}
+
+section.cases-standalone-section ~ .nav-navigation-container .nav-dot.active,
+.cases-standalone-section .nav-dot.active {
+    background-color: #111111 !important;
+    border-color: #111111 !important;
+    transform: scale(1.3);
+}
+
+/* ========================================================
+   ESTILIZAÇÃO DO FOOTER (RODAPÉ PRO)
+   ======================================================== */
+
+.site-footer {
+    background-color: #0b0c10 !important;
+    color: #ffffff !important;
+    padding: 60px 0 20px 0 !important;
+    font-family: inherit;
+    border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+    position: relative;
+    z-index: 10;
+}
+
+.site-footer__content {
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+    padding: 0 24px !important;
+    display: grid !important;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr !important; /* 4 Colunas */
+    gap: 40px !important;
+    box-sizing: border-box !important;
+}
+
+/* Coluna 1: Marca */
+.site-footer__logo {
+    max-width: 180px !important;
+    height: auto !important;
+    margin-bottom: 16px !important;
+}
+
+.site-footer__tagline {
+    font-size: 0.85rem !important;
+    line-height: 1.5 !important;
+    color: #a0a5b5 !important;
+    margin-bottom: 16px !important;
+    font-weight: 300 !important;
+}
+
+.site-footer__email {
+    color: #20c997 !important; /* Destaque elegante no email */
+    font-size: 0.85rem !important;
+    text-decoration: none !important;
+    transition: color 0.3s ease !important;
+}
+
+.site-footer__email:hover {
+    color: #ffffff !important;
+    text-decoration: underline !important;
+}
+
+/* Colunas de Conteúdo & Títulos */
+.site-footer__heading {
+    font-size: 0.95rem !important;
+    font-weight: 500 !important;
+    color: #ffffff !important;
+    margin-bottom: 20px !important;
+    letter-spacing: 0.5px !important;
+    text-transform: uppercase !important;
+}
+
+.site-footer__links {
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.site-footer__links li {
+    margin-bottom: 10px !important;
+}
+
+.site-footer__links a {
+    color: #a0a5b5 !important;
+    font-size: 0.85rem !important;
+    text-decoration: none !important;
+    font-weight: 300 !important;
+    transition: all 0.2s ease !important;
+}
+
+.site-footer__links a:hover {
+    color: #ffffff !important;
+    padding-left: 4px !important; /* Pequeno deslize ao passar o mouse */
+}
+
+/* Link Social (LinkedIn) */
+.site-footer__social-link {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    color: #a0a5b5 !important;
+    text-decoration: none !important;
+    font-size: 0.85rem !important;
+    transition: color 0.3s ease !important;
+}
+
+.site-footer__social-icon {
+    width: 20px !important;
+    height: 20px !important;
+    fill: currentColor !important;
+}
+
+.site-footer__social-link:hover {
+    color: #0077b5 !important; /* Cor oficial do LinkedIn */
+}
+
+/* Base do Rodapé (Copyright & Back to Top) */
+.site-footer__bottom {
+    max-width: 1200px !important;
+    margin: 40px auto 0 auto !important;
+    padding: 20px 24px 0 24px !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    box-sizing: border-box !important;
+}
+
+.site-footer__copyright {
+    font-size: 0.8rem !important;
+    color: #707585 !important;
+    margin: 0 !important;
+}
+
+.site-footer__to-top {
+    color: #a0a5b5 !important;
+    font-size: 0.8rem !important;
+    text-decoration: none !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    transition: color 0.3s ease !important;
+}
+
+.site-footer__to-top:hover {
+    color: #ffffff !important;
+}
+
+.site-footer__to-top-arrow {
+    font-size: 1rem !important;
+}
+
+/* ========================================================
+   CORREÇÃO DO ALINHAMENTO DA COLUNA CONNECT / SOCIAL
+   ======================================================== */
+
+.site-footer__col--social {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+}
+
+/* Força o título a ocupar a linha do topo */
+.site-footer__col--social .site-footer__heading {
+    display: block !important;
+    position: relative !important;
+    margin-bottom: 20px !important;
+    width: 100% !important;
+}
+
+/* Garante que a lista fique abaixo do título */
+.site-footer__col--social .site-footer__links {
+    display: block !important;
+    position: relative !important;
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+}
+
+.site-footer__col--social .site-footer__links li {
+    margin-bottom: 10px !important;
+    display: block !important;
+}
+
+/* Formatação do Link com Ícone e Texto */
+.site-footer__social-link {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    color: #a0a5b5 !important;
+    text-decoration: none !important;
+    font-size: 0.85rem !important;
+    line-height: 1.2 !important;
+    transition: color 0.3s ease !important;
+}
+
+.site-footer__social-icon {
+    width: 16px !important;
+    height: 16px !important;
+    flex-shrink: 0 !important;
+    fill: currentColor !important;
+}
+
+.site-footer__social-link:hover {
+    color: #0077b5 !important; /* Cor oficial do LinkedIn */
+}
+
+/* ========================================================
+   RESPONSIVIDADE DO FOOTER (TABLETS & MOBILE)
+   ======================================================== */
+
+@media (max-width: 900px) {
+    .site-footer__content {
+        grid-template-columns: 1fr 1fr !important; /* 2x2 no Tablet */
+        gap: 30px !important;
+    }
+}
+
+@media (max-width: 550px) {
+    .site-footer__content {
+        grid-template-columns: 1fr !important; /* 1 Coluna no Celular */
+        gap: 32px !important;
+        text-align: left !important;
+    }
+
+    .site-footer__bottom {
+        flex-direction: column !important;
+        gap: 12px !important;
+        align-items: flex-start !important;
+    }
+}
+@media (max-width: 900px) {
+    #cases .kpi-grid-2col {
+        grid-template-columns: 1fr !important;
+        gap: 20px !important;
+    }
+}
+
+/* Mobile Fallback Behavior: Stacks sequentially for touchscreen scrolling */
+@media (max-width: 768px)
+{
+    .about-sticky-timeline
+    {
+        height: auto;
+        /* Dissolves multi-viewport sizing locks on mobile */
+    }
+
+    .sticky-viewport-container
+    {
+        position: relative;
+        height: auto;
+    }
+
+    .about-layer
+    {
+        position: relative;
+        height: auto;
+        padding: 60px 0;
+        transform: none !important;
+        opacity: 1 !important;
+    }
+
+    .split-columns-layout
+    {
+        flex-direction: column;
+        height: auto !important;
+        gap: 32px;
+    }
+
+    .column-right-text
+    {
+        text-align: left;
+    }
+}
+
+/* ========================================================
+   AJUSTE DE RESPONSIVIDADE MOBILE PARA A SEÇÃO #ABOUT
+   ======================================================== */
+
+@media (max-width: 768px) {
+    /* Altere #about ou a classe principal dos três frames conforme o nome real no seu HTML */
+    #about, 
+    .about-section, 
+    .about-container {
+        height: auto !important;
+        min-height: 100vh !important;
+        padding: 40px 20px !important;
+        box-sizing: border-box !important;
+    }
+
+    /* Força os 3 frames/cartões a empilharem verticalmente */
+    #about .about-grid,
+    .about-cards-wrapper,
+    .about-content {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 20px !important;
+        width: 100% !important;
+    }
+
+    /* Garante que cada frame individual ocupe 100% da largura disponível */
+    #about .about-card,
+    #about .frame,
+    .about-column {
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+    }
+}
+
+/* ========================================================
+   AJUSTE DE RESPONSIVIDADE MOBILE PARA AS CAMADAS DE #ABOUT
+   ======================================================== */
+
+@media (max-width: 768px) {
+    /* Libera a altura fixa do container principal do About no mobile */
+    #about {
+        height: auto !important;
+        min-height: auto !important;
+        overflow: visible !important;
+        padding: 40px 16px !important;
+        display: block !important;
+    }
+
+    /* Transforma as camadas em blocos empilhados verticalmente */
+    #about .about-layer {
+        position: relative !important;
+        top: auto !important;
+        left: auto !important;
+        right: auto !important;
+        bottom: auto !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        display: block !important;
+        height: auto !important;
+        min-height: auto !important;
+        margin-bottom: 30px !important;
+        transform: none !important;
+        pointer-events: auto !important;
+    }
+
+    /* Garante que elementos com classes de fade/intro apareçam visíveis no mobile */
+    #about .about-layer.faded-out,
+    #about .about-layer.layer-intro {
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: none !important;
+    }
+}
+
+/* ========================================================
+   AJUSTE DE RESPONSIVIDADE E ESPAÇAMENTO DA IMAGEM DOS CASES
+   ======================================================== */
+
+/* Ajuste fino no grid para dar mais respiro ao bloco de imagem */
+section.cases-standalone-section .case-content-grid {
+    display: grid !important;
+    grid-template-columns: 1.1fr 0.9fr !important;
+    gap: 40px !important; /* Aumenta o espaçamento entre texto e imagem */
+    align-items: center !important;
+}
+
+/* Garante que a imagem tenha flexibilidade sem espremer */
+section.cases-standalone-section .case-image-block {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 100% !important;
+}
+
+section.cases-standalone-section .case-image-block img {
+    width: 100% !important;
+    height: auto !important;
+    max-height: 340px !important; /* Permite um pouco mais de altura vertical */
+    object-fit: contain !important;
+    border-radius: 8px !important;
+}
+
+/* Em tablets e telas menores, empilha a imagem abaixo do texto para nunca espremer */
+@media (max-width: 900px) {
+    section.cases-standalone-section {
+        height: auto !important;
+        min-height: 100vh !important;
+        padding: 60px 20px !important;
+    }
+
+    section.cases-standalone-section .case-content-grid {
+        grid-template-columns: 1fr !important; /* Transforma em uma única coluna */
+        gap: 24px !important;
+    }
+
+    section.cases-standalone-section .case-image-block img {
+        max-height: 260px !important;
+        margin: 0 auto !important;
+    }
+}
+
+/* ========================================================
+   LOGO GLOBAL FIXO (CANTO SUPERIOR DIREITO)
+   ======================================================== */
+
+.global-logo-overlay {
+    position: fixed !important;
+    top: 60px !important;
+    right: 183px !important;
+    z-index: 999 !important; /* Fica acima das seções */
+    pointer-events: none !important; /* Não interfere nos cliques */
+}
+
+.global-logo-overlay img {
+    width: 200px !important;
+    height: auto !important;
+    display: block !important;
+    transition: opacity 0.3s ease !important; /* Transição suave na troca */
+}
+
+@media (max-width: 768px) {
+    /* Oculta completamente a seta de scroll no mobile */
+    .scroll-arrow-container {
+        display: none !important;
+    }
+}
+
+/* Responsividade para Celulares */
+@media (max-width: 768px) {
+    .global-logo-overlay {
+        top: 20px !important;
+        left: 20px !important;
+    }
+    
+    .global-logo-overlay img {
+        width: 100px !important;
+    }
+}
+
+/* ============================================================
+   HOVER / CLICK IMAGE POPUP EFFECT
+   ============================================================ */
+.logo-wrapper {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.t-logo {
+    width: 400px; /* Ajuste o tamanho padrão do logo se necessário */
+    height: auto;
+}
+
+/* Popup base */
+.image-popup {
+    position: fixed !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) scale(0.95) !important;
+    width: 80vw;
+    max-width: 1000px;
+    height: auto;
+    max-height: 85vh;
+    background-color: rgba(38, 38, 38, 0.95) !important; /* Fundo escuro translúcido para destacar */
+    backdrop-filter: blur(8px);
+    box-sizing: border-box;
+    padding: 32px;
+    border-radius: 12px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease-in-out;
+    pointer-events: none;
+    z-index: 99999;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.7);
+}
+
+/* Imagem dentro do popup */
+.image-popup img {
+    width: 100% !important;
+    height: auto !important;
+    max-height: 70vh !important;
+    display: block;
+    object-fit: contain;
+    border-radius: 8px;
+}
+
+/* Variação expanded-card */
+.image-popup.expanded-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Gatilho de hover (Desktop) */
+@media (min-width: 769px) {
+    .logo-wrapper:hover .image-popup {
+        opacity: 1;
+        visibility: visible;
+        transform: translate(-50%, -50%) scale(1) !important;
+        pointer-events: auto;
+    }
+}
+
+/* Gatilho via Classe JS (Mobile ou Clique) */
+.logo-wrapper.is-active .image-popup {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, -50%) scale(1) !important;
+    pointer-events: auto;
+}
+
+/* Responsividade Mobile */
+@media (max-width: 768px) {
+    .image-popup {
+        width: 92vw !important;
+        padding: 16px;
+    }
+    .t-logo {
+        width: 180px;
+    }
+}
+
+/* ========================================================
+   ESTILIZAÇÃO DO LAYER / CARD DE FORMULÁRIO (CONTATO)
+   ======================================================== */
+
+/* Garante que o container do formulário na direita tenha destaque visual */
+#contact .about-layer.layer-card .column-left-media:last-child {
+    background-color: #202020 !important; /* Fundo levemente destacado do fundo principal */
+    border: 1px solid #2e2e2e !important;
+    border-radius: 12px !important;
+    padding: 36px !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3) !important;
+    box-sizing: border-box !important;
+}
+
+/* Estilo limpo para os inputs e textarea dentro do formulário */
+#contact .custom-form .form-group input,
+#contact .custom-form .form-group textarea {
+    width: 100% !important;
+    background-color: #171717 !important;
+    border: 1px solid #333333 !important;
+    border-radius: 6px !important;
+    padding: 14px 16px !important;
+    color: #ffffff !important;
+    font-size: 0.95rem !important;
+    outline: none !important;
+    box-sizing: border-box !important;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#contact .custom-form .form-group input:focus,
+#contact .custom-form .form-group textarea:focus {
+    border-color: #28a745 !important;
+    box-shadow: 0 0 0 2px rgba(40, 167, 69, 0.2) !important;
+}
+
+#contact .custom-form .form-group textarea {
+    resize: vertical !important;
+    min-height: 110px !important;
+}
+
+/* Botão de envio elegante */
+#contact .custom-form .btn-submit {
+    background: transparent !important;
+    border: none !important;
+    color: #ffffff !important;
+    font-size: 1.05rem !important;
+    font-weight: 300 !important;
+    cursor: pointer !important;
+    padding: 0 !important;
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+#contact .custom-form .btn-submit:hover {
+    color: #28a745 !important;
+    transform: translateX(4px) !important;
+}
+
+/* Ajuste mobile para que o card do formulário se acomode perfeitamente */
+@media (max-width: 768px) {
+    #contact .about-layer.layer-card .column-left-media:last-child {
+        padding: 20px !important;
+    }
+}
+
+/* ========================================================
+   REFINAMENTO DEFINITIVO DO FORMULÁRIO (LAYER 2)
+   ======================================================== */
+
+#contact-layer-2 .section-core {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 100% !important;
+}
+
+#contact-layer-2 .contact-form-expanded-wrapper {
+    width: 100% !important;
+    max-width: 640px !important;
+    margin: 0 auto !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 20px !important;
+    box-sizing: border-box !important;
+}
+
+/* 1. SEPARAÇÃO ENTRE OS BOXES (GARANTE O ESPAÇAMENTO ENTRE CAMPOS) */
+#contact-layer-2 .custom-form .form-group {
+    margin-bottom: 24px !important; /* Espaço vertical entre os campos */
+    width: 100% !important;
+    display: block !important;
+}
+
+/* 2. REMOÇÃO DO FUNDO PRETO E APLICAÇÃO DO PADRÃO ENGAGEMENT-CARD */
+#contact-layer-2 .custom-form .form-group input,
+#contact-layer-2 .custom-form .form-group textarea,
+#contact-layer-2 input,
+#contact-layer-2 textarea {
+    width: 100% !important;
+    background: rgba(255, 255, 255, 0.03) !important;
+    background-color: rgba(255, 255, 255, 0.03) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 8px !important;
+    padding: 20px 24px !important;
+    font-size: 1.15rem !important;
+    color: #ffffff !important;
+    box-sizing: border-box !important;
+    outline: none !important;
+    -webkit-appearance: none !important;
+    appearance: none !important;
+    transition: border-color 0.3s ease, background-color 0.3s ease !important;
+}
+
+/* Altura ampliada do campo de mensagem */
+#contact-layer-2 .custom-form .form-group textarea {
+    min-height: 100px !important;
+    resize: vertical !important;
+}
+
+/* Efeito de destaque ao passar o mouse */
+#contact-layer-2 .custom-form .form-group input:hover,
+#contact-layer-2 .custom-form .form-group textarea:hover {
+    border-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+/* Efeito ao clicar para digitar */
+#contact-layer-2 .custom-form .form-group input:focus,
+#contact-layer-2 .custom-form .form-group textarea:focus {
+    border-color: rgba(255, 255, 255, 0.5) !important;
+    background: rgba(255, 255, 255, 0.06) !important;
+    background-color: rgba(255, 255, 255, 0.06) !important;
+}
+
+/* Alinhamento do botão de envio */
+#contact-layer-2 .form-action {
+    text-align: left !important;
+    margin-top: 12px !important;
+}
+
+#contact-layer-2 .btn-submit {
+    font-size: 1.2rem !important;
+    padding: 12px 0 !important;
+}
+
+/* Responsividade Mobile */
+@media (max-width: 768px) {
+    #contact-layer-2 .contact-form-expanded-wrapper {
+        padding: 0 16px !important;
+    }
+    #contact-layer-2 .custom-form .form-group input,
+    #contact-layer-2 .custom-form .form-group textarea {
+        padding: 16px 18px !important;
+        font-size: 1rem !important;
+    }
+}
+
+/* ========================================================
+   RESPONSIVIDADE MOBILE DO FORMULÁRIO (LAYER 2)
+   ======================================================== */
+@media (max-width: 768px) {
+    #contact-layer-2 .contact-form-expanded-wrapper {
+        padding: 0 16px !important;
+        max-width: 100% !important;
+    }
+
+    #contact-layer-2 .custom-form .form-group input,
+    #contact-layer-2 .custom-form .form-group textarea {
+        padding: 16px 18px !important;
+        font-size: 1rem !important; /* Tamanho ideal para leitura em celular sem dar zoom */
+    }
+
+    #contact-layer-2 .custom-form .form-group textarea {
+        min-height: 90px !important; /* Mantém a proporção reduzida também no mobile */
+    }
+}
+/* ========================================================
+   QUALIFICADOR REUTILIZÁVEL DE SEÇÃO (SECTION BADGE / H4)
+   ======================================================== */
+
+.section-badge {
+    position: absolute !important;
+    top: 70px !important;
+    left: var(--side-padding, 183px) !important;
+    
+    font-size: 0.85rem !important;
+    font-weight: 500 !important;
+    letter-spacing: 2px !important;
+    text-transform: uppercase !important;
+    color: rgba(255, 255, 255, 0.6) !important; /* Cor padrão para fundo escuro */
+    
+    margin: 0 !important;
+    padding: 0 !important;
+    z-index: 50 !important;
+    pointer-events: none !important;
+}
+
+/* Cor escura automática para seções de fundo claro (Serviços e Cases) */
+.services-theme-override .section-badge,
+.cases-standalone-section .section-badge,
+section.cases-standalone-section .section-badge {
+    color: rgba(0, 0, 0, 0.6) !important; /* Texto escuro e legível no fundo claro */
+}
+
+/* Responsividade Mobile */
+@media (max-width: 768px) {
+    .section-badge {
+        top: 20px !important;
+        left: 24px !important;
+        font-size: 0.75rem !important;
+    }
+}
