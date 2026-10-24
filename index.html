@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PowerCraftStudio</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="lang-en">
+    <!-- GLOBAL LAYERS: Floating centered at the top of the screen -->
+    <!--div class="nav-navigation-container" style="text-align: center; position: absolute; bottom: 20px; left: 0; right: 0;""-->
+    <div class="global-navigation-overlay">
+        <nav class="global-menu">
+            <!-- 6 Section Navigation Dots with Dynamic Language Tooltips -->
+            <a href="#home" class="nav-dot active" data-en="Home" data-pt="Início"></a>
+            <a href="#about" class="nav-dot" data-en="Our Approach" data-pt="Nossa Abordagem"></a>
+            <a href="#services" class="nav-dot" data-en="Capabilities" data-pt="Espeialidades"></a>
+            <a href="#engagement" class="nav-dot" data-en="Flexibility" data-pt="Flexibilidade"></a>
+            <a href="#contact" class="nav-dot" data-en="Start a Conversation" data-pt="Vamos Conversar"></a>
+
+            <!-- Case Navigation Dots with Tooltips -->
+            <a href="#case-1" class="nav-dot" data-en="Marketing Funds" data-pt="Verbas de Marketing"></a>
+            <a href="#case-2" class="nav-dot" data-en="Variable Compensation" data-pt="Remuneração Variável"></a>
+            <a href="#case-3" class="nav-dot" data-en="Customer Registration" data-pt="Cadastro de Clientes"></a>
+            <a href="#case-4" class="nav-dot" data-en="Digital Purchase" data-pt="Requisição Digital"></a>
+
+            <!-- Two Equal-Sized Clean Language Dots with Dynamic Language Tooltips (No text inside) -->
+            <button class="lang-dot active" id="btnEn" data-en="English" data-pt="Inglês"></button>
+            <button class="lang-dot" id="btnPt" data-en="Portuguese" data-pt="Português"></button>
+        </nav>
+    </div>
+
+    <!-- Logo Fixo Global no Canto Superior Direito -->
+    <div class="global-logo-overlay">
+        <img src="img/logo.png" alt="PowerCraftStudio" id="globalLogo" />
+    </div>
+
+    <!-- FIRST COMPONENT PANEL: HOME SECTION -->
+    <section id="home" class="main-section single-view">
+        <h4 class="section-badge" data-en="ENTERPRISE AUTOMATION" data-pt="AUTOMAÇÃO CORPORATIVA">ENTERPRISE AUTOMATION
+        </h4>
+        <main class="section-core">
+            <div class="text-group">
+                <h1 data-en="Still lose hours to spreadsheets and manual work?"
+                    data-pt="Ainda perde horas em planilhas e trabalho manual?">
+                    Still lose hours to spreadsheets and manual work?</h1>
+                <h3 data-en="Stop sitting on unused potential. Turn your existing Office 365 tools into automated, zero-waste workflows that save time and cut hidden costs."
+                    data-pt="Pare de deixar potencial estocado. Transforme as ferramentas que você já tem no Office 365 em fluxos automatizados que economizam tempo e eliminam custos invisíveis.">
+                    Stop sitting on unused potential. Turn your existing Office 365 tools into automated, zero-waste
+                    workflows that save time and cut hidden costs.</h3>
+                <div id="logoWrapper" class="logo-wrapper">
+                    <div>
+                        <h3 style="margin-bottom: 0px !important;"
+                            data-en="Continue to see what we can do for you with Power Platform."
+                            data-pt="Continue a explorar o que podemos fazer por você com a Power Platform.">Continue to see what we can do for you
+                            with Power Platform.</h3><br>
+                        <h4 style="color:#A6A6A6" data-en="(Mouse over here)"
+                            data-pt="(Passe o cursor sobre esta área)">(Mouse over here)
+                        </h4>
+                    </div>
+                    <!--img src="img/logo.png" alt="Logo" class="t-logo"-->
+                    <!-- EXPANDED POPUP BLOCK -->
+                    <div class="image-popup expanded-card">
+                        <img src="img/power-platform.png" alt="Logo Popup Preview">
+                        
+                    </div>
+                </div>
+                <!--img class="logo-img" src="img/logo.png" alt="Logo"-->
+            </div>
+        </main>
+    </section>
+
+    <!-- DYNAMIC LAYERED ABOUT SECTION -->
+    <section id="about" class="about-sticky-timeline">
+        <div class="sticky-viewport-container">
+            <!-- LAYER 0: Intro -->
+            <div class="about-layer layer-intro active-layer">
+                <h4 class="section-badge" data-en="Our Approach" data-pt="Nossa Abordagem">Our Approach</h4>
+                <div class="section-core single-inner-layout">
+                    <div class="text-group central-intro">
+                        <h1 data-en="Engineering That Eliminates Friction" data-pt="Engenharia Que Elimina Fricção">
+                            Engineering That Eliminates Friction</h1>
+                        <h3 data-en="We help your enterprise run at peak efficiency, turning complex, messy workflows into smooth, reliable applications that your team will actually love to use."
+                            data-pt="Ajudamos sua empresa a operar com máxima eficiência, transformando fluxos complexos e caóticos em aplicações fluidas e confiáveis que sua equipe vai gostar de usar.">
+                            We help your enterprise run at peak efficiency, turning complex, messy workflows into
+                            smooth,
+                            reliable applications that your team will actually love to use.
+                        </h3>
+                    </div>
+                </div>
+                <!-- Dica de Scroll Visual com Tooltip à Esquerda -->
+                <div class="scroll-arrow-container">
+                    <div class="scroll-arrow">↓</div>
+                    <span class="scroll-tooltip" data-en="Scroll to reveal layers"
+                        data-pt="Role para explorar as camadas">
+                        Scroll to reveal layers
+                    </span>
+                </div>
+            </div>
+            <!-- LAYER 1: Process Cycle Time -->
+            <div class="about-layer layer-card" id="card-layer-1">
+                <h4 class="section-badge" data-en="Our Approach" data-pt="Nossa Abordagem">Our Approach</h4>
+                <div class="section-core split-columns-layout">
+                    <div class="column-left-media">
+                        <div class="column-left-media">
+                            <h1 style="margin-bottom: 40px;" data-en="Process Cycle Time"
+                                data-pt="Tempo de Ciclo de Processos">Process Cycle Time</h1>
+                            <!--img class="gain-icon-large" src="img/performance.png" alt="Process Cycle Time Asset"-->
+                            <div class="key-indicator-pill" style="text-align: left;">
+                                <h1 class="about-col__indicator" data-en="80% faster" data-pt="80% mais rápido">80%
+                                    faster</h1>
+                            </div>
+                        </div>
+                        <div class="column-right-text">
+                            <h3 data-en="Your team gets hours back by cutting out manual bottlenecks, bloated spreadsheets, and clunky steps that traditional IT usually leaves behind."
+                                data-pt="Sua equipe recupera horas preciosas ao eliminarmos gargalos manuais, planilhas inchadas e etapas engessadas que a TI tradicional costuma ignorar.">
+                                Your team gets hours back by cutting out manual bottlenecks, bloated spreadsheets, and
+                                clunky steps that traditional IT usually leaves behind.
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- LAYER 2: Operational Effort -->
+                <div class="about-layer layer-card" id="card-layer-2">
+                    <h4 class="section-badge" data-en="Our Approach" data-pt="Nossa Abordagem">Our Approach</h4>
+                    <div class="section-core split-columns-layout">
+                        <div class="column-left-media">
+                            <div class="column-left-media">
+                                <h1 style="margin-bottom: 40px;" data-en="Operational Effort"
+                                    data-pt="Esforço Operacional">
+                                    Operational Effort</h1>
+                                <!--img class="gain-icon-large" src="img/operational.png" alt="Operational Efforts Asset"-->
+                                <div class="key-indicator-pill">
+                                    <h1 class="about-col__indicator" data-en="70%+ less" data-pt="70%+ menos">70%+ less
+                                    </h1>
+                                </div>
+                            </div>
+                            <div class="column-right-text">
+                                <h3 data-en="You don’t need a disruptive software overhaul. We connect the Power Platform directly to your legacy systems, giving your departments custom, secure tools in weeks instead of months."
+                                    data-pt="Você não precisa de uma reforma dolorosa de software. Conectamos a Power Platform diretamente aos seus sistemas legados, entregando ferramentas departamentais seguras e sob medida em semanas, e não meses.">
+                                    You don’t need a disruptive software overhaul. We connect the Power Platform
+                                    directly to
+                                    your legacy systems, giving your departments custom, secure tools in weeks instead
+                                    of
+                                    months.
+                                </h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- LAYER 3: The SharePoint-First Strategy -->
+                <div class="about-layer layer-card" id="card-layer-3">
+                    <h4 class="section-badge" data-en="Our Approach" data-pt="Nossa Abordagem">Our Approach</h4>
+                    <div class="section-core split-columns-layout">
+                        <div class="column-left-media">
+                            <div class="column-left-media">
+                                <h1 style="margin-bottom: 40px;" data-en="The SharePoint-First Strategy"
+                                    data-pt="Estratégia SharePoint-First">The SharePoint-First Strategy</h1>
+                                <!--img class="gain-icon-large" src="img/zero-license.png"
+                                    alt="SharePoint First Strategy Asset"-->
+                                <div class="key-indicator-pill">
+                                    <h1 data-en="0 license cost" data-pt="0 custo de licença">0 license cost</h1>
+                                </div>
+                            </div>
+                            <div class="column-right-text">
+                                <h3 data-en="You get high-impact solutions built right inside your existing Microsoft 365 tenant, protecting your budget by avoiding costly, unnecessary premium licenses."
+                                    data-pt="Você ganha soluções de alto impacto construídas diretamente no seu ambiente atual do Microsoft 365, protegendo o seu orçamento ao evitar licenças premium caras e desnecessárias.">
+                                    You get high-impact solutions built right inside your existing Microsoft 365 tenant,
+                                    protecting your budget by avoiding costly, unnecessary premium licenses.
+                                </h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+
+    <!-- DYNAMIC LAYERED SERVICES SECTION -->
+    <section id="services" class="about-sticky-timeline services-theme-override">
+        <div class="sticky-viewport-container">
+
+            <!-- LAYER 0: Intro -->
+            <div class="about-layer layer-intro active-layer">
+                <h4 class="section-badge" data-en="Capabilities" data-pt="Especialidades">Capabilities</h4>
+                <div class="section-core single-inner-layout">
+                    <div class="text-group central-intro">
+                        <h1 style="font-weight: 400;" data-en="High-Performance Execution, Zero Headaches"
+                            data-pt="Alta Performance, Zero Dor de Cabeça">
+                            High-Performance Execution, Zero Headaches</h1>
+                        <h3 style="font-weight: 400;"
+                            data-en="Smart engineering designed to mitigate risks, secure predictable results, and scale your ROI."
+                            data-pt="Engenharia inteligente projetada para mitigar riscos, garantir resultados previsíveis e escalar o seu ROI.">
+                            Smart engineering designed to mitigate risks,
+                            secure predictable results, and scale your ROI.</h3>
+                    </div>
+                </div>
+                <!-- Dica de Scroll Visual com Tooltip à Esquerda -->
+                <div class="scroll-arrow-container">
+                    <div class="scroll-arrow">↓</div>
+                    <span class="scroll-tooltip" data-en="Scroll to reveal layers"
+                        data-pt="Role para explorar as camadas">
+                        Scroll to reveal layers
+                    </span>
+                </div>
+            </div>
+
+            <!-- LAYER 1: End-to-End Execution -->
+            <div class="about-layer layer-card" id="services-card-layer-1">
+                <h4 class="section-badge" data-en="Capabilities" data-pt="Especialidades">Capabilities</h4>
+                <div class="section-core split-columns-layout">
+                    <div class="column-left-media">
+                        <div class="column-left-media">
+                            <h1 style="margin-bottom: 40px; font-weight: 400; font-size: var(--fs-h1);"
+                                data-en="End-to-End Execution & Rollout"
+                                data-pt="Execução e Implantação de Ponta a Ponta">
+                                End-to-End Execution & Rollout</h1>
+                        </div>
+                        <div class="column-right-text">
+                            <h3 style="font-weight: 400;"
+                                data-en="You get clear project mapping, custom engineering, and smooth multi-platform rollouts, so your team can start using the tools quickly without launch disruptions."
+                                data-pt="Você recebe mapeamento claro de projetos, engenharia sob medida e implantações suaves em multiplataforma para que sua equipe comece a usar as ferramentas rapidamente e sem interrupções.">
+                                You get clear project mapping, custom engineering, and smooth multi-platform rollouts—so
+                                your team can start using the tools quickly without launch disruptions.
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- LAYER 2: Scalable Architecture -->
+            <div class="about-layer layer-card" id="services-card-layer-2">
+                <h4 class="section-badge" data-en="Capabilities" data-pt="Especialidades">Capabilities</h4>
+                <div class="section-core split-columns-layout">
+                    <div class="column-left-media">
+                        <div class="column-left-media">
+                            <h1 style="font-weight: 400;" data-en="Scalable Architecture & System Design"
+                                data-pt="Arquitetura Escalável e Design de Sistemas" style="font-size: var(--fs-h1);">
+                                Scalable Architecture & System Design</h1>
+                        </div>
+                        <div class="column-right-text">
+                            <h3 style="font-weight: 400;"
+                                data-en="We build robust, secure systems that plug directly into what you already have, saving your IT team from maintenance nightmares as your company grows."
+                                data-pt="Criamos sistemas robustos e seguros que se conectam diretamente ao que você já possui, poupando sua equipe de TI de pesadelos de manutenção conforme sua empresa cresce.">
+                                We build robust, secure systems that plug directly into what you already have, saving
+                                your
+                                IT team from maintenance nightmares as your company grows.
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- LAYER 3: Proactive Optimization -->
+            <div class="about-layer layer-card" id="services-card-layer-3">
+                <h4 class="section-badge" data-en="Capabilities" data-pt="Especialidades">Capabilities</h4>
+                <div class="section-core split-columns-layout">
+                    <div class="column-left-media">
+                        <div class="column-left-media">
+                            <h1 data-en="Dynamic Scaling" data-pt="Escalabilidade Dinâmica"
+                                style="font-size: var(--fs-h1); font-weight: 400;">
+                                Dynamic Scaling</h1>
+                        </div>
+                        <div class="column-right-text">
+                            <h3 style="font-weight: 400;"
+                                data-en="Your applications stay fast and dependable. We handle performance tuning and long-term scaling behind the scenes so you never face unexpected downtime."
+                                data-pt="Suas aplicações permanecem rápidas e confiáveis. Cuidamos do ajuste fino e da escalabilidade nos bastidores para que você nunca enfrente paradas inesperadas.">
+                                Your applications stay fast and dependable. We handle performance tuning and long-term
+                                scaling behind the scenes so you never face unexpected downtime.
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ENGAGEMENT SECTION -->
+    <section id="engagement" class="about-sticky-timeline">
+        <div class="sticky-viewport-container">
+
+            <!-- LAYER 0: Intro View -->
+            <div class="about-layer layer-intro active-layer">
+                <h4 class="section-badge" data-en="Flexibility" data-pt="Flexibilidade">Flexibility</h4>
+                <div class="section-core single-inner-layout">
+                    <div class="text-group central-intro">
+                        <h1 data-en="Tailored Collaboration Models" data-pt="Modelos de Parceria Sob Medida">Tailored
+                            Collaboration Models</h1>
+                        <br>
+                        <h3 data-en="Structured Predictability & Ad-Hoc Agility. Services can be contracted as a comprehensive end-to-end initiative or as standalone specialized modules tailored to your immediate needs."
+                            data-pt="Previsibilidade Estruturada e Agilidade Sob Demanda. Os serviços podem ser contratados como um projeto completo de ponta a ponta ou como módulos especializados individuais adaptados às suas necessidades imediatas.">
+                            Structured Predictability & Ad-Hoc Agility. Services can be contracted as a comprehensive
+                            end-to-end initiative or as standalone specialized modules tailored to your immediate needs.
+                        </h3>
+                    </div>
+                </div>
+                <!-- Dica de Scroll Visual com Tooltip à Esquerda -->
+                <div class="scroll-arrow-container">
+                    <div class="scroll-arrow">↓</div>
+                    <span class="scroll-tooltip" data-en="Scroll to reveal layers"
+                        data-pt="Role para explorar as camadas">
+                        Scroll to reveal layers
+                    </span>
+                </div>
+            </div>
+
+            <!-- LAYER 1: 3-Column Models Grid -->
+            <div class="about-layer layer-card" id="engagement-layer-1">
+                <h4 class="section-badge" data-en="Flexibility" data-pt="Flexibilidade">Flexibility</h4>
+                <div class="section-core single-inner-layout">
+                    <div class="engagement-grid">
+
+                        <!-- Column 1: Fixed Price -->
+                        <div class="engagement-card">
+                            <h1 data-en="Fixed Price" data-pt="Preço Fechado">Fixed Price</h1>
+                            <ul class="engagement-list">
+                                <li data-en="Defined Scope" data-pt="Escopo Definido">Defined Scope</li>
+                                <li data-en="Milestone-based Delivery" data-pt="Entregas por Etapas">Milestone-based
+                                    Delivery</li>
+                                <li data-en="Unified Financial Agreement" data-pt="Acordo Financeiro Unificado">Unified
+                                    Financial Agreement</li>
+                            </ul>
+                        </div>
+                        <!-- Column 2: Retainer Model -->
+                        <div class="engagement-card">
+                            <h1 data-en="Retainer Model" data-pt="Modelo Contínuo">Retainer Model</h1>
+                            <ul class="engagement-list">
+                                <li data-en="Solution Optimization" data-pt="Otimização Contínua">Solution Optimization
+                                </li>
+                                <li data-en="Rapid Incident Resolution" data-pt="Resolução Rápida de Incidentes">Rapid
+                                    Incident Resolution</li>
+                                <li data-en="Proactive Governance" data-pt="Governança Proativa">Proactive Governance
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Column 3: On Demand -->
+                        <div class="engagement-card">
+                            <h1 data-en="On Demand" data-pt="Sob Demanda">On Demand</h1>
+                            <ul class="engagement-list">
+                                <li data-en="Performance Tuning" data-pt="Ajuste Fino de Performance">Performance Tuning
+                                </li>
+                                <li data-en="Governance Consulting" data-pt="Consultoria de Governança">Governance
+                                    Consulting</li>
+                                <li data-en="Rapid Emergency Troubleshooting" data-pt="Suporte de Emergência Rápido">
+                                    Rapid Emergency Troubleshooting</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DYNAMIC LAYERED CONTACT SECTION -->
+    <section id="contact" class="about-sticky-timeline contact-timeline-3layers">
+        <div class="sticky-viewport-container">
+
+            <!-- LAYER 0: The Big Headline -->
+            <div class="about-layer layer-intro active-layer">
+                <div class="section-core single-inner-layout">
+                    <div class="text-group central-intro">
+                        <h1 data-en="Start a Conversation" data-pt="Vamos Conversar">
+                            Start a Conversation
+                        </h1>
+                        <h3 data-en="Let’s eliminate the manual noise and build a streamlined solution that actually works."
+                            data-pt="Vamos eliminar o ruído manual e construir uma solução fluida que realmente funciona.">
+                            Let’s eliminate the manual noise and build a streamlined solution that actually works.
+                        </h3>
+                    </div>
+                </div>
+                <div class="scroll-arrow-container">
+                    <div class="scroll-arrow">↓</div>
+                    <span class="scroll-tooltip" data-en="Scroll to reveal layers"
+                        data-pt="Role para explorar as camadas">
+                        Scroll to reveal layers
+                    </span>
+                </div>
+            </div>
+
+            <!-- LAYER 1: Texto Motivador com o mesmo padrão do Layer 0 e links duplos -->
+            <div class="about-layer layer-card" id="contact-layer-1">
+                <h4 class="section-badge" data-en="Start a Conversation" data-pt="Vamos Conversar">Start a Conversation
+                </h4>
+                <div class="section-core single-inner-layout">
+                    <div class="text-group central-intro">
+                        <h1 data-en="Tell Us Where It Hurts" data-pt="Onde Dói o Seu Processo?">
+                            Tell Us Where It Hurts
+                        </h1>
+                        <h3 data-en="Describe your current operational challenge, spreadsheet overload, or system roadblock. We’ll analyze it and get back with a clear engineering perspective."
+                            data-pt="Descreva seu desafio operacional atual, excesso de planilhas ou gargalo no sistema. Vamos analisar e retornar com uma perspectiva clara de engenharia.">
+                            Describe your current operational challenge, spreadsheet overload, or system roadblock.
+                            We’ll analyze it and get back with a clear engineering perspective.
+                        </h3>
+
+                        <!-- Links duplos lado a lado: Esquerda (Cases) e Direita (Ir para o Formulário) -->
+                        <div class="contact-links-row">
+                            <a href="#case-1" class="cases-link"
+                                style="color: #A6A6A6; text-decoration: none; font-size: 1.1rem; font-weight: 300;">
+                                <span data-en="↓ Explore Case Studies" data-pt="↓ Explorar Casos de Estudo">↓ Explore
+                                    Case Studies</span>
+                            </a>
+                            <a href="#contact-layer-2" class="form-jump-link" onclick="scrollToContactForm(event)"
+                                style="color: #00AB55; text-decoration: none; font-size: 1.1rem; font-weight: 300; margin-left: 32px;">
+                                <span data-en="↓ Go to Contact Form" data-pt="↓ Ir para o Formulário">↓ Go to Contact
+                                    Form</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- LAYER 2: Formulário Ampliado e Isolado -->
+            <div class="about-layer layer-card" id="contact-layer-2">
+                <h4 class="section-badge" data-en="Start a Conversation" data-pt="Vamos Conversar">Start a Conversation
+                </h4>
+                <div class="section-core single-inner-layout">
+                    <div class="contact-form-expanded-wrapper">
+                        <h2 style="font-size: var(--fs-h2); font-weight: 300; margin-bottom: 24px; color: #ffffff;"
+                            data-en="Send Us Your Project Details" data-pt="Envie os Detalhes do seu Projeto">
+                            Send Us Your Project Details
+                        </h2>
+                        <form id="contact-form" class="custom-form" action="https://formspree.io/f/mrperpao"
+                            method="POST">
+                            <div class="form-group">
+                                <input type="text" id="name" name="name" required placeholder="Your Name"
+                                    data-placeholder-en="Your Name" data-placeholder-pt="Seu Nome">
+                            </div>
+
+                            <div class="form-group">
+                                <input type="email" id="email" name="email" required placeholder="Work Email"
+                                    data-placeholder-en="Work Email" data-placeholder-pt="E-mail Corporativo">
+                            </div>
+
+                            <div class="form-group">
+                                <textarea id="challenge" name="challenge" rows="3" required
+                                    placeholder="What is the main operational headache or manual bottleneck you want to solve right now?"
+                                    data-placeholder-en="What is the main operational headache or manual bottleneck you want to solve right now?"
+                                    data-placeholder-pt="Qual é a principal dor de cabeça operacional ou gargalo manual que você quer resolver agora?"></textarea>
+                            </div>
+
+                            <div class="form-action" style="text-align: left;">
+                                <button type="submit" class="btn-submit">
+                                    <span data-en="Get Expert Assessment →" data-pt="Solicitar Avaliação Técnica →">Get
+                                        Expert Assessment →</span>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SEÇÃO DE CASES - ISOLADA E COM FUNDO CLARO -->
+    <section id="case-1" class="cases-standalone-section">
+        <h4 class="section-badge" data-en="Track Record" data-pt="Histórico de Impacto">Track Record</h4>
+        <div class="cases-inner-wrapper">
+
+            <!-- Título do Case -->
+            <h2 class="case-main-title" data-en="MARKETING FUND REQUEST & APPROVAL"
+                data-pt="SOLICITAÇÃO & APROVAÇAO DE VERBA DE MARKETING">
+                MARKETING FUND REQUEST & APPROVAL
+            </h2>
+
+            <!-- Grid Principal: Descrição na Esquerda / Imagem na Direita -->
+            <div class="case-content-grid">
+
+                <!-- Esquerda: Textos em fundo claro -->
+                <div class="case-text-block">
+                    <p data-en="Multilingual Power Platform solution to optimize and govern client promotion funding requests across Canada, Mexico, and South America."
+                        data-pt="Solução multilíngue da Power Platform para otimizar e gerenciar as solicitações de financiamento promocional de clientes no Canadá, México e América do Sul.">
+                        Multilingual Power Platform solution to optimize and govern client promotion funding requests
+                        across Canada, Mexico, and South America.
+                    </p>
+
+                    <p data-en="The app enforces strict corporate compliance via a dynamic, tiered approval matrix routing up to the Board of Directors. "
+                        data-pt="O aplicativo garante a estrita conformidade corporativa por meio de uma matriz de aprovação dinâmica e hierárquica, que chega até o Conselho de Administração.">
+                        The app enforces strict corporate compliance via a dynamic, tiered approval matrix routing up to
+                        the Board of Directors.
+                    </p>
+
+                    <p data-en="Additionally, the platform provides end-to-end accountability by requiring applicants to submit post-campaign expense and performance results directly into the system."
+                        data-pt="Além disso, a plataforma fornece prestação de contas de ponta a ponta, exigindo que os solicitantes enviem despesas pós-campanha e resultados de desempenho diretamente para o sistema.">
+                        Additionally, the platform provides end-to-end accountability by requiring applicants to submit
+                        post-campaign expense and performance results directly into the system.
+                    </p>
+                </div>
+
+                <!-- Direita: Imagem do Fluxo -->
+                <div class="case-image-block">
+                    <img src="img/case1-en.png" alt="Process Flow" class="case-img img-en">
+                    <img src="img/case1-pt.png" alt="Fluxo de Processo" class="case-img img-pt">
+                </div>
+
+            </div>
+
+            <!-- Rodapé: Key Indicators -->
+            <div class="case-kpi-footer">
+                <h3 data-en="KEY INDICATORS" data-pt="INDICADORES-CHAVE">KEY INDICATORS</h3>
+
+                <div class="kpi-grid">
+                    <div class="kpi-card">
+                        <span class="kpi-number">70%</span>
+                        <span class="kpi-label" data-en="Reduction in Develop Costs"
+                            data-pt="Redução nos Custos de Desenvolvimento">Reduction in Develop Costs</span>
+                    </div>
+
+                    <div class="kpi-card">
+                        <span class="kpi-number">100%</span>
+                        <span class="kpi-label" data-en="End-to-End Audit Traceability"
+                            data-pt="Rastreabilidade de Auditoria de Ponta a Ponta">End-to-End Audit Traceability</span>
+                    </div>
+
+                    <div class="kpi-card">
+                        <span class="kpi-number">4</span>
+                        <span class="kpi-label" data-en="Languages" data-pt="Idiomas Suportados">Languages</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CASE 2: VARIABLE COMPENSATION -->
+    <section id="case-2" class="cases-standalone-section">
+        <h4 class="section-badge" data-en="Track Record" data-pt="Histórico de Impacto">Track Record</h4>
+        <div class="cases-inner-wrapper">
+
+            <!-- Título do Case -->
+            <h2 class="case-main-title" data-en="VARIABLE COMPENSATION" data-pt="COMPENSAÇÃO VARIÁVEL">
+                VARIABLE COMPENSATION
+            </h2>
+
+            <!-- Grid Principal: Descrição na Esquerda / Imagem na Direita -->
+            <div class="case-content-grid">
+
+                <!-- Esquerda: Textos em fundo claro -->
+                <div class="case-text-block">
+                    <p data-en="Automated solution to eliminate manual Excel calculations by processing variable compensation for construction project employees using integrated HR, attendance, and payroll data. "
+                        data-pt="Solução automatizada para eliminar os cálculos manuais em Excel, processando a remuneração variável de funcionários de projetos de construção usando dados integrados de RH, frequência e folha de pagamento.">
+                        An automated solution eliminates manual Excel calculations by processing variable compensation
+                        for construction project employees using integrated HR, attendance, and payroll data.
+                    </p>
+
+                    <p data-en="The app streamlines data distribution to each team group managers across the regional offices for validation."
+                        data-pt="O aplicativo agiliza a distribuição de dados para os gerentes de cada equipe nos escritórios regionais para validação.">
+                        The app streamlines data distribution to each team group managers across the regional offices
+                        for validation..
+                    </p>
+
+                    <p data-en="Finally, the consolidated data is extracted from the app database and automatically sent to the payroll system."
+                        data-pt="Por fim, os dados consolidados são extraídos do aplicativo e enviados automaticamente para o sistema de folha de pagamento.">
+                        Finally, the consolidated data is extracted from the app database and automatically sent to the
+                        payroll system.
+                    </p>
+                </div>
+
+                <!-- Direita: Imagem do Fluxo -->
+                <div class="case-image-block">
+                    <img src="img/case2-en.png" alt="Variable Compensation Process Flow" class="case-img img-en">
+                    <img src="img/case2-pt.png" alt="Fluxo de Processo de Compensação Variável" class="case-img img-pt">
+                </div>
+
+            </div>
+
+            <!-- Rodapé: Key Indicators -->
+            <div class="case-kpi-footer">
+                <h3 data-en="KEY INDICATORS" data-pt="INDICADORES-CHAVE">KEY INDICATORS</h3>
+
+                <div class="kpi-grid">
+                    <div class="kpi-card">
+                        <span class="kpi-number">260 hrs.</span>
+                        <span class="kpi-label" data-en="Man/hours Saved" data-pt="Horas-homem economizadas">Man/hours
+                            Saved</span>
+                    </div>
+
+                    <div class="kpi-card">
+                        <span class="kpi-number">100%</span>
+                        <span class="kpi-label" data-en="Calculation Accuracy"
+                            data-pt="Precisão nos Cálculos">Calculation Accuracy</span>
+                    </div>
+
+                    <div class="kpi-card">
+                        <span class="kpi-number">100%</span>
+                        <span class="kpi-label" data-en="Audit Compliance" data-pt="Conformidade de Auditoria">Audit
+                            Compliance</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- CASE 3: CUSTOMER REGISTRATION PROCESS UPGRADE -->
+    <section id="case-3" class="cases-standalone-section">
+        <h4 class="section-badge" data-en="Track Record" data-pt="Histórico de Impacto">Track Record</h4>
+        <div class="cases-inner-wrapper">
+
+            <!-- Título do Case -->
+            <h2 class="case-main-title" data-en="CUSTOMER REGISTRATION PROCESS UPGRADE"
+                data-pt="ATUALIZAÇÃO DO PROCESSO DE CADASTRO DE CLIENTES">
+                CUSTOMER REGISTRATION PROCESS UPGRADE
+            </h2>
+
+            <!-- Grid Principal: Descrição na Esquerda / Imagem na Direita -->
+            <div class="case-content-grid">
+
+                <!-- Esquerda: Textos em fundo claro -->
+                <div class="case-text-block">
+                    <p data-en="A robust solution, utilizing Power Apps, Power Automate, and SharePoint, integrated directly with Salesforce, replaced the legacy system that relied on SharePoint and Nintex databases for forms, workflows, and email notifications."
+                        data-pt="Uma solução robusta, utilizando Power Apps, Power Automate e SharePoint, integrada diretamente ao Salesforce, substituiu o sistema legado que dependia de bases de dados do SharePoint e Nintex para formulários, fluxos de trabalho e notificações por e-mail.">
+                        A robust solution, utilizing Power Apps, Power Automate, and SharePoint, integrated directly
+                        with Salesforce, replaced the legacy system that relied on SharePoint and Nintex databases for
+                        forms, workflows, and email notifications.
+                    </p>
+
+                    <p data-en="The app now automates the capture of data from prospective customers in Salesforce, directing them directly to the new platform."
+                        data-pt="O aplicativo agora automatiza a captura de dados de clientes em potencial no Salesforce, direcionando-os diretamente para a nova plataforma.">
+                        The app now automates the capture of data from prospective customers in Salesforce, directing
+                        them directly to the new platform.
+                    </p>
+
+                    <p data-en="This completely eliminates manual data entry and accelerates cross-departmental evaluation and approval culminating in final approval by the dealership within the SAP corporate system."
+                        data-pt="Isso elimina completamente a entrada manual de dados e acelera a avaliação e aprovação interdepartamental, culminando na aprovação final pela concessionária dentro do sistema corporativo SAP.">
+                        This completely eliminates manual data entry and accelerates cross-departmental evaluation and
+                        approval culminating in final approval by the dealership within the SAP corporate system.
+                    </p>
+
+                    <p data-en="In total 12 redesigned customer processes were redesigned, reducing total processing time by 55%."
+                        data-pt="No total, 12 processos de atendimento ao cliente foram redesenhados, reduzindo o tempo total de processamento em 55%.">
+                        In total 12 redesigned customer processes were redesigned, reducing total processing time by
+                        55%.
+                    </p>
+                </div>
+
+                <!-- Direita: Imagem do Fluxo -->
+                <div class="case-image-block">
+                    <img src="img/case3-en.png" alt="Customer Registration Process Flow" class="case-img img-en">
+                    <img src="img/case3-pt.png" alt="Fluxo de Processo de Cadastro de Clientes" class="case-img img-pt">
+                </div>
+
+            </div>
+
+            <!-- Rodapé: Key Indicators -->
+            <div class="case-kpi-footer">
+                <h3 data-en="KEY INDICATORS" data-pt="INDICADORES-CHAVE">KEY INDICATORS</h3>
+
+                <div class="kpi-grid">
+                    <div class="kpi-card">
+                        <span class="kpi-number">55%</span>
+                        <span class="kpi-label" data-en="Cycle Time Reduction" data-pt="Redução no Tempo de Ciclo">Cycle
+                            Time Reduction</span>
+                    </div>
+
+                    <div class="kpi-card">
+                        <span class="kpi-number">Zero</span>
+                        <span class="kpi-label" data-en="Data Leakage" data-pt="Vazamento de Dados">Data Leakage</span>
+                    </div>
+
+                    <div class="kpi-card">
+                        <span class="kpi-number">Zero</span>
+                        <span class="kpi-label" data-en="Manual data transcription"
+                            data-pt="Transcrição manual de dados">Manual data transcription</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- CASE 4: DIGITAL PURCHASE REQUISITION -->
+    <section id="case-4" class="cases-standalone-section">
+        <h4 class="section-badge" data-en="Track Record" data-pt="Histórico de Impacto">Track Record</h4>
+        <div class="cases-inner-wrapper">
+            <!-- Título do Case -->
+            <h2 class="case-main-title" data-en="DIGITAL PURCHASE REQUISITION" data-pt="REQUISIÇÃO DE COMPRA DIGITAL">
+                DIGITAL PURCHASE REQUISITION
+            </h2>
+
+            <!-- Grid Principal: Descrição na Esquerda / Imagem na Direita -->
+            <div class="case-content-grid">
+
+                <!-- Esquerda: Textos em fundo claro -->
+                <div class="case-text-block">
+                    <p data-en="A 100% digital Power Platform application automates and governs the creation, validation, and approval of project purchase requisitions."
+                        data-pt="Uma aplicação Power Platform 100% digital automatiza e controla a criação, validação e aprovação de requisições de compra de projetos.">
+                        A 100% digital Power Platform application automates and governs the creation, validation, and
+                        approval of project purchase requisitions.
+                    </p>
+
+                    <p data-en="The app enables users to submit digital purchase specifications for comprehensive scope and operational validation."
+                        data-pt="O aplicativo permite que os usuários enviem especificações de compra digitais para validação completa do escopo e das operações.">
+                        The app enables users to submit digital purchase specifications for comprehensive scope and
+                        operational validation.
+                    </p>
+
+                    <p data-en="The solution enforces comprehensive compliance through a two-tier technical and managerial review, covering budget, sourcing, tax, and environmental criteria. "
+                        data-pt="A solução garante a conformidade total por meio de uma revisão técnica e gerencial em duas etapas, abrangendo critérios de orçamento, fornecimento, impostos e meio ambiente.">
+                        The solution enforces comprehensive compliance through a two-tier technical and managerial
+                        review, covering budget, sourcing, tax, and environmental criteria.
+                    </p>
+
+                    <p data-en="Additionally, the application features operational control tools for approval workflows, enabling real-time tracking of each requisition and visual dashboards to monitor the status of every stage."
+                        data-pt="Além disso, a aplicação possui ferramentas de controle operacional para fluxos de aprovação, permitindo o rastreamento em tempo real de cada requisição e painéis visuais para monitorar o status de cada etapa.">
+                        Additionally, the application features operational control tools for approval workflows,
+                        enabling real-time tracking of each requisition and visual dashboards to monitor the status of
+                        every stage.
+                    </p>
+                </div>
+
+                <!-- Direita: Imagem do Fluxo -->
+                <div class="case-image-block">
+                    <img src="img/case4-en.png" alt="Digital Purchase Requisition Process Flow" class="case-img img-en">
+                    <img src="img/case4-pt.png" alt="Fluxo de Processo de Requisição de Compra Digital"
+                        class="case-img img-pt">
+                </div>
+
+            </div>
+
+            <!-- Rodapé: Key Indicators (Ajustado para 2 colunas para os 2 indicadores) -->
+            <div class="case-kpi-footer">
+                <h3 data-en="KEY INDICATORS" data-pt="INDICADORES-CHAVE">KEY INDICATORS</h3>
+
+                <div class="kpi-grid-2col">
+                    <div class="kpi-card">
+                        <span class="kpi-number" style="font-size: 1.8rem; margin-top: 5px;">100%</span>
+                        <span class="kpi-label" data-en="Paperless transition digital from request to fulfillment"
+                            data-pt="Transição digital sem papel, da solicitação ao atendimento">Paperless transition
+                            digital from request to fulfillment</span>
+                    </div>
+
+                    <div class="kpi-card">
+                        <span class="kpi-number" style="font-size: 1.8rem; margin-top: 5px;">Real-Time</span>
+                        <span class="kpi-label" data-en="Operation analytics, live insights, smarter decisions"
+                            data-pt="Análise de operações, insights ao vivo e decisões mais inteligentes">Operation
+                            analytics, live insights, smarter decisions</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="site-footer__content">
+
+            <!-- Coluna 1 — Marca -->
+            <div class="site-footer__col site-footer__col--brand">
+                <img class="site-footer__logo" src="img/logo.png" alt="PowerCraftStudio" />
+
+                <p class="site-footer__tagline"
+                    data-en="PowerApps, PowerAutomate, &amp; SharePoint Architecture &amp; Solutions"
+                    data-pt="Arquitetura &amp; Soluções em PowerApps, PowerAutomate e SharePoint">
+                    PowerApps, PowerAutomate, &amp; SharePoint Architecture &amp; Solutions
+                </p>
+
+                <a class="site-footer__email" href="mailto:contact@powercraftstudio.digital">
+                    contact@powercraftstudio.digital
+                </a>
+            </div>
+
+            <!-- Coluna 2 — Navegação Geral -->
+            <div class="site-footer__col site-footer__col--nav">
+                <h4 class="site-footer__heading" data-en="Navigation" data-pt="Navegação">
+                    Navigation
+                </h4>
+
+                <ul class="site-footer__links">
+                    <li><a href="#home" data-en="Ready to Go?" data-pt="Preparado?">Ready to Go?</a></li>
+                    <li><a href="#about" data-en="Our Approach" data-pt="Nossa Abordagem">Our Approach</a></li>
+                    <li><a href="#services" data-en="Capability" data-pt="Especialidades">Capability</a></li>
+                    <li><a href="#engagement" data-en="Flexibility" data-pt="Flexibiidade">Flexibility</a></li>
+                    <li><a href="#contact" data-en="Start a Conversation" data-pt="Vamos Conversar">Start a
+                            Conversation</a></li>
+                </ul>
+            </div>
+
+            <!-- Coluna 3 — Cases de Sucesso -->
+            <div class="site-footer__col site-footer__col--cases">
+                <h4 class="site-footer__heading" data-en="Track Record" data-pt="Histórico de Impacto">
+                    Track Record
+                </h4>
+
+                <ul class="site-footer__links">
+                    <li><a href="#case-1" data-en="Marketing Funds" data-pt="Verbas de Marketing">Marketing Funds</a>
+                    </li>
+                    <li><a href="#case-2" data-en="Variable Compensation" data-pt="Remuneração Variável">Variable
+                            Compensation</a></li>
+                    <li><a href="#case-3" data-en="Customer Registration" data-pt="Cadastro de Clientes">Customer
+                            Registration</a></li>
+                    <li><a href="#case-4" data-en="Digital Purchase" data-pt="Requisição Digital">Digital Purchase</a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Coluna 4 — Redes Sociais / Connect -->
+            <div class="site-footer__col site-footer__col--social">
+                <h4 class="site-footer__heading" data-en="Connect" data-pt="Conecte-se">
+                    Connect
+                </h4>
+
+                <ul class="site-footer__links">
+                    <li>
+                        <a class="site-footer__social-link"
+                            href="https://www.linkedin.com/in/sergioelias-powercraftstudio" target="_blank"
+                            rel="noopener noreferrer" aria-label="LinkedIn — Sergio Elias / PowerCraftStudio">
+                            <svg class="site-footer__social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                fill="currentColor" aria-hidden="true">
+                                <path
+                                    d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.95v5.66H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z" />
+                            </svg>
+                            <span>LinkedIn</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+        <!-- Base do rodapé com Back to Top -->
+        <div class="site-footer__bottom">
+            <p class="site-footer__copyright">
+                © <span class="js-year">2026</span> PowerCraftStudio – <span data-en="All Rights Reserved"
+                    data-pt="Todos os Direitos Reservados">All Rights Reserved</span>
+            </p>
+
+            <a href="#home" class="site-footer__to-top"
+                onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;">
+                <span data-en="Back to top" data-pt="Voltar ao topo">Back to top</span>
+                <span class="site-footer__to-top-arrow">↑</span>
+            </a>
+        </div>
+    </footer>
+
+    <!-- Swapped to match your actual main.js file setup inside the js/ directory -->
+    <script src="js/main.js"></script>
+</body>
+
+</html>
