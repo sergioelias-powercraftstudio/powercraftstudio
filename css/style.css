@@ -1404,7 +1404,7 @@ section.cases-standalone-section .case-image-block img {
 @media (max-width: 768px) {
     .global-logo-overlay {
         top: 20px !important;
-        left: 20px !important;
+        right: 20px !important;
     }
     
     .global-logo-overlay img {
