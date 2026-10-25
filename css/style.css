@@ -1410,14 +1410,14 @@ section.cases-standalone-section~.nav-navigation-container .nav-dot.active,
 
     h1
     {
-        font-size: var(--fs-h2);
+        font-size: var(--fs-h2) !important;
         margin-bottom: 1.5rem;
         /* Adds spacing under h1 */
     }
 
     .column-left-media h1
     {
-        font-size: var(--fs-h2);
+        font-size: var(--fs-h2) !important;
     }
 
     h3
