@@ -1415,6 +1415,11 @@ section.cases-standalone-section~.nav-navigation-container .nav-dot.active,
         /* Adds spacing under h1 */
     }
 
+    .column-left-media h1
+    {
+        font-size: var(--fs-h2);
+    }
+
     h3
     {
         font-size: var(--fs-body);
