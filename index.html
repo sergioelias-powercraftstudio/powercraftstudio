@@ -9,6 +9,15 @@
 </head>
 
 <body class="lang-en page-landing">
+
+<!-- NOVO HEADER PARA MOBILE -->
+    <header class="mobile-lang-header">
+        <div class="mobile-lang-options">
+            <button class="lang-dot active" id="btnEnMobile" data-lang="en" title="English"></button>
+            <button class="lang-dot" id="btnPtMobile" data-lang="pt" title="Português"></button>
+        </div>
+    </header>
+
     <!-- GLOBAL LAYERS: Floating centered at the top of the screen -->
     <!--div class="nav-navigation-container" style="text-align: center; position: absolute; bottom: 20px; left: 0; right: 0;""-->
     <div class="global-navigation-overlay">
@@ -61,6 +70,7 @@
     <section id="home" class="main-section single-view">
         <main class="section-core">
             <div class="text-group">
+                <h4 class="section-badge" data-en="Enterprise Automation" data-pt="Automação Emprwsarial">Enterprise Automation</h4>
                 <h1 data-en="Still lose hours to spreadsheets and manual work?"
                     data-pt="Ainda perde horas em planilhas e trabalho manual?">
                     Still lose hours to spreadsheets and manual work?</h1>
@@ -123,14 +133,11 @@
                 <h4 class="section-badge" data-en="Our Approach" data-pt="Nossa Abordagem">Our Approach</h4>
                 <div class="section-core split-columns-layout">
                     <div class="column-left-media">
-                        <div class="column-left-media">
-                            <h1 style="margin-bottom: 40px;" data-en="Process Cycle Time"
-                                data-pt="Tempo de Ciclo de Processos">Process Cycle Time</h1>
-                            <!--img class="gain-icon-large" src="img/performance.png" alt="Process Cycle Time Asset"-->
-                            <div class="key-indicator-pill" style="text-align: left;">
-                                <h1 class="about-col__indicator" data-en="80% faster" data-pt="80% mais rápido">80%
-                                    faster</h1>
-                            </div>
+                        <h1 style="margin-bottom: 40px;" data-en="Process Cycle Time"
+                            data-pt="Tempo de Ciclo de Processos">Process Cycle Time</h1>
+                        <div class="key-indicator-pill" style="text-align: left;">
+                            <h1 class="about-col__indicator" data-en="80% faster" data-pt="80% mais rápido">80%
+                                faster</h1>
                         </div>
                         <div class="column-right-text">
                             <h3 data-en="Your team gets hours back by cutting out manual bottlenecks, bloated spreadsheets, and clunky steps that traditional IT usually leaves behind."
@@ -141,61 +148,52 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- LAYER 2: Operational Effort -->
-                <div class="about-layer layer-card" id="card-layer-2">
-                    <!--h4 class="section-badge" data-en="Our Approach" data-pt="Nossa Abordagem">Our Approach</h4-->
-                    <div class="section-core split-columns-layout">
-                        <div class="column-left-media">
-                            <div class="column-left-media">
-                                <h1 style="margin-bottom: 40px;" data-en="Operational Effort"
-                                    data-pt="Esforço Operacional">
-                                    Operational Effort</h1>
-                                <!--img class="gain-icon-large" src="img/operational.png" alt="Operational Efforts Asset"-->
-                                <div class="key-indicator-pill">
-                                    <h1 class="about-col__indicator" data-en="70%+ less" data-pt="70%+ menos">70%+ less
-                                    </h1>
-                                </div>
-                            </div>
-                            <div class="column-right-text">
-                                <h3 data-en="You don’t need a disruptive software overhaul. We connect the Power Platform directly to your legacy systems, giving your departments custom, secure tools in weeks instead of months."
-                                    data-pt="Você não precisa de uma reforma dolorosa de software. Conectamos a Power Platform diretamente aos seus sistemas legados, entregando ferramentas departamentais seguras e sob medida em semanas, e não meses.">
-                                    You don’t need a disruptive software overhaul. We connect the Power Platform
-                                    directly to
-                                    your legacy systems, giving your departments custom, secure tools in weeks instead
-                                    of
-                                    months.
-                                </h3>
-                            </div>
+            </div>
+            <!-- LAYER 2: Operational Effort -->
+            <div class="about-layer layer-card" id="card-layer-2">
+                <h4 class="section-badge" data-en="Our Approach" data-pt="Nossa Abordagem">Our Approach</h4>
+                <div class="section-core split-columns-layout">
+                    <div class="column-left-media">
+                        <h1 style="margin-bottom: 40px;" data-en="Operational Effort" data-pt="Esforço Operacional">
+                            Operational Effort</h1>
+                        <div class="key-indicator-pill">
+                            <h1 class="about-col__indicator" data-en="70%+ less" data-pt="70%+ menos">70%+ less
+                            </h1>
                         </div>
-                    </div>
-                </div>
-
-                <!-- LAYER 3: The SharePoint-First Strategy -->
-                <div class="about-layer layer-card" id="card-layer-3">
-                    <!--h4 class="section-badge" data-en="Our Approach" data-pt="Nossa Abordagem">Our Approach</h4-->
-                    <div class="section-core split-columns-layout">
-                        <div class="column-left-media">
-                            <div class="column-left-media">
-                                <h1 style="margin-bottom: 40px;" data-en="The SharePoint-First Strategy"
-                                    data-pt="Estratégia SharePoint-First">The SharePoint-First Strategy</h1>
-                                <!--img class="gain-icon-large" src="img/zero-license.png"
-                                    alt="SharePoint First Strategy Asset"-->
-                                <div class="key-indicator-pill">
-                                    <h1 data-en="0 license cost" data-pt="0 custo de licença">0 license cost</h1>
-                                </div>
-                            </div>
-                            <div class="column-right-text">
-                                <h3 data-en="You get high-impact solutions built right inside your existing Microsoft 365 tenant, protecting your budget by avoiding costly, unnecessary premium licenses."
-                                    data-pt="Você ganha soluções de alto impacto construídas diretamente no seu ambiente atual do Microsoft 365, protegendo o seu orçamento ao evitar licenças premium caras e desnecessárias.">
-                                    You get high-impact solutions built right inside your existing Microsoft 365 tenant,
-                                    protecting your budget by avoiding costly, unnecessary premium licenses.
-                                </h3>
-                            </div>
+                        <div class="column-right-text">
+                            <h3 data-en="You don’t need a disruptive software overhaul. We connect the Power Platform directly to your legacy systems, giving your departments custom, secure tools in weeks instead of months."
+                                data-pt="Você não precisa de uma reforma dolorosa de software. Conectamos a Power Platform diretamente aos seus sistemas legados, entregando ferramentas departamentais seguras e sob medida em semanas, e não meses.">
+                                You don’t need a disruptive software overhaul. We connect the Power Platform
+                                directly to your legacy systems, giving your departments custom, secure tools in weeks
+                                instead of months.
+                            </h3>
                         </div>
                     </div>
                 </div>
             </div>
+
+
+            <!-- LAYER 3: The SharePoint-First Strategy -->
+            <div class="about-layer layer-card" id="card-layer-3">
+                <h4 class="section-badge" data-en="Our Approach" data-pt="Nossa Abordagem">Our Approach</h4>
+                <div class="section-core split-columns-layout">
+                    <div class="column-left-media">
+                        <h1 style="margin-bottom: 40px;" data-en="The SharePoint-First Strategy"
+                            data-pt="Estratégia SharePoint-First">The SharePoint-First Strategy</h1>
+                        <div class="key-indicator-pill">
+                            <h1 data-en="0 license cost" data-pt="0 custo de licença">0 license cost</h1>
+                        </div>
+                        <div class="column-right-text">
+                            <h3 data-en="You get high-impact solutions built right inside your existing Microsoft 365 tenant, protecting your budget by avoiding costly, unnecessary premium licenses."
+                                data-pt="Você ganha soluções de alto impacto construídas diretamente no seu ambiente atual do Microsoft 365, protegendo o seu orçamento ao evitar licenças premium caras e desnecessárias.">
+                                You get high-impact solutions built right inside your existing Microsoft 365 tenant,
+                                protecting your budget by avoiding costly, unnecessary premium licenses.
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
     <!-- DYNAMIC LAYERED SERVICES SECTION -->
