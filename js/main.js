@@ -311,3 +311,27 @@ function scrollToContactForm(event) {
         });
     }
 }
+
+/* ============================================================
+   7) LANDING — esconde logo/badge quando a landing está visível
+   ============================================================ */
+(function () {
+  const landing = document.getElementById('landing');
+  if (!landing) return;
+
+  const body = document.body;
+
+  // Verifica se a landing ainda está visível na viewport
+  function update() {
+    const rect = landing.getBoundingClientRect();
+    // Se o topo da landing está acima do topo da tela + um pedaço,
+    // significa que o usuário já rolou para baixo
+    const isVisible = rect.bottom > window.innerHeight * 0.5;
+    body.classList.toggle('page-landing', isVisible);
+  }
+
+  // Atualiza no scroll e no load
+  window.addEventListener('scroll', update, { passive: true });
+  window.addEventListener('resize', update);
+  update();
+})();
