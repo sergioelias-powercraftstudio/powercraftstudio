@@ -10,13 +10,16 @@
 
 <body class="lang-en page-landing">
 
-<!-- NOVO HEADER PARA MOBILE -->
-    <header class="mobile-lang-header">
-        <div class="mobile-lang-options">
-            <button class="lang-dot active" id="btnEnMobile" data-lang="en" title="English"></button>
-            <button class="lang-dot" id="btnPtMobile" data-lang="pt" title="Português"></button>
-        </div>
-    </header>
+    <!-- O container pai do header precisa ser isolado -->
+    <div id="mobile-header-portal">
+        <header class="mobile-lang-header">
+            <div class="mobile-lang-options">
+                <button class="lang-dot active" id="btnEnMobile" data-lang="en" title="English"></button>
+                <button class="lang-dot" id="btnPtMobile" data-lang="pt" title="Português"></button>
+            </div>
+        </header>
+    </div>
+    <!-- ... resto do HTML ... -->
 
     <!-- GLOBAL LAYERS: Floating centered at the top of the screen -->
     <!--div class="nav-navigation-container" style="text-align: center; position: absolute; bottom: 20px; left: 0; right: 0;""-->
@@ -826,7 +829,7 @@
                 <ul class="site-footer__links">
                     <li>
                         <a class="site-footer__social-link"
-                            href="https://www.linkedin.com/in/sergioelias-powercraftstudio" target="_blank"
+                            href="https://www.linkedin.com/in/sergio-elias-powercraftstudio" target="_blank"
                             rel="noopener noreferrer" aria-label="LinkedIn — Sergio Elias / PowerCraftStudio">
                             <svg class="site-footer__social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
                                 fill="currentColor" aria-hidden="true">
